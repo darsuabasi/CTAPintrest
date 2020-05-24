@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS pintrest_db1;
-CREATE DATABASE pintrest_db1;
+-- DROP DATABASE IF EXISTS pintrest_db1;
+-- CREATE DATABASE pintrest_db1;
 
 -- \c pintrest_db1;
 
-DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Pins;
+-- DROP TABLE IF EXISTS Users;
+-- DROP TABLE IF EXISTS Pins;
 
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,

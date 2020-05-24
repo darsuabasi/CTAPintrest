@@ -15,6 +15,7 @@ const createUser = async (req, res, next) => {
             status: "Error",
             message: "Account could not be created at this time."
         })
+        next(err);
     }
 };
 
@@ -23,13 +24,14 @@ const getAllUsers = async (req, res, next) => {
         const allUsers = await db.any("SELECT * FROM Users");
         res.status(200).json({
             allUsers, 
-            message: "All users!"
+            message: "All users listed!"
         })
     } catch (err) {
         res.status(400).json({
             status: "Error",
             message: "All users cannont be displayed at this time."
         })
+        next(err);
     }
 }
 
@@ -78,7 +80,7 @@ const deleteUser = async (req, res, next) => {
         }
       });
     } catch (error) {
-      res.json({
+      res.status(400).json({
         status: "Error",
         message: "User could not be deleted!"
       });
