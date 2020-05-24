@@ -15,10 +15,10 @@ import Home from './components/Home';
 
 import AllUsers from './components/AllUsers'
 import AuthProvider from './providers/AuthContext'
-import SignupModal from './components/SignupModal'
-import LoginModal from './components/LoginModal'
+// import SignupModal from './components/SignupModal'
+// import LoginModal from './components/LoginModal'
 import { AuthRoute, ProtectedRoute } from './util/routeUtil'
-import Modal from './components/modal/Modal'
+
 
 
 const App = () => {
@@ -27,7 +27,7 @@ const App = () => {
     <div>
     <AuthProvider> 
       <Navbar/>
-      <Modal/>
+     
 
       <Route to="/">
         <Landing/>
@@ -41,13 +41,13 @@ const App = () => {
         <AllUsers/>
       </Route>
 
-      <AuthRoute path="/signup">
+      {/* <AuthRoute path="/signup">
         <SignupModal/> 
       </AuthRoute>
 
       <AuthRoute path="/login">
         <LoginModal/> 
-      </AuthRoute>
+      </AuthRoute> */}
 
 
 

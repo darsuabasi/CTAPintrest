@@ -45,6 +45,9 @@ const LoginModal = () => {
         <div className="basicModal" ref={outsideModal}> 
         <button onClick={() => setOpenModal(!openModal)}> Log in</button>
         {openModal ? (
+            <div>
+            <h1> Pintrest logo</h1>
+            <h1> Welcome to Pintrest</h1>
             <form onSubmit={handleSubmit}> 
             <input placeholder="Email" 
                 value={email}
@@ -72,8 +75,9 @@ const LoginModal = () => {
 
 
 
-
+            
         </form>
+        </div>
         ): null}
     </div>
 )
