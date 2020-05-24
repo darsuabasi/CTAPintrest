@@ -4,17 +4,88 @@
 }
 
 .navbarUno {
-   display: flex;
-   justify-content: space-evenly;
-
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 20;
+    width: 100%;
 }
 
 
+.publicNav {
+    display: flex;
+    float: right;
+    height: 70px;
+    padding-right: 28px;
+    background-color: white;
+}
+
+.publicNavLink {
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-right: 35px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.publicNavLink:hover{
+    text-decoration: underline;
+}
+
+.publicNavLogin {
+    border-radius: 30px;
+    border: none;
+    border-style: none;
+    width: 70px;
+    height: 42px;
+    color: whitesmoke;
+    background-color: #E60023;
+    font-weight: bold;
+    font-size: medium;
+    transition-duration: 0.4s;
+}
+
+.publicNavLogin:hover {
+    background-color: darkred;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.publicNavSignup {
+    border-radius: 30px;
+    border: none;
+    border-style: none;
+    width: 80px;
+    height: 42px;
+    color: black;
+    font-weight: bold;
+    margin-left: 15px;
+    font-size: medium;
+    background-color: rgb(240, 240, 240);
+    transition-duration: 0.4s;
+}
+
+.publicNavSignup:hover {
+    background-color: rgb(224, 224, 224);
+    color: black;
+    cursor: pointer;
+    
+}
 
 
+.buttonDiv {
+    padding-left: 20px;
+    display: flex;
+}
 
-
-
-
-
-
+.pintrestLogoLetters {
+    color: #E60023;
+    font-size: x-large;
+    font-weight: 700;
+    font: 20px;
+    text-decoration: none;
+    margin-left: 50px;
+    
+}

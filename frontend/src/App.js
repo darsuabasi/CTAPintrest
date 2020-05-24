@@ -1,48 +1,53 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter, Router } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Home from './components/Home';
-import Today from './components/Today';
-import Following from './components/Following';
-import SearchBar from './components/SearchBar';
-import Notifications from './components/Notifications';
-import Messages from './components/Messages';
-import UserPage from './components/AllUsers';
-import Accounts from './components/Accounts';
-import Error from './components/Error';
+// import Today from './components/Today';
+// import Following from './components/Following';
+// import SearchBar from './components/SearchBar';
+// import Notifications from './components/Notifications';
+// import Messages from './components/Messages';
+// import UserPage from './components/AllUsers';
+// import Accounts from './components/Accounts';
+// import Error from './components/Error';
 
-import Signup from './components/Signup'
-import Login from './components/Login'
 
 import AllUsers from './components/AllUsers'
+import AuthProvider from './providers/AuthContext'
+import SignupModal from './components/SignupModal'
+import LoginModal from './components/LoginModal'
+import { AuthRoute, ProtectedRoute } from './util/routeUtil'
+import Modal from './components/modal/Modal'
+
 
 const App = () => {
   return (
     
     <div>
-    <BrowserRouter> 
+    <AuthProvider> 
       <Navbar/>
+      <Modal/>
 
-      {/* <Route to="/">
+      <Route to="/">
         <Landing/>
-      </Route> */}
-
-      <Route exact path="/">
-        <Home/>
       </Route>
+
+      <ProtectedRoute exact path="/home">
+        <Home/>
+      </ProtectedRoute>
 
       <Route path="/users">
         <AllUsers/>
       </Route>
 
-      <Route path="/signup">
-        <Signup/> 
-      </Route>
+      <AuthRoute path="/signup">
+        <SignupModal/> 
+      </AuthRoute>
 
-      <Route path="/login">
-        <Login/> 
-      </Route>
+      <AuthRoute path="/login">
+        <LoginModal/> 
+      </AuthRoute>
 
 
 
@@ -76,7 +81,7 @@ const App = () => {
 
 
 
-    </BrowserRouter>
+    </AuthProvider>
     </div>
   );
 }
