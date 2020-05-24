@@ -22,7 +22,7 @@ CREATE TABLE Pins (
     id SERIAL PRIMARY KEY,
     -- link VARCHAR UNIQUE,
     -- url VARCHAR UNIQUE,
-    creator INT REFERENCES Users(id) ON DELETE CASCADE,
+    creator_id INT REFERENCES Users(id) ON DELETE CASCADE,
     -- board TEXT,
     -- created_at VARCHAR, 
     note TEXT,
@@ -41,9 +41,12 @@ INSERT INTO Users (email)
             ('bananas@pursuit.org');
            
 
-INSERT INTO Pins (creator, note)
+INSERT INTO Pins (creator_id, note)
     VALUES  ('1', 'Soft Glam'),
             ('3', 'Dress down with the AF1'),
             ('1', 'Lemon pepper wings recipe'),
             ('1', 'Summer fit');
            
+
+
+

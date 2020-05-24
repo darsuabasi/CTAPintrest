@@ -10,7 +10,7 @@ const createUser = async (req, res, next) => {
             user, 
             message: "New user created",
         });
-    } catch (err) {
+    } catch(err) {
         res.status(400).json({
             status: "Error",
             message: "Account could not be created at this time."

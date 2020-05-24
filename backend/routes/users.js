@@ -9,10 +9,9 @@ users.delete('/:id', deleteUser)
 users.patch('/:id', updateUser)
 
 
-
-// users.get('/email/:email', getSingleUserByEmail)
-
-
 module.exports = users;
+
+
+
 
 
