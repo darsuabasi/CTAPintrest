@@ -1,10 +1,10 @@
--- DROP DATABASE IF EXISTS pintrest_db1;
--- CREATE DATABASE pintrest_db1;
+DROP DATABASE IF EXISTS pintrest_db1;
+CREATE DATABASE pintrest_db1;
 
 -- \c pintrest_db1;
 
--- DROP TABLE IF EXISTS Users;
--- DROP TABLE IF EXISTS Pins;
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Pins;
 
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
@@ -38,7 +38,8 @@ CREATE TABLE Pins (
 INSERT INTO Users (email) 
     VALUES  ('darsu@gmail.com'),
             ('yellowdiamonds@apple.org'),
-            ('bananas@pursuit.org');
+            ('meshki@yahoo.com'),
+            ('apples@pursuit.org');
            
 
 INSERT INTO Pins (creator_id, note)

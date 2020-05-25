@@ -2,8 +2,11 @@ const db = require("../db/index");
 
 const createPin = async (req, res, next) => {
     try {
-        let newPin = await db.one(
-            `INSERT INTO Pins(creator_id, note) VALUES('${req.body.creator_id}', '${req.body.note}') RETURNING * `);
+        const newPin = await db.one(
+            `INSERT INTO Pins(id, creator_id, note) VALUES( '${req.body.id}' , '${req.body.creator_id}', '${req.body.note}') RETURNING * `);
+        // "INSERT INTO Pins (id, creator_id, note) VALUES( ${id}, ${creator_id}, ${note}", 
+        // req.body
+    //    );
         res.status(200).json({
             status: "Success",
             payload: newPin, 
@@ -41,7 +44,7 @@ const deletePin = async (req, res, next) => {
 
 const getAllPins = async (req, res, next) => {
     try {
-        let allThePins = await db.any('SELECT * FROM Pins ORDER BY time_stamp DESC');
+        const allThePins = await db.any('SELECT * FROM Pins ORDER BY time_stamp DESC');
         res.status(200).json({
             status: "Success",
             message: "All pins are now showing",
@@ -109,3 +112,14 @@ const getSinglePin = async (req, res, next) => {
 }
 
 module.exports = { createPin, deletePin, getAllPins, updatePin, getPinsByHashtag, getSinglePin }
+
+
+
+
+
+
+
+
+
+
+

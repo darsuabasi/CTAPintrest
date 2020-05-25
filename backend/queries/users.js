@@ -2,18 +2,18 @@ const db = require("../db/index");
 
 const createUser = async (req, res, next) => {
     try {
-        const user = await db.none(
-            "INSERT INTO Users(id, email) VALUES(${id}, ${email})",
+        const newUser = await db.none(
+            "INSERT INTO Users (id, bio, email) VALUES(${id}, ${bio}, ${email})",
             req.body
         );
         res.status(200).json({
-            user, 
-            message: "New user created",
+            newUser, 
+            message: "Ayeee new user created"
         });
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Account could not be created at this time."
+            message: "Yikes, account could not be created at this time."
         })
         next(err);
     }
@@ -38,9 +38,9 @@ const getAllUsers = async (req, res, next) => {
 const getSingleUser = async (req, res, next) => {
     try {
         const getUser = await db.one('SELECT * FROM Users WHERE id= $1', [req.params.id]);
-        res.status(200).jsonon({
+        res.status(200).json({
             getUser,
-            message: "Single user by id",
+            message: "Checking out a single user by id",
         })
     } catch (err) {
         res.status(400).json({
@@ -56,7 +56,7 @@ const updateUser = async (req, res, next) => {
         const updateUser = await db.one(`UPDATE Users SET bio = $1 WHERE id = ${req.params.id} RETURNING *`, [req.body.bio])
         res.status(200).json({
             updateUser,
-            message: "User was updated",
+            message: "Yessirrrr user was updated",
         })
     } catch (err) {
         res.status(400).json({
