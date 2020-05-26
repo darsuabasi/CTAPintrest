@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
-import Landing from './components/Landing';
+// import Landing from './components/Landing';
 import Home from './components/Home';
 // import Today from './components/Today';
 // import Following from './components/Following';
@@ -12,12 +12,15 @@ import Home from './components/Home';
 // import Accounts from './components/Accounts';
 // import Error from './components/Error';
 
+import CreatePin from './components/CreatePin'
+
 
 import AllUsers from './components/AllUsers'
 import AuthProvider from './providers/AuthContext'
-// import SignupModal from './components/SignupModal'
-// import LoginModal from './components/LoginModal'
+import SignupModal from './components/SignupModal'
+import LoginModal from './components/LoginModal'
 import { AuthRoute, ProtectedRoute } from './util/routeUtil'
+import ImageUpload from './components/ImageUpload';
 
 
 
@@ -29,9 +32,9 @@ const App = () => {
       <Navbar/>
      
 
-      <Route to="/">
+      {/* <Route to="/">
         <Landing/>
-      </Route>
+      </Route> */}
 
       <ProtectedRoute exact path="/home">
         <Home/>
@@ -41,13 +44,21 @@ const App = () => {
         <AllUsers/>
       </Route>
 
-      {/* <AuthRoute path="/signup">
+      <AuthRoute path="/signup">
         <SignupModal/> 
       </AuthRoute>
 
       <AuthRoute path="/login">
         <LoginModal/> 
-      </AuthRoute> */}
+      </AuthRoute> 
+
+      <Route exact path="/create-pin"> 
+        <CreatePin/>
+      </Route>
+
+      <Route path="/pins/upload-image">
+        <ImageUpload/>
+        </Route>
 
 
 

@@ -98,7 +98,8 @@ const Navbar = (params) => {
         if(currentUser) {
             // return <button onClick={accounts}>Accounts</button>;
             return ( 
-               <nav>
+                <nav>
+
                 <NavLink to={"/"}>Home</NavLink>
                 <NavLink to={"/today"}>Today</NavLink>
                 <NavLink to={"/following"}>Following</NavLink>
@@ -122,7 +123,7 @@ const Navbar = (params) => {
                         
                         <button className="publicNavLogin" onClick={() => setOpenLoginModal(!openLoginModal)}> Log in</button>
                         {openLoginModal ? (
-                          <div>
+                          <div className="stylingLoginModaldiv">
                             <h1> Pintrest logo</h1>
                             <h1> Welcome to Pintrest</h1>
                             <form onSubmit={handleLoginSubmit}> 
@@ -156,7 +157,7 @@ const Navbar = (params) => {
 
                         <button className="publicNavSignup" onClick={() => setOpenSignupModal(!openSignupModal)}> Sign up </button>
                         {openSignupModal ? (
-                            <div> 
+                            <div className="stylingSignupModalDiv"> 
                                 <h1> Pintrest logo</h1>
                                 <h2> Welcome to Pintrest </h2>
                                 <h4> Find new ideas to try</h4>

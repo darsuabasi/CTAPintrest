@@ -81,12 +81,25 @@
 }
 
 .pintrestLogoLetters {
+    display: flex;
+    align-self: flex-start;
     color: #E60023;
     font-size: x-large;
     font-weight: 700;
-    font: 20px;
+    font: 20rem;
     text-decoration: none;
-    margin-top: 14px;
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 2em;
     
+}
+
+.stylingLoginModaldiv {
+    margin-top: 10rem;
+    margin-left: -15rem;
+}
+
+.stylingSignupModalDiv {
+    margin-top: 10rem;
+    /* margin-left: 350px;
+    margin-right: -200px; */
 }

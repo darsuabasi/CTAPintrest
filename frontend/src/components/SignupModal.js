@@ -52,6 +52,11 @@ const Signup = () => {
 
                 <h5> OR </h5>
 
+
+
+
+
+            </form>
                 <button type="submit"> Continue with Facebook </button>
                 <button type="submit"> Continue with Google </button>
 
@@ -60,11 +65,6 @@ const Signup = () => {
                 <p> Already a member? Log in</p>
 
                 <p> Create a business account</p>
-
-
-
-
-            </form>
         </div>
     )
 }
