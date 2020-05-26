@@ -3,7 +3,7 @@ const db = require("../db/index");
 const createPin = async (req, res, next) => {
     try {
         const newPin = await db.one(
-            `INSERT INTO Pins(id, creator_id, note) VALUES( '${req.body.id}' , '${req.body.creator_id}', '${req.body.note}') RETURNING * `);
+            `INSERT INTO Pins(id, creator_id, note, pin_image) VALUES( '${req.body.id}' , '${req.body.creator_id}', '${req.body.note}', '${req.body.pin_image}') RETURNING * `);
         // "INSERT INTO Pins (id, creator_id, note) VALUES( ${id}, ${creator_id}, ${note}", 
         // req.body
     //    );

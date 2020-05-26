@@ -1,15 +1,15 @@
-const users = require("express").Router();
+const usersRouter = require("express").Router();
 const { createUser, getAllUsers, getSingleUser, deleteUser, updateUser } = require("../queries/users")
 
-users.get("/", getAllUsers);
-users.post("/", createUser);
+usersRouter.get("/", getAllUsers);
+usersRouter.post("/", createUser);
 
-users.get('/:id', getSingleUser);
-users.delete('/:id', deleteUser)
-users.patch('/:id', updateUser)
+usersRouter.get('/:id', getSingleUser);
+usersRouter.delete('/:id', deleteUser)
+usersRouter.patch('/:id', updateUser)
 
 
-module.exports = users;
+module.exports = usersRouter;
 
 
 

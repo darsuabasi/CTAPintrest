@@ -3,7 +3,7 @@ const db = require("../db/index");
 const createUser = async (req, res, next) => {
     try {
         const newUser = await db.none(
-            "INSERT INTO Users (id, bio, email) VALUES(${id}, ${bio}, ${email})",
+            "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES(${id}, ${username}, ${first_name}, ${last_name}, ${bio}, ${profilePic}, ${email})",
             req.body
         );
         res.status(200).json({
@@ -53,7 +53,9 @@ const getSingleUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
     try {
-        const updateUser = await db.one(`UPDATE Users SET bio = $1 WHERE id = ${req.params.id} RETURNING *`, [req.body.bio])
+        const updateUser = await db.one(`UPDATE Users SET username = $/username/, first_name = $/first_name/, last_name = $/last_name/, bio = $/bio/, profilePic = $/profilePic/ WHERE id = ${req.params.id} RETURNING *`, [req.body])
+                                    // (`UPDATE Posts SET poster_id = $/poster_id/, imageURL = $/imageURL/, content = $/content/ WHERE id = ${req.params.id} RETURNING *`, req.body)
+                                    // (`UPDATE Users SET bio = $1 WHERE id = ${req.params.id} RETURNING *`, [req.body])
         res.status(200).json({
             updateUser,
             message: "Yessirrrr user was updated",
