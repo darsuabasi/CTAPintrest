@@ -22,6 +22,13 @@ import LoginModal from './components/LoginModal'
 import { AuthRoute, ProtectedRoute } from './util/routeUtil'
 import ImageUpload from './components/ImageUpload';
 
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+// import Pins from './components/Pin'
+import Pin from './components/pins/SinglePin';
+import Pins from './components/pins/AllPins'
+
+import Landing from './components/Landing'
+
 
 
 const App = () => {
@@ -36,7 +43,7 @@ const App = () => {
         <Landing/>
       </Route> */}
 
-      <ProtectedRoute exact path="/home">
+      <ProtectedRoute exact path="/user-home">
         <Home/>
       </ProtectedRoute>
 
@@ -58,6 +65,18 @@ const App = () => {
 
       <Route path="/pins/upload-image">
         <ImageUpload/>
+        </Route>
+
+        <Route exact path="/pin">
+          <Pin/>
+        </Route>
+
+        <Route exact path="/pins">
+          <Pins/>
+        </Route>
+
+        <Route path="/">
+          <Landing/> 
         </Route>
 
 
