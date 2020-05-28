@@ -23,8 +23,9 @@ const getAllUsers = async (req, res, next) => {
     try {
         const allUsers = await db.any("SELECT * FROM Users");
         res.status(200).json({
-            allUsers, 
-            message: "All users listed!"
+            status: "Success",
+            message: "All users listed!",
+            payload: allUsers
         })
     } catch (err) {
         res.status(400).json({

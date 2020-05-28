@@ -7,9 +7,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 
-const usersRouter = require("./routes/users")
-const pinsRouter = require("./routes/pins")
-const imageUploaderRouter = require("./routes/imageUploader")
+const usersRouter = require('./routes/users')
+const pinsRouter = require('./routes/pins')
+const imageUploaderRouter = require('./routes/imageUploader')
+const boardsRouter = require('./routes/boards')
+const likesRouter = require('./routes/likes');
+const tagsRouter = require('./routes/tags')
 
 const PORT = process.env.PORT;
 const app = express();
@@ -20,9 +23,12 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
-app.use("/api/users", usersRouter);
-app.use("/api/pins", pinsRouter);
-app.use("api/pins/upload-image", imageUploaderRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/pins', pinsRouter);
+app.use('/api/pins/uploads', imageUploaderRouter);
+app.use('/api/boards', boardsRouter);
+app.use('/api/likes', likesRouter);
+app.use('/api/tags', tagsRouter);
 
 
 // app.post("/pins/upload-image", (req, res, next) => {
