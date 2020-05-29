@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS pintrest_db1;
--- CREATE DATABASE pintrest_db1;
+-- DROP DATABASE IF EXISTS pintrest_db;
+-- CREATE DATABASE pintrest_db;
 
--- \c pintrest_db1;
+-- \c pintrest_db;
 
 -- DROP TABLE IF EXISTS Users;
 -- DROP TABLE IF EXISTS Boards;
@@ -28,9 +28,9 @@ CREATE TABLE Boards (
     -- board_url TEXT,
     board_description TEXT,
     creator_id INT REFERENCES Users(id) ON DELETE CASCADE,
-    created_date TIMESTAMP
+    created_date TIMESTAMP,
     -- counts_data VARCHAR,
-    -- board_image VARBINARY(max)
+    board_image VARCHAR
 );
 
 CREATE TABLE Pins (
@@ -72,11 +72,11 @@ INSERT INTO Users (username, first_name, last_name, bio, profilePic, email)
             ('youLoveNai', 'Nai', 'Bennasy', 'Your best decision', 'https://naiPic.com', 'meshki@yahoo.com'),
             ('ayoApples', 'Apple', 'Deniro', 'I love apples', 'https://apples.com','apples@pursuit.org');
 
-INSERT INTO Boards (board_name, board_description, creator_id)
-    VALUES ('Summer Looks', 'This is my board filled with summer looks in nyc', 2),
-           ('Face Beat', 'makeup inspo for bougie days', 1),
-           ('Food recips', 'Trying these out when I get bored.', 2),
-           ('Tatt Inspo', 'cool tatt ideas', 1);
+INSERT INTO Boards (board_name, board_description, creator_id, board_image)
+    VALUES ('Summer Looks', 'This is my board filled with summer looks in nyc', 2, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-547181482-1585870019.jpg?crop=0.593xw:1.00xh;0.0913xw,0&resize=640:*'),
+           ('Face Beat', 'makeup inspo for bougie days', 1, 'https://i.pinimg.com/474x/93/13/59/9313590e57769fe9e9e9cefa051d9be8.jpg'),
+           ('Food recips', 'Trying these out when I get bored.', 2, 'https://afrogistmedia.com/wp-content/uploads/2018/04/Screen-Shot-2018-04-22-at-6.28.38-PM.png'),
+           ('Tatt Inspo', 'cool tatt ideas', 1, 'https://i.pinimg.com/236x/30/b8/8e/30b88e3f2f4902a1bfa0863659b6f12c.jpg');
            
 
 INSERT INTO Pins (imageUrl, creator_id, board_id, note /*pin_image*/)

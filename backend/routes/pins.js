@@ -1,16 +1,19 @@
 const pinsRouter = require("express").Router();
-const { createPin, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllPinsByUser } = require("../queries/pins")
+const { createPin, deletePin, leftJoinPinsUsers, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllPinsByUser } = require("../queries/pins")
 
 
-// pinsRouter.get('/', leftJoinPostsUsers);
 
 pinsRouter.get('/', getAllPins);
-pinsRouter.post('/', createPin);
+
+pinsRouter.get('/', leftJoinPinsUsers);
 
 pinsRouter.get('/:id', getSinglePin);
-pinsRouter.delete('/:id', deletePin);
-pinsRouter.patch('/:id', updatePin);
+
 pinsRouter.get('/hashtag/:hashtag', getPinsByTag);
 pinsRouter.get('/:id/pins', getAllPinsByUser)
+
+pinsRouter.post('/', createPin);
+pinsRouter.delete('/:id', deletePin);
+pinsRouter.patch('/:id', updatePin);
 
 module.exports = pinsRouter;

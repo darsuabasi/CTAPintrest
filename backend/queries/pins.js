@@ -1,23 +1,6 @@
 const db = require('../db/index');
 
 
-// const leftJoinPinsUsers = async (req, res, next) =>{
-//     try{
-//         let leftJoin = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.note, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
-//         res.status(200).json({
-//             status: 'Success',
-//             message: 'Left join was a success',
-//             payload: leftJoin
-//         })
-//     }catch(error){
-//         res.status(400).json({
-//             status: 'Error',
-//             message: 'Left join was not success'
-//         })
-
-//     }
-// }
-
 const createPin = async (req, res, next) => {
     try {
         const newPin = await db.one(
@@ -150,12 +133,30 @@ const getAllPinsByUser = async (req, res, next) => {
     }
 }
 
+const leftJoinPinsUsers = async (req, res, next) =>{
+    try {
+        let leftJoin = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.note, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
+        res.status(200).json({
+            status: 'Success',
+            message: 'Ayeeee left join was a success',
+            payload: leftJoin
+        })
+    } catch(err){
+        res.status(400).json({
+            status: 'Error',
+            message: 'Merp, left join was not a success'
+        })
+        next(err)
+
+    }
+}
 
 
 
 
 
-module.exports = { createPin, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllPinsByUser }
+
+module.exports = { createPin, leftJoinPinsUsers, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllPinsByUser }
 
 
 
