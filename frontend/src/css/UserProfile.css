@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.user-info-display {
+    display: grid;
+    /* align-items: center; */
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.style-profile-pic {
+    display: flex;
+    justify-content: center;
+}
+
+.style-user-name {
+    display: flex;
+    justify-content: center;
+}
+
+.style-user-bio {
+    display: flex;
+    justify-content: center;
+}
+
+.style-followers-display {
+    display: flex;
+    justify-content: center;
+}
+
+.style-all-user-btns {
+    display: flex;
+    /* float: right; */
+    margin-top: 2rem;
+}
+
+.edit-and-share-buttons {
+    display: flex;
+    width: 33%;
+    margin-left: 2rem;
+}
+
+.board-and-pin-div--toggle {
+    display: flex;
+    width: 33%;
+    margin-left: 25rem;
+}
+
+.sort-and-create {
+    display: flex;
+    width: 33%;
+    margin-left: 27rem;
+}
+
+.idk-style-div {
+    display: grid;
+    float: right;
+
+}
+
+.style-board-btn {
+    border-radius: 5rem;
+    width: 6rem;
+    height: 3rem;
+    background-color: transparent;
+    border-style: none;
+    font-weight: 600;
+    font-size: larger;
+
+}
+
+.style-board-btn:hover {
+    background-color: #e9e8e8;
+    text-decoration: underline;
+}
+
+.style-pin-btn {
+    border-radius: 5rem;
+    width: 4rem;
+    height: 3rem;
+    background-color: transparent;
+    border-style: none;
+    font-weight: 600;
+    font-size: larger;
+
+}
+
+.style-pin-btn:hover {
+    background-color: #e9e8e8;
+    text-decoration: underline;
+}
+
+
+.style-edit-btn {
+    background: url('https://api.iconify.design/noto:fountain-pen.svg') no-repeat center center / contain;
+    width: 3rem;
+    border-radius: 0.5em;
+    border-style: none;
+    background-size: 2rem;
+}
+
+.style-share-btn {
+    margin-left: 0.3rem;
+    background: url('https://api.iconify.design/dashicons:share-alt2.svg') no-repeat center center / contain;
+    width: 3rem;
+    border-radius: 0.5em;
+    border-style: none;
+    background-size: 2rem;
+}
+
+.style-edit-btn:hover {
+    background-color: #e9e8e8;
+
+}
+
+.style-share-btn:hover {
+    background-color: #e9e8e8;
+
+}
+
+.sort-btn {
+    background: url('https://api.iconify.design/whh:settingsandroid.svg') no-repeat center center / contain;
+    background-size: 1.8rem;
+    width: 3rem;
+    border-radius: 0.5em;
+    border-style: none;
+}
+
+.create-btn {
+    margin-left: 0.3rem;
+    background: url('https://api.iconify.design/ic:sharp-add.svg') no-repeat center center / contain;
+    width: 3rem;
+    border-radius: 0.5em;
+    border-style: none;
+    background-size: 3rem;
+}
+
+.sort-btn:hover {
+    background-color: #e9e8e8;
+
+}
+
+.create-btn:hover {
+    background-color: #e9e8e8;
+
+}
