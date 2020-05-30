@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
+import  '../css/SearchBar.css'
 
 const SearchBar = () => {
     const [list, setList] = useState([]);
@@ -46,8 +47,8 @@ const SearchBar = () => {
         }
     }
     const handleSearch = (e) => {
-        e.preventDefault() 
-        window.location="../api/user-home"
+        e.preventDefault();
+        window.location="../api/pins/search"
         sessionStorage.searchTerm = e.target.elements[0].value
     }
 
@@ -57,9 +58,9 @@ const SearchBar = () => {
 
         return (
             <form onSubmit={handleSearch}>
-            <input placeholder="Search By Tags" value={search} type="text" onChange={handleChange}/>
+            <input className="user-nav-search" placeholder="Search for whatever" value={search} type="text" onChange={handleChange} src="https://img.icons8.com/fluent/48/000000/search.png"/>
               {displaySuggestion()}
-              <button type="submit"> Search Tags </button>
+              {/* <button className="user-nav-search-btn" type="submit"> Search Tags </button> */}
             </form>
         )
     }
