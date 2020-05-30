@@ -103,27 +103,26 @@ const Navbar = (params) => {
             return( 
             // <button onClick={logout}>Logout</button>;
                 <>
-                    <NavLink className="user-nav" to={"/user-feed"}>Home</NavLink>
-                    <NavLink className="user-nav" to={"/today"}>Today</NavLink>
-                    <NavLink className="user-nav" to={"/following"}>Following</NavLink>
+                    <NavLink className="user-nav-feed" to={"/user-feed"}>Home</NavLink>
+                    <NavLink className="user-nav-today" to={"/today"}>Today</NavLink>
+                    <NavLink className="user-nav-following" to={"/following"}>Following</NavLink>
                         {/* <div className="user-nav-search"> */}
                             <SearchBar className="user-nav-search"> </SearchBar>
                         {/* </div> */}
-                    <NavLink className="user-nav" to={"/notifications"}> Notifications </NavLink>
-                    <NavLink className="user-nav" to={'/messages'}> Messages </NavLink>
+                    <NavLink className="user-nav-notify" to={"/notifications"}> Notifications </NavLink>
+                    <NavLink className="user-nav-message" to={'/messages'}> Messages </NavLink>
                     <NavLink className="user-nav" to={"/user-profile/boards"}> ProfilePic </NavLink>
-                    {/* <NavLink>Accounts</NavLink> */}
-                    <button onClick={logout}>Logout</button>
+                    <NavLink className="user-nav-accounts" to={"/accounts"}>Accounts</NavLink>
+                    {/* <button onClick={logout}>Logout</button> */}
                  </>
              )  
         } else {        
             return (
                 <>
+                    
                     <NavLink className="publicNavLink" to={"https://about.pinterest.com/en"}> About </NavLink>
                     <NavLink className="publicNavLink" to={"https://business.pinterest.com/"}> Business</NavLink>
                     <NavLink className="publicNavLink" to={"https://newsroom.pinterest.com/en"}> Blog </NavLink>
-                    <button component={LoginModal}> Log in</button>
-                    <button> Sign up</button>
                     {/* import login */}
                     {/* import signup */}
                 </>
@@ -239,7 +238,9 @@ const Navbar = (params) => {
     return (
         <div> 
             <nav className="navbarUno">
-                <ul className='pintrestLogoLetters'>Pintrest</ul>
+                <ul className='pintrestLogoLetters'>P</ul>
+                   
+                
                 {displayNavForUser()}
             </nav>
         </div>

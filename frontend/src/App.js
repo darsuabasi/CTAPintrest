@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 // import Landing from './components/Landing';
-import Home from './components/Home';
+import Home from './components/home/Home';
 // import Today from './components/Today';
 // import Following from './components/Following';
 // import SearchBar from './components/SearchBar';
@@ -12,43 +12,69 @@ import Home from './components/Home';
 // import Accounts from './components/Accounts';
 // import Error from './components/Error';
 
-import CreatePin from './components/CreatePin'
+import CreatePin from './components/pins/CreatePin'
 
 
-import AllUsers from './components/AllUsers'
+import AllUsersFollowing from './components/AllUsersFollowing'
 import AuthProvider from './providers/AuthContext'
 import SignupModal from './components/SignupModal'
 import LoginModal from './components/LoginModal'
-import { AuthRoute, ProtectedRoute } from './util/routeUtil'
-import ImageUpload from './components/ImageUpload';
+import { AuthRoute, /*ProtectedRoute*/ } from './util/routeUtil'
+
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 // import Pins from './components/Pin'
-import Pin from './components/pins/SinglePin';
-import Pins from './components/pins/AllPins'
+
+// import Pin from './components/pins/SinglePin';
+// import Pins from './components/pins/AllPins'
+
 
 import Landing from './components/Landing'
+import Settings from './components/Settings';
+import EditProfile from './components/EditProfile';
+import AccountSettings from './components/AccountSettings';
 
-
+import { ModalContextProvider } from './Context/ModalContext';
+import ModalManager from './components/modal/ModalManager'
+import SearchResults from './components/SearchResults'
+import UserProfile from './components/UserProfile'
 
 const App = () => {
   return (
+
+    <ModalContextProvider>
+    <ModalManager/>
+
+
     
-    <div>
+    
+    <div className="Mocktrist-app">
     <AuthProvider> 
       <Navbar/>
+
+      <Route exact path="/">
+          <Landing/> 
+        </Route>
      
 
-      {/* <Route to="/">
-        <Landing/>
-      </Route> */}
-
-      <ProtectedRoute exact path="/user-home">
+      <Route exact path="/user-feed">
         <Home/>
-      </ProtectedRoute>
+      </Route>
 
-      <Route path="/users">
-        <AllUsers/>
+      <Route exact path="/following">
+        <AllUsersFollowing/>
+      </Route>
+
+      <Route exact path="/settings">
+        <Settings/>
+      </Route>
+
+      <Route exact path="/settings/edit-profile">
+        <EditProfile/>
+      </Route>
+
+      <Route exact path="/settings/account-settings">
+        <AccountSettings/>
       </Route>
 
       <AuthRoute path="/signup">
@@ -63,21 +89,24 @@ const App = () => {
         <CreatePin/>
       </Route>
 
-      <Route path="/pins/upload-image">
-        <ImageUpload/>
-        </Route>
+      <Route exact path="/pins/search-results">
+        <SearchResults/>
+      </Route>
 
-        <Route exact path="/pin">
+      <Route exact path="/user-profile/boards">
+        <UserProfile/>
+      </Route>
+
+
+        {/* <Route exact path="/pin">
           <Pin/>
-        </Route>
+        </Route> */}
 
-        <Route exact path="/pins">
+        {/* <Route exact path="/pins">
           <Pins/>
-        </Route>
+        </Route> */}
 
-        <Route path="/">
-          <Landing/> 
-        </Route>
+        
 
 
 
@@ -111,8 +140,9 @@ const App = () => {
 
 
 
-    </AuthProvider>
+      </AuthProvider>
     </div>
+    </ModalContextProvider>
   );
 }
 

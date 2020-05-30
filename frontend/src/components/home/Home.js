@@ -38,6 +38,10 @@ import CreatePinModal from '../CreatePinModal'
 const Home = () => {
     const [pins, setPins] = useState([]);
 
+    const createPin = async () => {
+
+    }
+
     const fetchPins = async (url) =>{
         try {
             let res = await axios.get(url);
@@ -48,23 +52,23 @@ const Home = () => {
         }
     }
 
-    const searchResult =()=>{
-        if(sessionStorage.searchTerm){
-            return <button onClick={()=>{sessionStorage.removeItem("searchTerm");window.location.reload()}}>Return to Homepage</button>
-        } else {
-            return null
-        }
-    }
+    // const searchResult =()=>{
+    //     if(sessionStorage.searchTerm){
+    //         return <button onClick={()=>{sessionStorage.removeItem("searchTerm");window.location.reload()}}>Return to Homepage</button>
+    //     } else {
+    //         return null
+    //     }
+    // }
 
-    useEffect(()=>{
-        if(sessionStorage.searchTerm){
-            fetchPins(`http://localhost:3002/pins/tags/${sessionStorage.searchTerm}`)
-            searchResult()
+    // useEffect(()=>{
+    //     if(sessionStorage.searchTerm){
+    //         fetchPins(`http://localhost:3002/pins/tags/${sessionStorage.searchTerm}`)
+    //         searchResult()
             
-        } else {
-            fetchPins('http://localhost:3002/pins')
-        }
-    }, [])
+    //     } else {
+    //         fetchPins('http://localhost:3002/pins')
+    //     }
+    // }, [])
 
     const pinDisplay = pins.map(pin =>{
             return (<><PostImage key={pin.id} pinId={pin.id} userName={pin.username} filePath={pin.imageurl} postContent={pin.note}/>
@@ -104,7 +108,7 @@ const Home = () => {
                         <EditProfile/>
                     </div> */}
                     <div className="feed split">
-                        {searchResult()}
+                        {/* {searchResult()} */}
                         {pinDisplay}
                     </div>
                 </div>

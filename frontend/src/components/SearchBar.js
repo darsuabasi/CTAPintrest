@@ -48,7 +48,7 @@ const SearchBar = () => {
     }
     const handleSearch = (e) => {
         e.preventDefault();
-        window.location="../api/pins/search"
+        window.location="/pins/search-results"
         sessionStorage.searchTerm = e.target.elements[0].value
     }
 
