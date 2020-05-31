@@ -23,11 +23,13 @@ const uploadImage = async (req, res, next) => {
 
 
    const storage = multer.diskStorage({
-      destination: "../frontend/public/assets/uploads/",
+      destination: "../../frontend/public/assets/uploads",
       filename: function(req, file, cb){
          cb(null,"IMAGE-" + Date.now() + path.extname(file.originalname));
       }
    });
+
+   // const { queries } = require('../../frontend/public/assets/uploads')
 
 
 

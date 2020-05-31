@@ -1,6 +1,10 @@
-const likesRouter= require('express').Router();
+const likesRouter= require('../../node_modules/express').Router();
 
-const { getPinLikes, addPinLike, deletePinLike } = require('../queries/likes');
+const { 
+    getPinLikes, 
+    addPinLike, 
+    deletePinLike 
+} = require('../../queries/Likes/likes');
 
 likesRouter.get('/:pin_id', getPinLikes)
 likesRouter.post('/:liker_id/:pin_id', addPinLike);

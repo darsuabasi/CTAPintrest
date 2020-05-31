@@ -1,6 +1,15 @@
-const tagsRouter= require('express').Router();
+const tagsRouter= require('../../node_modules/express').Router();
 
-const {getAllTags, getSingleTagForPin, getSingleTagForBoard, updateSingleTag, deleteSingleTag, addNewTag, tagBasedOnPin, tagBasedOnBoard } = require('../queries/tags');
+const { 
+    getAllTags, 
+    getSingleTagForPin, 
+    getSingleTagForBoard, 
+    updateSingleTag, 
+    deleteSingleTag, 
+    addNewTag, 
+    tagBasedOnPin, 
+    tagBasedOnBoard 
+} = require('../../queries/Tags/tags');
 
 tagsRouter.get('/all', getAllTags);
 tagsRouter.get('/:pin_id', getSingleTagForPin);

@@ -7,12 +7,17 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 
-const usersRouter = require('./routes/users')
-const pinsRouter = require('./routes/pins')
-const imageUploaderRouter = require('./routes/imageUploader')
-const boardsRouter = require('./routes/boards')
-const likesRouter = require('./routes/likes');
-const tagsRouter = require('./routes/tags')
+const usersRouter = require('./routes/Users/users')
+const pinsRouter = require('./routes/Pins/pins')
+const imageUploaderRouter = require('./routes/Image/imageUploader')
+const boardsRouter = require('./routes/Boards/boards')
+const likesRouter = require('./routes/Likes/likes');
+const tagsRouter = require('./routes/Tags/tags');
+const userPinRouter = require('./routes/Users/NestedUsersRouters/nestedPins');
+const userBoardsRouter = require('./routes/Users/NestedUsersRouters/nestedBoards');
+const pinCommentsRouter = require('./routes/Pins/NestedPins/NestedComments');
+
+
 
 const PORT = process.env.PORT;
 const app = express();
@@ -29,6 +34,11 @@ app.use('/api/pins/uploads', imageUploaderRouter);
 app.use('/api/boards', boardsRouter);
 app.use('/api/likes', likesRouter);
 app.use('/api/tags', tagsRouter);
+app.use('/api/users/pins', userPinRouter);
+app.use('/api/users/boards', userBoardsRouter);
+app.use('/api/pins/comments', pinCommentsRouter);
+
+
 
 
 // app.post("/pins/upload-image", (req, res, next) => {

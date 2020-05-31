@@ -1,4 +1,4 @@
-const db = require('../db/index');
+const db = require('../../db/index');
 
 
 const createPin = async (req, res, next) => {
@@ -62,7 +62,7 @@ const getAllPins = async (req, res, next) => {
 
 const updatePin = async (req, res, next) => {
     try {
-        const singularPin = await db.one(`UPDATE Pins SET note = $1 WHERE id = ${req.params.id} RETURNING *`, [req.body.note]);
+        const singularPin = await db.one(`UPDATE Pins SET note = $1 WHERE id = ${req.params.id} RETURNING *`, [req.body]);
         res.status(200).json({
             message: "Congrats, your pin was updated!",
             payload: singularPin
@@ -115,23 +115,23 @@ const getSinglePin = async (req, res, next) => {
 
 
 
-const getAllPinsByUser = async (req, res, next) => {
-    try{
-        let pin_id = await db.any('SELECT * FROM Pins WHERE creator_id= $1', [req.params.id])
-        res.status(200).json({
-            status: "Succes",
-            message: "Yip Yip! You're checking out all pins from this user",
-            payload: pin_id
-        })
+// const getAllPinsByUser = async (req, res, next) => {
+//     try{
+//         let pin_id = await db.any('SELECT * FROM Pins WHERE creator_id= $1', [req.params.id])
+//         res.status(200).json({
+//             status: "Succes",
+//             message: "Yip Yip! You're checking out all pins from this user",
+//             payload: pin_id
+//         })
 
-    } catch(err) {
-        res.status(400).json({
-            status: "Error",
-            message: "Idk but you can't see all their pins"
-        })
-        next(err)
-    }
-}
+//     } catch(err) {
+//         res.status(400).json({
+//             status: "Error",
+//             message: "Idk but you can't see all their pins"
+//         })
+//         next(err)
+//     }
+// }
 
 const leftJoinPinsUsers = async (req, res, next) =>{
     try {
@@ -151,12 +151,77 @@ const leftJoinPinsUsers = async (req, res, next) =>{
     }
 }
 
+const getAllCommentsForPin = async (req, res, next) => {
+    try {
+        let allCommentsByPin = await db.any("SELECT * FROM Comments WHERE pin_id = $1 ORDER BY time_stamp DESC RETURNING *", 
+        req.params.pin_id);
+        res.status(200).json({
+            status: "Success",
+            message: "All pins are now showing",
+            payload: allCommentsByPin,
+        })
+    } catch(err) {
+        res.status(400).json({
+            status: "Error",
+            message: "Sorry dweeb, pins aren't showing."
+        })
+        next(err)
+    }
+
+}
 
 
 
+const createNewComment = async (req, res, next) => {
+    try {
+        let { id } = req.params;
+        let createComment = await db.one("INSERT INTO Comments ()", [id])
+        res.status(200).json({
+            status: "Success",
+            message: "Yessir, created a new comment",
+            body: {
+                createComment
+            }
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: "Error",
+            message: "Dang, couldn't create a comment"
+        })
+        next(err)
+    }
+}
 
 
-module.exports = { createPin, leftJoinPinsUsers, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllPinsByUser }
+
+const deleteCommentByPin = async (req, res, next) => {
+    try {
+        let { id, comment_id } = req.params;
+        let deleteThisComment = await db.one("INSERT INTO Comments ()", [id, comment_id])
+        res.status(200).json({
+            status: "Success",
+            message: "Either you're a hater or your comment had errors, comment was deleted",
+    body: {
+        deleteThisComment
+    }
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: "Error",
+            message: "Ha, couldn't delete your comment!"
+        })
+        next(err)
+    }
+}
+// cont createNewComment = (req, res, next) => {
+//     try {
+
+//     }
+// }
+
+
+
+module.exports = { createPin, leftJoinPinsUsers, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllCommentsForPin, createNewComment, deleteCommentByPin}
 
 
 
