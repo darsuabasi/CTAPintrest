@@ -1,0 +1,224 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 25vh;
+}
+
+.main-signup {
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    padding: 50px 35px 10px 35px;
+}
+
+.main-signup header {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.main-signup .form-outer {
+    width: 150%;
+}
+
+.form-outer form {
+    display: flex;
+    width: 100%;
+}
+
+.form-outer form .page {
+    width: 25%;
+}
+
+.form-outer form .page .title {
+    text-align: left;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.form-outer form .page .field {
+    height: 45px;
+    width: 15rem;
+    display: flex;
+    margin: 45px 0;
+    position: relative;
+}
+
+.form-outer form .page .field .label {
+    position: absolute;
+    top: -2rem;
+    font-weight: 500;
+}
+
+.form-outer form .page .field input {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #E60023;
+    border-radius: 3rem;
+    font-size: 20px;
+    padding-left: 2rem;
+}
+
+.form-outer form .page .field button {
+    width: 100%;
+    height: calc(100% + 5px);
+    margin-top: -2rem;
+    border: none;
+    background: #E60023;
+    color: whitesmoke; 
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: 0.3s ease;
+}
+
+.form-outer form .page .field button:hover {
+    background: lightcoral;
+}
+
+.form-outer form .page .btns button {
+    margin-top: -2rem!important;
+}
+
+.form-outer form .page .btns button .prev{
+    margin-right: 3px;
+    font-size: 12px;
+}
+
+.form-outer form .page .btns button .next {
+    margin-left: 3px;
+
+}
+
+.main-signup .progress-bar {
+    display: flex;
+    flex-direction: row;
+    margin: 0.8rem 0;
+    width: 100%;
+    height: 5rem;
+    color: #E60023;
+    background-color: transparent;
+}
+
+.main-signup .progress-bar .step {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+
+.progress-bar .step .p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+}
+
+.progress-bar .step .bullet:after {
+    position: absolute;
+    content: '';
+    height: 0.25rem;
+    width: 3rem;
+    background: #262626;
+    bottom: 1rem;
+    right: -3.3rem;
+}
+
+.progress-bar .step .bullet:after {
+    background: #E60023;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 1.5s linear infinite;
+}
+
+@keyframes animate {
+    100%{
+        transform: scaleX(1);
+    }
+
+}
+
+.progress-bar .step .bullet {
+    position: relative;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid;
+    display: inline-block;
+    border-radius: 50%;
+   
+}
+
+.progress-bar .step span{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2rem;
+    left: 50%;
+    transform: translateX(50%)
+}
+
+.progress-bar .step .check {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.signup-button {
+    color: #E60023;
+    display: block;
+    width: 10rem;
+    height: 3rem;
+    margin-left: 2.3rem;
+    border-radius: 15%;
+    padding: 10px;
+    border: none;
+    font-size: 1.8rem;
+    
+}
+
+.comeSignup {
+    background-color: #E60023;
+    color: white;
+    border: 1px solid white;
+    border-radius: 2.5rem;
+    width: 10rem;
+    margin-left: -0.1rem;
+}
+
+.comeSignupGoogle {
+    background-color: lightgray;
+    color: white;
+    border: 1px solid white;
+    border-radius: 2.5rem;
+    width: 10.4rem;
+    margin-right: 6.3rem;
+}
+
+.orSeparate {
+    width: 3rem;
+    margin-left: 5.9rem;
+    margin-top: 1rem;
+}
+
+.extraStuff {
+    /* background-color: plum; */
+    height: 4rem;
+    width: 18rem;
+    margin-right: 10rem;
+    /* margin-left: 10rem; */
+    /* padding-left: -3rem; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

@@ -1,8 +1,15 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import ReactDOM from "react-dom";
+import { Route, Switch } from 'react-router-dom'
+
+
 import Navbar from './components/Navbar';
 // import Landing from './components/Landing';
+import Landing from './components/Landing'
 import Home from './components/home/Home';
+import Login from './components/Login'
+import Signup from './components/Signup'
+import UserProfile from './components/UserProfile'
 // import Today from './components/Today';
 // import Following from './components/Following';
 // import SearchBar from './components/SearchBar';
@@ -16,10 +23,8 @@ import CreatePin from './components/pins/CreatePin'
 
 
 import AllUsersFollowing from './components/AllUsersFollowing'
-import AuthProvider from './providers/AuthContext'
-import SignupModal from './components/SignupModal'
-import LoginModal from './components/LoginModal'
-import { AuthRoute, /*ProtectedRoute*/ } from './util/routeUtil'
+import AuthProvider from './providers/AuthProvider'
+import { AuthRoute, ProtectedRoute } from './util/auth_routes'
 
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -28,125 +33,88 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 // import Pin from './components/pins/SinglePin';
 // import Pins from './components/pins/AllPins'
 
-
-import Landing from './components/Landing'
 import Settings from './components/Settings';
 import EditProfile from './components/EditProfile';
 import AccountSettings from './components/AccountSettings';
 
-import { ModalContextProvider } from './Context/ModalContext';
-import ModalManager from './components/modal/ModalManager'
+
 import SearchResults from './components/SearchResults'
-import UserProfile from './components/UserProfile'
+
+
+
+
+
+
+
 
 const App = () => {
   return (
-
-    <ModalContextProvider>
-    <ModalManager/>
-
-
-    
-    
     <div className="Mocktrist-app">
-    <AuthProvider> 
-      <Navbar/>
+    
+        <AuthProvider> 
+          <Navbar/>
+            <Switch>
 
-      <Route exact path="/">
-          <Landing/> 
-        </Route>
-     
+            <Route exact path="/">
+              <Landing/> 
+            </Route>
+    
+            <ProtectedRoute exact path="/user-feed">
+              <Home/>
+            </ProtectedRoute>
 
-      <Route exact path="/user-feed">
-        <Home/>
-      </Route>
+            <ProtectedRoute exact path="/following">
+              <AllUsersFollowing/>
+            </ProtectedRoute>
 
-      <Route exact path="/following">
-        <AllUsersFollowing/>
-      </Route>
+            <Route exact path="/settings">
+              <Settings/>
+            </Route>
 
-      <Route exact path="/settings">
-        <Settings/>
-      </Route>
+            <Route exact path="/settings/edit-profile">
+              <EditProfile/>
+            </Route>
 
-      <Route exact path="/settings/edit-profile">
-        <EditProfile/>
-      </Route>
+            <Route exact path="/settings/account-settings">
+              <AccountSettings/>
+            </Route>
 
-      <Route exact path="/settings/account-settings">
-        <AccountSettings/>
-      </Route>
+            <AuthRoute path="/signup">
+              <Signup/> 
+            </AuthRoute>
 
-      <AuthRoute path="/signup">
-        <SignupModal/> 
-      </AuthRoute>
+            <AuthRoute path="/login">
+               <Login/> 
+            </AuthRoute> 
 
-      <AuthRoute path="/login">
-        <LoginModal/> 
-      </AuthRoute> 
+            <Route exact path="/create-pin"> 
+              <CreatePin/>
+            </Route>
 
-      <Route exact path="/create-pin"> 
-        <CreatePin/>
-      </Route>
+            <Route exact path="/pins/search-results">
+              <SearchResults/>
+            </Route>
 
-      <Route exact path="/pins/search-results">
-        <SearchResults/>
-      </Route>
+            <ProtectedRoute exact path="/user-profile">
+              <UserProfile/>
+            </ProtectedRoute>
 
-      <Route exact path="/user-profile/boards">
-        <UserProfile/>
-      </Route>
+            
 
-
-        {/* <Route exact path="/pin">
-          <Pin/>
-        </Route> */}
-
-        {/* <Route exact path="/pins">
-          <Pins/>
-        </Route> */}
-
+            </Switch>
+          </AuthProvider>
         
-
-
-
-      {/* <Switch>
-
-      <Route exact path={"/"}>
-            <Landing/>
-        </Route>
-
-        <Route exact path={"/"}>
-            <Home/>
-        </Route>
-
-        <Route exact path={"/"}>
-            <Today/>
-        </Route>
-
-        <Route exact path={"/"}>
-            <Following/>
-        </Route>
-
-        <Route exact path={"/"}>
-            <Notifications/>
-        </Route>
-
-        <Route exact path={"/"}>
-            <Messages/>
-        </Route>
-
-      </Switch> */}
-
-
-
-      </AuthProvider>
-    </div>
-    </ModalContextProvider>
+        </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
 
 
 
