@@ -1,4 +1,10 @@
-const pinsRouter = require("../../node_modules/express").Router();
+const pins = require("../../node_modules/express").Router();
+// const {uploadImage} = require("../../queries/imageUploader");
+
+const { checkFirebaseToken } = require('../../middleware/auth');
+
+
+
 const { 
     createPin, 
     deletePin, 
@@ -11,12 +17,12 @@ const {
 
 
 
-pinsRouter.get('/', getAllPins);
-pinsRouter.get('/', leftJoinPinsUsers);
-pinsRouter.get('/:id', getSinglePin);
-pinsRouter.get('/hashtag/:hashtag', getPinsByTag);
-pinsRouter.post('/', createPin);
-pinsRouter.delete('/:id', deletePin);
-pinsRouter.patch('/:id', updatePin);
+pins.get('/', getAllPins);
+pins.get('/', leftJoinPinsUsers);
+pins.get('/:id', getSinglePin);
+pins.get('/tag/:id', getPinsByTag);
+pins.post('/', createPin);
+pins.delete('/:id', deletePin);
+pins.patch('/:id', updatePin);
 
-module.exports = pinsRouter;
+module.exports = pins;

@@ -38,7 +38,7 @@
     /* display: grid;
     justify-content: center;
     align-self: start; */
-    /* border: none; */
+    border: none;
 }
 
 .title-div {
@@ -46,10 +46,10 @@
 
 }
 
-.about-div {
-    /* padding-top: 10rem; */
+/* .about-div {
+    padding-top: 10rem;
 
-}
+} */
 
 .add-title-style {
     border: none;

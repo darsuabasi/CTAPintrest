@@ -1,12 +1,13 @@
-const imageUploaderRouter = require('../../node_modules/express').Router();
+// const imageUploader = require("express").Router();
+// const { uploadImage } = require('../../queries/imageUploader');
 
-const { 
-    uploadImage 
-} = require('../../queries/imageUploader');
 
-imageUploaderRouter.post('/', uploadImage);
 
-module.exports = imageUploaderRouter;
+
+
+// imageUploader.post('/', uploadImage);
+
+// module.exports = imageUploader;
 
 
 

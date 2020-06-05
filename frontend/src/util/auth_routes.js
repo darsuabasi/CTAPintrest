@@ -1,18 +1,21 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { AuthContext } from '../providers/AuthContext';
+import { AuthContext } from '../providers/AuthProvider';
 
-export const AuthRoute = ({children, ...rest}) => {
+export const AuthRoute = ({ children, ...rest }) => {
     const { currentUser } = useContext(AuthContext);
     return (
         <Route
             {...rest}
             render={({ location }) => {
-                return !currentUser ? children : <Redirect to="/" />
+                return !currentUser ? children : <Redirect to="/"/>
             }}
         />
     );
 };
+
+
+
 
 export const ProtectedRoute = ({ children, ...rest }) => {
     const { currentUser } = useContext(AuthContext);
@@ -20,11 +23,12 @@ export const ProtectedRoute = ({ children, ...rest }) => {
       <Route
         {...rest}
         render={({ location }) => {
-          return currentUser ? children : <Redirect to={"/login"} />;
+          return currentUser ? children : <Redirect to={"/"} />;
         }}
       />
     );
   };
+
   
 
 

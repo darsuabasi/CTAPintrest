@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios'
 // import '../css/Home.css';
 // import SearchBar from '../components/SearchBar'
@@ -7,8 +7,6 @@ import SingleHomePin from './SingleHomePin'
 import Tags from '../Tags'
 // import SearchBar from '../SearchBar';
 // import UserInformation from '../EditProfile';
-
-
 import gucciDenim from '../../assets/gucciDenim.jpeg';
 // import bigHair from '../../assets/bigHair.jpeg';
 import redMakeupLook from '../../assets/redMakeupLook.jpeg';
@@ -27,33 +25,50 @@ import versaceShoe from '../../assets/versaceShoe.jpeg';
 import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
 
 
-import PostImage from '../../components/Image'
+import PostPin from '../pins/PostPin'
 // import EditProfile from '../EditProfile';
 import { NavLink } from 'react-router-dom';
 import CreatePinModal from '../CreatePinModal'
+import { AuthContext } from '../../providers/AuthProvider'
+import { apiURL } from "../../util/apiURL";
+
 
 
 
 
 const Home = () => {
-    const [pins, setPins] = useState([]);
+    const API = apiURL();
+    // useEffect(() => {
+        const [pins, setPins] = useState([]);
+        const { currentUser, token } = useContext(AuthContext);
 
-    const createPin = async () => {
 
-    }
+        useEffect(() => {
+            const fetchPins = async () => {
+                try {
+                    // debugger
+                    let res = await axios({
+                        method: "get",
+                        url: `${API}/api/pins`,
+                        headers: {
+                            AuthToken: token,
+                        }
+                    })
+                    debugger
+                    setPins(res.data.payload)
+                    console.log(res.data)
+                } catch(err) {
+                    setPins([])
+                    console.log(err.message);
+                    }
+                };
+                fetchPins();
 
-    const fetchPins = async (url) =>{
-        try {
-            let res = await axios.get(url);
-            // debugger
-            setPins(res.data.payload)
-        } catch(err) {
-            setPins([])
-        }
-    }
-
+        }, [])
+       
+    
     // const searchResult =()=>{
-    //     if(sessionStorage.searchTerm){
+    //     if(sessionStorage.searchTerm) {
     //         return <button onClick={()=>{sessionStorage.removeItem("searchTerm");window.location.reload()}}>Return to Homepage</button>
     //     } else {
     //         return null
@@ -62,24 +77,21 @@ const Home = () => {
 
     // useEffect(()=>{
     //     if(sessionStorage.searchTerm){
-    //         fetchPins(`http://localhost:3002/pins/tags/${sessionStorage.searchTerm}`)
+    //         fetchPins(`http://localhost:3005/pins/tags/${sessionStorage.searchTerm}`)
     //         searchResult()
             
     //     } else {
-    //         fetchPins('http://localhost:3002/pins')
+    //         fetchPins('http://localhost:3005/pins')
     //     }
     // }, [])
 
     const pinDisplay = pins.map(pin =>{
-            return (<><PostImage key={pin.id} pinId={pin.id} userName={pin.username} filePath={pin.imageurl} postContent={pin.note}/>
-                    <Tags pinId={pin.id} userName={pin.username}/>
+            return (<><PostPin key={pin.id} pinId={pin.id} userName={pin.userName} filePath={pin.imageurl} pinContent={pin.note}/>
+                    {/* <Tags pinId={pin.id} userName={pin.username}/> */}
                 </>)
 
 
-// const handleLogOut = () => {
-//     sessionStorage.removeItem("loginedUser")
-//     sessionStorage.removeItem("searchTerm")
-//     }
+
 })
 
 
@@ -109,7 +121,6 @@ const Home = () => {
                     </div> */}
                     <div className="feed split">
                         {/* {searchResult()} */}
-                        {pinDisplay}
                     </div>
                 </div>
             </div>
@@ -118,6 +129,9 @@ const Home = () => {
 
 
 
+                    <div>
+                        {pinDisplay}
+                    </div>
              <div className="container-fluid d-flex justify-content center"> 
                 <div className="row">
 

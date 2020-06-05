@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0 
+}
+
+body {
+    margin-top: 2rem;
+}
+
+/* make inputs transparent [background:transparent */
+.login-form {
+    position: absolute;
+    margin-top: -3rem;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-ransform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    height: 30rem;
+    background-color: transparent;
+    border: 2px solid red;
+    border-radius: 5rem;
+    /* background: rgba(0, 0, 0, 0.6); */
+}
+
+.background4pin {
+    position: absolute;
+    overflow: hidden;
+    top: calc(-80px/2);
+    left: calc(50% - 40px);
+}
+
+.loginhello {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.user-form-fill {
+    text-align: center;
+    
+}
+
+
+.stylingLoginModal {
+    /* display: flex; */
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    padding-top: -5rem;
+}
+
+
+
+.otherExtraShit {
+    width: 20rem;
+    text-align: center;
+}
+
+.login-input {
+    border-radius: 10px;
+}
+
+
+.login-page-button1 {
+    border-radius: 10px;
+    width: 4rem;
+    background-color: transparent;
+
+}
+
+.login-page-button2 {
+    border-radius: 10px;
+    width: 12rem;
+    margin-bottom: .5rem;
+    background-color: transparent;
+
+}
+
+.login-page-button3 {
+    border-radius: 10px;
+    width: 12rem;
+    background-color: transparent;
+
+}
+
+.signup-from-login {
+    color: black;
+}
+
+.signup-from-login:hover {
+    color: black;
+
+}
+
+
+.slider-stuff {
+    z-index: -2;
+}

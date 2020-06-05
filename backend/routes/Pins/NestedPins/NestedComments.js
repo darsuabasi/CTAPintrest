@@ -1,4 +1,4 @@
-const pinCommentsRouter = require('express').Router({mergeParams: true});
+const pinComments = require('express').Router({mergeParams: true});
 
 const {
     getAllCommentsForPin,
@@ -7,11 +7,11 @@ const {
     // editCommentOnPin
 } = require("../../../queries/Pins/pins")
 
-pinCommentsRouter.get("/:id", getAllCommentsForPin);
-pinCommentsRouter.delete("/:id/comments/:comment_id", deleteCommentByPin);
-pinCommentsRouter.post("/:id/comments/", createNewComment);
+pinComments.get("/:id", getAllCommentsForPin);
+pinComments.delete("/:id/comments/:comment_id", deleteCommentByPin);
+pinComments.post("/:id/comments/", createNewComment);
 // pinComments.patch("/:id/comments/:comment_id", editCommentOnPin)
 
 
 
-module.exports = pinCommentsRouter;
+module.exports = pinComments;

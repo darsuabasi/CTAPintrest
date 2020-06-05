@@ -47,20 +47,19 @@ const Signup = () => {
                 profilePic: profilePic.value,
                 // email
             })
-            history.push("/user-profile")
+            history.push("/user-profile/boards")
         } catch (err) {
             alert("So sorry that you can't create an account but it's above me now", err);
         }
     }
     return (
         <div className="main-signup"> 
-            <h3> Pintrest logo</h3>
-            <header> Welcome to Pintrest </header>
-            <h3> Find new ideas to try</h3>
+            {/* <header className="pintrestWelcome"> Welcome to Pintrest </header> */}
+            {/* <h3> Find new ideas to try</h3> */}
 
             <div class="progress-bar"> 
                 <div class="step"> 
-                <p>Greetings</p>
+                <p className="cat-greet">Greetings</p>
                 <div class="bullet"> 
                 <span> 1 </span>
                 </div>
@@ -68,16 +67,16 @@ const Signup = () => {
                 </div>
 
                 <div class="step"> 
-                <p>You?</p>
-                <div class="bullet"> 
+                <p className="cat-you">You</p>
+                <div class="bullet2"> 
                 <span> 2 </span>
                 </div>
                 <div class="check fas fa-check"> </div>
                 </div>
 
                 <div class="step"> 
-                <p>Submit</p>
-                <div class="bullet"> 
+                <p className="cat-sub">Submit</p>
+                <div class="bullet3"> 
                 <span> 3 </span>
                 </div>
                 <div class="check fas fa-check"> </div>
@@ -93,7 +92,7 @@ const Signup = () => {
             <form action="#" onSubmit={handleSubmit}> 
             
         <div class="page slidepage"> 
-            <div class="title"> Basic Info </div>
+            <div class="title"> Basics </div>
                 <div class="field"> 
                     <div class="label"> Create a username </div> 
                     <input {...userName} placeholder="Username"/>
@@ -126,7 +125,7 @@ const Signup = () => {
             </div>
 
             <div class="page"> 
-            <div class="title"> What you hittin for? </div>
+            <div class="title"> Category </div>
 
 
                 <div class="field"> 

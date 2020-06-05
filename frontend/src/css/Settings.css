@@ -1,0 +1,109 @@
+body {
+    padding: 0;
+    margin:0;
+}
+
+.listed-options-display {
+    margin-left: 12rem;
+    width: 25%;
+ 
+}
+
+.list-style-display {
+    list-style-type: none;
+}
+
+
+.editing-style {
+    color: #000000;  
+}
+
+.editing-style:hover {
+    color: #000000;
+}
+
+.setting-icon {
+    /* margin-top: 2rem; */
+    list-style-image: url('https://api.iconify.design/gridicons:pencil.svg');
+    
+}
+
+.account-set-style {
+    color: #000000;
+}
+
+.account-set-style:hover {
+    color: #000000;
+}
+
+.account-icon {
+    margin-top: 2rem;
+    list-style-image: url('https://api.iconify.design/mdi:account.svg');
+}
+
+.claim-style {
+    color: #000000;
+}
+
+.claim-style:hover {
+    color: #000000;
+}
+
+.claim-icon {
+    margin-top: 2rem;
+    list-style-image: url('https://api.iconify.design/ant-design:global-outlined.svg');
+
+}
+
+.notif-style {
+    color: #000000;
+}
+
+.notif-style:hover {
+    color: #000000;
+}
+
+.notif-icon {
+    margin-top: 2rem;
+    list-style-image: url('https://api.iconify.design/clarity:notification-solid.svg');
+
+}
+
+.priv-style {
+    color: #000000;
+}
+
+.priv-style:hover {
+    color: #000000;
+}
+
+.priv-icon {
+    margin-top: 2rem;
+    list-style-image: url('https://api.iconify.design/cib:gnu-privacy-guard.svg');
+}
+
+.security-style {
+    color: #000000;
+}
+
+.security-style:hover {
+    color: #000000;
+}
+
+.security-icon {
+    margin-top: 2rem;
+    list-style-image: url('https://api.iconify.design/ic:sharp-security.svg');
+}
+
+.set-app-style {
+    color: #000000;
+}
+
+.set-app-style:hover {
+    color: #000000;
+}
+
+.app-icon {
+    margin-top: 2rem;
+    list-style-image: url('https://api.iconify.design/ic:baseline-apps.svg');
+}

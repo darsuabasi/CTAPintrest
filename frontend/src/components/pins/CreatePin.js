@@ -1,36 +1,58 @@
-import React, { useState, /*useEffect*/ } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useContext, useEffect, /*useEffect*/ } from 'react';
 import axios from 'axios'
-// import Home from '../home/Home'
-
-import './CreatePin.css'
-
-
-// import '../css/ImageUpload.css';
-
+import { apiURL } from '../../util/apiURL';
+import { Link, useHistory } from 'react-router-dom'
+import { useInput } from '../../util/useInput'
+import { AuthContext } from '../../providers/AuthProvider';
 import { useDropzone } from 'react-dropzone'
 
+// import Home from '../home/Home'
+import './CreatePin.css'
+// import '../css/ImageUpload.css';
+
 import { /*ToastContainer, */ toast } from "react-toastify";
-import { useInput } from '../../util/useInput'
+// import PopulateBoards from './PopulateBoards'
+
 
 const CreatePin = () => {
+    const { currentUser, token } = useContext(AuthContext);
+    const API = apiURL();
+    const [userId, setUserId] = useState("");
+    const [newPin, setNewPin] = useState("")
+    const setBoard = useInput("");
+    const setTag = useInput("");
+    const setNote = useInput("");
+    const history = useHistory("");
 
-    // for image preview usig dropzone 
-  // keeping track of the image aka files
-  const [files, setFiles] = useState([]);
-    
+// for image preview usig dropzone 
+// keeping track of the image aka files
+    const [files, setFiles] = useState([]);
 
+
+
+// uploading image
     const [file, setFile] = useState('');
     const [imagePath, setImagePath] = useState('');
 
-    let noteObj = useInput('');
-    let tagObj = useInput('');
 
+    useEffect(() => {
+      const getUser = async () => {
+          try {
+              let res = await axios({
+                  method: "get",
+                  url: `${API}/api/users/${currentUser.uid}`,
+                  headers: {
+                      AuthToken: token,
+                  },
+              })
+              setUserId(res.data.getUser.id)
+          } catch (err) {
+              console.log(err.message);
+          }
+      };
+      getUser(); 
+  }, [])
 
-
-    const [optionValue, /*setOptionValue*/] = useState([]);
-    const [/*boards,*/ setBoards] = useState([]);
-    const [finPin, /*setFinPin*/] = useState([]);
 
 
     const { getRootProps, getInputProps } = useDropzone({
@@ -55,8 +77,6 @@ const CreatePin = () => {
       ))
 
 
-
-
     const onImageUpload = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -67,120 +87,116 @@ const CreatePin = () => {
             }
         };
 
-        let res = await axios.post("http://localhost:3000/api/pins/uploads",formData,config)
-        console.log(res.data)
-        // debugger
-        if(res.data.status === "Success"){
-            setImagePath(res.data.payload);
-            toast("Yaaaah image is successfully uploaded")
-            setFile("")
+        let newPin = await axios.post(`${API}/api/uploads/`,formData,config)
+        // console.log(newPost.data)
+        setNewPin(newPin);
+        history.push("/user-feed")
+        if(newPin.data.status === "success") {
+          setImagePath(newPin.data.payload);
+          alert("Yaaaah image is successfully uploaded")
+          setFile("")
         } else {
-            alert(`${res.status.message}`)
+            alert(`${newPin.status.message}`)
         }
 
     }
 
-
-
-
     const checkMimeType =(e)=>{
-        let files = e.target.files 
-        let err = ''
-       const types = ['image/png', 'image/jpeg', 'image/gif']
-        for(let x = 0; x<files.length; x++) {
-             if (types.every(type => files[x].type !== type)) {
-             err += files[x].type+' is not a supported format\n';
-           }
-         };
-       if (err !== '') { 
-            e.target.value = null
-            alert(err)
-             return false; 
-        }
-       return true;
+      let files = e.target.files 
+      let err = ''
+     const types = ['image/png', 'image/jpeg', 'image/gif']
+      for(let x = 0; x<files.length; x++) {
+           if (types.every(type => files[x].type !== type)) {
+           err += files[x].type+' is not a supported format\n';
+         }
+       };
+     if (err !== '') { 
+          e.target.value = null
+          alert(err)
+           return false; 
       }
+     return true;
+    }
 
-    const onSelectImage=(e)=> {
+      const onSelectImage=(e)=> {
         if(checkMimeType(e)){
             setFile(e.target.files[0]);
         }
     }
     
 
-    const handleNewPin = async () => {
-        let newPin = await axios.post(`/api/pins/`,{creator_id:sessionStorage.loginedUser, imageURL:imagePath, content:noteObj.value})
-        console.log(newPin.data)
-        handleNewTag(newPin.data.payload)
-        toast(`Saved to @boardName`)
-        setTimeout(function() {
-        window.location = "../user-home";
-        },1000) 
-    }
 
-    const handleNewTag = async (data)=>{
-        if(tagObj.value){
-            let newTag = await axios.post(`/api/hashtags/`,{creator_id:data.creator_id, post_id:data.id, tag_name:tagObj.value})
-            console.log(newTag.data)
-        } else {
-            console.log("No tag was added")
-        }
-    }
+
+    const handleNewPins = async (e) => {
+        try {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("creator_id", userId);
+            formData.append("board_id", setBoard.value)
+            formData.append("note", setNote.value);
+            debugger
+
+            const config = {
+                headers: {
+                    "content-type": "multipart/form-data",
+                },
+            }
+            let newPin = await axios.post(`${API}/api/pins`, formData, config);
+            console.log(newPin.data)
+            console.log(`New pin successfully created + saved to @boardName`)
+            // setNewPin(newPin);
+            setTimeout(function() {
+              window.location = "/user-feed";
+              },1000) 
+          } catch (err) {
+              console.log(err)
+          }
+      }
+    //         history.push("/user-feed")
+    //     } catch (err) {
+    //         toast(err)
+    //     }
+    // }
+    // --------------------------------------------------------------------------------------------
+
+    // const handleNewPin = async () => {
+    //     try {
+    //         let newPin = await axios.post(`${API}/api/pins/`,{formData, config});
+    //         // setPin(newPin)
+    //         handleNewTag(newPin.data.payload)
+    //         // console.log(newPin.data)
+    //         // handleNewTag(newPin.data.payload)
+    //         toast(`Successfully saved to @boardName`)
+    //         history.push("/user-feed")
+    //     } catch (err) {
+    //        toast(err)
+    //     }
+    // }
+
+    // const handleNewTag = async (data)=>{
+    //     if(setTag.value){
+    //         let newTag = await axios.post(`${API}/api/hashtags/`, {formData, config});
+    //         console.log(newTag.data)
+    //     } else {
+    //         console.log("No tag was added")
+    //     }
+    // }
 
     // const handleNewBoard = async () => {
-    //     let newPin = await axios.post(`/api/boards/`,{creator_id:sessionStorage.loginedUser, imageURL:imagePath, content:noteObj.value})
-    //     console.log(newPin.data)
-    //     handleNewTag(newPin.data.payload)
-    //     toast(`Saved to @boardName`)
-
-    // }
-
-
-    // useEffect(() => {
-    //     const fetchBoards = async () => {
-    //         try {
-    //             let res = await axios.get('http://localhost:3002/boards/')
-    //             let data = res.data.payload
-    //             debugger
-    //             setOptionValue(data);
-    //         } catch (err) {
-    //             console.log(err)
-    //         }
-    //     }
-    //     fetchBoards();
-    // }, [])
-
-
-    const selectOptions = optionValue.map((e, i) => {
-        return <option key={i} value={i}> {e.board_name} </option>
-    })
-
-    const handleBoards = (e) => {
-        setBoards(e.target.value);
-    }
-
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
     //     try {
-    //         let res = await axios.get(`url`)
-    //         setFinPin(res.data)
+    //         let newPin = await axios.post(`${API}/api/boards/`,{creator_id:sessionStorage.loginedUser, imageURL:imagePath, content:setNote.value})
+    //         console.log(newPin.data)
+    //         handleNewTag(newPin.data.payload)
+    //         toast(`Saved to @boardName`)
     //     } catch (err) {
-    //         console.log(err)
-    //         setFinPin([])
+    //         toast(err)
     //     }
     // }
 
-
-    const showPin = finPin.map(finishedPin => {
-        return <Link to={`/pin/${finishedPin.finPin.id}`}> <div> <card name={finishedPin.finPin.board_name} className="finished-pin">{finishedPin.finPin.board_name} {finishedPin.finPin.board_description} </card></div> </Link>
     
-    })
+    
 
 
-    // const takeToDisplay = (e) => {
-    //     e.preventDefault();
-    //     return <Link to={Home}> </Link>
-    // }
 
     
     return (
@@ -189,42 +205,35 @@ const CreatePin = () => {
             <form onSubmit={onImageUpload} className="create-pin-main-div"> 
                 <div className="drop-down-div">
                     {/* drop down bar for Boards with save button */}
-                    <select className="board-select-options" onChange={handleBoards}>
+                    {/* <select className="board-select-options" onChange={handleBoards}>
                             <option defaultValue="Select"> Select </option>
                             {selectOptions}
-                    </select>
-                    <button className="save-button-style" type="submit" onClick={handleNewPin}> Save </button>
+                    </select> */}
+                    {/* <PopulateBoards/> */}
+                    <button className="save-button-style" type="submit" onClick={handleNewPins}> Save </button>
 
                 </div>
 
                 <div className="uploadImageDiv"> 
-                    {/* <ImageUpload/> */}
-
-                    {/* <label>
-                        Image
-                        <input type="file" name="myImage" onChange={onSelectImage} />
-                    </label>
-                    <button type="submit">Upload</button> */}
-
 
 
                     <div {...getRootProps()} className="image-preview" id="imagePreview"> 
                         <img src="" alt="Preview" className="image-preview__image"/> 
-                        <input type="file" name="myImage" onChange={onSelectImage} {...getInputProps()}/>
+                        <input type="file" name="myImage" accept="image/png" onChange={onSelectImage} {...getInputProps()}/>
                         <span className="image-preview__default-text"> Drag and drop or click to upload</span> 
                     </div>
                     {/* <input type="submit" value="Upload!" className="file-upload-button"/> */}
                     <div>{images}</div>
                     
 
-                    <input className="online-pic-link" placeholder="Save from site" />
+                    <input className="online-pic-link" placeholder="Save from site" disabled/>
                 </div>
 
 
 
                 <div className="main-note-for-pin-div"> 
                     <div className="title-div"> 
-                        <input className="add-title-style" type="text" placeholder="Add your title" /> 
+                        <input className="add-title-style" type="text" placeholder="Add your title" disabled/> 
                     </div>
 
                     <div className="user-display">
@@ -232,21 +241,32 @@ const CreatePin = () => {
                     </div>
 
                     <div className="about-div"> 
-                        <input className="add-note-style" type="text" placeholder="Tell everyone what your Pin is about" /> 
+                        <input className="add-note-style" type="text" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
                     </div>
                 </div>
 
 
                 <div className="link-div">
-                    <input className="link-input-style" placeholder="Add a destination link" />  
+                    <input className="link-input-style" placeholder="Which board do you want this to go into?" {...setBoard} />  
                 </div>
+
+
+                <label>
+                    Add a tag #
+                    <input type="text" placeholder="hash tag ##" name="hashtag" {...setTag} />
+                </label>        
+
+
+
+
             </form>
 
-            <div>
+            {/* <div>
                 <ul className="showing-pin"> 
                     {showPin} 
                 </ul>
-            </div>
+            </div> */}
+
         </div>
     )
 }

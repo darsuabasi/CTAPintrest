@@ -1,4 +1,5 @@
-const tagsRouter= require('../../node_modules/express').Router();
+const tags = require('express').Router();
+// '../../node_modules/express'
 
 const { 
     getAllTags, 
@@ -11,13 +12,13 @@ const {
     tagBasedOnBoard 
 } = require('../../queries/Tags/tags');
 
-tagsRouter.get('/all', getAllTags);
-tagsRouter.get('/:pin_id', getSingleTagForPin);
-tagsRouter.get('/:board_id', getSingleTagForBoard);
-tagsRouter.get('/', tagBasedOnPin);
-tagsRouter.get('/', tagBasedOnBoard)
-tagsRouter.post('/',addNewTag);
-tagsRouter.patch('/:tag_name',updateSingleTag);
-tagsRouter.delete('/:id',deleteSingleTag);
+tags.get('/', getAllTags);
+tags.get('/:pin_id', getSingleTagForPin);
+tags.get('/:board_id', getSingleTagForBoard);
+tags.get('/', tagBasedOnPin);
+tags.get('/', tagBasedOnBoard)
+tags.post('/',addNewTag);
+tags.patch('/:tag_name',updateSingleTag);
+tags.delete('/:id',deleteSingleTag);
 
-module.exports = tagsRouter;
+module.exports = tags;

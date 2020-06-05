@@ -1,4 +1,4 @@
-const userPinRouter=require("express").Router({ mergeParams: true});
+const userPins = require("express").Router({ mergeParams: true});
 
 const {
     getAllUserPins, 
@@ -8,11 +8,11 @@ const {
     editUserPin,
 } = require("../../../queries/Users/users")
 
-userPinRouter.get("/:id", getAllUserPins);
-userPinRouter.post("/:id", createUserPin);
-userPinRouter.get("/:id/pins/:pin_id", getSinglePinByUser);
-userPinRouter.delete("/:id/pins/:pin_id", deleteUserPin);
-userPinRouter.patch("/:id/pins/:pin_id", editUserPin)
+userPins.get("/:id", getAllUserPins);
+userPins.post("/:id", createUserPin);
+userPins.get("/:id/pins/:pin_id", getSinglePinByUser);
+userPins.delete("/:id/pins/:pin_id", deleteUserPin);
+userPins.patch("/:id/pins/:pin_id", editUserPin)
 
 
-module.exports = userPinRouter;
+module.exports = userPins;

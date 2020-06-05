@@ -59,7 +59,7 @@ body {
 .form-outer form .page .field input {
     height: 100%;
     width: 100%;
-    border: 1px solid #E60023;
+    border: 2px solid #E60023;
     border-radius: 3rem;
     font-size: 20px;
     padding-left: 2rem;
@@ -132,7 +132,41 @@ body {
     right: -3.3rem;
 }
 
+.progress-bar .step .bullet2:after {
+    position: absolute;
+    content: '';
+    height: 0.25rem;
+    width: 3rem;
+    background: #262626;
+    bottom: 1rem;
+    right: -3.3rem;
+}
+
+.progress-bar .step .bullet3:after {
+    position: absolute;
+    content: '';
+    height: 0.25rem;
+    width: 3rem;
+    background: #262626;
+    bottom: 1rem;
+    right: -3.3rem;
+}
+
 .progress-bar .step .bullet:after {
+    background: #E60023;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 1.5s linear infinite;
+}
+
+.progress-bar .step .bullet2:after {
+    background: #E60023;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 1.5s linear infinite;
+}
+
+.progress-bar .step .bullet3:after {
     background: #E60023;
     transform: scaleX(0);
     transform-origin: left;
@@ -151,7 +185,27 @@ body {
     height: 2rem;
     width: 2rem;
     border: 1px solid;
-    display: inline-block;
+    margin-left: 6.5rem;
+    border-radius: 50%;
+   
+}
+
+.progress-bar .step .bullet2 {
+    position: relative;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid;
+    margin-left: 10rem;
+    border-radius: 50%;
+   
+}
+
+.progress-bar .step .bullet3 {
+    position: relative;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid;
+    margin-left: 12rem;
     border-radius: 50%;
    
 }
@@ -194,6 +248,7 @@ body {
     border-radius: 2.5rem;
     width: 10rem;
     margin-left: -0.1rem;
+    height: 2.7rem;
 }
 
 .comeSignupGoogle {
@@ -202,7 +257,7 @@ body {
     border: 1px solid white;
     border-radius: 2.5rem;
     width: 10.4rem;
-    margin-right: 6.3rem;
+    margin-right: 12rem;
 }
 
 .orSeparate {
@@ -212,13 +267,29 @@ body {
 }
 
 .extraStuff {
-    /* background-color: plum; */
     height: 4rem;
-    width: 18rem;
-    margin-right: 10rem;
-    /* margin-left: 10rem; */
-    /* padding-left: -3rem; */
+    margin-right: 12rem;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+
+.pintrestWelcome {
+    font: 1em sans-serif;
+}
+
+.cat-greet {
+    margin-right: 10rem;
+    color: black;
+}
+
+.cat-you {
+    margin-right: 3.1rem;
+    color: black;
+}
+
+.cat-sub {
+    margin-left: 0.9rem;
+    color: black;
 }

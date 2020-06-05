@@ -1,4 +1,8 @@
-const boardsRouter = require('../../node_modules/express').Router();
+const boards = require("express").Router();
+// '../../node_modules/express'
+// const { uploadImage } = require("../../queries/imageUploader");
+const { checkFirebaseToken } = require('../../middleware/auth');
+
 
 const { 
     createBoard, 
@@ -10,17 +14,17 @@ const {
 } = require("../../queries/Boards/boards");
 
 
-boardsRouter.get('/', getAllBoards);
-boardsRouter.post('/', createBoard);
+boards.get('/', getAllBoards);
+boards.post('/', createBoard);
 
-boardsRouter.get('/:id', getSingleBoard);
-boardsRouter.delete('/:id', deleteBoard);
-boardsRouter.patch('/:id', updateBoard);
-boardsRouter.get('/hashtag/:hashtag', getBoardsByTag);
+boards.get('/:id', getSingleBoard);
+boards.delete('/:id', deleteBoard);
+boards.patch('/:id', checkFirebaseToken, updateBoard);
+boards.get('/hashtag/:hashtag', getBoardsByTag);
 
 
 
-module.exports = boardsRouter;
+module.exports = boards;
 
 
 

@@ -1,4 +1,4 @@
-const userBoardsRouter = require('express').Router({mergeParams: true});
+const userBoards = require('express').Router({mergeParams: true});
 
 const {
     getAllBoardsByUser, 
@@ -8,11 +8,11 @@ const {
     editBoardByUser
 } = require("../../../queries/Users/users");
 
-userBoardsRouter.get("/:id", getAllBoardsByUser);
-userBoardsRouter.post("/:id", createNewBoardForUser);
-userBoardsRouter.get("/:id/boards/:board_id", getSingleBoardByUser)
-userBoardsRouter.delete("/:id/boards/:board_id", deleteBoardByUser);
-userBoardsRouter.patch("/:id/boards/:board_id", editBoardByUser)
+userBoards.get("/:id/boards/", getAllBoardsByUser);
+userBoards.post("/:id/boards", createNewBoardForUser);
+userBoards.get("/:id/boards/:board_id", getSingleBoardByUser)
+userBoards.delete("/:id/boards/:board_id", deleteBoardByUser);
+userBoards.patch("/:id/boards/:board_id", editBoardByUser)
 
 
-module.exports = userBoardsRouter;
+module.exports = userBoards;

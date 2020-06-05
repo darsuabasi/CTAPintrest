@@ -1,26 +1,64 @@
 const db = require('../../db/index');
+const upload = require("./imageUploader")
 
 
 const createPin = async (req, res, next) => {
     try {
-        const newPin = await db.one(
-            `INSERT INTO Pins(id, imageUrl, creator_id, board_id, note) VALUES( '${req.body.id}', '${req.body.imageUrl}' '${req.body.creator_id}', '${req.body.board_id}' '${req.body.note}') RETURNING * `);
+        console.log("Uhm create ya pin");
+        upload(req, res, err => {
+            try {
+            console.log("Yurrr upload that");
+            const { creator_id, board_id, note } = req.body;
+            let imageUrl = "/uploads/" + req.file;
+            db.one(
+                `INSERT INTO Pins(imageUrl, creator_id, board_id, note) VALUES( $1, $2, $3, $4) RETURNING *`,
+                [imageUrl, creator_id, board_id, note])
+                .then(done => {
+                    console.log("then");
+                    res.status(200).json({
+                      status: "ok",
+                      post: done,
+                      message: "Yessir, pin created"
+            })
+                    });
+              } catch (err) {
+                console.log(err)
+                next(err)
+                }
+          });
+        
+          } catch (error) {
+            console.log(error);
+            next(error);
+            }
+        };
+
+
+
+
+//             })
+//         res.status(200).json({
+//             status: "Success",
+//             payload: newPin + imageUrl, 
+//             message: "Yessir, pin created"
+//         });
+//     } catch(err) {
+//         res.status(400).json({
+//             status: "Error",
+//             message: "Pin could not be created at this time.",
+//         })
+//         next(err)
+//     }
+// }
+
+
+
+        // const { imageUrl, creator_id, note, time_stamp } = req.body;
+        // let imageUrl = "/uploads/" + req.file.filename;
         // "INSERT INTO Pins (id, creator_id, note) VALUES( ${id}, ${creator_id}, ${note}", 
         // req.body
     //    );
-        res.status(200).json({
-            status: "Success",
-            payload: newPin, 
-            message: "Yessir, pin created"
-        });
-    } catch(err) {
-        res.status(400).json({
-            status: "Error",
-            message: "Pin could not be created at this time.",
-        })
-        next(err)
-    }
-}
+
 
 const deletePin = async (req, res, next) => {
     try {

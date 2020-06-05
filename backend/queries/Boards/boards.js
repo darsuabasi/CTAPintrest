@@ -1,23 +1,65 @@
 const db = require('../../db/index');
+const upload = require("./imageUploader")
+
 
 const createBoard = async (req, res, next) => {
    try {
-       const newBoard = await db.one(
-           `INSERT INTO Boards(id, board_name, board_description, creator_id) VALUES( '${req.body.id}', '${req.body.board_name}', '${req.body.board_description}', '${req.body.creator_id}') RETURNING *`
-       );
-       res.status(200).json({
-            status: "Success",
-            payload: newBoard, 
-            message: "Yessir, your new Board was created"
-        });
-    } catch(err) {
-        res.status(400).json({
-            status: "Error",
-            message: "Board could not be created at this time.",
+    console.log("Uhm create ya board");
+    upload(req, res, err => {
+        try {
+        console.log("Yurrr upload that");
+        const { board_name, board_description, creator_id, created_date } = req.body;
+        let board_image = "/uploads/" + req.file;
+        db.one(
+            `INSERT INTO Boards(board_name, board_description, creator_id, created_date, board_image) VALUES( $1, $2, $3, $4, $5) RETURNING *`,
+            [board_name, board_description, creator_id, created_date, board_image])
+            .then(done => {
+                console.log("then");
+                res.status(200).json({
+                  status: "ok",
+                  post: done,
+                  message: "Yessir, your new Board was created"
         })
-        next(err)
-    }
-}
+                });
+          } catch (err) {
+            console.log(err)
+            next(err)
+            }
+      });
+      
+      } catch (error) {
+        console.log(error);
+        next(error);
+        }   
+    };
+
+
+//         })
+//         res.status(200).json({
+//             status: "Success",
+//             // payload: board_image, 
+//             message: "Yessir, your new Board was created"
+//         });
+//     } catch(err) {
+//         res.status(400).json({
+//             status: "Error",
+//             message: "Board could not be created at this time.",
+//         })
+//         next(err)
+//     }
+// }
+
+
+
+
+
+
+
+    //    const newBoard = await db.one(
+    //        `INSERT INTO Boards(board_name, board_description, creator_id, board_image) VALUES('${req.body.board_name}', '${req.body.board_description}', '${req.body.creator_id}', '${req.body.board_image}') RETURNING *`
+    //    );
+    
+ 
 
 const deleteBoard = async (req, res, next) => {
     try {
@@ -59,8 +101,9 @@ const getAllBoards =  async (req, res, next) => {
 
 const updateBoard = async (req, res, next) => {
     try {
+        let { id } = req.params
         // let singularBoard = await db.one(`UPDATE Boards SET note = $1 WHERE id = ${req.params.id} RETURNING *`, [req.body.note]);
-        const singularBoard = await db.one(`UPDATE Boards SET board_name = $/board_name/, board_description = $/board_description/, board_image = $/board_image/ WHERE id = ${req.params.id} RETURNING *`, [req.body])
+        const singularBoard = await db.one(`UPDATE Boards SET board_name = $/board_name/, board_description = $/board_description/, board_image = $/board_image/ WHERE id = ${req.params.id} RETURNING *`)
         res.status(200).json({
             message: "Congrats, your board was updated!",
             payload: singularBoard
@@ -115,6 +158,27 @@ const getSingleBoard = async (req, res, next) => {
 
 
 
+const getAllPinsForSingleBoard = async (req, res, next) => {
+    try {
+        let allPinsForBoard = await db.any(`SELECT * FROM Pins WHERE board_id = $1`, [req.params.board_id]);
+        resr.status(200).json({
+            status: "Success",
+            messgae: "Aye, aye, aye you're now viewing all pins for this particular board",
+            payload: {
+                board: req.params.board_id,
+                allPinsForBoard
+            }
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: "Error",
+            message: "Lo siento, couldn't get any pins for this particular board"
+        })
+        next(err)
+    }
+}
 
 
-module.exports = { createBoard, deleteBoard, getAllBoards, updateBoard, getBoardsByTag, getSingleBoard, /*getAllBoardsByUser*/ }
+
+
+module.exports = { createBoard, deleteBoard, getAllBoards, updateBoard, getBoardsByTag, getSingleBoard, /*getAllBoardsByUser*/ getAllPinsForSingleBoard }

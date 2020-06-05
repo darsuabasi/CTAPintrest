@@ -1,4 +1,6 @@
-const likesRouter= require('../../node_modules/express').Router();
+const likes = require('express').Router();
+// '../../node_modules/express'
+
 
 const { 
     getPinLikes, 
@@ -6,8 +8,8 @@ const {
     deletePinLike 
 } = require('../../queries/Likes/likes');
 
-likesRouter.get('/:pin_id', getPinLikes)
-likesRouter.post('/:liker_id/:pin_id', addPinLike);
-likesRouter.delete('/:liker_id/:pin_id', deletePinLike);
+likes.get('/:pin_id', getPinLikes)
+likes.post('/:liker_id/:pin_id', addPinLike);
+likes.delete('/:liker_id/:pin_id', deletePinLike);
 
-module.exports = likesRouter;
+module.exports = likes;

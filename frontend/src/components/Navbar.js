@@ -1,131 +1,68 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
+import React, { useContext } from 'react';
+// import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import '../css/Navbar.css'
-// import SearchBar from '../components/SearchBar'
-import { AuthContext } from '../providers/AuthContext'
-import Accounts from '../components/Accounts'
-import { logout } from '../util/firebaseFunctions';
-import LoginModal from './LoginModal';
-// import SignupModal from './SignupModal';
-// import Modal from './modal/Modal'
-
-import { login } from '../util/firebaseFunctions'
-import { apiURL } from '../util/apiURL';
-import { signup } from '../util/firebaseFunctions'
-
-
-import { useHistory } from 'react-router-dom';
-
-import axios from 'axios';
+// import Accounts from '../components/Accounts';
 import SearchBar from './SearchBar'
+import { AuthContext } from '../providers/AuthProvider';
+import '../css/Navbar.css'
 
-
-
+import { logout} from '../util/firebaseFunctions'
 
 
 const Navbar = (params) => {
 
-    // for signup modal 
-    const [signUpEmail, setSignUpEmail] = useState("");
-    const [signupPassword, setSignupPassword] = useState("");
-    const [openSignupModal, setOpenSignupModal] = useState(false);
-    // const [age, setAge] = useState([]);
-    const outsideSignupModal = useRef();
-    const API = apiURL();
-
-    // for login modal 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [openLoginModal, setOpenLoginModal] = useState(false);
-    const outsideLoginModal = useRef();
-
-
-    // for both login and sigup modal
-    const history = useHistory();
-    const [error, setError] = useState(null);
-
-    
-
-
-    const handleSignupSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            let res = await signup(email, password);
-            await axios.post(`${API}/api/users`, {id: res.user.uid, email})
-            history.push("/user-feed")
-        } catch (err) {
-            setError(err.message)
-        }
-    }
-
-    const handleLoginSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await login(email, password)
-            history.push("/user-feed")
-        } catch (err) {
-            setError(err.message)
-        }
-    }
-
-    const handleLoginClick = (e) => {
-        e.preventDefault();
-        if(outsideLoginModal.current.contains(e.target)) {
-            return 
-        }
-        setOpenLoginModal(false)
-    }
-
-    const handleSignupClick = (e) => {
-        e.preventDefault();
-        if(outsideSignupModal.current.contains(e.target)) {
-            return 
-        }
-        setOpenLoginModal(false)
-    }
-
-    // useEffect(() => {
-    //     const grabLoginClick = document.addEventListener('click', handleLoginClick)
-    //     return () => {
-    //         grabLoginClick();
-    //     }
-
-    //         const grabSignupClick = document.addEventListener('click', handleSignupClick)
-    //         return () => {
-    //             grabSignupClick();
-    //         }
-    // }, [])
-
-
     const { currentUser } = useContext(AuthContext);
     const displayNavForUser = () => {
-        if(!currentUser) {
+        if(currentUser) {
             return( 
-            // <button onClick={logout}>Logout</button>;
-                <>
+                <div className="user-navBar">
+                    <NavLink className="pintrestLogoLetters" to={"/user-feed"}> P </NavLink>
                     <NavLink className="user-nav-feed" to={"/user-feed"}>Home</NavLink>
                     <NavLink className="user-nav-today" to={"/today"}>Today</NavLink>
                     <NavLink className="user-nav-following" to={"/following"}>Following</NavLink>
-                        {/* <div className="user-nav-search"> */}
-                            <SearchBar className="user-nav-search"> </SearchBar>
-                        {/* </div> */}
+                    <SearchBar className="user-nav-search"> </SearchBar>
                     <NavLink className="user-nav-notify" to={"/notifications"}> Notifications </NavLink>
-                    <NavLink className="user-nav-message" to={'/messages'}> Messages </NavLink>
+                    <NavLink className="user-nav-message" to={"/messages"}> Messages </NavLink>
                     <NavLink className="user-nav" to={"/user-profile/boards"}> ProfilePic </NavLink>
-                    <NavLink className="user-nav-accounts" to={"/accounts"}>Accounts</NavLink>
+                        <div className="dropdown"> 
+                            <button className="user-nav-accounts" to={"/accounts"}>Accounts</button>
+                                <div className="account-dropdown-content">
+                                <label className="drop-labels">Accounts</label>
+                                    <a href="www.nothing.com"> Add another account </a>
+                                    <a href="www.nothing.com"> Add a free business account </a>
+                                <label className="drop-labels"> More Options</label>
+                                    {/* <NavLink to={"/settings"}> Settings </NavLink> */}
+                                    <NavLink to={"/settings"}> Settings </NavLink>
+                                    <a href="www.nothing.com"> Tune your home feed </a>
+                                    {/* <NavLink to={"/edit"}> Tune your home feed </NavLink> */}
+                                    <a href="www.nothing.com"> Install the chrome app </a>
+                                    <a href="www.nothing.com"> Get help </a>
+                                    <a href="www.nothing.com"> See terms and privacy </a>
+                                    <button onClick={logout}>Logout</button>
+                            
+
+                    </div>
+                    </div>
                     {/* <button onClick={logout}>Logout</button> */}
-                 </>
+                 </div>
              )  
         } else {        
             return (
-                <>
-                    
+                <div className="non-user-nav">
+                    {/* <ul className='pintrestLogoLetters'>P</ul> */}
+                    {/* <div className="logo-pin">  */}
+                    <NavLink className="pintrestLogoLettersNon" to={"/"}> P </NavLink>
+                    {/* </div> */}
                     <NavLink className="publicNavLink" to={"https://about.pinterest.com/en"}> About </NavLink>
                     <NavLink className="publicNavLink" to={"https://business.pinterest.com/"}> Business</NavLink>
                     <NavLink className="publicNavLink" to={"https://newsroom.pinterest.com/en"}> Blog </NavLink>
+                    <NavLink className="publicNavLogin" id="login" to={"/login"}> Log in</NavLink>
+                    <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign up</NavLink>
+            
+              
                     {/* import login */}
                     {/* import signup */}
-                </>
+                </div>
             )
         }
         // return(
@@ -237,10 +174,8 @@ const Navbar = (params) => {
     }
     return (
         <div> 
-            <nav className="navbarUno">
-                <ul className='pintrestLogoLetters'>P</ul>
-                   
-                
+            <nav className="navbarUno"> 
+            {/* <NavLink to={"/"}> Login in</NavLink>   */}
                 {displayNavForUser()}
             </nav>
         </div>

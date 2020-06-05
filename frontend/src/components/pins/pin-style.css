@@ -1,6 +1,7 @@
-
 .card {
     width: 19rem;
+    border-radius: 2rem!important;
+    color: transparent!important;
 
 }
 
@@ -12,6 +13,7 @@
     /* padding: 3rem 0!important; */
     padding-top: 0.2rem;
     height: 4rem;
+    border-radius: 2rem;
 }
 
 .card-text {
@@ -21,7 +23,9 @@
 
 .card-img-top {
     transform:scale(1);
+    border-radius: 2rem;
     transition:transform 0.5s ease;
+    /* color: transparent; */
 }
 
 .card-img-top:hover {
@@ -30,9 +34,15 @@
 
 .overflow {
     overflow: hidden;
+    border-radius: 2rem;
 }
 
 .card-title {
     height: 10px!important;
     /* font: 10px!important; */
+}
+
+.card text-center shadow {
+    /* background-color: transparent; */
+    border-radius: 2rem;
 }

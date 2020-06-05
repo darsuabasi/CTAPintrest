@@ -2,13 +2,13 @@ const db = require("../../db/index");
 
 const createUser = async (req, res, next) => {
     try {
-        const newUser = await db.none(
-            "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES(${id}, ${username}, ${first_name}, ${last_name}, ${bio}, ${profilePic}, ${email})",
+        let newUser = await db.one(
+            "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES(${id}, ${username}, ${first_name}, ${last_name}, ${bio}, ${profilePic}, ${email}) RETURNING *",
             req.body
         );
         res.status(200).json({
-            newUser, 
-            message: "Ayeee new user created"
+            message: "Ayeee new user created",
+            payload: newUser
         });
     } catch(err) {
         res.status(400).json({
@@ -37,9 +37,12 @@ const getAllUsers = async (req, res, next) => {
 }
 
 const getSingleUser = async (req, res, next) => {
+    const { id } = req.params
     try {
-        const getUser = await db.one('SELECT * FROM Users WHERE id= $1', [req.params.id]);
+        // console.log(req.params)
+        const getUser = await db.one('SELECT * FROM Users WHERE id = $1', id);
         res.status(200).json({
+            status: "Nice",
             getUser,
             message: "Checking out a single user by id",
         })
@@ -50,6 +53,7 @@ const getSingleUser = async (req, res, next) => {
         });
         next(err)
     }
+    // console.log(error.code)
 }
 
 const updateUser = async (req, res, next) => {
@@ -92,12 +96,14 @@ const deleteUser = async (req, res, next) => {
 };
 
 const getAllUserPins = async (req, res, next) => {
-    try{
-        let pin_id = await db.any('SELECT * FROM Pins WHERE creator_id= $1', [req.params.id])
+    try {
+        // let { creator_id } = req.params
+        let { id } = req.params
+        let pinsByUser = await db.any('SELECT * FROM Pins WHERE creator_id = $1', [id])
         res.status(200).json({
             status: "Succes",
-            message: "Yip Yip! You're checking out all pins from this user",
-            payload: pin_id
+            message: "Yip Yip! You're checking out all pins from " + creator_id,
+            payload: pinsByUser
         })
     } catch(err) {
         res.status(400).json({

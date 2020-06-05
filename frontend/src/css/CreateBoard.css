@@ -1,0 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+.board-page {
+    /* justify-content: center; */
+    /* align-items: center; */
+    display: flex;
+}
+
+.create-board-form {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.board-name-place {
+    margin-top: 11.5rem;
+    width: 20rem;
+    margin-right: 2rem;
+    border: 2px solid #E60023;
+    border-radius: 1rem;
+
+}
+
+.board-description-place {
+    width: 30rem;
+    height: 10rem;
+    margin-top: 8.2rem;
+    margin-left: 8rem;
+    border: 2px solid #E60023;
+    border-radius: 1rem;
+}
+
+.image-preview__image {
+    display: none;
+    border-radius: 2rem;
+}
+
+.uploadImageDiv {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 1.5rem;
+    padding-left: 10rem;
+    margin-top: 5rem;
+    height: 30rem;
+    width: 40rem;
+}
+
+.image-preview-view {
+    width: 20rem;
+    height: 40rem;
+    /* background-color: red; */
+
+}
+
+.image-preview__default-text {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #000000;
+    font-size: 15px;
+    position: relative;
+    justify-content: center;
+    /* align-items: center; */
+    text-align: center;
+    /* padding-top: 1.5rem; */
+    /* padding-left: 10rem; */
+    margin-top: 5rem;
+    width: 20rem;
+    border: 2px solid #E60023;
+    border-radius: 1rem;
+
+}
+
+.welcome-create-board {
+    margin: auto;
+    font-size: x-small;
+}

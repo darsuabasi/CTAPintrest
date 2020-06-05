@@ -1,7 +1,7 @@
 import React from "react";
 import Likes from '../Likes';
 
-const PostPin = ({ filePath, userName, profilePic, postContent, postId }) => {
+const PostPin = ({ filePath, userName, pinContent, postId }) => {
   // const { filePath } = props;
   // const filePath = props.filePath
 
@@ -10,8 +10,9 @@ const PostPin = ({ filePath, userName, profilePic, postContent, postId }) => {
   //   width: "50px"
   // };
   const handleStylePin = {
-    heigh: "400px",
-    width: "500px"
+    height: "400px",
+    width: "400px",
+    border: "1px solid #000000"
   };
 
   return (
@@ -19,9 +20,9 @@ const PostPin = ({ filePath, userName, profilePic, postContent, postId }) => {
       <h4 className="userName">{userName}</h4>
       {/* <img alt=" " src={profilePic} style={handleStyleProfile} /> */}
 
-      <img alt="" src={filePath} style={handleStylePin} />
-      <Likes postId={postId}/>
-      <p>{postContent}</p>
+      <img alt="" imgsrc={filePath} style={handleStylePin} />
+      {/* <Likes postId={postId}/> */}
+      <p>{pinContent}</p>
     </div>
   );
 };
