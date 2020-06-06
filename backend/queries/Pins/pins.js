@@ -9,7 +9,7 @@ const createPin = async (req, res, next) => {
             try {
             console.log("Yurrr upload that");
             const { creator_id, board_id, note } = req.body;
-            let imageUrl = "/uploads/" + req.file;
+            let imageUrl = "/uploads/" + req.file.filename;
             db.one(
                 `INSERT INTO Pins(imageUrl, creator_id, board_id, note) VALUES( $1, $2, $3, $4) RETURNING *`,
                 [imageUrl, creator_id, board_id, note])

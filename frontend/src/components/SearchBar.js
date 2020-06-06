@@ -52,9 +52,9 @@ const SearchBar = () => {
         sessionStorage.searchTerm = e.target.elements[0].value
     }
 
-    useEffect(()=>{
-        fetchData("http://localhost:3002/api/tags/all",setList)
-    }, [])
+    // useEffect(()=>{
+    //     fetchData("http://localhost:3001/api/tags/all",setList)
+    // }, [])
 
         return (
             <form onSubmit={handleSearch}>

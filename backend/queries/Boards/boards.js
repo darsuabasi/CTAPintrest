@@ -9,7 +9,8 @@ const createBoard = async (req, res, next) => {
         try {
         console.log("Yurrr upload that");
         const { board_name, board_description, creator_id, created_date } = req.body;
-        let board_image = "/uploads/" + req.file;
+        let board_image = "/uploads/" + req.file.filename;
+        // console.log(req.file)
         db.one(
             `INSERT INTO Boards(board_name, board_description, creator_id, created_date, board_image) VALUES( $1, $2, $3, $4, $5) RETURNING *`,
             [board_name, board_description, creator_id, created_date, board_image])
