@@ -7,8 +7,7 @@ import Home from './components/home/Home';
 import Login from './components/Login'
 import Signup from './components/Signup'
 
-// import Today from './components/Today';
-// import Following from './components/Following';
+import Today from './components/Today';
 // import SearchBar from './components/SearchBar';
 // import Notifications from './components/Notifications';
 // import Messages from './components/Messages';
@@ -21,8 +20,6 @@ import UserPins from './components/UserPins'
 
 import CreatePin from './components/pins/CreatePin'
 import CreateBoard from './components/CreateBoard'
-
-
 import AllUsersFollowing from './components/AllUsersFollowing'
 import AuthProvider from './providers/AuthProvider'
 import { AuthRoute, ProtectedRoute } from './util/auth_routes'
@@ -40,10 +37,6 @@ import AccountSettings from './components/AccountSettings';
 
 
 import SearchResults from './components/SearchResults'
-
-
-
-
 
 
 
@@ -86,6 +79,10 @@ const App = () => {
               <EditProfile/>
             </Route>
           {/* </Switch>   */}
+
+            <Route exact path="/today">
+              <Today/>
+            </Route>
 
 
 

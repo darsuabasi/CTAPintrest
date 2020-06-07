@@ -23,17 +23,17 @@ export default function AllUsersFollowing() {
 
     return(
         <div> 
-            <h1>You must be logged in to view</h1>
-            <h2>Welcome to your new following tab!</h2>
+            <h3>You must be logged in to view</h3>
+            <h3>Welcome to your new following tab!</h3>
             <h2> Discover ideas from people you follow...</h2>
 
             <div> 
-                <ul>
+                {/* <ul> */}
                 {/* show a horizontal view of just the user images */}
-                    {users.map(user => {
-                        return <li key={user.id}>{user.email}</li>
-                    })}
-                </ul>
+                    {/* {users.map(user => { */}
+                        {/* return <li key={user.id}>{user.email}</li> */}
+                    {/* })} */}
+                {/* </ul> */}
 
                 {/* edit users button + glow and hover circle effect */}
             </div>

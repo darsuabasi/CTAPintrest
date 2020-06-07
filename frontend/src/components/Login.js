@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { login } from '../util/firebaseFunctions';
 import { NavLink } from 'react-router-dom';
-// import { apiURL } from '../util/apiURL';
-// import axios from 'axios';
 import '../css/Login.css'
-import images from './images'
 
 
 const Login = () => {
