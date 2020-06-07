@@ -6,6 +6,7 @@ import { apiURL } from '../util/apiURL';
 import '../css/UserProfile.css'
 import { Link, useHistory } from 'react-router-dom';
 import { useInput } from '../util/useInput';
+import BoardDisplay from './BoardDisplay'
 
 const UserProfile = () => {
     const { currentUser, token } = useContext(AuthContext);
@@ -158,7 +159,7 @@ const UserProfile = () => {
 
                 <div className="board-and-pin-mainCard"> 
                     <div className="board-card">
-                        {/* {displayBoards} */}
+                    <BoardDisplay/>
                     </div>
 
                     <div className="pin-card">

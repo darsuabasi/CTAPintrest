@@ -4,10 +4,6 @@
 }
 
 
-.board-page {
-    justify-content: center;
-}
-
 .create-board-form {
     justify-content: center;
     align-items: center;
@@ -15,10 +11,10 @@
 }
 
 .board-name-place {
-    display: flex;
-    float: right;
+    /* display: flex; */
+    /* float: right; */
     margin-bottom: 3em;
-    width: 30rem;
+    width: 20rem;
     border: 3px solid #E60023;
     border-radius: 1rem;
 
@@ -27,7 +23,7 @@
 .board-description-place {
     display: flex;
     float: right;
-    width: 30rem;
+    width: 20rem;
     height: 10rem;
     border: 3px solid #E60023;
     border-radius: 1rem;
@@ -35,7 +31,7 @@
 
 .image-preview__image {
     border-radius: 2rem;
-    width: 35%;
+    width: 40%;
     height: 25rem;
     display: flex;
     float: left;
@@ -55,16 +51,17 @@
 }
 
 .image-preview__default-text {
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
+    /* flex-direction: row; */
     font-size: 40px;
-    position: relative;
+    /* position: relative; */
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-top: 10rem;
     margin-bottom: 2.5rem;
     width: 100%;
+    height: 5rem;
     border: 3px solid #E60023;
     border-radius: 1rem;
 }

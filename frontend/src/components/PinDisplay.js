@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import PostPinModal from './pins/PostPin';
-import PinList from './PinList'
+// import PinList from './PinList'
 import '../css/PinList.css'
 
 
@@ -13,13 +13,12 @@ const PinDisplay = () => {
 
     const API = apiURL(); 
     const [pins, setPins] = useState([]);
-    const { currentUser, token } = useContext(AuthContext);
+    const { token } = useContext(AuthContext);
 
 
     useEffect(() => {
         const fetchPins = async () => {
             try {
-                // debugger
                 let res = await axios({
                     method: "get",
                     url: `${API}/api/pins`,
@@ -27,7 +26,6 @@ const PinDisplay = () => {
                         AuthToken: token,
                     }
                 })
-                // debugger
                 setPins(res.data.payload)
                 console.log(res.data)
             } catch(err) {
@@ -40,7 +38,7 @@ const PinDisplay = () => {
     }, [])
 
     const displayPin = pins.map(pin => {
-        return (<PinList> <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} /> </PinList>)
+        return ( <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} /> )
     })
 
 

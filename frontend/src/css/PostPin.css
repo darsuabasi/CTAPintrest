@@ -1,40 +1,24 @@
+/* <!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div> */
+
 .mainDivModal {
     text-align: center;
+    align-items: center;
+    height: 60vh;
+    width: 23vw;
 }
 
-
-.card {
-    width: 19rem;
-    border-radius: 2rem!important;
-    color: transparent!important;
-}
-
-.card:hover {
-  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253)!important;
-}
-
-.card-body {
-  /* padding: 3rem 0!important; */
-  padding-top: 0.2rem;
-  height: 4rem;
-  border-radius: 2rem;
-}
-
-.card-text {
-  font-size: .9rem;
-  padding: 0.4rem 1.9rem;
-}
-
-.card-img-top {
-  transform:scale(1);
-  border-radius: 2rem;
-  transition:transform 0.5s ease;
-  /* color: transparent; */
-}
-
-.card-img-top:hover {
-  transform: scale(1.6);
-}
 
 /* The Modal (background) */
 .mainDivModalBackground {
@@ -46,48 +30,55 @@
     right: 0;
     bottom: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 20rem;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
   }
 
   .showModal-true {
-      opacity: 1;
+      opacity: 70;
       pointer-events: visible;
   }
   
   .innerModal {
       background: #E60023;
-      width: 100%;
-      max-width: calc(100%-100px);
+      width: 75%;
+      /* max-width: calc(100%-100px); */
       margin: auto;
       display: flex;
       flex-direction: row;
       text-align: left;
+      z-index: 9000;
   }
 
   .pinImage img {
-      width: 100%;
+      width: 25rem;
+      height: 35rem;
       object-fit: cover;
-      height: 100%;
+      border: 6px solid #E60023
   }
 
   .pinContent {
-      padding: 3rem
+      padding: 3rem;
+      /* z-index: 8000; */
+      border: 6px solid #E60023;
+      background-color: #ffffff;
+      
   }
 
   .closeButton {
-      padding: 15px;
+      padding: 5px;
       display: block;
       background-color: transparent;
+
   }
 
 
-  .overflow {
-    overflow: hidden;
-    border-radius: 2rem;
-}
+  .styleContent {
+    color: #000000;
+    /* text-align: center; */
+  }
   /* Modal Content/Box */
   
   

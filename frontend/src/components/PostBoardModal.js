@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 // import Likes from '../Likes';
-import '../../css/PostPin.css';
-import { apiURL } from '../../util/apiURL';
+// import '../../css/PostPin.css';
+import { apiURL } from '../util/apiURL';
 
-const PostPinModal = ({ imageurl, userName, pinContent, pinId }) => {
+const PostBoardModal = ({ board_name, imageurl, creator_id, board_description, boardId }) => {
 
   const [modal, setModal] = useState(false);
   const API = apiURL(); 
@@ -22,14 +22,15 @@ const PostPinModal = ({ imageurl, userName, pinContent, pinId }) => {
 
   return (
     <div className="mainDivModal card text-center shadow"> 
-      <div title ={pinId} className={`mainDivModalBackground showModal-${modal}`}>
+      <div title ={boardId} className={`mainDivModalBackground showModal-${modal}`}>
         <div className="innerModal">
           <div className="pinImage">
             <img className="styleImage modal-content" alt="" src={imageurl} />
           </div>
           <div className="pinContent">
-            <p className="styleContent">{pinContent}</p>
-            <h4 className="styleusername">{userName}</h4>
+            <h4 className="styleusername">{creator_id}</h4>
+            <p className="style-board-name"> {board_name} </p>
+            <p className="styleContent">{board_description}</p>
 
             <button className="closeButton card-img-top" onClick={() => toggleModal()}> X </button>
             <h1> hello world</h1>
@@ -46,4 +47,4 @@ const PostPinModal = ({ imageurl, userName, pinContent, pinId }) => {
   );
 };
 
-export default PostPinModal;
+export default PostBoardModal;
