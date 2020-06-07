@@ -5,9 +5,7 @@
 
 
 .board-page {
-    /* justify-content: center; */
-    /* align-items: center; */
-    display: flex;
+    justify-content: center;
 }
 
 .create-board-form {
@@ -17,62 +15,58 @@
 }
 
 .board-name-place {
-    margin-top: 11.5rem;
-    width: 20rem;
-    margin-right: 2rem;
-    border: 2px solid #E60023;
+    display: flex;
+    float: right;
+    margin-bottom: 3em;
+    width: 30rem;
+    border: 3px solid #E60023;
     border-radius: 1rem;
 
 }
 
 .board-description-place {
+    display: flex;
+    float: right;
     width: 30rem;
     height: 10rem;
-    margin-top: 8.2rem;
-    margin-left: 8rem;
-    border: 2px solid #E60023;
+    border: 3px solid #E60023;
     border-radius: 1rem;
 }
 
 .image-preview__image {
-    display: none;
     border-radius: 2rem;
-}
-
-.uploadImageDiv {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top: 1.5rem;
-    padding-left: 10rem;
-    margin-top: 5rem;
-    height: 30rem;
-    width: 40rem;
+    width: 35%;
+    height: 25rem;
+    display: flex;
+    float: left;
+    padding-right: -90rem;
 }
 
 .image-preview-view {
+    display: flex;
+    float: left;
     width: 20rem;
-    height: 40rem;
-    /* background-color: red; */
-
+    height: 1.8rem;
+    margin-top: 3rem;
+    margin-left: 19rem;
+    border-radius: 49px;
+    background-color: #E60023;
+    font-size: larger;
 }
 
 .image-preview__default-text {
     display: flex;
     flex-direction: row;
-    border: 1px solid #000000;
-    font-size: 15px;
+    font-size: 40px;
     position: relative;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
     text-align: center;
-    /* padding-top: 1.5rem; */
-    /* padding-left: 10rem; */
-    margin-top: 5rem;
-    width: 20rem;
-    border: 2px solid #E60023;
+    margin-top: 10rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    border: 3px solid #E60023;
     border-radius: 1rem;
-
 }
 
 .welcome-create-board {
