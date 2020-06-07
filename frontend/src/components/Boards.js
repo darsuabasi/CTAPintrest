@@ -138,8 +138,6 @@ const UserProfile = () => {
                                 <Link className="style-create-board-dropdown" to={"/create-board"} > Create Board </Link>
                                 <Link className="style-create-pin-dropdown" to={"/create-pin"} > Create Pin </Link>
                             </div>
-                    {/* [+ modal] [Create Pin] [Add to board] */}
-
                     </div>
                 </div>
             </div>

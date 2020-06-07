@@ -1,30 +1,51 @@
-import React from "react";
-import Likes from '../Likes';
+import React, { useState } from "react";
+// import Likes from '../Likes';
+import '../../css/PostPin.css';
+import { apiURL } from '../../util/apiURL';
 
-const PostPin = ({ filePath, userName, pinContent, postId }) => {
-  // const { filePath } = props;
-  // const filePath = props.filePath
+const PostPinModal = ({ imageurl, userName, pinContent, postId }) => {
 
-  // const handleStyleProfile = {
-  //   heigh: "70px",
-  //   width: "50px"
-  // };
+  const [modal, setModal] = useState(false);
+  const API = apiURL(); 
+
+  const toggleModal = () => {
+    setModal(!modal)
+  }
+
   const handleStylePin = {
-    height: "400px",
-    width: "400px",
-    border: "1px solid #000000"
+    height: "200px",
+    // width: "500px",
+    border: "2px solid #000000"
   };
 
-  return (
-    <div title ={postId} className="individualPost">
-      <h4 className="userName">{userName}</h4>
-      {/* <img alt=" " src={profilePic} style={handleStyleProfile} /> */}
+  
 
-      <img alt="" imgsrc={filePath} style={handleStylePin} />
-      {/* <Likes postId={postId}/> */}
-      <p>{pinContent}</p>
+  return (
+    <div className="mainDivModal card text-center shadow"> 
+      <div title ={postId} className={`mainDivModalBackground showModal-${modal}`}>
+        <div className="innerModal">
+          <div className="pinImage">
+            <img className="styleImage modal-content" alt="" src={imageurl} style={handleStylePin}/>
+          </div>
+          <div className="pinContent">
+            <p className="styleContent">{pinContent}</p>
+            <h4 className="styleusername">{userName}</h4>
+            <h1> hello world</h1>
+
+            <button className="closeButton card-img-top" onClick={() => toggleModal()}> X </button>
+
+          </div>
+
+        </div>
+        
+      </div>
+      <div className="overflow">
+      <img className="exitButton card-img-top" onClick={() => toggleModal()} src={imageurl} />
+
+      </div>
+      
     </div>
   );
 };
 
-export default PostPin;
+export default PostPinModal;
