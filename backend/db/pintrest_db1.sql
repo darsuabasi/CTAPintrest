@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS pintrest_db1;
 CREATE DATABASE pintrest_db1;
 
-\c pintrest_db1;
+-- \c pintrest_db1;
 
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Boards;
@@ -82,10 +82,10 @@ INSERT INTO Boards (id, board_name, board_description, creator_id, board_image)
 INSERT INTO Pins (id, imageUrl, creator_id, board_id, note /*pin_image*/)
     VALUES  
     -- ('6', '../../assets/uploads/softglam.jpeg', 1, 2, 'Soft Glam'),
-            ('2', '../../assets/uploads/tdionefit.jpeg', 3, 2, 'Dress down with the AF1'),
-            ('3', '../../assets/uploads/sesamenoodles.jpeg', 2, 3, 'Sesame noodles, yum'),
-            ('4', '../../assets/uploads/coollegtatt.jpeg', 1, 4, 'Check out this leg tatt inspo'),
-            ('5', '../../assets/uploads/greeneyelook.jpeg', 1, 2, 'What a cool eye look');
+            ('2', '/uploads/tdionefit.jpeg', 3, 2, 'Dress down with the AF1'),
+            ('3', '/uploads/sesamenoodles.jpeg', 2, 3, 'Sesame noodles, yum'),
+            ('4', '/uploads/coollegtatt.jpeg', 1, 4, 'Check out this leg tatt inspo'),
+            ('5', '/uploads/greeneyelook.jpeg', 1, 2, 'What a cool eye look');
 
 INSERT INTO Tags (id, creator_id, pin_id, board_id, tag_name)
     VALUES 

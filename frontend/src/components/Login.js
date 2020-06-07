@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AllPins from './pins/AllPins';
 import { login } from '../util/firebaseFunctions';
 import { NavLink } from 'react-router-dom';
 // import { apiURL } from '../util/apiURL';
 // import axios from 'axios';
 import '../css/Login.css'
-import Slider from './Slider'
 import images from './images'
 
 
@@ -68,13 +66,13 @@ const Login = () => {
 
                 </form>
                 
-           {/* <Slider className="slider-stuff" slides={images} /> */}
+         
             </div>
+
+          
 
         </div>
     )
-        // <AllPins/> 
-    // <img> {AllPins}</img> 
 };
 
 export default Login;

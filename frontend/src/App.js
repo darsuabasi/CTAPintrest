@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { Route, Switch } from 'react-router-dom'
-
-
 import Navbar from './components/Navbar';
-// import Landing from './components/Landing';
 import Landing from './components/Landing'
 import Home from './components/home/Home';
 import Login from './components/Login'
 import Signup from './components/Signup'
-import UserProfile from './components/UserProfile'
+
 // import Today from './components/Today';
 // import Following from './components/Following';
 // import SearchBar from './components/SearchBar';
@@ -19,7 +16,11 @@ import UserProfile from './components/UserProfile'
 // import Accounts from './components/Accounts';
 // import Error from './components/Error';
 
+import Boards from './components/Boards'
+import UserPins from './components/UserPins'
+
 import CreatePin from './components/pins/CreatePin'
+import CreateBoard from './components/CreateBoard'
 
 
 import AllUsersFollowing from './components/AllUsersFollowing'
@@ -49,9 +50,9 @@ import SearchResults from './components/SearchResults'
 
 const App = () => {
   return (
+  <AuthProvider> 
     <div className="Mocktrist-app">
     
-        <AuthProvider> 
           <Navbar/>
             <Switch>
 
@@ -71,9 +72,22 @@ const App = () => {
               <Settings/>
             </Route>
 
+
+          {/* <Switch> */}
+            <ProtectedRoute exact path="/user-profile/boards">
+              <Boards/>
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/user-profile/pins">
+              <UserPins/>
+            </ProtectedRoute>
+
             <Route exact path="/settings/edit-profile">
               <EditProfile/>
             </Route>
+          {/* </Switch>   */}
+
+
 
             <Route exact path="/settings/account-settings">
               <AccountSettings/>
@@ -87,24 +101,21 @@ const App = () => {
                <Login/> 
             </AuthRoute> 
 
-            <Route exact path="/create-pin"> 
+            <ProtectedRoute exact path="/create-pin"> 
               <CreatePin/>
-            </Route>
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/create-board">
+              <CreateBoard/>
+            </ProtectedRoute>
 
             <Route exact path="/pins/search-results">
               <SearchResults/>
             </Route>
-
-            <ProtectedRoute exact path="/user-profile">
-              <UserProfile/>
-            </ProtectedRoute>
-
-            
-
             </Switch>
-          </AuthProvider>
         
         </div>
+      </AuthProvider>
   );
 }
 

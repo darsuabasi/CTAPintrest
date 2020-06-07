@@ -1,70 +1,48 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios'
-// import '../css/Home.css';
-// import SearchBar from '../components/SearchBar'
-// import Pin from './pins/AllPins'
+import React from 'react';
 import SingleHomePin from './SingleHomePin'
 import Tags from '../Tags'
-// import SearchBar from '../SearchBar';
-// import UserInformation from '../EditProfile';
 import gucciDenim from '../../assets/gucciDenim.jpeg';
-// import bigHair from '../../assets/bigHair.jpeg';
 import redMakeupLook from '../../assets/redMakeupLook.jpeg';
 import jewels from '../../assets/jewels.jpeg';
 import oldGlamLooks from '../../assets/oldGlamLooks.jpeg';
-// import closetK from '../../assets/closetK.jpeg';
 import goldDress from '../../assets/goldDress.jpeg';
-// import longHair from '../../assets/longHair.jpeg';
-// import orangeEyes from '../../assets/orangeEyes.jpeg';
-// import orangeHanifa from '../../assets/orangeHanifa.jpeg';
-// import slashedByTia from '../../assets/slashedByTia.jpeg';
 import tropicalFit from '../../assets/tropicalFit.jpeg';
-// import twoToneHair from '../../assets/twoToneHair.jpeg';
 import versaceShoe from '../../assets/versaceShoe.jpeg';
-// import whiteDress from '../../assets/whiteDress.jpeg';
 import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
-
-
-import PostPin from '../pins/PostPin'
-// import EditProfile from '../EditProfile';
-import { NavLink } from 'react-router-dom';
-import CreatePinModal from '../CreatePinModal'
-import { AuthContext } from '../../providers/AuthProvider'
-import { apiURL } from "../../util/apiURL";
-
+import { Link } from 'react-router-dom';
+import PinDisplay from '../PinDisplay'
 
 
 
 
 const Home = () => {
-    const API = apiURL();
+    // const API = apiURL();
     // useEffect(() => {
-        const [pins, setPins] = useState([]);
-        const { currentUser, token } = useContext(AuthContext);
+        // const [pins, setPins] = useState([]);
+        // const { currentUser, token } = useContext(AuthContext);
 
+        // useEffect(() => {
+        //     const fetchPins = async () => {
+        //         try {
+        //             // debugger
+        //             let res = await axios({
+        //                 method: "get",
+        //                 url: `${API}/api/pins`,
+        //                 headers: {
+        //                     AuthToken: token,
+        //                 }
+        //             })
+        //             debugger
+        //             setPins(res.data.payload)
+        //             console.log(res.data)
+        //         } catch(err) {
+        //             setPins([])
+        //             console.log(err.message);
+        //             }
+        //         };
+        //         fetchPins();
 
-        useEffect(() => {
-            const fetchPins = async () => {
-                try {
-                    // debugger
-                    let res = await axios({
-                        method: "get",
-                        url: `${API}/api/pins`,
-                        headers: {
-                            AuthToken: token,
-                        }
-                    })
-                    debugger
-                    setPins(res.data.payload)
-                    console.log(res.data)
-                } catch(err) {
-                    setPins([])
-                    console.log(err.message);
-                    }
-                };
-                fetchPins();
-
-        }, [])
+        // }, [])
        
     
     // const searchResult =()=>{
@@ -85,15 +63,9 @@ const Home = () => {
     //     }
     // }, [])
 
-    const pinDisplay = pins.map(pin =>{
-            return (<><PostPin key={pin.id} pinId={pin.id} userName={pin.userName} filePath={pin.imageurl} pinContent={pin.note}/>
-                    {/* <Tags pinId={pin.id} userName={pin.username}/> */}
-                </>)
+    
 
-
-
-})
-
+{/* <Tags pinId={pin.id} userName={pin.username}/> */}
 
    return(
         <div className="homeDiv">
@@ -106,32 +78,24 @@ const Home = () => {
                         {/* <h1>Pintrest</h1> */}
                     </div>
 
-                    <div className="allLinks">
-                        <NavLink className="upload" exact to={'/upload'} component={CreatePinModal}> + </NavLink>
-                        {/* <NavLink className="picToSettings" exact to={'/settings'}>Pic Here</NavLink> */}
-                        {/* <NavLink className="logOut" exact to={"/"}>Log Out</NavLink> */}
+
+                    <div className="dropdown">
+                        <button class="circular ui icon button" className="create-btn"> D </button>
+                            <div className="add-dropdown-content">
+                                <Link className="style-create-board-dropdown" to={"/create-board"} > Create Board </Link>
+                                <Link className="style-create-pin-dropdown" to={"/create-pin"} > Create Pin </Link>
+                            </div>
                     </div>
+
                 </nav>
-            
-
-
-                <div className="userInfoContainer">
-                    {/* <div className="userInfo split">
-                        <EditProfile/>
-                    </div> */}
-                    <div className="feed split">
-                        {/* {searchResult()} */}
-                    </div>
-                </div>
+         
             </div>
 
 
-
-
-
-                    <div>
-                        {pinDisplay}
+                    <div className="col-md-3">
+                        <PinDisplay/>
                     </div>
+
              <div className="container-fluid d-flex justify-content center"> 
                 <div className="row">
 

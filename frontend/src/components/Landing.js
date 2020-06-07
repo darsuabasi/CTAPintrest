@@ -4,22 +4,6 @@ import '../css/Landing.css'
 
 
 const Landing = () => { 
-
-
-    // const onRedirectSignup = (e) => {
-    //     e.preventDefault();
-    //     window.open("https://www.google.com");
-
-
-    // }
-
-    // const onRedirectLogin = (e) => {
-    //     e.preventDefault();
-    //     window.open("https://www.google.com");
-
-    // }
-
-
     return(
         <div> 
             <div className="create-login-modal">           

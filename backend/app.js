@@ -20,11 +20,11 @@ const boardPinsRouter = require('./routes/Boards/NestedBoards/NestedPins');
 const PORT = process.env.PORT;
 const app = express();
 
+app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use(express.static(path.resolve(__dirname, "./public")));
 app.use('/api/users', usersRouter);
 app.use('/api/pins', pinsRouter);
 app.use('/api/pins/uploads', pinsRouter);
