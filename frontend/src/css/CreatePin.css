@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.create-pin-main-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.create-style {
+    width: 50%;
+    border: 6px solid #E60023;
+    display: flex;
+    float: left;
+}
+
+.create-pin-main-div div {
+    padding: 10px;
+
+}
+
+.drop-down-div {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.uploadImageDiv {
+    padding-left: 7rem;
+    grid-row-start: 2;
+    grid-row-end: span 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.note_for_pin_div {
+    border: none;
+}
+
+.title-div {
+    border: none;
+
+}
+
+
+.add-title-style {
+    border: none;
+    width: 24rem;
+    border: 3px solid #E60023;
+    border-radius: 1rem;
+}
+
+.about-div {
+    margin-top: 4rem;
+
+}
+
+.add-note-style {
+    border: none;
+    width: 24rem;
+    border: 3px solid #E60023;
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
+
+.link-div {
+    justify-content: end;
+    height: 8rem;
+    
+}
+
+.link-input-style {
+    border: none;
+    width: 24rem;
+    border: 3px solid #E60023;
+    border-radius: 1rem;
+    padding-top: 5rem;
+    margin-left: 1rem;
+}
+
+.online-pic-link {
+    border: none;
+    border: 3px solid #E60023;
+    border-radius: 1rem;
+    width: 50rem;
+}
+
+.create-pin-div {
+    border: none;
+}
+
+.board-select-options {
+    width: 10em;
+}
+
+.save-button-style {
+    margin-right: 1.3rem;
+}
+
+.main-note-for-pin-div {
+    height: 9rem;
+}
+
+.image-preview {
+    border-radius: 2rem;
+    width: 50rem;
+    height: 28rem;
+    display: flex;
+    float: left;
+    border: 3px solid #E60023;
+    border-radius: 1rem;
+    
+}
+
+.image-preview__image {
+    width: 100rem;
+    height: 40rem;
+    margin-top: 0.5rem;
+}
+
+.input-style-yeah {
+    width: 6.5rem;
+    margin-right: 2rem;
+}
+
+.save-button-style {
+    height: 2rem;
+    width: 4rem;
+    float: right;
+}

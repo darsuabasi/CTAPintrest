@@ -4,10 +4,6 @@ import { apiURL } from "../util/apiURL";
 import { useInput } from '../util/useInput';
 
 import { AuthContext } from '../providers/AuthProvider';
-import { useHistory } from 'react-router-dom';
-
-import DropArea from '../util/usePreview'
-
 import '../css/CreateBoard.css'
 
 
@@ -18,16 +14,10 @@ const CreateBoard = () => {
     let hashtagObj=useInput("")
     const boardName = useInput("");
     const boardDescription = useInput("");
-    const [board, setBoard] = useState([]);
-    const history = useHistory("");
 
-
-    const [data, setData] = useState(false);
-        const [err, setErr] = useState(false)
 
     // uploading image
     const [file, setFile] = useState({preview: "", raw: ""});
-    const [boardImage, setBoardImagePath] = useState('');
 
     useEffect(() => {
         const getUser = async () => {
@@ -58,67 +48,6 @@ const CreateBoard = () => {
             });
           }
     }
-    
-    
-    // const showPreview = (e) => {
-    //     e.preventDefault();
-    //     const {
-    //     dataTransfer: { files }
-    //     } = e;
-    //     console.log("Files: ", files);
-    //     const { length } = files;
-    //     const reader = new FileReader();
-    //     if (length === 0) {
-    //     return false;
-    //     }
-    //     const fileTypes = ["image/jpeg", "image/jpg", "image/png"];
-    //     const { size, type } = files[0];
-    //     setData(false);
-    //     if (!fileTypes.includes(type)) {
-    //     setErr("File format must be either png or jpg");
-    //     return false;
-    //     }
-    //     if (size / 1024 / 1024 > 2) {
-    //     setErr("File size exceeded the limit of 2MB");
-    //     return false;
-    //     }
-    //     setErr(false);
-
-    //     reader.readAsDataURL(files[0]);
-    //     reader.onload = loadEvt => {
-    //     setData(loadEvt.target.result);
-    //     };
-  
-    // const onDragStart = e => {
-    //     e.preventDefault();
-    // };
-    // const onDragOver = e => {
-    //     e.preventDefault();
-    // };
-            // let file = e.currentTarget.files[0];
-            // setBoardImagePath(file);
-            // let fileReader = new FileReader();
-            // fileReader.onloadend = () => {
-            //     setBoardImagePath(fileReader.result)
-            //     };
-            //     if(file) {
-            //             fileReader.readAsDataURL(file);
-            //         }
-            // let file = e.currentTarget.files[0];
-            // let fileReader = new FileReader();
-            // fileReader.onloadend = () => {
-            //   this.setState({ imageFile: file, imageUrl: fileReader.result });
-            // };
-            // if (file) {
-            //   fileReader.readAsDataURL(file);
-            // }
-
-
-
-            // 
-                // };
-
-
 
                 const handleNewBoards = async (e) => {
                     try {
