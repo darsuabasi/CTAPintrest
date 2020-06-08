@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS pintrest_db;
-CREATE DATABASE pintrest_db;
+-- DROP DATABASE IF EXISTS pintrest_db;
+-- CREATE DATABASE pintrest_db;
 
-\c pintrest_db;
+-- \c pintrest_db;
 
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Boards;
