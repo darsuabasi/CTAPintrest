@@ -12,7 +12,7 @@ const {
 } = require("../../queries/Users/users");
 
 
-users.get("/", getAllUsers);
+users.get("/", checkFirebaseToken, getAllUsers);
 users.post("/", createUser);
 
 users.get('/:id', getSingleUser);
