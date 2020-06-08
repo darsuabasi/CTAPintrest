@@ -1,0 +1,21 @@
+{
+  "name": "CTAPintrest",
+  "version": "1.0.0",
+  "description": "Pintrest mock-up",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend && npm install && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darsuabasi/CTAPintrest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darsuabasi/CTAPintrest/issues"
+  },
+  "homepage": "https://github.com/darsuabasi/CTAPintrest#readme"
+}

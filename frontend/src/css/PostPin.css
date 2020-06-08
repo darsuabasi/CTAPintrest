@@ -16,7 +16,7 @@
     text-align: center;
     align-items: center;
     height: 60vh;
-    width: 23vw;
+    width: 24vw;
 }
 
 
@@ -43,33 +43,34 @@
   
   .innerModal {
       background: #E60023;
-      width: 75%;
+      width: 100%;
       /* max-width: calc(100%-100px); */
       margin: auto;
       display: flex;
       flex-direction: row;
-      text-align: left;
-      z-index: 9000;
+      text-align: center;
+      z-index: 2000;
   }
 
   .pinImage img {
-      width: 25rem;
-      height: 35rem;
+      width: 30rem;
+      height: 30rem;
       object-fit: cover;
       border: 6px solid #E60023
   }
 
   .pinContent {
-      padding: 3rem;
-      /* z-index: 8000; */
-      border: 6px solid #E60023;
-      background-color: #ffffff;
+    padding: 2rem;
+    /* z-index: 8000; */
+    border: 6px solid #E60023;
+    background-color: #ffffff;
+    width: 25rem;
       
   }
 
   .closeButton {
       padding: 5px;
-      display: block;
+      /* display: block; */
       background-color: transparent;
 
   }
