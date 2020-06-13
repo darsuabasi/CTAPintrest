@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.aboutDiv {
+    /* display: flex; */
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+
+
+
+.holaDiv {
+   padding-top: 10rem;
+}
+
+.my-name-is {
+    /* display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center; */
+}
+
+.about-me {
+    /* display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    text-align: center;
+    align-items: center; */
+}
+
+.instagram {
+    color: #E60023;
+    font-weight: bold;
+}
+
+.twitter {
+    color: #E60023;
+    font-weight: bold;
+}
+
+.github {
+    color: #E60023;
+    font-weight: bold;
+}
+
+.instagram:hover {
+    color: #E60023;
+    text-decoration: none;
+}
+
+.twitter:hover {
+    color: #E60023;
+    text-decoration: none;
+}
+
+.github:hover {
+    color: #E60023;
+    text-decoration: none;
+}

@@ -16,43 +16,49 @@
 
 /* -------------Non-user view of Navbar------------- */
 .non-user-nav {
-    /* padding-top: 5rem; */
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 }
 
 .publicNavLogin {
-    color: #000000;
-    border-radius: 2rem;
-    background: url('https://api.iconify.design/ant-design:login-outlined.svg') no-repeat center center / contain;
-    color: transparent;
+    color: #E60023;
     background-size: 3rem;
+    border-radius: 2rem;
     border-radius: 0.5em;
-    width: 3rem;
+    width: 6rem;
     height: 3rem; 
-
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding-right: 2.5rem;
+    padding-top: 1rem;
+    
 }
 
 .publicNavSignup {
     color: #000000;
-    background: url('https://api.iconify.design/emojione-monotone:sign-of-the-horns.svg') no-repeat center center / contain;
-    color: transparent;
     background-size: 3rem;
     border-radius: 0.5em;
-    width: 3rem;
+    width: 6rem;
     height: 3rem; 
-
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding-top: 1rem;
+    
 }
 
 .publicNavLogin:hover {
+    background: url('https://api.iconify.design/ant-design:login-outlined.svg') no-repeat center center / contain;
     color: #000000;
     border-radius: 2rem;
     color: transparent;
     margin-top: -.8rem;
-
+    
 }
 
 .publicNavSignup:hover {
+    background: url('https://api.iconify.design/emojione-monotone:sign-of-the-horns.svg') no-repeat center center / contain;
     color: #000000;
     text-decoration: none;
     color: transparent;
@@ -66,9 +72,8 @@
     border-radius: 5em;
     width: 20rem;
     height: 3rem; 
-    margin-right: 35rem;
+    margin-right: 30rem;
 }
-
 
 
 .pintrestLogoLettersNon:hover {

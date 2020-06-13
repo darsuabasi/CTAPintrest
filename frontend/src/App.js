@@ -6,6 +6,7 @@ import Landing from './components/Landing'
 import Home from './components/home/Home';
 import Login from './components/Login'
 import Signup from './components/Signup'
+import AboutMe from './components/About';
 
 import Today from './components/Today';
 // import SearchBar from './components/SearchBar';
@@ -51,6 +52,10 @@ const App = () => {
 
             <Route exact path="/">
               <Landing/> 
+            </Route>
+
+            <Route exact path="/about">
+              <AboutMe/>
             </Route>
     
             <ProtectedRoute exact path="/user-feed">

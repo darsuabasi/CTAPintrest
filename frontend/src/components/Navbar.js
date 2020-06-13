@@ -53,9 +53,8 @@ const Navbar = (params) => {
                     {/* <div className="logo-pin">  */}
                     <NavLink className="pintrestLogoLettersNon" to={"/"}> P </NavLink>
                     {/* </div> */}
-                    <NavLink className="publicNavLink" to={"https://about.pinterest.com/en"}> About </NavLink>
-                    <NavLink className="publicNavLink" to={"https://business.pinterest.com/"}> Business</NavLink>
-                    <NavLink className="publicNavLink" to={"https://newsroom.pinterest.com/en"}> Blog </NavLink>
+                    <NavLink className="publicNavLink" to={"/about"}> About </NavLink>
+                    <NavLink className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink>
                     <NavLink className="publicNavLogin" id="login" to={"/login"}> Log in</NavLink>
                     <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign up</NavLink>
             
