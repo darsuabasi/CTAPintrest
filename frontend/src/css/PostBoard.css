@@ -1,0 +1,86 @@
+*   {
+    padding: 0;
+    margin: 0
+}
+
+.mainDivModal {
+    text-align: center;
+    align-items: center;
+    width: 23.5vw;
+}
+
+
+/* The Modal (background) */
+.mainDivModalBackground {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .showModal-true {
+      opacity: 70;
+      pointer-events: visible;
+  }
+  
+  .innerModal {
+      background: #E60023;
+      width: 60%;
+      margin: auto;
+      text-align: center;
+      z-index: 2000;
+      
+  }
+
+  .boardImage img {
+      display: flex;
+      width: 30rem;
+      height: 30rem;
+      object-fit: cover;
+      overflow: hidden;
+      width: 400px;
+      height: 500px;
+      position: absolute;
+      left: 0;
+      right:0;
+      top: 50%; 
+      -webkit-transform:translateY(-50%);
+      -moz-transform:translateY(-50%);
+      -ms-transform:translateY(-50%);
+      -o-transform:translateY(-50%);
+      transform:translateY(-50%);
+
+
+      width: 30rem;
+      height: 35rem;
+      object-fit: fill;
+      border: 3px solid #E60023;
+  }
+
+  /* .boardContent {
+    padding: 2rem;
+    border: 3px solid #E60023;
+    background-color: #ffffff;
+    width: 20rem;
+      
+  } */
+
+  /* .closeButton {
+      padding: 5px;
+      background-color: transparent;
+  } */
+
+
+  /* .styleContent {
+    color: #000000;
+  } */
+ 
+  
+

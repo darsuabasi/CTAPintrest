@@ -1,5 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
 .card {
-    width: 19rem;
+    width: 18rem;
     border-radius: 2rem!important;
     color: transparent!important;
 
@@ -10,7 +16,6 @@
 }
 
 .card-body {
-    /* padding: 3rem 0!important; */
     padding-top: 0.2rem;
     height: 4rem;
     border-radius: 2rem;
@@ -22,14 +27,16 @@
 }
 
 .card-img-top {
-    transform:scale(1);
-    border-radius: 2rem;
+    /* transform:scale(1); */
+    /* border-radius: 2rem; */
     transition:transform 0.5s ease;
-    /* color: transparent; */
+    width: 2rem;
+   
+    color: rgb(3, 3, 3);
 }
 
 .card-img-top:hover {
-    transform: scale(1.6);
+    transform: scale(1.5);
 }
 
 .overflow {

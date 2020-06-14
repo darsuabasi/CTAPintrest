@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import PostBoardModal from './PostBoardModal';
-// import PinList from './PinList'
-import '../css/PinList.css'
+import '../css/BoardList.css';
+
 import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
 

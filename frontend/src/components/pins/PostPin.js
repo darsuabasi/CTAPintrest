@@ -21,23 +21,20 @@ const PostPinModal = ({ imageurl, userName, pinContent, pinId }) => {
   
 
   return (
-    <div className="mainDivModal card text-center shadow"> 
-      <div title ={pinId} className={`mainDivModalBackground showModal-${modal}`}>
-        <div className="innerModal">
-          <div className="pinImage">
-            <img className="styleImage modal-content" alt="" src={imageurl} />
+    <div className="mainDivModal "> 
+        <div title ={pinId} className={`mainDivModalBackground showModal-${modal}`}>    
+          <div className="innerModal">
+              <div className="pinImage">
+                <img className="styleImage modal-content" alt="" src={imageurl} />
+              </div>
+              <div className="pinContent">
+                <button className="closeButton card-img-top" onClick={() => toggleModal()}> X </button>
+                <p className="styleContent">{pinContent}</p>
+                <h4 className="styleusername">{userName}</h4>
+              </div>
           </div>
-          <div className="pinContent">
-            <p className="styleContent">{pinContent}</p>
-            <h4 className="styleusername">{userName}</h4>
-
-            <button className="closeButton card-img-top" onClick={() => toggleModal()}> X </button>
-            <h1> hello world</h1>
-
-          </div>
-        </div>
         
-      </div>
+        </div>
       <div className="overflow">
         <img className="exitButton card-img-top" onClick={() => toggleModal()} src={imageurl} />
       </div>

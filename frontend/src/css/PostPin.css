@@ -1,23 +1,20 @@
-/* <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+* {
+  padding: 0;
+  margin: 0;
+}
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
-
-</div> */
 
 .mainDivModal {
     text-align: center;
     align-items: center;
-    height: 60vh;
-    width: 24vw;
+    height: 25rem;
+    text-align: center;
+    align-items: center;
+    width: 23.5vw;
+    border-radius: 2rem;
+    transition: opacity 0.4s ease-in-out;
 }
+
 
 
 /* The Modal (background) */
@@ -30,89 +27,69 @@
     right: 0;
     bottom: 0;
     top: 0;
-    width: 75%;
-    height: 20rem;
-    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
   }
 
   .showModal-true {
       opacity: 70;
-      pointer-events: visible;
+      pointer-events: none;
+      /* width: 100%; */
   }
   
   .innerModal {
-      background: #E60023;
-      width: 100%;
-      /* max-width: calc(100%-100px); */
+      width: 60%;
+      height: 35rem;
       margin: auto;
       display: flex;
       flex-direction: row;
       text-align: center;
       z-index: 2000;
+      border-radius: 2rem!important;
+
   }
 
   .pinImage img {
-      width: 30rem;
-      height: 30rem;
-      object-fit: cover;
-      border: 6px solid #E60023
+    width: 30rem;
+    height: 35rem;
+    object-fit: fill;
+    border-radius: 2rem!important;
   }
 
   .pinContent {
-    padding: 2rem;
-    /* z-index: 8000; */
-    border: 6px solid #E60023;
+    justify-content: center;
+    text-align: center;
     background-color: #ffffff;
-    width: 25rem;
-      
+    width: 100%;
+    border-radius: 2rem!important;
   }
 
   .closeButton {
+      display: flex;
+      float: right;
       padding: 5px;
-      /* display: block; */
       background-color: transparent;
-
+      width: 3rem!important;
+      justify-content: center;
+      text-align: center;
+      border: none;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
   }
-
 
   .styleContent {
     color: #000000;
-    /* text-align: center; */
+    margin-top: 8rem;
   }
-  /* Modal Content/Box */
-  
-  
-  /* The Close Button */
-  
-  
 
-
-  
-
-/* 
-  // Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
+  .modal-content {
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: .3rem;
+    outline: 0;
 }
+  
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-} */

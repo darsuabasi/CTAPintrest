@@ -11,6 +11,7 @@ import versaceShoe from '../../assets/versaceShoe.jpeg';
 import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
 import { Link } from 'react-router-dom';
 import PinDisplay from '../PinDisplay'
+import '../../css/Home.css'
 
 
 
@@ -92,7 +93,7 @@ const Home = () => {
             </div>
 
 
-                    <div className="col-md-3">
+                    <div className="main4Pins">
                         <PinDisplay/>
                     </div>
 

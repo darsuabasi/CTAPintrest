@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import PostPinModal from './pins/PostPin';
-// import PinList from './PinList'
 import '../css/PinList.css'
 
 
@@ -44,7 +43,7 @@ const PinDisplay = () => {
 
 
 
-
+    
    return (
        <div className="pinCard">
             {displayPin}
