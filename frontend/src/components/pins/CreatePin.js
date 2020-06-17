@@ -1,14 +1,10 @@
-import React, { useState, useContext, useEffect, /*useEffect*/ } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios'
 import { apiURL } from '../../util/apiURL';
-import { useHistory } from 'react-router-dom'
 import { useInput } from '../../util/useInput'
 import { AuthContext } from '../../providers/AuthProvider';
-
-
-
+import PopulateBoards from './PopulateBoards'
 import '../../css/CreatePin.css'
-// import PopulateBoards from './PopulateBoards'
 
 
 const CreatePin = () => {
@@ -19,10 +15,8 @@ const CreatePin = () => {
     const setTag = useInput("");
     const setNote = useInput("");
 
-
 // uploading image
     const [file, setFile] = useState({preview: "", raw: ""});
-
 
     useEffect(() => {
       const getUser = async () => {
@@ -72,7 +66,7 @@ const CreatePin = () => {
             }
             let newPin = await axios.post(`${API}/api/pins/`, formData, config);
             console.log(newPin.data)
-            alert(`New pin successfully created + saved to @boardName`)
+            alert(newPin.data.message)
             setTimeout(function() {
               window.location = "/user-feed";
             },1000) 
@@ -80,8 +74,6 @@ const CreatePin = () => {
             console.log(err)
           }
         }
-        
-
 //  ----------------------------------------------------------------------------------------
 
    
@@ -100,21 +92,16 @@ const CreatePin = () => {
     return (
         <div className="create-pin-div"> 
 
+            <div>
+                <h2 className="welcome-to-create-pin"> Create your pins here</h2>
+            </div>
 
 
             <form onSubmit={handleNewPins} className="create-pin-main-div"> 
                 <div className="drop-down-div">
-                    {/* drop down bar for Boards with save button */}
-                    {/* <select className="board-select-options" onChange={handleBoards}>
-                            <option defaultValue="Select"> Select </option>
-                            {selectOptions}
-                    </select> */}
-                    {/* <PopulateBoards/> */}
                 </div>
 
-                <div className="uploadImageDiv"> 
-                    {/* <span className="style-the-create"> Create A Pin </span>  */}
-
+                <div className="uploadImageDiv">
 
                     <div className="image-preview" id="imagePreview"> 
                       <button className="save-button-style" type="submit"> Save </button>
@@ -130,22 +117,22 @@ const CreatePin = () => {
 
 
                 <div className="main-note-for-pin-div"> 
-                    <div className="title-div"> 
-                        <input className="add-title-style" type="text" placeholder="Add your title" disabled/> 
+                    <div className="choose-board"> 
+                        <PopulateBoards/>
                     </div>
 
                     <div className="user-display">
                         {/* {user} */}
                     </div>
 
-                    <div className="about-div"> 
-                        <input className="add-note-style" type="text" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
+                    <div className="link-div">
+                        <input className="link-input-style" placeholder="Which board is this going into?" {...setBoard} />  
                     </div>
-                </div>
 
+                    <div className="about-div"> 
+                        <textarea rows="5" cols="30" className="add-note-style" type="textarea" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
+                    </div>
 
-                <div className="link-div">
-                    <input className="link-input-style" placeholder="Which board is this going into?" {...setBoard} />  
                 </div>
 
 

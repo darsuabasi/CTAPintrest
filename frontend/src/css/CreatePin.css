@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+.welcome-to-create-pin {
+    height: 3rem;
+    margin-left: 2rem;
+}
+
 .create-pin-main-div {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -21,7 +26,6 @@
 
 .create-pin-main-div div {
     padding: 10px;
-
 }
 
 .drop-down-div {
@@ -45,8 +49,7 @@
 
 
 .about-div {
-    /* margin-top: 4rem; */
-
+    margin-left: 1rem;
 }
 
 .add-note-style {
@@ -60,7 +63,6 @@
 .link-div {
     justify-content: end;
     height: 8rem;
-    
 }
 
 .link-input-style {
@@ -80,16 +82,9 @@
     width: 50rem;
 }
 
-.create-pin-div {
-    border: none;
-}
 
 .board-select-options {
     width: 10em;
-}
-
-.save-button-style {
-    margin-right: 1.3rem;
 }
 
 .main-note-for-pin-div {
@@ -104,7 +99,6 @@
     float: left;
     border: 3px solid #E60023;
     border-radius: 1rem;
-    
 }
 
 .image-preview__image {
@@ -122,4 +116,5 @@
     height: 2rem;
     width: 4rem;
     float: right;
+    margin-right: 1.3rem;
 }

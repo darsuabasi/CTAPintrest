@@ -2,18 +2,17 @@ import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { apiURL } from "../util/apiURL";
 import { useInput } from '../util/useInput';
-
 import { AuthContext } from '../providers/AuthProvider';
 import '../css/CreateBoard.css'
 
 
 const CreateBoard = () => {
-    const [userId, setUserId] = useState("");
     const { currentUser, token } = useContext(AuthContext);
     const API = apiURL();
-    let hashtagObj=useInput("")
+    const [userId, setUserId] = useState("");
     const boardName = useInput("");
     const boardDescription = useInput("");
+    let hashtagObj=useInput("")
 
 
     // uploading image
@@ -87,30 +86,46 @@ const CreateBoard = () => {
     }
 
     return (
-        <div className="board-page">
-            <div className="create-board-form">
-                    <div className="image-preview" id="imagePreview">  
-                        <span className="image-preview__default-text"> Create A Board </span> 
-                        <img src="" alt="Image Preview" className="image-preview__image" src={file.preview}/>
+        <div className="create-board-div">
+
+            <div>
+                <h2 className="welcome-to-create-board"> Create your boards here</h2>
+            </div>
+
+
+
+                <form onSubmit={handleNewBoards} className="create-board-main-div">
+                    <div>
+                        </div>
+
+                        <div className="uploadImageDiv"> 
+                            <div className="image-preview2" id="imagePreview">  
+                                <button className="save-button-style" type="submit"> Save </button>
+                                <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
+                                <img src="" alt="Image Preview" className="image-preview__image" src={file.preview}/>
+                                {/* <span className="image-preview__default-text"> Drag and drop or click to upload </span>  */}
+                            </div>
+                        </div>
+
+
+
+
+                <div className="main-note-for-board-div">
+                    <div className="another-div-wow">
+                        <div className="style-for-name-div">
+                            <input className="board-name-place" placeholder="Board name" {...boardName}/>
+                        </div>
+                    
+                        <div className="descrip-div">
+                            <textarea className="board-description-place" placeholder="Board description" {...boardDescription}/>
+                        </div>
+
                     </div>
-                <form onSubmit={handleNewBoards} className="create-board-form">
-
-                    <input className="board-name-place" placeholder="Board name" {...boardName}/>
-                    <br/>
-                    <textarea className="board-description-place" placeholder="Board description" {...boardDescription}/>
-
-
-                    <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
-
-                <div>
-                    {/* <img src={files} alt="Preview" className="image-preview__image"/>  */}
-                    {/* {images} */}
                 </div> 
-                    <button type="submit"> Save </button>
-                    <br/>
+                   
                     
                 </form>
-            </div>
+            {/* </div> */}
 
 
 
