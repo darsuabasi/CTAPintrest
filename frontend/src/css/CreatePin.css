@@ -43,21 +43,9 @@
     border: none;
 }
 
-.title-div {
-    border: none;
-
-}
-
-
-.add-title-style {
-    border: none;
-    width: 24rem;
-    border: 3px solid #E60023;
-    border-radius: 1rem;
-}
 
 .about-div {
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
 
 }
 
@@ -82,6 +70,7 @@
     border-radius: 1rem;
     padding-top: 5rem;
     margin-left: 1rem;
+    margin-top: 2rem;
 }
 
 .online-pic-link {
@@ -119,8 +108,8 @@
 }
 
 .image-preview__image {
-    width: 100rem;
-    height: 40rem;
+    width: 27rem;
+    height: 25rem;
     margin-top: 0.5rem;
 }
 
