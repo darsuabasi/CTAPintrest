@@ -12,8 +12,8 @@ const pinsRouter = require('./routes/Pins/pins')
 const boardsRouter = require('./routes/Boards/boards')
 const likesRouter = require('./routes/Likes/likes');
 const tagsRouter = require('./routes/Tags/tags');
-const userPinRouter = require('./routes/Users/NestedUsersRouters/nestedPins');
-const userBoardsRouter = require('./routes/Users/NestedUsersRouters/nestedBoards');
+// const userPinRouter = require('./routes/Users/NestedUsersRouters/nestedPins');
+// const userBoardsRouter = require('./routes/Users/NestedUsersRouters/nestedBoards');
 const pinCommentsRouter = require('./routes/Pins/NestedPins/NestedComments');
 const boardPinsRouter = require('./routes/Boards/NestedBoards/NestedPins');
 
@@ -31,8 +31,8 @@ app.use('/api/pins/uploads', pinsRouter);
 app.use('/api/boards', boardsRouter);
 app.use('/api/likes', likesRouter);
 app.use('/api/tags', tagsRouter);
-app.use('/api/users/pins', userPinRouter);
-app.use('/api/users/boards', userBoardsRouter);
+// app.use('/api/users/pins', userPinRouter);
+// app.use('/api/users/:id/', userBoardsRouter);
 app.use('/api/pins/comments', pinCommentsRouter);
 app.use('/api/boards/pins', boardPinsRouter);
 

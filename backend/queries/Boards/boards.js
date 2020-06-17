@@ -35,31 +35,6 @@ const createBoard = async (req, res, next) => {
     };
 
 
-//         })
-//         res.status(200).json({
-//             status: "Success",
-//             // payload: board_image, 
-//             message: "Yessir, your new Board was created"
-//         });
-//     } catch(err) {
-//         res.status(400).json({
-//             status: "Error",
-//             message: "Board could not be created at this time.",
-//         })
-//         next(err)
-//     }
-// }
-
-
-
-
-
-
-
-    //    const newBoard = await db.one(
-    //        `INSERT INTO Boards(board_name, board_description, creator_id, board_image) VALUES('${req.body.board_name}', '${req.body.board_description}', '${req.body.creator_id}', '${req.body.board_image}') RETURNING *`
-    //    );
-    
  
 
 const deleteBoard = async (req, res, next) => {
@@ -162,7 +137,7 @@ const getSingleBoard = async (req, res, next) => {
 const getAllPinsForSingleBoard = async (req, res, next) => {
     try {
         let allPinsForBoard = await db.any(`SELECT * FROM Pins WHERE board_id = $1`, [req.params.board_id]);
-        resr.status(200).json({
+        res.status(200).json({
             status: "Success",
             messgae: "Aye, aye, aye you're now viewing all pins for this particular board",
             payload: {
@@ -180,6 +155,33 @@ const getAllPinsForSingleBoard = async (req, res, next) => {
 }
 
 
+// const getAllBoardsByUser = async (req, res, next) => {
+//     try {
+//         const { id } = req.params
+//         let allBoards = await db.any(`SELECT Users.username, Boards.* 
+//                                     FROM Users 
+//                                     LEFT JOIN Boards ON Users.id = Boards.creator_id
+//                                     WHERE creator_id= $1`, [id])
+//         res.status(200).json({
+//             status: "Succes",
+//             message: "Yip Yip! You're checking out all boards for this specific user",
+//             payload: {
+//                 owner: id,
+//                 allBoards
+//             }
+//         })
+
+//     } catch(err) {
+//         res.status(400).json({
+//             status: "Error",
+//             message: "Idk but you can't see all their boards. Maybe you're blocked lol"
+//         })
+//         next(err)
+//     }
+
+// }
 
 
-module.exports = { createBoard, deleteBoard, getAllBoards, updateBoard, getBoardsByTag, getSingleBoard, /*getAllBoardsByUser*/ getAllPinsForSingleBoard }
+
+
+module.exports = { createBoard, deleteBoard, getAllBoards, updateBoard, getBoardsByTag, getSingleBoard, getAllPinsForSingleBoard /*, getAllBoardsByUser*/ }

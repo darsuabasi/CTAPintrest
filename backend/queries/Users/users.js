@@ -102,7 +102,7 @@ const getAllUserPins = async (req, res, next) => {
         let pinsByUser = await db.any('SELECT * FROM Pins WHERE creator_id = $1', [id])
         res.status(200).json({
             status: "Succes",
-            message: "Yip Yip! You're checking out all pins from " + creator_id,
+            message: "Yip Yip! You're checking out all pins from " + id,
             payload: pinsByUser
         })
     } catch(err) {
@@ -197,12 +197,16 @@ const editUserPin = async (req, res, next) => {
 
 const getAllBoardsByUser = async (req, res, next) => {
     try {
-        let allBoards = await db.any(`SELECT * FROM Boards WHERE creator_id= $1`, [req.params.creator_id])
+        const { id } = req.params
+        let allBoards = await db.any(`SELECT Users.username, Boards.* 
+                                    FROM Users 
+                                    LEFT JOIN Boards ON Users.id = Boards.creator_id
+                                    WHERE creator_id= $1`, [id])
         res.status(200).json({
-            status: "Succes",
-            message: "Yip Yip! You're checking out all boards for this user",
+            status: "Success",
+            message: "Yip Yip! You're checking out all boards for this specific user",
             payload: {
-                owner: req.params.creator_id,
+                owner: id,
                 allBoards
             }
         })

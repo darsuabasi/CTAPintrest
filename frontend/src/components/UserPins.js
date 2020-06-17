@@ -5,6 +5,7 @@ import { apiURL } from '../util/apiURL';
 import '../css/UserProfile.css'
 import { Link, useHistory } from 'react-router-dom';
 import { useInput } from '../util/useInput';
+import UsersPinDisplay from './UsersPinDisplay'
 
 const UserPins = () => {
     const { currentUser, token } = useContext(AuthContext);
@@ -39,7 +40,7 @@ const UserPins = () => {
             setFirstName(res.data.getUser.first_name);
             setLastName(res.data.getUser.last_name);
             setBio(res.data.getUser.bio); 
-            debugger
+            // debugger
             } catch (err) {
                 console.log(err.message)
             }
@@ -187,7 +188,7 @@ const UserPins = () => {
                     </div>
 
                     <div className="pin-card">
-                        {/* displayPins */}
+                        <UsersPinDisplay/>
                     </div>
 
                     {/* <Boards/> if setBoards then display boards but if setPins, display Pins<Pins/> */}

@@ -26,7 +26,7 @@ const UserProfile = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                // debugger
+                debugger
             let res = await axios({
                 method: "get",
                 url: `${API}/api/users/${currentUser.uid}`,
@@ -41,7 +41,6 @@ const UserProfile = () => {
             setFirstName(res.data.getUser.first_name);
             setLastName(res.data.getUser.last_name);
             setBio(res.data.getUser.bio); 
-            debugger
             } catch (err) {
                 console.log(err.message)
             }

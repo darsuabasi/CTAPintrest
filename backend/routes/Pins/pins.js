@@ -23,6 +23,6 @@ pins.get('/:id', getSinglePin);
 pins.get('/tag/:id', getPinsByTag);
 pins.post('/', createPin);
 pins.delete('/:id', deletePin);
-pins.patch('/:id', updatePin);
+pins.patch('/:id', checkFirebaseToken, updatePin);
 
 module.exports = pins;

@@ -18,7 +18,7 @@ const createPin = async (req, res, next) => {
                     res.status(200).json({
                       status: "ok",
                       post: done,
-                      message: "Yessir, pin created"
+                      message: `Yessir, pin created and is now added to board ${board_id} `
             })
                     });
               } catch (err) {

@@ -10,7 +10,7 @@ import tropicalFit from '../../assets/tropicalFit.jpeg';
 import versaceShoe from '../../assets/versaceShoe.jpeg';
 import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
 import { Link } from 'react-router-dom';
-import PinDisplay from '../PinDisplay'
+import AllPinsDisplay from '../AllPinsDisplay'
 import '../../css/Home.css'
 
 
@@ -94,7 +94,7 @@ const Home = () => {
 
 
                     <div className="main4Pins">
-                        <PinDisplay/>
+                        <AllPinsDisplay/>
                     </div>
 
              <div className="container-fluid d-flex justify-content center"> 

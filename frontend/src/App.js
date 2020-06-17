@@ -16,7 +16,7 @@ import Today from './components/Today';
 // import Accounts from './components/Accounts';
 // import Error from './components/Error';
 
-import Boards from './components/Boards'
+import UserBoards from './components/UserBoards'
 import UserPins from './components/UserPins'
 
 import CreatePin from './components/pins/CreatePin'
@@ -73,7 +73,7 @@ const App = () => {
 
           {/* <Switch> */}
             <ProtectedRoute exact path="/user-profile/boards">
-              <Boards/>
+              <UserBoards/>
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/user-profile/pins">

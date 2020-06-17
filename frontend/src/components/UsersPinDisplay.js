@@ -3,24 +3,22 @@ import axios from 'axios';
 import PostPinModal from './pins/PostPin';
 import '../css/PinList.css'
 
-
 import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
 
 
-const PinDisplay = () => {
-
+const UsersPinDisplay = () => {
     const API = apiURL(); 
     const [pins, setPins] = useState([]);
-    const { token } = useContext(AuthContext);
+    const { currentUser, token } = useContext(AuthContext);
 
 
     useEffect(() => {
-        const fetchPins = async () => {
+        const fetchPinsBySingleUser = async () => {
             try {
                 let res = await axios({
                     method: "get",
-                    url: `${API}/api/pins`,
+                    url: `${API}/api/users/${currentUser.uid}/pins`,
                     headers: {
                         AuthToken: token,
                     }
@@ -32,18 +30,13 @@ const PinDisplay = () => {
                 console.log(err.message);
                 }
             };
-            fetchPins();
-
+            fetchPinsBySingleUser();
     }, [])
 
     const displayPin = pins.map(pin => {
         return ( <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} /> )
     })
 
-
-
-
-    
    return (
        <div className="pinCard">
             {displayPin}
@@ -52,5 +45,5 @@ const PinDisplay = () => {
 
 }
 
-export default PinDisplay;
+export default UsersPinDisplay;
 

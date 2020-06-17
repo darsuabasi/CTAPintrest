@@ -8,8 +8,8 @@ const {
     editUserPin,
 } = require("../../../queries/Users/users")
 
-userPins.get("/:id", getAllUserPins);
-userPins.post("/:id", createUserPin);
+userPins.get("/", getAllUserPins);
+userPins.post("/", createUserPin);
 userPins.get("/:id/pins/:pin_id", getSinglePinByUser);
 userPins.delete("/:id/pins/:pin_id", deleteUserPin);
 userPins.patch("/:id/pins/:pin_id", editUserPin)
