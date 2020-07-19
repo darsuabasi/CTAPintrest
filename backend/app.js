@@ -4,8 +4,6 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 
-// const fileUpload = require('express-fileupload')
-// const bootstrap = require('bootstrap');
 
 const usersRouter = require('./routes/Users/users')
 const pinsRouter = require('./routes/Pins/pins')

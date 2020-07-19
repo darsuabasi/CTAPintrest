@@ -16,7 +16,7 @@ CREATE TABLE Users (
     first_name VARCHAR,
     last_name VARCHAR,
     bio TEXT,
-    created_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     -- counts TEXT,
     profilePic VARCHAR,	
     email VARCHAR UNIQUE
@@ -30,7 +30,7 @@ CREATE TABLE Boards (
     creator_id VARCHAR REFERENCES Users(id) ON DELETE CASCADE,
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     -- counts_data VARCHAR,
-    board_image VARCHAR,
+    board_image VARCHAR
     -- pin_amount INT
 );
 

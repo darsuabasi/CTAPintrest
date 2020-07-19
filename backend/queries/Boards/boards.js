@@ -10,7 +10,6 @@ const createBoard = async (req, res, next) => {
         console.log("Yurrr upload that");
         const { board_name, board_description, creator_id, created_date } = req.body;
         let board_image = "/uploads/" + req.file.filename;
-        // console.log(req.file)
         db.one(
             `INSERT INTO Boards(board_name, board_description, creator_id, created_date, board_image) VALUES( $1, $2, $3, $4, $5) RETURNING *`,
             [board_name, board_description, creator_id, created_date, board_image])
@@ -60,7 +59,7 @@ const deleteBoard = async (req, res, next) => {
 
 const getAllBoards =  async (req, res, next) => {
     try {
-        let allTheBoards = await db.any('SELECT * FROM Boards');
+        const allTheBoards = await db.any('SELECT * FROM Boards ORDER BY time_stamp DESC');
         res.status(200).json({
             status: "Success",
             message: "All boards are now showing",

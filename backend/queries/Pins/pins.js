@@ -35,31 +35,6 @@ const createPin = async (req, res, next) => {
 
 
 
-
-//             })
-//         res.status(200).json({
-//             status: "Success",
-//             payload: newPin + imageUrl, 
-//             message: "Yessir, pin created"
-//         });
-//     } catch(err) {
-//         res.status(400).json({
-//             status: "Error",
-//             message: "Pin could not be created at this time.",
-//         })
-//         next(err)
-//     }
-// }
-
-
-
-        // const { imageUrl, creator_id, note, time_stamp } = req.body;
-        // let imageUrl = "/uploads/" + req.file.filename;
-        // "INSERT INTO Pins (id, creator_id, note) VALUES( ${id}, ${creator_id}, ${note}", 
-        // req.body
-    //    );
-
-
 const deletePin = async (req, res, next) => {
     try {
         let { id } = req.params;
@@ -83,7 +58,7 @@ const deletePin = async (req, res, next) => {
 
 const getAllPins = async (req, res, next) => {
     try {
-        const allThePins = await db.any("SELECT * FROM Pins ORDER BY time_stamp DESC");
+        const allThePins = await db.any('SELECT * FROM Pins ORDER BY time_stamp DESC');
         res.status(200).json({
             status: "Success",
             message: "All pins are now showing",

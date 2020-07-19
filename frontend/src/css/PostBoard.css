@@ -11,58 +11,80 @@
 
 
 /* The Modal (background) */
-.mainDivModalBackground {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease-in-out;
+
+
+.showModal-true {
+    opacity: 70;
+    pointer-events: visible;
+  }
+
+.boardImage img {
+    display: flex;
+    width: 30rem;
+      /* height: 5rem; */
+    object-fit: cover;
+    overflow: hidden;
+    width: 400px;
+    height: 500px;
     position: absolute;
     left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
+    right:0;
+    top: 50%; 
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    transform:translateY(-50%);
+    width: 30rem;
+    height: 35rem;
+    object-fit: fill;
+    border: 3px solid #E60023;
   }
 
-  .showModal-true {
-      opacity: 70;
-      pointer-events: visible;
+.style-board-name {
+    margin-top: 2.5rem;
+    height: 1.5rem;
+    text-transform: capitalize;
+    text-decoration: solid 3px;
+    font-weight: 700;
+  }
+
+
+.style-board-description {
+    height: 2rem;
+    margin-top: -0.5rem;
+  }
+
+
+  .delete-board-btn {
+    display: flex;
+    float: right;
+    margin-left: -3rem;
+    margin-right: 1.5rem;
+    box-shadow:inset 0px 1px 0px 0px #f29c93;
+	background-color:#E60023;;
+	border-radius:10px;
+	border:1px solid #d83526;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:3px 14px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #c73a30;
+    margin-top: 0.25rem;
   }
   
-  .innerModal {
-      background: #E60023;
-      width: 60%;
-      margin: auto;
-      text-align: center;
-      z-index: 2000;
-      
-  }
+  .delete-board-btn:hover {
+	background-color:#ce0100;
+}
 
-  .boardImage img {
-      display: flex;
-      width: 30rem;
-      height: 30rem;
-      object-fit: cover;
-      overflow: hidden;
-      width: 400px;
-      height: 500px;
-      position: absolute;
-      left: 0;
-      right:0;
-      top: 50%; 
-      -webkit-transform:translateY(-50%);
-      -moz-transform:translateY(-50%);
-      -ms-transform:translateY(-50%);
-      -o-transform:translateY(-50%);
-      transform:translateY(-50%);
-
-
-      width: 30rem;
-      height: 35rem;
-      object-fit: fill;
-      border: 3px solid #E60023;
-  }
+.delete-board-btn:active {
+	position:relative;
+	top:1px;
+}
 
   /* .boardContent {
     padding: 2rem;
