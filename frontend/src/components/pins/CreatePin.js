@@ -11,7 +11,7 @@ const CreatePin = () => {
     const { currentUser, token } = useContext(AuthContext);
     const API = apiURL();
     const [userId, setUserId] = useState("");
-    const setBoard = useInput("");
+    const [boardId, setBoardId] = useState("");
     const setTag = useInput("");
     const setNote = useInput("");
 
@@ -36,6 +36,8 @@ const CreatePin = () => {
       getUser(); 
   }, [])
 
+//   refactor this bc we already have current user id 
+
 
   const onSelectImage = (e) => {
     if (e.target.files.length) {
@@ -56,7 +58,7 @@ const CreatePin = () => {
             formData.append("myImage", file.raw);
             formData.append("file", file.preview);
             formData.append("creator_id", userId);
-            formData.append("board_id", setBoard.value)
+            formData.append("board_id", boardId)
             formData.append("note", setNote.value);
             debugger
             const config = {
@@ -74,6 +76,8 @@ const CreatePin = () => {
             console.log(err)
           }
         }
+
+        // use history
 //  ----------------------------------------------------------------------------------------
 
    
@@ -118,16 +122,17 @@ const CreatePin = () => {
 
                 <div className="main-note-for-pin-div"> 
                     <div className="choose-board"> 
-                        <PopulateBoards/>
+                        <PopulateBoards boardId={boardId} setBoardId={setBoardId}/>
+                        {/* passing the props child/parent */}
                     </div>
 
                     <div className="user-display">
                         {/* {user} */}
                     </div>
 
-                    <div className="link-div">
+                    {/* <div className="link-div">
                         <input className="link-input-style" placeholder="Which board is this going into?" {...setBoard} />  
-                    </div>
+                    </div> */}
 
                     <div className="about-div"> 
                         <textarea rows="5" cols="30" className="add-note-style" type="textarea" placeholder="Tell everyone what your Pin is about" {...setNote}/> 

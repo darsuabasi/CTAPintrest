@@ -2,8 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
 import { apiURL } from '../util/apiURL';
-// import Modal from '../components/modal/Modal'
-import '../css/UserProfile.css'
+import '../css/UserBoardProfile.css'
 import { Link, useHistory } from 'react-router-dom';
 import { useInput } from '../util/useInput';
 import BoardDisplay from './BoardDisplay'
