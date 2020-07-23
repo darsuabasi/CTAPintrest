@@ -98,7 +98,7 @@ const Home = () => {
                     </div>
 
              <div className="container-fluid d-flex justify-content center"> 
-                <div className="row">
+                {/* <div className="row">
 
                     <div className="col-md-3">
                         <SingleHomePin imgsrc={gucciDenim} title="Gucci Denim" username="lovelyTelly" />
@@ -133,7 +133,7 @@ const Home = () => {
                         <SingleHomePin imgsrc={tropicalFit}/>
                     </div>
 
-                </div>
+                </div> */}
             </div>   
         </div>
     )

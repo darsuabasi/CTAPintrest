@@ -10,7 +10,7 @@ import { AuthContext } from '../providers/AuthProvider';
 const AllPinsDisplay = () => {
     const API = apiURL(); 
     const [pins, setPins] = useState([]);
-    const { currentUser, token } = useContext(AuthContext);
+    const { token } = useContext(AuthContext);
 
 
     useEffect(() => {

@@ -12,7 +12,7 @@ const likesRouter = require('./routes/Likes/likes');
 const tagsRouter = require('./routes/Tags/tags');
 // const userPinRouter = require('./routes/Users/NestedUsersRouters/nestedPins');
 // const userBoardsRouter = require('./routes/Users/NestedUsersRouters/nestedBoards');
-const pinCommentsRouter = require('./routes/Pins/NestedPins/NestedComments');
+const pinCommentsRouter = require('./routes/Pins/Comments/NestedComments');
 const boardPinsRouter = require('./routes/Boards/NestedBoards/NestedPins');
 
 const PORT = process.env.PORT;
