@@ -1,7 +1,6 @@
 const db = require('../../db/index');
 const upload = require("./imageUploader")
 
-
 const createBoard = async (req, res, next) => {
    try {
     console.log("Uhm create ya board");
@@ -18,7 +17,7 @@ const createBoard = async (req, res, next) => {
                 res.status(200).json({
                   status: "ok",
                   post: done,
-                  message: "Yessir, your new Board was created"
+                  message: "Yessir, your new board was created"
         })
                 });
           } catch (err) {

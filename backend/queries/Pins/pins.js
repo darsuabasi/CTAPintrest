@@ -1,7 +1,6 @@
 const db = require('../../db/index');
 const upload = require("./imageUploader")
 
-
 const createPin = async (req, res, next) => {
     try {
         console.log("Uhm create ya pin");

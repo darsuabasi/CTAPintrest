@@ -1,23 +1,57 @@
 const db = require("../../db/index");
+const upload = require("./imageUploader")
 
 const createUser = async (req, res, next) => {
     try {
-        let newUser = await db.one(
-            "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES(${id}, ${username}, ${first_name}, ${last_name}, ${bio}, ${profilePic}, ${email}) RETURNING *",
-            req.body
-        );
-        res.status(200).json({
-            message: "Ayeee new user created",
-            payload: newUser
-        });
-    } catch(err) {
-        res.status(400).json({
-            status: "Error",
-            message: "Yikes, account could not be created at this time."
+        console.log("Create your user w/ picture upload");
+        upload(req, res, err => {
+            try { 
+            console.log("Yurrr upload that");
+            const { username, first_name, last_name, bio, email} = req.body;
+            let profilePic = "/uploads/" + req.file.filename;
+            db.one(
+            "INSERT INTO Users (username, first_name, last_name, bio, profilePic, email) VALUES( $1, $2, $3, $4, $5, $6) RETURNING *",
+            [username, first_name, last_name, bio, profilePic, email])
+            .then(done => {
+                console.log("then");
+                res.status(200).json({
+                  status: "ok",
+                  post: done,
+                  message: 'Yessir, new user created'
         })
-        next(err);
-    }
-};
+                });
+          } catch (err) {
+            console.log(err)
+            next(err)
+            }
+      });
+    
+      } catch (error) {
+        console.log(error);
+        next(error);
+        }
+    };
+
+
+    // const createUser = async (req, res, next) => {
+    //     try {
+    //         let newUser = await db.one(
+    //             "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES(${id}, ${username}, ${first_name}, ${last_name}, ${bio}, ${profilePic}, ${email}) RETURNING *",
+    //             req.body
+    //         );
+    //         res.status(200).json({
+    //             message: "Ayeee new user created",
+    //             payload: newUser
+    //         });
+    //     } catch(err) {
+    //         res.status(400).json({
+    //             status: "Error",
+    //             message: "Yikes, account could not be created at this time."
+    //         })
+    //         next(err);
+    //     }
+    // };
+
 
 const getAllUsers = async (req, res, next) => {
     try {
