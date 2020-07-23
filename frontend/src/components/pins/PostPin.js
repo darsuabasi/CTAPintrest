@@ -3,7 +3,7 @@ import '../../css/PostPin.css';
 // import Likes from '../Likes';
 
 
-const PostPinModal = ({ imageurl, userName, pinContent, pinId }) => {
+const PostPinModal = ({ imageurl, userName, creator_id, pinContent, pinId }) => {
 
   const [modal, setModal] = useState(false);
 

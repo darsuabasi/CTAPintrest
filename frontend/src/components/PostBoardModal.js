@@ -12,7 +12,7 @@ const PostBoardModal = ({ board_name, imageurl, creator_id, board_description, b
   const deleteBoard = async (e) => {
     try {
       e.preventDefault();
-      let res = await axios.delete(`${API}/api/boards/${boardId}`);
+      await axios.delete(`${API}/api/boards/${boardId}`);
       window.location.reload();
 
     } catch (err) {
@@ -24,21 +24,13 @@ const PostBoardModal = ({ board_name, imageurl, creator_id, board_description, b
   return (
     <div className="mainDivModal card text-center shadow"> 
       <div title ={boardId} className="mainDivModalBackground showModal">
-        {/* <div className="innerModal">
-          <div className="boardImage">
-          </div>
-          <div className="boardContent">
-
-            <h1> hello world</h1>
-          </div>
-        </div> */}
         
       </div>
       <div className="overflow">
         <button className="delete-board-btn" onClick={deleteBoard}> Delete </button>
         <p className="style-board-name">{board_name} </p>
         <p className="style-board-description">{board_description}</p>
-        <img className="exitButton card-img-top" src={imageurl} />
+        <img className="exitButton card-img-top" alt="imgurl" src={imageurl} />
         {/* <h4 className="styleusername">{creator_id}</h4> */}
       </div>
       
