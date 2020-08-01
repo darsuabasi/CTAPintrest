@@ -3,10 +3,10 @@ const upload = require("./imageUploader")
 
 const createPin = async (req, res, next) => {
     try {
-        console.log("Uhm create ya pin");
+        console.log("Create your pin");
         upload(req, res, err => {
             try {
-            console.log("Yurrr upload that");
+            console.log("Upload your photo");
             const { creator_id, board_id, note } = req.body;
             let imageUrl = "/uploads/" + req.file.filename;
             db.one(
@@ -17,7 +17,7 @@ const createPin = async (req, res, next) => {
                     res.status(200).json({
                       status: "ok",
                       post: done,
-                      message: `Yessir, pin created and is now added to board ${board_id} `
+                      message: `Yessir, the pin was created and is now added to board ${board_id} `
             })
                     });
               } catch (err) {
@@ -66,7 +66,7 @@ const getAllPins = async (req, res, next) => {
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Sorry dweeb, pins aren't showing."
+            message: "Sorry, pins aren't showing."
         })
         next(err)
     }
@@ -83,7 +83,7 @@ const updatePin = async (req, res, next) => {
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Damn, couldn't update the pin.. try again later"
+            message: "Could not update the pin.. try again later"
         })
         next(err)
     }
@@ -94,7 +94,7 @@ const getPinsByTag = async (req, res, next) => {
         let postWithHashtag = await db.any(`SELECT Pins.id, Pins.note, FROM pins JOIN hashtags ON hashtags.pin_id = pins.id LEFT JOIN Users ON Pins.creator_id = Users.id WHERE TAG_NAME = $1 ORDER BY time_stamp DESC`, [req.params.hashtag]);
         res.status(200).json({
             status: "Succes",
-            message: "Now viewing a post via hashtag",
+            message: "Now viewing a post based on hashtags",
             payload: postWithHashtag
         })
     } catch (err) {
@@ -112,7 +112,7 @@ const getSinglePin = async (req, res, next) => {
         let soloPin = await db.one('SELECT * FROM Pins WHERE id= $1', [req.params.id]);
         res.status(200).json({
             status: "Success",
-            message: "Yo, big ups! You can now see this single pin",
+            message: "Yo! You can now see this single pin.",
             payload: soloPin
         })
 
@@ -150,13 +150,13 @@ const leftJoinPinsUsers = async (req, res, next) =>{
         let leftJoin = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.note, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
         res.status(200).json({
             status: 'Success',
-            message: 'Ayeeee left join was a success',
+            message: 'Left join was a success, you are now viewing all pins by the specifc user',
             payload: leftJoin
         })
     } catch(err){
         res.status(400).json({
             status: 'Error',
-            message: 'Merp, left join was not a success'
+            message: 'Merp, viewing pins by this specific user was not a success.'
         })
         next(err)
 
@@ -169,13 +169,13 @@ const getAllCommentsForPin = async (req, res, next) => {
         req.params.pin_id);
         res.status(200).json({
             status: "Success",
-            message: "All pins are now showing",
+            message: "All comments for this pin is now showing",
             payload: allCommentsByPin,
         })
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Sorry dweeb, pins aren't showing."
+            message: "Sorry, comments this pin aren't showing."
         })
         next(err)
     }

@@ -14,44 +14,62 @@ const Signup = () => {
     // const first
 
 
-
-
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
     const API = apiURL();
-    
     const userName = useInput("");
     const firstName = useInput("");
     const lastName = useInput("");
     const bio = useInput("");
-    const profilePic = useInput("");
+    // const profilePic = useInput("");
+    const [file, setFile] = useState({preview: "", raw: ""});
     // const age = useInput("");
 
     // const [age, setAge] = useState("");
 
+    const [user, setUser] = useState([]);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            let res = await signUp(email, password);
-            debugger
-            await axios.post(`${API}/api/users`, { id: res.user.uid, 
-                email,
-                username: userName.value,
-                first_name: firstName.value,
-                last_name: lastName.value,
-                bio: bio.value,
-                // age: age.value,
-                profilePic: profilePic.value,
-                // email
-            })
-            history.push("/user-profile/boards")
-        } catch (err) {
-            alert("So sorry that you can't create an account but it's above me now", err);
-        }
+
+    const onSelectImage = (e) => {
+        if (e.target.files.length) {
+            setFile({
+              preview: URL.createObjectURL(e.target.files[0]),
+              raw: e.target.files[0]
+            });
+          }
     }
+
+
+    const handleNewUser = async (e) => {
+        debugger
+        try {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("myImage", file.raw);
+            formData.append("file", file.preview);
+            formData.append("email", email);
+            formData.append("username", userName.value);
+            formData.append("first_name", firstName.value);
+            formData.append("last_name", lastName.value);
+            formData.append("bio", bio.value);
+            const config = {
+                headers: {
+                    "content-type": "multipart/form-data",
+                },
+            }
+            try {
+                let res = await signUp(email, password);
+                formData.append("id", res.user.uid);
+            await axios.post(`${API}/api/users`, formData, config)
+            } catch (err) {
+                console.log(err)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+};
+
     return (
         <div className="main-signup"> 
             {/* <header className="pintrestWelcome"> Welcome to Pintrest </header> */}
@@ -86,10 +104,11 @@ const Signup = () => {
 
             <div className="form-outer"> 
 
+
             
                             
             {/* {error ? <div> {error} </div> : null} */}
-            <form action="#" onSubmit={handleSubmit}> 
+            <form action="#" onSubmit={handleNewUser}> 
             
         <div class="page slidepage"> 
             <div class="title"> Basics </div>
@@ -130,7 +149,9 @@ const Signup = () => {
 
                 <div class="field"> 
                     <div class="label"> Your face? </div> 
-                    <input {...profilePic} placeholder=" Upload it."/>
+                    <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder=" Upload it."/>
+                    <img src="" alt="Image Preview" className="profile-pic-preview" src={file.preview}/>
+                                
                 </div>
 
                 <div className="signup-button">
