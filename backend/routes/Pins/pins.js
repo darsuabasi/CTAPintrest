@@ -22,7 +22,7 @@ pins.get('/', leftJoinPinsUsers);
 pins.get('/:id', getSinglePin);
 pins.get('/tag/:id', getPinsByTag);
 pins.post('/', createPin);
-pins.delete('/:id', deletePin);
+pins.delete('/:id', checkFirebaseToken, deletePin);
 pins.patch('/:id', checkFirebaseToken, updatePin);
 
 module.exports = pins;

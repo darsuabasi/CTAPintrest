@@ -7,7 +7,7 @@ import CreateBoard from '../CreateBoard';
 
 
 
-const PopulateBoards = () => {
+const PopulateBoards = ({boardId, setBoardId}) => {
 
     const { token, currentUser } = useContext(AuthContext);
     const [boards, setBoards] = useState([]); 
@@ -36,27 +36,37 @@ const PopulateBoards = () => {
 
 
     const selectOptions = boards.map((el, i) => {
-        return <option key={i} value={el.id}> {el.board_name} w/ ID {el.id} </option>
+        return <option key={i} value={el.id}> {el.board_name} </option>
     })
 
-    const handleBoards = (e) => {
-        e.preventDefault();
-        setBoards(e.target.value);
+    // const handleBoards = (e) => {
+    //     e.preventDefault();
+    //     setBoards(e.target.value);
+    // }
+
+    const handleSelectBoard = (e) => {
+        setBoardId(e.target.value)
     }
+    
+
+
 
     const handleCreateBoard = (e) => {
         e.preventDefault();
         return <Link to={CreateBoard}> </Link>
     }
+    // listening to change and then push to page ^
+
 
    
+// select should have value 
 
 
     return (   
             <div> 
-                <select>
+                <select onChange={handleSelectBoard} value={boardId}>
                     <option defaultValue> Select a Board </option>
-                    <option onSubmit={handleCreateBoard}> Create a Board </option>
+                    <option onClick={handleCreateBoard}> Create a Board </option>
                     <option> ------------------------ </option>
                         {selectOptions}
                 </select>
