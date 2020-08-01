@@ -1,36 +1,36 @@
 const db = require("../../db/index");
-const upload = require("./imageUploader")
+const upload = require('./imageUploader')
 
 const createUser = async (req, res, next) => {
     try {
         console.log("Create your user w/ picture upload");
         upload(req, res, err => {
             try { 
-            console.log("Yurrr upload that");
-            const { username, first_name, last_name, bio, email} = req.body;
+            console.log("Upload your photo");
+            const { id, username, first_name, last_name, bio, email} = req.body;
             let profilePic = "/uploads/" + req.file.filename;
-            db.one(
-            "INSERT INTO Users (username, first_name, last_name, bio, profilePic, email) VALUES( $1, $2, $3, $4, $5, $6) RETURNING *",
-            [username, first_name, last_name, bio, profilePic, email])
-            .then(done => {
-                console.log("then");
-                res.status(200).json({
-                  status: "ok",
-                  post: done,
-                  message: 'Yessir, new user created'
-        })
+            let newUser = db.one(
+                "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES( $1, $2, $3, $4, $5, $6, $7) RETURNING *",
+                [id, username, first_name, last_name, bio, profilePic, email])
+                .then(done => {
+                    console.log("then");
+                    res.status(200).json({
+                        status: "ok",
+                        post: done,
+                        message: 'A new user has been created.',
+                        payload: newUser
+                    })
                 });
-          } catch (err) {
-            console.log(err)
-            next(err)
+            } catch (err) {
+                console.log(err)
+                next(err)
             }
-      });
-    
-      } catch (error) {
+        });
+    } catch (error) {
         console.log(error);
         next(error);
-        }
-    };
+    }
+};
 
 
     // const createUser = async (req, res, next) => {
@@ -58,7 +58,7 @@ const getAllUsers = async (req, res, next) => {
         const allUsers = await db.any("SELECT * FROM Users");
         res.status(200).json({
             status: "Success",
-            message: "All users listed!",
+            message: "All users are now being displayed!",
             payload: allUsers
         })
     } catch (err) {
@@ -78,12 +78,12 @@ const getSingleUser = async (req, res, next) => {
         res.status(200).json({
             status: "Nice",
             getUser,
-            message: "Checking out a single user by id",
+            message: "Checking out a single user by id.",
         })
     } catch (err) {
         res.status(400).json({
             status: "Error",
-            message: "User could not be found"
+            message: "User could not be found by id."
         });
         next(err)
     }
@@ -97,12 +97,12 @@ const updateUser = async (req, res, next) => {
                                     // (`UPDATE Users SET bio = $1 WHERE id = ${req.params.id} RETURNING *`, [req.body])
         res.status(200).json({
             updateUser,
-            message: "Yessirrrr user was updated",
+            message: "User information has now been updated.",
         })
     } catch (err) {
         res.status(400).json({
             status: "Error",
-            message: "User could not be updated"
+            message: "User information could not be updated."
           });
           next(error);
     }
@@ -142,7 +142,7 @@ const getAllUserPins = async (req, res, next) => {
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Idk but you can't see all their pins"
+            message: "You can not see user pins."
         })
         next(err)
     }
@@ -155,7 +155,7 @@ const createUserPin = async (req, res, next) => {
         let newPinByUser = await db.one("INSERT INTO Pins (creator_id, board_name, board_description, board_image) VALUES ($1, $2, $3) RETURNING *", [id, imageUrl, board_id, note])
         res.status(200).json({
             status: "Success",
-            message: "Ayee you created a new board for a specific user",
+            message: "A new board was created by user.",
             body: {
                 newPinByUser
             }
@@ -163,7 +163,7 @@ const createUserPin = async (req, res, next) => {
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "My bad but you can't create a board for this specific user"
+            message: "New board could not be created by user."
         })
         next(err)
     }
@@ -176,13 +176,13 @@ const getSinglePinByUser = async (req, res, next) => {
         let soloPinByUser = await db.one('SELECT * FROM Pins WHERE id= $1 AND pin_id = $2 RETURNING *', [id, pin_id]);
         res.status(200).json({
             status: "Success",
-            message: "Yo, big ups! You can now see this single pin",
+            message: "You can now see this single pin",
             payload: soloPinByUser
         })
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Yikes, could not locate that single pin"
+            message: "Could not locate that single pin"
         })
         next(err)
     }
@@ -222,7 +222,7 @@ const editUserPin = async (req, res, next) => {
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Damn, couldn't update YOUR pin.. try again later"
+            message: "Couldn't update pin.. try again later"
         })
         next(err)
     }
@@ -248,7 +248,7 @@ const getAllBoardsByUser = async (req, res, next) => {
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Idk but you can't see all their boards. Maybe you're blocked lol"
+            message: "Can not display all boards by user."
         })
         next(err)
     }
@@ -262,7 +262,7 @@ const createNewBoardForUser = async (req, res, next) => {
         let newBoardByUser = await db.one("INSERT INTO Boards (creator_id, board_name, board_description, board_image) VALUES ($1, $2, $3) RETURNING *", [creator_id, board_name, board_description, board_image])
         res.status(200).json({
             status: "Success",
-            message: "Ayee you created a new board for a specific user",
+            message: "Created a new board for a specific user",
             body: {
                 newBoardByUser
             }
@@ -270,7 +270,7 @@ const createNewBoardForUser = async (req, res, next) => {
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "My bad but you can't create a board for this specific user"
+            message: 'Can not create a board for this specific user.'
         })
         next(err)
     }
@@ -282,13 +282,13 @@ const getSingleBoardByUser = async (req, res, next) => {
         let soloBoard = await db.one('SELECT * FROM Boards WHERE id = $1 AND board_id = $2 RETURNING *', [id, board_id] );
         res.status(200).json({
             status: "Success",
-            message: "Yo, big ups! You can now see this single board for this specific user",
+            message: "You can now see this single board for this specific user.",
             payload: soloBoard
         })
     } catch(err) {
         res.status(400).json({
             status: "Error",
-            message: "Yikes, could not locate that single board for this specifi user"
+            message: "Could not locate that single board for this specific user."
         })
         next(err)
     }
@@ -340,7 +340,5 @@ const editBoardByUser = async (req, res, next) => {
 
 
 
-       
-  
 
 module.exports = { createUser, getAllUsers, getSingleUser, updateUser, deleteUser, getAllUserPins, createUserPin, getSinglePinByUser, deleteUserPin, editUserPin, getAllBoardsByUser, createNewBoardForUser, deleteBoardByUser, editBoardByUser, getSingleBoardByUser};
