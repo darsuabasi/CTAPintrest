@@ -24,8 +24,8 @@ const UserPins = () => {
     
     useEffect(() => {
         const fetchUser = async () => {
+            // debugger
             try {
-                // debugger
             let res = await axios({
                 method: "get",
                 url: `${API}/api/users/${currentUser.uid}`,
@@ -33,14 +33,14 @@ const UserPins = () => {
                     AuthToken: token,
                 },
             });
+            debugger
             setUserId(res.data.getUser.id);
             setUser(res.data.getUser);
             setUsername(res.data.getUser.username);
-            setProfilePicture(res.data.getUser.profilePic);
+            setProfilePicture(res.data.getUser.profilepic);
             setFirstName(res.data.getUser.first_name);
             setLastName(res.data.getUser.last_name);
             setBio(res.data.getUser.bio); 
-            // debugger
             } catch (err) {
                 console.log(err.message)
             }
@@ -52,92 +52,89 @@ const UserPins = () => {
     // useEffect(() => {
    
         
-        const fetchPins = async () => {
-            try {
-                debugger
-                let res = await axios({
-                    method: "get",
-                    url: `${API}/api/pins`,
-                    headers: {
-                        AuthToken: token,
-                    }
-                })
-                // debugger
-                setPins(res.data.payload)
-            } catch(err) {
-                setPins([])
-                console.log(err.message);
-                }
-            };
-            fetchPins();
+        // const fetchPins = async () => {
+        //     try {
+        //         debugger
+        //         let res = await axios({
+        //             method: "get",
+        //             url: `${API}/api/pins`,
+        //             headers: {
+        //                 AuthToken: token,
+        //             }
+        //         })
+        //         // debugger
+        //         setPins(res.data.payload)
+        //     } catch(err) {
+        //         setPins([])
+        //         console.log(err.message);
+        //         }
+        //     };
+        //     fetchPins();
 
 
+    // const handleSubmit = async (e) => {
+    //     try {
+    //         e.preventDefault();
+    //         const formData = new FormData();
+    //         // formData.append("creator_id", userId);
+    //         formData.append("body", body.value);
+    //         formData.append("created_at", new Date().toString());
 
+    //         const config = {
+    //             headers: {
+    //                 "content-type": "multipart/form-data",
+    //             },
+    //         };
 
-
-
-
-
-    const handleSubmit = async (e) => {
-        try {
-            e.preventDefault();
-            const formData = new FormData();
-            // formData.append("creator_id", userId);
-            formData.append("body", body.value);
-            formData.append("created_at", new Date().toString());
-
-            const config = {
-                headers: {
-                    "content-type": "multipart/form-data",
-                },
-            };
-
-            console.log(formData, "formd");
-            console.log(config, "conf");
-            let res = await axios.get(`${API}/api/pins`, formData, config);
-            setPins(res);
-            history.push("/user-feed");
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    //         console.log(formData, "formd");
+    //         console.log(config, "conf");
+    //         let res = await axios.get(`${API}/api/pins`, formData, config);
+    //         setPins(res);
+    //         history.push("/user-feed");
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
 
     return(
         <div className="main-style-user"> 
-            <div className="user-info-display">
-                {/* <h3 className="users-id"> {currentUser.uid} </h3> */}
-                {/* <div className="style-profile-pic">  */}
-                <div className="style-user-name">
-                    <h4 className="users-username">{username}</h4>
+            <div className="user-info-display-card">
+                {/* <h3 className="users-id"> User ID: {currentUser.uid} </h3> */}
+                <div className="style-user-minicard">
+                    <h3 className="styling-the-labels">Username </h3>
+                    <h4 className="styling-the-variables"> : {username} </h4>
                 </div>
-                {/* <br/> */}
+
+
                 <div className="style-profile-pic"> 
-                    {profilepicture}
-                    <p> profile picture here</p>
+                    <img className="profile-pic-preview" src={API+profilepicture} />
                 </div>
-                {/* <br/> */}
-                <div className="style-user-name">
-                    <h2 className="user-name"> {firstName}  {lastName} </h2>
+
+
+                <div className="style-user-minicard">
+                    <h3 className="styling-the-labels"> Name </h3>
+                    <h4 className="styling-the-variables"> : {firstName}  {lastName} </h4>
                 </div>
-                {/* <br/> */}
-                <div className="style-user-email">
-                    <h3 className="user-email"> {currentUser.email}</h3>
-                </div>
-                {/* <br/> */}
-                <div className="style-user-bio"> 
-                    <h5 className="user-bio"> {bio} </h5>
+
+
+                <div className="style-user-minicard">
+                    <h3 className="styling-the-labels"> Email </h3>
+                    <h4 className="styling-the-variables"> : {currentUser.email} </h4>
                 </div>
 
 
 
+                <div className="style-user-minicard"> 
+                    <h3 className="styling-the-labels"> Biography </h3>
+                    <h4 className="styling-the-variables"> : {bio} </h4>
+                </div>
 
                 {/* <div className="style-followers-display">
                     show # of followers & # of following [you can use a counter whoop whoop
                     <h7> 2123839 Followes - 21 Following</h7>
 
-                </div> */}
-                
+                </div> */}   
             </div> 
 
             <div className="style-all-user-btns">
@@ -159,11 +156,9 @@ const UserPins = () => {
                     <div className="dropdown">
                         <button class="circular ui icon button" className="create-btn"> D </button>
                             <div className="add-dropdown-content">
-                                <Link className="style-create-board-dropdown" to={"/settings/edit-profile"} > Create Board </Link>
+                                <Link className="style-create-board-dropdown" to={"/create-board"} > Create Board </Link>
                                 <Link className="style-create-pin-dropdown" to={"/create-pin"} > Create Pin </Link>
                             </div>
-                    {/* [+ modal] [Create Pin] [Add to board] */}
-
                     </div>
                 </div>
             </div>
@@ -184,7 +179,7 @@ const UserPins = () => {
 
                 <div className="board-and-pin-mainCard"> 
                     <div className="board-card">
-                        {/* displayBoards */}
+                        {/* BoardDisplay */}
                     </div>
 
                     <div className="pin-card">

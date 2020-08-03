@@ -14,16 +14,6 @@
     /* height: 15rem; */
 }
 
-.style-profile-pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-
-
 
 /* styles the labels in for user bio card */
 .styling-the-labels {
@@ -39,9 +29,6 @@
     font-weight: 300;
 }
 
-
-
-
 /* styling user's minicard for each varibale */
 .style-user-minicard{
     display: flex;
@@ -52,6 +39,9 @@
 
 /* styling user's profile picture */
 .style-profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 0.5rem;
 }
 .profile-pic-preview {
@@ -230,9 +220,5 @@
 
 .dropdown:hover .add-dropdown-content {
     display: block;
-}
-
-.style-the-name {
-    margin-bottom: 0.5rem;
 }
 

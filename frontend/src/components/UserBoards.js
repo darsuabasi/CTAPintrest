@@ -165,7 +165,7 @@ const UserProfile = () => {
                     </div>
 
                     <div className="pin-card">
-                        {/* displayPins */}
+                        {/* UsersPinDisplay */}
                     </div>
 
                     {/* <Boards/> if setBoards then display boards but if setPins, display Pins<Pins/> */}
