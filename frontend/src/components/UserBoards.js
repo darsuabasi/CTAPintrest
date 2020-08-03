@@ -24,8 +24,8 @@ const UserProfile = () => {
     
     useEffect(() => {
         const fetchUser = async () => {
+            // debugger
             try {
-                debugger
             let res = await axios({
                 method: "get",
                 url: `${API}/api/users/${currentUser.uid}`,
@@ -33,10 +33,11 @@ const UserProfile = () => {
                     AuthToken: token,
                 },
             });
+            debugger
             setUserId(res.data.getUser.id);
             setUser(res.data.getUser);
             setUsername(res.data.getUser.username);
-            setProfilePicture(res.data.getUser.profilePic);
+            setProfilePicture(res.data.getUser.profilepic);
             setFirstName(res.data.getUser.first_name);
             setLastName(res.data.getUser.last_name);
             setBio(res.data.getUser.bio); 
@@ -47,29 +48,29 @@ const UserProfile = () => {
         fetchUser();
     }, []);
 
-    const handleSubmit = async (e) => {
-        try {
-            e.preventDefault();
-            const formData = new FormData();
-            // formData.append("creator_id", userId);
-            formData.append("body", body.value);
-            formData.append("created_at", new Date().toString());
+    // const handleSubmit = async (e) => {
+    //     try {
+    //         e.preventDefault();
+    //         const formData = new FormData();
+    //         // formData.append("creator_id", userId);
+    //         formData.append("body", body.value);
+    //         formData.append("created_at", new Date().toString());
 
-            const config = {
-                headers: {
-                    "content-type": "multipart/form-data",
-                },
-            };
+    //         const config = {
+    //             headers: {
+    //                 "content-type": "multipart/form-data",
+    //             },
+    //         };
 
-            console.log(formData, "formd");
-            console.log(config, "conf");
-            let res = await axios.get(`${API}/api/boards`, formData, config);
-            setBoards(res);
-            history.push("/user-feed");
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    //         console.log(formData, "formd");
+    //         console.log(config, "conf");
+    //         let res = await axios.get(`${API}/api/boards`, formData, config);
+    //         setBoards(res);
+    //         history.push("/user-feed");
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
 // displaying all the boards function
 
@@ -81,38 +82,28 @@ const UserProfile = () => {
     return(
         <div className="main-style-user"> 
             <div className="user-info-display">
-                {/* <h3 className="users-id"> {currentUser.uid} </h3> */}
-                {/* <div className="style-profile-pic">  */}
-                <div className="style-user-name">
-                    <h4 className="users-username">{username}</h4>
+                {/* <h3 className="users-id"> User ID: {currentUser.uid} </h3> */}
+                <div className="style-user-username">
+                    <h4 className="users-username">Username: {username}</h4>
                 </div>
-                {/* <br/> */}
                 <div className="style-profile-pic"> 
-                    {profilepicture}
-                    <p> profile picture here</p>
+                    <img className="profile-pic-preview" src={API+profilepicture} />
                 </div>
-                {/* <br/> */}
                 <div className="style-user-name">
-                    <h2 className="user-name"> {firstName}  {lastName} </h2>
+                    <h2 className="user-name"> Name: {firstName}  {lastName} </h2>
                 </div>
-                {/* <br/> */}
                 <div className="style-user-email">
-                    <h3 className="user-email"> {currentUser.email}</h3>
+                    <h3 className="user-email"> Email: {currentUser.email}</h3>
                 </div>
-                {/* <br/> */}
                 <div className="style-user-bio"> 
-                    <h5 className="user-bio"> {bio} </h5>
+                    <h5 className="user-bio"> Bio: {bio} </h5>
                 </div>
-
-
-
 
                 {/* <div className="style-followers-display">
                     show # of followers & # of following [you can use a counter whoop whoop
                     <h7> 2123839 Followes - 21 Following</h7>
 
-                </div> */}
-                
+                </div> */}   
             </div> 
 
             <div className="style-all-user-btns">

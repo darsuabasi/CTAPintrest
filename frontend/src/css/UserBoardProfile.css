@@ -1,17 +1,17 @@
-* {
+/* * {
     padding: 0;
     margin: 0;
-}
+} */
 
 .user-info-display {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
     width: 100%;
-    height: 15rem;
+    /* height: 15rem; */
 }
 
 .style-profile-pic {
@@ -20,10 +20,64 @@
     align-items: center;
 }
 
+
+
+
+
+/* styling user's username */
+.style-user-username {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.users-username {
+    font-size: 20px;
+}
+
+/* styling user's profile picture */
+.profile-pic-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 4rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* styling user's name */
 .style-user-name {
     display: flex;
     justify-content: center;
+    margin-bottom: 1rem;
 }
+.user-name {
+    font-size: 20px;
+}
+
+/* styling user's email */
+.style-user-email {
+    
+}
+.user-email {
+    font-size: 20px;
+}
+
+
+/* styling user's bio */
+.style-user-bio {
+
+}
+
+.user-bio {
+    font-size: 20px;
+}
+
+
+
+
+
+
+
 
 .style-user-bio {
     display: flex;
@@ -167,7 +221,6 @@
 .main-style-user {
     padding-top: 5rem;
     margin-left: -2em;
-
 }
 
 .dropdown {
@@ -203,3 +256,4 @@
 .style-the-name {
     margin-bottom: 0.5rem;
 }
+
