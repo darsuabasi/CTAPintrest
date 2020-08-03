@@ -3,7 +3,7 @@
     margin: 0;
 } */
 
-.user-info-display {
+.user-info-display-card {
     display: flex; 
     flex-direction: column;
     flex-wrap: wrap;
@@ -24,17 +24,36 @@
 
 
 
-/* styling user's username */
-.style-user-username {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-.users-username {
+
+/* styles the labels in for user bio card */
+.styling-the-labels {
     font-size: 20px;
+    font-variant: small-caps;
 }
 
+
+/* styles the actual variable */
+.styling-the-variables {
+    font-size: 20px;
+    font-variant: small-caps;
+    font-weight: 300;
+}
+
+
+
+
+/* styling user's minicard for each varibale */
+.style-user-minicard{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+}
+
+
 /* styling user's profile picture */
+.style-profile-pic {
+    margin-bottom: 0.5rem;
+}
 .profile-pic-preview {
     width: 100px;
     height: 100px;
@@ -42,46 +61,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-
-/* styling user's name */
-.style-user-name {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-.user-name {
-    font-size: 20px;
-}
-
-/* styling user's email */
-.style-user-email {
-    
-}
-.user-email {
-    font-size: 20px;
-}
-
-
-/* styling user's bio */
-.style-user-bio {
-
-}
-
-.user-bio {
-    font-size: 20px;
-}
-
-
-
-
-
-
-
-
-.style-user-bio {
-    display: flex;
-    justify-content: center;
 }
 
 .style-followers-display {

@@ -81,22 +81,35 @@ const UserProfile = () => {
 
     return(
         <div className="main-style-user"> 
-            <div className="user-info-display">
+            <div className="user-info-display-card">
                 {/* <h3 className="users-id"> User ID: {currentUser.uid} </h3> */}
-                <div className="style-user-username">
-                    <h4 className="users-username">Username: {username}</h4>
+                <div className="style-user-minicard">
+                    <h3 className="styling-the-labels">Username </h3>
+                    <h4 className="styling-the-variables"> : {username} </h4>
                 </div>
+
+
                 <div className="style-profile-pic"> 
                     <img className="profile-pic-preview" src={API+profilepicture} />
                 </div>
-                <div className="style-user-name">
-                    <h2 className="user-name"> Name: {firstName}  {lastName} </h2>
+
+
+                <div className="style-user-minicard">
+                    <h3 className="styling-the-labels"> Name </h3>
+                    <h4 className="styling-the-variables"> : {firstName}  {lastName} </h4>
                 </div>
-                <div className="style-user-email">
-                    <h3 className="user-email"> Email: {currentUser.email}</h3>
+
+
+                <div className="style-user-minicard">
+                    <h3 className="styling-the-labels"> Email </h3>
+                    <h4 className="styling-the-variables"> : {currentUser.email} </h4>
                 </div>
-                <div className="style-user-bio"> 
-                    <h5 className="user-bio"> Bio: {bio} </h5>
+
+
+
+                <div className="style-user-minicard"> 
+                    <h3 className="styling-the-labels"> Biography </h3>
+                    <h4 className="styling-the-variables"> : {bio} </h4>
                 </div>
 
                 {/* <div className="style-followers-display">
