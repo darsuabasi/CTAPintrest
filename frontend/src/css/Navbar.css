@@ -17,7 +17,6 @@
 /* -------------Non-user view of Navbar------------- */
 .non-user-nav {
     display: flex;
-    /* justify-content: flex-end; */
 }
 
 .publicNavLogin {
@@ -190,6 +189,24 @@
     margin-top: -.8rem;
 }
 
+.user-nav-image {
+    display: flex;
+    /* height: 70px;
+    width: -42px; */
+    /* border-radius: 4rem; */
+    /* flex-wrap: wrap; */
+}
+
+.user-nav-image-2 {
+    
+    height: 70px;
+    width: 70px;
+    border-radius: 4rem;
+    /* width: -42px; */ 
+    /* border-radius: 4rem; */
+    /* flex-wrap: wrap; */
+}
+
 .user-nav-accounts {
     background: url('https://api.iconify.design/bx:bx-chevron-down.svg') no-repeat center center / contain;
     color: transparent;
@@ -211,17 +228,11 @@
 .dropdown {
     position: relative;
     display: inline-block;
-    /* width: 10rem; */
-    /* justify-content: center;
-    align-items: center;
-    text-align: center; */
   }
 
 .account-dropdown-content {
     display: none;
     position: absolute;
-    /* right: 0; */
-    /* background-color: #f1f1f1; */
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -268,7 +279,6 @@
     background: url('https://api.iconify.design/cib:pinterest-p.svg?color=%23E60023') no-repeat center center;
     color: transparent;
     background-size: 2rem; 
-    /* margin-left: 1rem; */
     border-radius: 5em;
     width: 3rem;
     height: 2rem; 
@@ -279,3 +289,12 @@
     text-decoration: none;
 }
 
+.logout-btn-style {
+    width: 15rem;
+    height: 3rem;
+    color: #f8f6f6;
+    background-color: #E60023;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
