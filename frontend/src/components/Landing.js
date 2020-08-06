@@ -1,5 +1,5 @@
 import React from 'react';
-import AllPins from './pins/AllPins';
+import AllPins from '../components/pins/allPins/AllPins';
 import '../css/Landing.css'
 
 

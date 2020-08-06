@@ -1,6 +1,6 @@
 import React from "react";
-import "./css/Post.css";
-import Tags from "./Hashtags";
+// import "./css/Post.css";
+import Tags from '../../Tags';
 
 const Pin = ({
   id,

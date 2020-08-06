@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { apiURL } from '../util/apiURL';
+import { apiURL } from '../../util/apiURL';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import  '../css/SearchBar.css'
+import  '../../css/SearchBar.css'
 
 const SearchBar = () => {
     const API = apiURL();

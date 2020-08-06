@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../../css/PostPin.css';
+import '../../../css/PostPin.css';
 // import Likes from '../Likes';
 
 

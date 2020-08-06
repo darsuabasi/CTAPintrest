@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { apiURL } from '../../util/apiURL';
-import { useInput } from '../../util/useInput';
-import { AuthContext } from '../../providers/AuthProvider';
-import PopulateBoards from './PopulateBoards'
-import '../../css/CreatePin.css'
+import { apiURL } from '../../../util/apiURL';
+import { useInput } from '../../../util/useInput';
+import { AuthContext } from '../../../providers/AuthProvider';
+import PopulateBoards from '../../boards/PopulateBoards'
+import '../../../css/CreatePin.css'
 
 
 const CreatePin = () => {

@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { apiURL } from '../../util/apiURL';
+import { AuthContext } from '../../providers/AuthProvider'
 import SingleHomePin from './SingleHomePin'
 import Tags from '../Tags'
 import gucciDenim from '../../assets/gucciDenim.jpeg';
@@ -10,7 +13,9 @@ import tropicalFit from '../../assets/tropicalFit.jpeg';
 import versaceShoe from '../../assets/versaceShoe.jpeg';
 import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
 import { Link } from 'react-router-dom';
-import AllPinsDisplay from '../AllPinsDisplay'
+import AllPinsDisplay from '../AllPinsDisplay';
+import Pin from '../pins/allPins/Pin';
+import DisplayPins from '../DisplayPins';
 import '../../css/Home.css'
 
 
@@ -19,54 +24,63 @@ import '../../css/Home.css'
 const Home = () => {
     // const API = apiURL();
     // useEffect(() => {
-        // const [pins, setPins] = useState([]);
+        const [pins, setPins] = useState([]);
+        const API = apiURL();
+        const { token } = useContext(AuthContext);
         // const { currentUser, token } = useContext(AuthContext);
 
         // useEffect(() => {
-        //     const fetchPins = async () => {
-        //         try {
-        //             // debugger
-        //             let res = await axios({
-        //                 method: "get",
-        //                 url: `${API}/api/pins`,
-        //                 headers: {
-        //                     AuthToken: token,
-        //                 }
-        //             })
-        //             debugger
-        //             setPins(res.data.payload)
-        //             console.log(res.data)
-        //         } catch(err) {
-        //             setPins([])
-        //             console.log(err.message);
-        //             }
-        //         };
-        //         fetchPins();
+            const fetchAllPins = async () => {
+                try {
+                    // debugger
+                    let res = await axios({
+                        method: "get",
+                        url: `${API}/api/pins`,
+                        headers: {
+                            AuthToken: token,
+                        }
+                    })
+                    debugger
+                    setPins(res.data.payload)
+                    console.log(res.data)
+                } catch(err) {
+                    setPins([])
+                    console.log(err.message);
+                    }
+                };
+                // fetchPins();
 
         // }, [])
+
        
     
-    // const searchResult =()=>{
-    //     if(sessionStorage.searchTerm) {
-    //         return <button onClick={()=>{sessionStorage.removeItem("searchTerm");window.location.reload()}}>Return to Homepage</button>
-    //     } else {
-    //         return null
-    //     }
-    // }
+    const searchResults = () => {
+        if(sessionStorage.searchTerm) {
+            return <button onClick={()=>{sessionStorage.removeItem("searchTerm");window.location.reload()}}> Return to Your Feed </button>
+        } else {
+            return null
+        }
+    }
 
-    // useEffect(()=>{
-    //     if(sessionStorage.searchTerm){
-    //         fetchPins(`http://localhost:3005/pins/tags/${sessionStorage.searchTerm}`)
-    //         searchResult()
+    useEffect(()=>{
+        if(sessionStorage.searchTerm){
+            fetchAllPins(`${API}/api/pins/tags/${sessionStorage.searchTerm}`)
+            searchResults()
             
-    //     } else {
-    //         fetchPins('http://localhost:3005/pins')
-    //     }
-    // }, [])
+        } else {
+            fetchAllPins(`${API}/api//pins`)
+        }
+    }, [])
 
     
 
-{/* <Tags pinId={pin.id} userName={pin.username}/> */}
+    const pinDisplay = pins.map(pin =>{
+        return (
+        <>
+            <Pin key={pin.id} id={pin.id} pinId={pin.id} userName={pin.username} filePath={pin.imageurl} postContent={pin.note}/>
+            <Tags pinId={pin.id} userName={pin.username}/>
+        </>)
+})
 
    return(
         <div className="homeDiv">

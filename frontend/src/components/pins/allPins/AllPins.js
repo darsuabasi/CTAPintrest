@@ -1,21 +1,13 @@
 import React, {Component} from 'react';
-import Pin from './SinglePin';
-import gucciDenim from '../../assets/gucciDenim.jpeg';
-// import bigHair from '../../assets/bigHair.jpeg';
-import redMakeupLook from '../../assets/redMakeupLook.jpeg';
-import jewels from '../../assets/jewels.jpeg';
-import oldGlamLooks from '../../assets/oldGlamLooks.jpeg';
-// import closetK from '../../assets/closetK.jpeg';
-import goldDress from '../../assets/goldDress.jpeg';
-// import longHair from '../../assets/longHair.jpeg';
-// import orangeEyes from '../../assets/orangeEyes.jpeg';
-// import orangeHanifa from '../../assets/orangeHanifa.jpeg';
-// import slashedByTia from '../../assets/slashedByTia.jpeg';
-import tropicalFit from '../../assets/tropicalFit.jpeg';
-// import twoToneHair from '../../assets/twoToneHair.jpeg';
-import versaceShoe from '../../assets/versaceShoe.jpeg';
-// import whiteDress from '../../assets/whiteDress.jpeg';
-import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
+import Pin from '../allPins/SinglePin';
+import gucciDenim from '../../../assets/gucciDenim.jpeg';
+import redMakeupLook from '../../../assets/redMakeupLook.jpeg';
+import jewels from '../../../assets/jewels.jpeg';
+import oldGlamLooks from '../../../assets/oldGlamLooks.jpeg';
+import goldDress from '../../../assets/goldDress.jpeg';
+import tropicalFit from '../../../assets/tropicalFit.jpeg';
+import versaceShoe from '../../../assets/versaceShoe.jpeg';
+import whiteTwoPiece from '../../../assets/whiteTwoPiece.jpeg';
 
 
 

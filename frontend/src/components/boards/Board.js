@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/Post.css";
+import "../../css/Post.css";
 
 const Board = ({
   username,

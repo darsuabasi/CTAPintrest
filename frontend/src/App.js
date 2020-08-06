@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { Route, Switch } from 'react-router-dom'
-import Navbar from './components/Navbar';
+import Navbar from './components/navBar/Navbar';
 import Landing from './components/Landing'
 import Home from './components/home/Home';
-import Login from './components/Login'
-import Signup from './components/Signup'
-import AboutMe from './components/About';
+import Login from './components/logIn/Login'
+import Signup from './components/signUp/Signup'
+import AboutMe from './components/about/About';
 
 import Today from './components/Today';
 // import SearchBar from './components/SearchBar';
@@ -16,28 +16,24 @@ import Today from './components/Today';
 // import Accounts from './components/Accounts';
 // import Error from './components/Error';
 
-import UserBoards from './components/UserBoards'
-import UserPins from './components/UserPins'
+import UserBoards from './components/pins/userPins/UsersPinDisplay'
+import UserPins from './components/pins/userPins/UserPins'
 
-import CreatePin from './components/pins/CreatePin'
-import CreateBoard from './components/CreateBoard'
-import AllUsersFollowing from './components/AllUsersFollowing'
-import AuthProvider from './providers/AuthProvider'
-import { AuthRoute, ProtectedRoute } from './util/auth_routes'
-
-
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import CreatePin from './components/pins/allPins/CreatePin';
+import CreateBoard from './components/boards/CreateBoard';
+import AllUsersFollowing from './components/AllUsersFollowing';
+import AuthProvider from './providers/AuthProvider';
+import { AuthRoute, ProtectedRoute } from './util/auth_routes';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import Pins from './components/Pin'
 
-// import Pin from './components/pins/SinglePin';
-// import Pins from './components/pins/AllPins'
+// import Pin from './components/pins/allPins/SinglePin';
+// import Pins from './components/pins/allPins/Pin'
 
 import Settings from './components/Settings';
 import EditProfile from './components/EditProfile';
 import AccountSettings from './components/AccountSettings';
-
-
-import SearchResults from './components/SearchResults'
+import SearchResults from './components/searchFeature/SearchResults'
 
 
 
@@ -46,10 +42,8 @@ const App = () => {
   return (
   <AuthProvider> 
     <div className="Mocktrist-app">
-    
-          <Navbar/>
-            <Switch>
-
+      <Navbar/>
+          <Switch>
             <Route exact path="/">
               <Landing/> 
             </Route>
@@ -70,8 +64,6 @@ const App = () => {
               <Settings/>
             </Route>
 
-
-          {/* <Switch> */}
             <ProtectedRoute exact path="/user-profile/boards">
               <UserBoards/>
             </ProtectedRoute>
@@ -83,13 +75,10 @@ const App = () => {
             <Route exact path="/settings/edit-profile">
               <EditProfile/>
             </Route>
-          {/* </Switch>   */}
 
             <Route exact path="/today">
               <Today/>
             </Route>
-
-
 
             <Route exact path="/settings/account-settings">
               <AccountSettings/>
@@ -114,7 +103,7 @@ const App = () => {
             <Route exact path="/pins/search-results">
               <SearchResults/>
             </Route>
-            </Switch>
+          </Switch>
         
         </div>
       </AuthProvider>

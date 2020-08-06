@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { login } from '../util/firebaseFunctions';
+import { login } from '../../util/firebaseFunctions';
 import { NavLink } from 'react-router-dom';
-import '../css/Login.css'
+import '../../css/Login.css'
 
 
 const Login = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import PostPinModal from './pins/PostPin';
+import PostPinModal from '../components/pins/allPins/PostPin';
 import '../css/PinList.css'
 
 import { apiURL } from '../util/apiURL';

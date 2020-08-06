@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect,  } from 'react';
 import axios from 'axios';
 import { NavLink, useHistory } from 'react-router-dom';
 // import Accounts from '../components/Accounts';
-import SearchBar from './SearchBar';
-import { apiURL } from '../util/apiURL';
-import { useInput } from '../util/useInput';
-import { AuthContext } from '../providers/AuthProvider';
-import '../css/Navbar.css'
+import SearchBar from '../searchFeature/SearchBar';
+import { apiURL } from '../../util/apiURL';
+import { useInput } from '../../util/useInput';
+import { AuthContext } from '../../providers/AuthProvider';
+import '../../css/Navbar.css'
 
-import { logout} from '../util/firebaseFunctions'
+import { logout} from '../../util/firebaseFunctions'
 
 
 const Navbar = () => {

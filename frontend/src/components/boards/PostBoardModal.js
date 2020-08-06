@@ -3,7 +3,7 @@ import axios from 'axios'
 // import Likes from '../Likes';
 
 import '../css/PostBoard.css'
-import { apiURL } from '../util/apiURL';
+import { apiURL } from '../../util/apiURL';
 
 const PostBoardModal = ({ board_name, imageurl, creator_id, board_description, boardId }) => {
 

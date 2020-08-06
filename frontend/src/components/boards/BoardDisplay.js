@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import PostBoardModal from './PostBoardModal';
-import '../css/BoardList.css';
+import PostBoardModal from '../boards/PostBoardModal';
+import '../../css/BoardList.css';
 
-import { apiURL } from '../util/apiURL';
-import { AuthContext } from '../providers/AuthProvider';
+import { apiURL } from '../../util/apiURL';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const BoardDisplay = () => {

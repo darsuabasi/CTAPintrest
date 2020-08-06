@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { apiURL } from "../util/apiURL";
-import { useInput } from '../util/useInput';
-import { AuthContext } from '../providers/AuthProvider';
-import '../css/CreateBoard.css'
+import { apiURL } from "../../util/apiURL";
+import { useInput } from '../../util/useInput';
+import { AuthContext } from '../../providers/AuthProvider';
+import '../../css/CreateBoard.css'
 
 
 const CreateBoard = () => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import PostPinModal from './pins/PostPin';
-import '../css/PinList.css'
+import PostPinModal from '../allPins/PostPin';
+import '../../../css/PinList.css'
 
-import { apiURL } from '../util/apiURL';
-import { AuthContext } from '../providers/AuthProvider';
+import { apiURL } from '../../../util/apiURL';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 
 const UsersPinDisplay = () => {

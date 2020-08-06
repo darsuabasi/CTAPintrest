@@ -1,5 +1,5 @@
 import React from "react";
-import Pin from './Pin';
+import Pin from '../components/pins/allPins/Pin';
 
 const DisplayPins = ({ allPins }) => {
   const showPins = allPins.map((pin, i) => {

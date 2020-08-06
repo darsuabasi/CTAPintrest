@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
-import { apiURL } from '../util/apiURL';
-import { signUp } from '../util/firebaseFunctions';
+import { apiURL } from '../../util/apiURL';
+import { signUp } from '../../util/firebaseFunctions';
 import { NavLink } from 'react-router-dom'
-
-import { useInput } from '../util/useInput';
-
-import '../css/Signup.css'
+import { useInput } from '../../util/useInput';
+import '../../css/Signup.css'
 
 const Signup = () => {
 
@@ -150,7 +148,7 @@ const Signup = () => {
                 <div class="field"> 
                     <div class="label"> Your face? </div> 
                     <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder=" Upload it."/>
-                    <img src="" alt="Image Preview" className="profile-pic-preview" src={file.preview}/>
+                    <img src="" alt="Image Preview" className="profile-pic-preview-signup" src={file.preview}/>
                                 
                 </div>
 
@@ -160,12 +158,12 @@ const Signup = () => {
 
                 <h5 class="orSeparate"> OR </h5>
 
-                <button className="comeSignupGoogle" disabled> Continue with Google </button>
+                {/* <button className="comeSignupGoogle" disabled> Continue with Google </button> */}
                 <div className="extraStuff"> 
                 <p> By continuing, you agree to Pinterest's Terms of Service, Privacy Policy</p>
                 <NavLink className="login" exact to={"/login"}> Already a member? Log in</NavLink>
             
-                <p> Create a business account</p> 
+                {/* <p> Create a business account</p>  */}
                 </div>
 
                 {/* <div class="field btns">

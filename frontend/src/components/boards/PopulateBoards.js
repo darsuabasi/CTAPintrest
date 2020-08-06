@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { apiURL } from '../../util/apiURL';
 import { AuthContext } from '../../providers/AuthProvider';
-import CreateBoard from '../CreateBoard';
+import CreateBoard from './CreateBoard';
 
 
 
@@ -66,7 +66,7 @@ const PopulateBoards = ({boardId, setBoardId}) => {
             <div> 
                 <select onChange={handleSelectBoard} value={boardId}>
                     <option defaultValue> Select a Board </option>
-                    <option onClick={handleCreateBoard}> Create a Board </option>
+                    {/* <option onClick={handleCreateBoard}> Create a Board </option> */}
                     <option> ------------------------ </option>
                         {selectOptions}
                 </select>

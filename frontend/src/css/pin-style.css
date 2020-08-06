@@ -7,7 +7,7 @@
 .card {
     width: 18rem;
     border-radius: 2rem!important;
-    color: transparent!important;
+    /* color: transparent!important; */
 
 }
 
@@ -33,6 +33,7 @@
     width: 2rem;
    
     color: rgb(3, 3, 3);
+    /* object-fit: cover; */
 }
 
 .card-img-top:hover {
@@ -46,10 +47,8 @@
 
 .card-title {
     height: 10px!important;
-    /* font: 10px!important; */
 }
 
 .card text-center shadow {
-    /* background-color: transparent; */
     border-radius: 2rem;
 }

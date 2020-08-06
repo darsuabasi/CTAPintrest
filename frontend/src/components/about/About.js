@@ -1,7 +1,6 @@
 import React from 'react';
-import '../css/About.css'
+import '../../css/About.css'
 
-// import "../Css/PokemonAbout.css";
 
 const AboutMe = () => {
   return(

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { AuthContext } from '../providers/AuthProvider';
+import { AuthContext } from '../../../providers/AuthProvider';
 import axios from 'axios';
-import { apiURL } from '../util/apiURL';
-import '../css/UserPinProfile.css'
+import { apiURL } from '../../../util/apiURL';
+import '../../../css/UserPinProfile.css';
 import { Link, useHistory } from 'react-router-dom';
-import { useInput } from '../util/useInput';
+import { useInput } from '../../../util/useInput';
 import UsersPinDisplay from './UsersPinDisplay'
 
 const UserPins = () => {
