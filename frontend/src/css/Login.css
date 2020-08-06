@@ -21,7 +21,6 @@ body {
     background-color: transparent;
     border: 2px solid red;
     border-radius: 5rem;
-    /* background: rgba(0, 0, 0, 0.6); */
 }
 
 .background4pin {
@@ -45,7 +44,6 @@ body {
 
 
 .stylingLoginModal {
-    /* display: flex; */
     justify-content: center;
     align-self: center;
     text-align: center;
@@ -61,6 +59,7 @@ body {
 
 .login-input {
     border-radius: 10px;
+    padding-left: 1.5rem;
 }
 
 

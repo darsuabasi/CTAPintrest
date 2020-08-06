@@ -293,3 +293,10 @@ body {
     margin-left: 0.9rem;
     color: black;
 }
+
+
+.profile-pic-preview-signup {
+    width: 150px;
+    height: 150px;
+    border-radius: 6rem;
+}

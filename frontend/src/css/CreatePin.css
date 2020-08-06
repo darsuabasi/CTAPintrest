@@ -118,3 +118,8 @@
     float: right;
     margin-right: 1.3rem;
 }
+
+.style-hashtag-input {
+    margin-left: 1.4rem;
+    width: 16rem;
+}

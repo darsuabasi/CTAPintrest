@@ -2,22 +2,24 @@ const tags = require('express').Router();
 // '../../node_modules/express'
 
 const { 
+    addNewTag, 
     getAllTags, 
+    getAllPinsByTag, 
     getSingleTagForPin, 
     getSingleTagForBoard, 
     updateSingleTag, 
     deleteSingleTag, 
-    addNewTag, 
-    tagBasedOnPin, 
+    // tagBasedOnPin, 
     tagBasedOnBoard 
 } = require('../../queries/Tags/tags');
 
+tags.post('/',addNewTag);
 tags.get('/', getAllTags);
+tags.get('/:tag_name', getAllPinsByTag);
 tags.get('/:pin_id', getSingleTagForPin);
 tags.get('/:board_id', getSingleTagForBoard);
-tags.get('/', tagBasedOnPin);
+// tags.get('/', tagBasedOnPin);
 tags.get('/', tagBasedOnBoard)
-tags.post('/',addNewTag);
 tags.patch('/:tag_name',updateSingleTag);
 tags.delete('/:id',deleteSingleTag);
 

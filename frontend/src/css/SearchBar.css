@@ -6,6 +6,7 @@
     color: #333;
     border-style: none;
     justify-content: center;
+    padding-left: 2rem;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

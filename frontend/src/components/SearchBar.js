@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { apiURL } from '../util/apiURL';
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import  '../css/SearchBar.css'
 
 const SearchBar = () => {
+    const API = apiURL();
+    const history = useHistory();
     const [list, setList] = useState([]);
-    const [suggestion, setSuggest] = useState([]);
+    const [suggestion, setSuggestion] = useState([]);
     const [search, setSearch] = useState("");
     
-   const handleChange = (e) => {
+    const handleChange = (e) => {
         const value = e.target.value
         let suggestion = [];
         if(value.length > 0){
             const regex = new RegExp(`${value}`,`i`);
-            suggestion=list.sort().filter(v=>regex.test(v));
+            suggestion = list.sort().filter(v=>regex.test(v));
         }
-        setSuggest(suggestion);
+        setSuggestion(suggestion);
         setSearch(value)
     }
 
-    const handleSelected = (value) => {
+    const handleSelect = (value) => {
         setSearch(value);
-        setSuggest([])
+        setSuggestion([])
     }
 
     const displaySuggestion = () => {
@@ -29,7 +33,7 @@ const SearchBar = () => {
         } else {
             return (
                 <ul>
-                    {suggestion.map((item)=><li key={item} onClick={()=>handleSelected(item)}>{item}</li>)}
+                    {suggestion.map((item)=><li key={item} onClick={()=> handleSelect(item)}>{item}</li>)}
                 </ul>
             )
         }
@@ -37,10 +41,9 @@ const SearchBar = () => {
 
     const fetchData = async (url, setData) => {
         let res = await axios.get(url)
-        
         try {
             res.data.payload.map((el) => {
-                return setData(prevState => [...prevState ,el.tag_name])
+                return setData(prevState => [...prevState, el.tag_name])
             })
         } catch (err) {
             console.log(err)
@@ -48,13 +51,14 @@ const SearchBar = () => {
     }
     const handleSearch = (e) => {
         e.preventDefault();
-        window.location="/pins/search-results"
+        // window.location="/pins/search-results"
+        history.push("/pins/search-results")
         sessionStorage.searchTerm = e.target.elements[0].value
     }
 
-    // useEffect(()=>{
-    //     fetchData("http://localhost:3001/api/tags/all",setList)
-    // }, [])
+    useEffect(()=>{
+        fetchData(`${API}/api/tags/`, setList)
+    }, [])
 
         return (
             <form onSubmit={handleSearch}>

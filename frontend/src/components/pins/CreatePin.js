@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import { apiURL } from '../../util/apiURL';
-import { useInput } from '../../util/useInput'
+import { useInput } from '../../util/useInput';
 import { AuthContext } from '../../providers/AuthProvider';
 import PopulateBoards from './PopulateBoards'
 import '../../css/CreatePin.css'
@@ -12,8 +13,10 @@ const CreatePin = () => {
     const API = apiURL();
     const [userId, setUserId] = useState("");
     const [boardId, setBoardId] = useState("");
+    const [newPins, setNewPins] = useState([]);
     const setTag = useInput("");
     const setNote = useInput("");
+    const history = useHistory();
 
 // uploading image
     const [file, setFile] = useState({preview: "", raw: ""});
@@ -50,48 +53,43 @@ const CreatePin = () => {
 
 
 
-
     const handleNewPins = async (e) => {
+        e.preventDefault();
         try {
-            e.preventDefault();
             const formData = new FormData();
             formData.append("myImage", file.raw);
             formData.append("file", file.preview);
             formData.append("creator_id", userId);
-            formData.append("board_id", boardId)
+            formData.append("board_id", boardId);
             formData.append("note", setNote.value);
-            debugger
+            formData.append("tag_name", setTag.value);
             const config = {
               headers: {
                 "content-type": "multipart/form-data",
               },
             }
             let newPin = await axios.post(`${API}/api/pins/`, formData, config);
+            debugger
             console.log(newPin.data)
-            alert(newPin.data.message)
-            setTimeout(function() {
-              window.location = "/user-feed";
-            },1000) 
-          } catch (err) {
+            handleNewTag(newPin.data.post)
+            history.push("/user-feed");
+        } catch (err) {
             console.log(err)
-          }
         }
+    }
 
-        // use history
+
+    const handleNewTag = async(data) => {
+        if(setTag.value){
+            let newTag = await axios.post(`${API}/api/tags/`, {creator_id: data.creator_id, pin_id:data.id, board_id:data.board_id, tag_name:setTag.value});
+            console.log(newTag.data.post)
+        } else {
+            console.log("No hashtag was added")
+        }
+    }
+
+
 //  ----------------------------------------------------------------------------------------
-
-   
-
-    // const handleNewTag = async (data)=>{
-    //     if(setTag.value){
-    //         let newTag = await axios.post(`${API}/api/hashtags/`, {formData, config});
-    //         console.log(newTag.data)
-    //     } else {
-    //         console.log("No tag was added")
-    //     }
-    // }
-
-
     
     return (
         <div className="create-pin-div"> 
@@ -114,8 +112,6 @@ const CreatePin = () => {
                         {/* <span className="image-preview__default-text"> Drag and drop or click to upload</span>  */}
                     </div>
                     
-
-                    {/* <input className="online-pic-link" placeholder="Save from site" disabled/> */}
                 </div>
 
 
@@ -126,28 +122,18 @@ const CreatePin = () => {
                         {/* passing the props child/parent */}
                     </div>
 
+    
+                    <input className="style-hashtag-input" type="text" placeholder="Add hashtags..." {...setTag} />
+                
                     <div className="user-display">
                         {/* {user} */}
                     </div>
-
-                    {/* <div className="link-div">
-                        <input className="link-input-style" placeholder="Which board is this going into?" {...setBoard} />  
-                    </div> */}
 
                     <div className="about-div"> 
                         <textarea rows="5" cols="30" className="add-note-style" type="textarea" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
                     </div>
 
                 </div>
-
-
-                {/* <label>
-                    Add a tag #
-                    <input type="text" placeholder="hash tag ##" name="hashtag" {...setTag} />
-                </label>         */}
-
-
-
 
             </form>
 

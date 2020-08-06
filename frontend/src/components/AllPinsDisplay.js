@@ -5,6 +5,7 @@ import '../css/PinList.css'
 
 import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
+// import Tags from './Tags';
 
 
 const AllPinsDisplay = () => {
@@ -14,7 +15,7 @@ const AllPinsDisplay = () => {
 
 
     useEffect(() => {
-        const fetchPinsBySingleUser = async () => {
+        const fetchAllPins = async () => {
             try {
                 let res = await axios({
                     method: "get",
@@ -30,11 +31,15 @@ const AllPinsDisplay = () => {
                 console.log(err.message);
                 }
             };
-            fetchPinsBySingleUser();
+            fetchAllPins();
     }, [])
 
     const displayPin = pins.map(pin => {
-        return ( <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} /> )
+        return ( 
+        <>
+        <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} />
+        {/* <Tags pinId={pin.id} userName={pin.username} /> */}
+        </> )
     })
 
    return (
