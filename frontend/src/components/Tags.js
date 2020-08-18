@@ -4,7 +4,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { apiURL } from "../util/apiURL";
 
 
-const Tags = ({ token }) => {
+const Tags = ({ pinId }) => {
   // const { currentUser, token } = useContext(AuthContext);
   const [tags, setTags] = useState([]);
   const API = apiURL();
@@ -20,8 +20,8 @@ const Tags = ({ token }) => {
 
 
   useEffect(() => {
-    fetchTags(`${API}/api/tags/`);
-  }, /* [] */ );
+    fetchTags(`${API}/api/tags/${pinId}`);
+  }, [] );
 
 
   const getAllTags = tags.map(tag => {

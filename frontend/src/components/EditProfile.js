@@ -96,7 +96,13 @@ const  EditProfile = () => {
             <p> Edit profile </p>
             <p> People on Pinterest will get to know you with the info below </p>
 
-            <img src={user.profilepic} alt="User Profile"></img>
+            {/* <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder=" Upload it."/>
+            <img src={user.profilepic} alt="User Profile"></img> */}
+
+
+            <input placeholder="Change photo" className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
+            <img src="" alt="Image Preview" className="profile-pic-preview-signup" src={file.preview}/>
+                     
             <br></br>
             <button onClick={()=>uploadProfileImg()}>Change</button>
             <br></br>
