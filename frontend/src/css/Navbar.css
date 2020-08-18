@@ -48,20 +48,23 @@
 }
 
 .publicNavLogin:hover {
-    background: url('https://api.iconify.design/ant-design:login-outlined.svg') no-repeat center center / contain;
-    color: #000000;
+    /* background: url('https://api.iconify.design/ant-design:login-outlined.svg') no-repeat center center / contain; */
+    /* color: #000000; */
+    color: lightcoral;
     border-radius: 2rem;
-    color: transparent;
-    margin-top: -.8rem;
+    text-decoration: none;
+    /* color: transparent; */
+    /* margin-top: -.8rem; */
     
 }
 
 .publicNavSignup:hover {
-    background: url('https://api.iconify.design/emojione-monotone:sign-of-the-horns.svg') no-repeat center center / contain;
-    color: #000000;
+    /* background: url('https://api.iconify.design/emojione-monotone:sign-of-the-horns.svg') no-repeat center center / contain; */
+    /* color: #000000; */
     text-decoration: none;
-    color: transparent;
-    margin-top: -.8rem;
+    color: lightcoral;
+    /* color: transparent; */
+    /* margin-top: -.8rem; */
 }
 
 .pintrestLogoLettersNon {

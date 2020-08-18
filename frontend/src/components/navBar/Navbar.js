@@ -85,8 +85,8 @@ const Navbar = () => {
                     {/* </div> */}
                     <NavLink className="publicNavLink" to={"/about"}> About </NavLink>
                     <NavLink className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink>
-                    <NavLink className="publicNavLogin" id="login" to={"/login"}> Log in</NavLink>
-                    <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign up</NavLink>
+                    <NavLink className="publicNavLogin" id="login" to={"/login"}> Log In</NavLink>
+                    <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign Up</NavLink>
             
               
                     {/* import login */}
