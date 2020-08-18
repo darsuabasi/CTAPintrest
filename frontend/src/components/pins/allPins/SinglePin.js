@@ -6,7 +6,7 @@ import '../../../css/pin-style.css';
 const Pin = (props) => {
     return(
         <div className="card text-center shadow">
-            <div className="overflow">
+            <div className="overflow2">
                 <img src={props.imgsrc} alt="yupImg" className="card-img-top"/> 
             </div>
             {/* <div className="card-body text-dark">

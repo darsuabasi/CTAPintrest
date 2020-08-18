@@ -3,7 +3,6 @@
     margin: 0;
 }
 
-
 .card {
     width: 18rem;
     border-radius: 2rem!important;
@@ -38,6 +37,12 @@
 
 .card-img-top:hover {
     transform: scale(1.5);
+}
+
+.overflow2 {
+    overflow: hidden;
+    border-radius: 2rem;
+    display: flex;
 }
 
 .overflow {
