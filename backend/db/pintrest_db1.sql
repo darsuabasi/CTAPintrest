@@ -47,7 +47,6 @@ CREATE TABLE Tags (
     tag_name TEXT
 );
 
-
 CREATE TABLE Likes (
     id SERIAL PRIMARY KEY,
     liker_id VARCHAR REFERENCES Users(id) ON DELETE CASCADE,
