@@ -23,6 +23,7 @@ const BoardDisplay = () => {
                         AuthToken: token,
                     }
                 })
+                debugger
                 setBoards(res.data.payload.allBoards)
                 console.log(res.data)
             } catch(err) {

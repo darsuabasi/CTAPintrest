@@ -37,6 +37,12 @@
     /* object-fit: cover; */
 }
 
+
+#landingPage-flex {
+    display: flex;
+
+}
+
 .card-img-top:hover {
     transform: scale(1.5);
 }
@@ -44,7 +50,7 @@
 .overflow {
     overflow: hidden;
     border-radius: 2rem;
-    display: flex;
+    /* display: flex; */
 }
 
 .card-title {

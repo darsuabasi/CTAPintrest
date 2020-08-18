@@ -16,8 +16,8 @@ import Today from './components/Today';
 // import Accounts from './components/Accounts';
 // import Error from './components/Error';
 
-import UserBoards from './components/pins/userPins/UsersPinDisplay'
-import UserPins from './components/pins/userPins/UserPins'
+import UserBoards from './components/UserBoards';
+import UserPins from './components/pins/userPins/UserPins';
 
 import CreatePin from './components/pins/allPins/CreatePin';
 import CreateBoard from './components/boards/CreateBoard';
@@ -33,7 +33,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Settings from './components/Settings';
 import EditProfile from './components/EditProfile';
 import AccountSettings from './components/AccountSettings';
-import SearchResults from './components/searchFeature/SearchResults'
+import SearchResults from './components/searchFeature/SearchResults';
+
 
 
 

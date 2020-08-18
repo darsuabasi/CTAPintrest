@@ -10,12 +10,11 @@ import versaceShoe from '../../../assets/versaceShoe.jpeg';
 import whiteTwoPiece from '../../../assets/whiteTwoPiece.jpeg';
 
 
-
 class Pins extends Component{
     render() {
         return( 
         <div className="container-fluid d-flex justify-content center"> 
-            <div className="row">
+            <div id="landingPage-flex" className="row">
 
                 <div className="col-md-3">
                     <Pin imgsrc={gucciDenim} title="Gucci Denim" username="lovelyTelly" />
@@ -37,7 +36,6 @@ class Pins extends Component{
                     <Pin imgsrc={whiteTwoPiece} title="Princessa" />
                 </div>
 
-                
 
                 <div className="col-md-3">
                     <Pin imgsrc={versaceShoe} title="Versace Versace Versace" />
@@ -79,7 +77,6 @@ class Pins extends Component{
                 {/* <div className="col-md-3 col-sm-6">
                     <Pin imgsrc={versaceShoe} title="Versace Versace Versace" />
                 </div> */}
-
 
             </div>
         </div>

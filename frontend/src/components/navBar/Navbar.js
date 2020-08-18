@@ -30,7 +30,7 @@ const Navbar = () => {
                     AuthToken: token,
                 },
             });
-            debugger
+            // debugger
             setUserId(res.data.getUser.id);
             setUser(res.data.getUser);
             setProfilePicture(res.data.getUser.profilepic);

@@ -5,9 +5,9 @@ import { apiURL } from '../util/apiURL';
 import '../css/UserBoardProfile.css'
 import { Link, useHistory } from 'react-router-dom';
 import { useInput } from '../util/useInput';
-import BoardDisplay from './BoardDisplay'
+import BoardDisplay from '../components/boards/BoardDisplay'
 
-const UserProfile = () => {
+const UserBoards = () => {
     const { currentUser, token } = useContext(AuthContext);
     const API = apiURL();
     const body = useInput("");
@@ -24,7 +24,7 @@ const UserProfile = () => {
     
     useEffect(() => {
         const fetchUser = async () => {
-            // debugger
+            debugger
             try {
             let res = await axios({
                 method: "get",
@@ -33,7 +33,7 @@ const UserProfile = () => {
                     AuthToken: token,
                 },
             });
-            debugger
+            // debugger
             setUserId(res.data.getUser.id);
             setUser(res.data.getUser);
             setUsername(res.data.getUser.username);
@@ -161,7 +161,7 @@ const UserProfile = () => {
 
                 <div className="board-and-pin-mainCard"> 
                     <div className="board-card">
-                    <BoardDisplay/>
+                        <BoardDisplay/>
                     </div>
 
                     <div className="pin-card">
@@ -174,4 +174,4 @@ const UserProfile = () => {
     )
 }
 
-export default UserProfile;
+export default UserBoards;
