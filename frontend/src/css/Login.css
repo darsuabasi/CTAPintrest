@@ -1,26 +1,30 @@
+/* $body-bg: linear-gradient(180deg, #1c0138 0%, #2c0055 100%);
+$border: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%); */
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 * {
+    margin: 0;
     padding: 0;
-    margin: 0 
 }
 
-body {
+
+/* body {
     margin-top: 2rem;
-}
+} */
 
 /* make inputs transparent [background:transparent */
 .login-form {
     position: absolute;
-    margin-top: -3rem;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-ransform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
+    top: 16%;
+    left: 38%;
+    /* -webkit-transform: translate(-50%, -50%); */
+    /* -moz-transform: translate(-50%, -50%); */
+    /* -ms-ransform: translate(-50%, -50%); */
+    /* -o-transform: translate(-50%, -50%); */
     height: 30rem;
     background-color: transparent;
-    border: 2px solid red;
+    border: 3px solid #fb2182 ;
     border-radius: 5rem;
+    box-shadow: #E60023 5px 10px;
 }
 
 .background4pin {
@@ -32,24 +36,21 @@ body {
 
 .loginhello {
     text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 
 .user-form-fill {
     text-align: center;
-    
 }
 
 
-.stylingLoginModal {
+/* .stylingLoginModal {
     justify-content: center;
     align-self: center;
     text-align: center;
     padding-top: -5rem;
-}
-
+} */
 
 
 .otherExtraShit {
@@ -57,44 +58,119 @@ body {
     text-align: center;
 }
 
-.login-input {
-    border-radius: 10px;
+.login-input1 {
+    border-radius: 10px 2px solid;
     padding-left: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    box-shadow: #fb2182 5px 5px;
+    border-color: blueviolet;
+}
+
+.login-input2 {
+    border-radius: 10px 2px solid;
+    padding-left: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    box-shadow: #fb2182 5px 5px;
+    border-color: blueviolet;
 }
 
 
-.login-page-button1 {
-    border-radius: 10px;
-    width: 4rem;
-    background-color: transparent;
-
-}
-
-.login-page-button2 {
+/* .login-page-button2 {
     border-radius: 10px;
     width: 12rem;
     margin-bottom: .5rem;
     background-color: transparent;
-
 }
+
 
 .login-page-button3 {
     border-radius: 10px;
     width: 12rem;
+    margin-bottom: .5rem;
     background-color: transparent;
-
-}
+} */
 
 .signup-from-login {
     color: black;
+    font-weight: 700;
+    margin-bottom: 0.5rem
 }
+
 
 .signup-from-login:hover {
     color: black;
 
 }
 
-
-.slider-stuff {
+/* .slider-stuff {
     z-index: -2;
+} */
+
+
+
+
+/* button style */
+
+.login-page-button1:hover {
+    bottom: 176px;
+    transition: all 1s ease-in-out;
+    box-shadow: 0px 0px 10px #ffdc2a;
+
 }
+
+.login-page-button1 {
+    border-radius: 10px;
+    width: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: #2c0055;
+    font-family: "Sacramento", cursive;
+    box-shadow: 0px 0px 16px #c80de0;
+    font-weight: 600;
+    font-size: 1.3rem;
+    z-index: 3;
+    border: 2px solid;
+    color: white;
+    transition: all 1s ease-in-out;
+    border-image: linear-gradient(#360154, #d442d5) 60;
+    span: {
+        text-align: center;
+        font-family: "Sacramento", cursive;
+        left: 56px;
+        font-size: 35px;
+        line-height: 70px;
+        margin: 0 auto;
+        transition: all 0.3s ease-in-out;
+        background: -webkit-linear-gradient(#ffdc2a, #fb2182);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.sun {
+    width: 4rem;
+    margin-top: -4.9rem;
+    margin-bottom: 2rem;
+    height: 2rem;
+    margin-left: 8rem;
+    background: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%);
+    box-shadow: 0px 0px 36px #ffdc2a;
+    z-index: 2;
+    border-radius: 65px;
+    transition: all 1s ease-in-out;
+  }
+
+
+
+
+

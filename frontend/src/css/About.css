@@ -11,27 +11,24 @@
     font-weight: 600;
 }
 
-
-
-
 .holaDiv {
    padding-top: 10rem;
 }
 
-.my-name-is {
-    /* display: flex;
+/* .my-name-is {
+    display: flex;
     justify-content: center;
     text-align: center;
-    align-items: center; */
-}
+    align-items: center;
+} */
 
-.about-me {
-    /* display: flex;
+/* .about-me {
+    display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     text-align: center;
-    align-items: center; */
-}
+    align-items: center;
+} */
 
 .instagram {
     color: #E60023;
