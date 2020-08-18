@@ -14,7 +14,7 @@ class Pins extends Component{
     render() {
         return( 
         <div className="container-fluid d-flex justify-content center"> 
-            <div id="landingPage-flex" className="row">
+            <div style={{display:"flex"}} className="row">
 
                 <div className="col-md-3">
                     <Pin imgsrc={gucciDenim} title="Gucci Denim" username="lovelyTelly" />
