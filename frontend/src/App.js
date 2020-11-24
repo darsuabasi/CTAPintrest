@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/navBar/Navbar';
-import Landing from './components/Landing'
+import Landing from './components/landing/Landing'
 import Home from './components/home/Home';
 import Login from './components/logIn/Login'
 import Signup from './components/signUp/Signup'

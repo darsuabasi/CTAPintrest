@@ -1,6 +1,6 @@
 import React from 'react';
-import AllPins from '../components/pins/allPins/AllPins';
-import '../css/Landing.css'
+import LandingPagePins from './LandingPagePins'
+import '../../css/Landing.css'
 
 
 const Landing = () => { 
@@ -10,7 +10,7 @@ const Landing = () => {
 
             </div>
             <div className="all-pins-div">
-                <AllPins/>
+                <LandingPagePins/>
             </div>
         </div>
     )
