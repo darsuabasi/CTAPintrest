@@ -5,13 +5,13 @@ const getPinLikes = async (req, res, next) => {
         let pinLikes = await db.any(`SELECT * FROM Likes WHERE pin_id = $1`, req.params.pin_id)
         res.status(200).json({
             status: 'Success',
-            message: 'Ayeeee peep all the likes',
+            message: 'Now viewing all likes. Success.',
             payload: pinLikes
         })
     }catch(error){
         res.status(400).json({
             status: error,
-            message: 'Yo, the likes arent showing'
+            message: 'Likes cannot be displayed.'
         })
     }
 }
@@ -22,13 +22,13 @@ const addPinLike = async (req, res, next) =>{
         res.status(200).json({
             status: 'Success',
             payload: addLike,
-            message: 'Ayee, good looks on showing some love to the pin'
+            message: 'Success.. likes on pin now showing.'
         })
 
     } catch(error){
         res.status(400).json({
             status: error,
-            message: 'Greatly appreciated but your like didnt go thru'
+            message: 'Greatly appreciated but your like cannot be added at this time.'
         })
     }
 }
@@ -38,14 +38,14 @@ const deletePinLike = async (req, res, next) =>{
         let removeLike = await db.one(`DELETE FROM Likes WHERE liker_id = ${req.params.liker_id} AND pin_id = ${req.params.pin_id} RETURNING *`);
         res.status(200).json({
             status: 'Success',
-            message: 'Damn, you lowkey a hater. Ya like is gone now',
+            message: 'Succes, your like has been removed.',
             payload: removeLike
         })
-    }catch(error){
+    } catch(error){
        
         res.status(400).json({
             status: error,
-            message: 'Oh, big mad... youre like is still here'
+            message: 'Sorry, like could not be removed.
         })
     }
 }
