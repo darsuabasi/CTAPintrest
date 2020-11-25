@@ -12,6 +12,7 @@ import { logout} from '../../util/firebaseFunctions'
 
 
 const Navbar = () => {
+
     const { currentUser, token } = useContext(AuthContext);
     const API = apiURL();
     const [userId, setUserId] = useState("");
@@ -41,60 +42,69 @@ const Navbar = () => {
         fetchUser();
     }, []);
 
-    // const { currentUser } = useContext(AuthContext);
     const displayNavForUser = () => {
         if(currentUser) {
-            return( 
+            return (
                 <div className="user-navBar">
-                
-                    <NavLink className="pintrestLogoLetters" to={"/user-feed"}> P </NavLink>
-                    <NavLink className="user-nav-feed" to={"/user-feed"}>Home</NavLink>
-                    <NavLink className="user-nav-today" to={"/today"}>Today</NavLink>
-                    {/* <NavLink className="user-nav-following" to={"/following"}>Following</NavLink> */}
-                    <SearchBar className="user-nav-search"> </SearchBar>
-                    {/* <NavLink className="user-nav-notify" to={"/notifications"}> Notifications </NavLink> */}
-                    <NavLink className="user-nav-message" to={"/messages"}> Messages </NavLink>
-                    <NavLink className="user-nav-image" to={"/user-profile/boards"}> <img className="user-nav-image-2" src={API+profilepicture}/> </NavLink>
-                    
-                        <div className="dropdown"> 
-                            <button className="user-nav-accounts" to={"/accounts"}>Accounts</button>
-                                <div className="account-dropdown-content">
-                                <label className="drop-labels">Accounts</label>
-                                    <a href="www.nothing.com"> Add another account </a>
-                                    <a href="www.nothing.com"> Add a free business account </a>
-                                <label className="drop-labels"> More Options</label>
-                                    {/* <NavLink to={"/settings"}> Settings </NavLink> */}
-                                    <NavLink to={"/settings"}> Settings </NavLink>
-                                    <a href="www.nothing.com"> Tune your home feed </a>
-                                    {/* <NavLink to={"/edit"}> Tune your home feed </NavLink> */}
-                                    <a href="www.nothing.com"> Install the chrome app </a>
-                                    <a href="www.nothing.com"> Get help </a>
-                                    <a href="www.nothing.com"> See terms and privacy </a>
-                                    <button className="logout-btn-style" onClick={logout}>Logout</button>
-                                </div>
-                        </div>
- 
-                    </div>
-             )  
-        } else {        
+                    <h1> Hello owrld</h1>
+
+                </div>
+            )
+        } else {
             return (
                 <div className="non-user-nav">
-                    {/* <ul className='pintrestLogoLetters'>P</ul> */}
-                    {/* <div className="logo-pin">  */}
-                    <NavLink className="pintrestLogoLettersNon" to={"/"}> P </NavLink>
-                    {/* </div> */}
-                    <NavLink className="publicNavLink" to={"/about"}> About </NavLink>
-                    <NavLink className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink>
-                    <NavLink className="publicNavLogin" id="login" to={"/login"}> Log In</NavLink>
-                    <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign Up</NavLink>
-            
-              
-                    {/* import login */}
-                    {/* import signup */}
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        {/* <a class="navbar-brand" href="#">Pinterest</a> */}
+                        <NavLink class="navbar-brand" /*className="pintrestLogoLettersNon"*/ to={"/"}> PINTEREST </NavLink>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+
+
+                                    <li class="nav-item active">
+                                        <NavLink /*class="nav-link"*/ className="publicNavLink" to={"/about"}> About </NavLink>
+                                        {/* <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> */}
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <NavLink className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink>
+                                        {/* <a class="nav-link" href="#">Link</a> */}
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <NavLink className="publicNavLogin" id="login" to={"/login"}> Log In</NavLink>
+                                        {/* <a class="nav-link" href="#">Link</a> */}
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign Up</NavLink>
+                                        {/* <a class="nav-link" href="#">Link</a> */}
+                                    </li>
+
+                                        {/* <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                 Dropdown
+                                             </a>
+                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                   <a class="dropdown-item" href="#">Action</a>
+                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                        <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="#">Something else here</a>
+                                                    </div>
+                                        </li> */}
+                                </ul>
+                            </div>
+
+                    </nav>
+
                 </div>
             )
         }
     }
+
     return (
         <div> 
             <nav className="navbarUno"> 
@@ -103,9 +113,53 @@ const Navbar = () => {
             </nav>
         </div>
     )
+
+
+
+
+
+
+
+//     return (
+//         <div>
+//             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+//                 <a class="navbar-brand" href="#">Navbar</a>
+//                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+//                     <span class="navbar-toggler-icon"></span>
+//                 </button>
+
+//                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+//                     <ul class="navbar-nav mr-auto">
+//                     <li class="nav-item active">
+//                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+//                     </li>
+//                     <li class="nav-item">
+//                         <a class="nav-link" href="#">Link</a>
+//                     </li>
+//                     <li class="nav-item dropdown">
+//                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//                         Dropdown
+//                         </a>
+//                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+//                         <a class="dropdown-item" href="#">Action</a>
+//                         <a class="dropdown-item" href="#">Another action</a>
+//                         <div class="dropdown-divider"></div>
+//                         <a class="dropdown-item" href="#">Something else here</a>
+//                         </div>
+//                     </li>
+//                     <li class="nav-item">
+//                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+//                     </li>
+//                     </ul>
+//                     <form class="form-inline my-2 my-lg-0">
+//                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+//                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+//                     </form>
+//                 </div>
+// </nav>
+
+//     </div>
+//     )
 }
 
-export default Navbar;
-
-
-
+export default Navbar
