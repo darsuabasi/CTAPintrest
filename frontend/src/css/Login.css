@@ -2,14 +2,22 @@
 $border: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%); */
 @import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
+    outline: 0;
 }
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 25vh;
+}
 
-/* body {
-    margin-top: 2rem;
-} */
+.main-login {
+    width: 100%;
+    height: 100vh !important;
+}
 
 /* make inputs transparent [background:transparent */
 .login-form {
