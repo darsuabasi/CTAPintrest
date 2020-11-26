@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
-import Pin from '../pins/allPins/SinglePin';
-import gucciDenim from '../../assets/gucciDenim.jpeg';
-import redMakeupLook from '../../assets/redMakeupLook.jpeg';
-import jewels from '../../assets/jewels.jpeg';
-import oldGlamLooks from '../../assets/oldGlamLooks.jpeg';
-import goldDress from '../../assets/goldDress.jpeg';
-import tropicalFit from '../../assets/tropicalFit.jpeg';
-import versaceShoe from '../../assets/versaceShoe.jpeg';
-import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
+// import React, {Component} from 'react';
+// import Pin from '../pins/allPins/SinglePin';
+// import gucciDenim from '../../assets/gucciDenim.jpeg';
+// import redMakeupLook from '../../assets/redMakeupLook.jpeg';
+// import jewels from '../../assets/jewels.jpeg';
+// import oldGlamLooks from '../../assets/oldGlamLooks.jpeg';
+// import goldDress from '../../assets/goldDress.jpeg';
+// import tropicalFit from '../../assets/tropicalFit.jpeg';
+// import versaceShoe from '../../assets/versaceShoe.jpeg';
+// import whiteTwoPiece from '../../assets/whiteTwoPiece.jpeg';
 
 
-const LandingPagePins = () => {
+// const LandingPagePins = () => {
     // render() {
-        return( 
+        // return( 
         // <div className="container-fluid d-flex justify-content center"> 
         //     <div style={{display:"flex"}} className="row">
 
@@ -57,25 +57,23 @@ const LandingPagePins = () => {
         // </div>
 
 
-    <div class="card-deck">
-        <div class="card-body">
-            <Pin imgsrc={gucciDenim} title="Gucci Denim"/>  
-        </div>
+//     <div class="card-deck">
+//         <div class="card-body">
+//             <Pin imgsrc={gucciDenim} title="Gucci Denim"/>  
+//         </div>
 
-        <div class="card-body">
-            <Pin imgsrc={redMakeupLook} title="Intense"/>
-        </div>
+//         <div class="card-body">
+//             <Pin imgsrc={redMakeupLook} title="Intense"/>
+//         </div>
 
-        <div class="card-body">
-            <Pin imgsrc={jewels} title="The finer things"/>
-        </div>
+//         <div class="card-body">
+//             <Pin imgsrc={jewels} title="The finer things"/>
+//         </div>
 
-        <div class="card-body">
-            <Pin imgsrc={goldDress} title="Travel" />
-        </div>
-</div>
-
-
+//         <div class="card-body">
+//             <Pin imgsrc={goldDress} title="Travel" />
+//         </div>
+// </div>
 
 
 
@@ -84,8 +82,10 @@ const LandingPagePins = () => {
 
 
 
-        )
-    // }
-}
 
-export default LandingPagePins;
+
+        // )
+    
+// }
+
+// export default LandingPagePins;

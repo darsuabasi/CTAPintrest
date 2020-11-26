@@ -7,6 +7,8 @@
 .env
 public/uploads
 src/assets
+landingPageAssets
+styles
 
 # testing
 /coverage
