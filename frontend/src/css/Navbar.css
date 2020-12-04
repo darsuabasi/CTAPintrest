@@ -314,7 +314,7 @@ $border: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%); */
 /* make inputs transparent [background:transparent */
 .login-form {
     /* position: absolute; */
-    top: 50;
+    /* top: 50; */
     /* left: 50; */
     /* -webkit-transform: translate(-50%, -50%); */
     background-color: transparent;
@@ -334,8 +334,8 @@ $border: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%); */
 
 .loginhello {
     text-align: center;
-    margin-top: 1.3rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     font-size: 34px !important;
     color:  #E60023;
     font-weight: 900 !important;
@@ -354,8 +354,8 @@ $border: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%); */
 .login-input1, .login-input2 {
     border-radius: 10px 2px solid;
     padding-left: 1.5rem;
-    margin-top: 1.7rem;
-    margin-bottom: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 70%;
     justify-content: center;
     align-items: center;
