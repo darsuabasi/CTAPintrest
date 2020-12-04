@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/navBar/Navbar';
 import Landing from './components/landing/Landing'
 import Home from './components/home/Home';
-import Login from './components/logIn/Login'
+// import Login from './components/logIn/Login'
 import Signup from './components/signUp/Signup'
 import AboutMe from './components/about/About';
 
@@ -52,6 +52,14 @@ const App = () => {
             <Route exact path="/about">
               <AboutMe/>
             </Route>
+
+            <AuthRoute path="/signup">
+              <Signup/> 
+            </AuthRoute>
+
+            {/* <AuthRoute path="/login">
+               <Login/> 
+            </AuthRoute> */}
     
             <ProtectedRoute exact path="/user-feed">
               <Home/>
@@ -83,15 +91,7 @@ const App = () => {
 
             <Route exact path="/settings/account-settings">
               <AccountSettings/>
-            </Route>
-
-            <AuthRoute path="/signup">
-              <Signup/> 
-            </AuthRoute>
-
-            <AuthRoute path="/login">
-               <Login/> 
-            </AuthRoute> 
+            </Route> 
 
             <ProtectedRoute exact path="/create-pin"> 
               <CreatePin/>

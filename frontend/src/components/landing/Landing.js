@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 // import LandingPagePins from './LandingPagePins'
-import '../../css/Landing.css'
+// import '../../css/Landing.css'
 import './styles/styles.css'
 
 // poc
@@ -227,7 +227,7 @@ const Landing = () => {
       }, []);
 
     return(
-        <div> 
+        <div className="main-landing"> 
             
             {/* <div className="all-pins-div">
                 <LandingPagePins/>
