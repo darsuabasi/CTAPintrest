@@ -25,7 +25,13 @@ export const getFirebaseIdToken = () =>
          firebase.auth().currentUser.getIdToken(false);
   
 
-
+export const demoLogin = async () => {
+    try {
+        await login("darsu@gmail.com", "test123");
+    } catch (error) {
+        console.log(error);
+    }
+};
   
 
 

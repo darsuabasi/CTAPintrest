@@ -7,13 +7,14 @@ import { apiURL } from '../../util/apiURL';
 import { useInput } from '../../util/useInput';
 import { AuthContext } from '../../providers/AuthProvider';
 import '../../css/Navbar.css'
-import { logout} from '../../util/firebaseFunctions';
+// import { logout} from '../../util/firebaseFunctions';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import wave from '../../assets/wave.svg'
 
 
-import { login } from '../../util/firebaseFunctions';
+import { login, demoLogin, signUp, logout } from '../../util/firebaseFunctions';
+// import { signUp } from '../../util/firebaseFunctions';
 
 
 const Navbar = () => {
@@ -24,12 +25,34 @@ const Navbar = () => {
     const history = useHistory("");
     const [user, setUser] = useState([]);
     const [profilepicture, setProfilePicture] = useState("");
-
+    // login
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // signup
+    const [emailSignup, setEmailSignup] = useState("");
+    const [passwordSignup, setPasswordSignup] = useState("");
+    const userName = useInput("");
+    const firstName = useInput("");
+    const lastName = useInput("");
+    const bio = useInput("");
+    // const profilePic = useInput("");
+    const [file, setFile] = useState({preview: "", raw: ""});
+    // const age = useInput("");
+    const [userSignup, setUserSignup] = useState([]);
+
+
+
+    const onSelectImage = (e) => {
+        if (e.target.files.length) {
+            setFile({
+              preview: URL.createObjectURL(e.target.files[0]),
+              raw: e.target.files[0]
+            });
+          }
+    }
 
 
     const handleLoginSubmit = async (e) => {
@@ -41,6 +64,37 @@ const Navbar = () => {
           alert("Not able to log in. Please try again.", err);
         }
     };
+
+    
+
+    const handleNewUser = async (e) => {
+        debugger
+        try {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("myImage", file.raw);
+            formData.append("file", file.preview);
+            formData.append("email", emailSignup);
+            formData.append("username", userName.value);
+            formData.append("first_name", firstName.value);
+            formData.append("last_name", lastName.value);
+            formData.append("bio", bio.value);
+            const config = {
+                headers: {
+                    "content-type": "multipart/form-data",
+                },
+            }
+            try {
+                let res = await signUp(emailSignup, passwordSignup);
+                formData.append("id", res.user.uid);
+            await axios.post(`${API}/api/users`, formData, config)
+            } catch (err) {
+                console.log(err)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+};
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -158,11 +212,6 @@ const Navbar = () => {
                                     </li>
                                     
 
-                                    <li class="nav-item">
-                                        <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign Up</NavLink>
-                                        {/* <a class="nav-link" href="#">Link</a> */}
-                                    </li>
-
                                         {/* <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                  Dropdown
@@ -175,34 +224,6 @@ const Navbar = () => {
                                                     </div>
                                         </li> */}
                                 </ul>
-
-
-
-
-{/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Login
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
-        <button type="button" class="btn btn-primary">Login !</button>
-      </div>
-    </div>
-  </div>
-</div> */}
 
 
 
@@ -237,6 +258,10 @@ const Navbar = () => {
                         <button className="login-page-button1" type="submit"> Log in </button>
                         <div class="sun"></div>
                         </div>
+
+                        <Button style={{color:"#ffffff", backgroundColor:"#E60023", border:"none", height:"2rem"}} bsstyle="primary" onClick={demoLogin}>
+                            Demo Login
+                        </Button>
                         {/* <h5> OR </h5> */}
 
                         {/* <button className="login-page-button2" type="submit"> Continue with Facebook </button>
@@ -257,12 +282,9 @@ const Navbar = () => {
 
 
 
-
-
-
-
-
-
+       <li class="nav-item">
+         <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign Up</NavLink>
+            </li> 
 
 
                             </div>
