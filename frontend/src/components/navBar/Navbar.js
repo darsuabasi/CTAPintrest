@@ -7,8 +7,13 @@ import { apiURL } from '../../util/apiURL';
 import { useInput } from '../../util/useInput';
 import { AuthContext } from '../../providers/AuthProvider';
 import '../../css/Navbar.css'
+import { logout} from '../../util/firebaseFunctions';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import wave from '../../assets/wave.svg'
 
-import { logout} from '../../util/firebaseFunctions'
+
+import { login } from '../../util/firebaseFunctions';
 
 
 const Navbar = () => {
@@ -19,6 +24,23 @@ const Navbar = () => {
     const history = useHistory("");
     const [user, setUser] = useState([]);
     const [profilepicture, setProfilePicture] = useState("");
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+
+    const handleLoginSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          await login(email, password);
+          history.push("/user-feed");
+        } catch (err) {
+          alert("Not able to log in. Please try again.", err);
+        }
+    };
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -117,29 +139,24 @@ const Navbar = () => {
                 <div className="non-user-nav">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         {/* <a class="navbar-brand" href="#">Pinterest</a> */}
-                        <NavLink class="navbar-brand" /*className="pintrestLogoLettersNon"*/ to={"/"}> PINTEREST </NavLink>
+                        <NavLink /*class="navbar-brand"*/ className="pintrestLogoLettersNon" to={"/"}> PINTEREST </NavLink>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto">
-
+                                <ul class="navbar-nav mr-auto sendToEnd">
 
                                     <li class="nav-item active">
-                                        <NavLink /*class="nav-link"*/ className="publicNavLink" to={"/about"}> About </NavLink>
+                                        <NavLink class="nav-link publicNavLink" className="publicNavLink" to={"/about"}> About </NavLink>
                                         {/* <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> */}
                                     </li>
                                     
                                     <li class="nav-item">
-                                        <NavLink className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink>
+                                        <NavLink class="nav-link publicNavLink" className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink>
                                         {/* <a class="nav-link" href="#">Link</a> */}
                                     </li>
-
-                                    <li class="nav-item">
-                                        <NavLink className="publicNavLogin" id="login" to={"/login"}> Log In</NavLink>
-                                        {/* <a class="nav-link" href="#">Link</a> */}
-                                    </li>
+                                    
 
                                     <li class="nav-item">
                                         <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign Up</NavLink>
@@ -158,6 +175,96 @@ const Navbar = () => {
                                                     </div>
                                         </li> */}
                                 </ul>
+
+
+
+
+{/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Login
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+        <button type="button" class="btn btn-primary">Login !</button>
+      </div>
+    </div>
+  </div>
+</div> */}
+
+
+
+    <button className="publicNavLogin" variant="primary" onClick={handleShow}>
+        Login
+      </button>
+      <div className="main-login">
+      <Modal className="fullModal" show={show} onHide={handleClose}>
+      
+        <Modal.Header closeButton>
+          {/* <Modal.Title className="modaltitle1">Welcome to Lifetrest!</Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body className="modalbody1">
+        {/* <div className="main-login"> */}
+        <div className="login-form"> 
+                <div className="stylingLoginModaldiv">
+                    <h3 className="loginhello"> Welcome to Lifetrest! </h3>
+                        <form className="user-form-fill" onSubmit={handleLoginSubmit}> 
+                        <input className="login-input1" placeholder="Email" 
+                            value={email}
+                            onChange={(e) => setEmail(e.currentTarget.value)}
+                            />
+                        <br/>
+                        <input className="login-input2" placeholder="Password" 
+                            value={password}
+                            autoComplete="on"
+                            type="password"
+                            onChange={(e) => setPassword(e.currentTarget.value)}
+                            /> 
+                        {/* <p> Forgot your password? </p> */}
+                        <div>
+                        <button className="login-page-button1" type="submit"> Log in </button>
+                        <div class="sun"></div>
+                        </div>
+                        {/* <h5> OR </h5> */}
+
+                        {/* <button className="login-page-button2" type="submit"> Continue with Facebook </button>
+                        <br/>
+                        <button className="login-page-button3" type="submit"> Continue with Google </button> */}
+                    </form> 
+                </div>
+            </div>
+            <img src={wave}/>
+        {/* </div> */}
+        </Modal.Body>
+        <Modal.Footer>
+            <p className="otherExtraShit"> By continuing, you agree to Pinterest's Terms of Service, Privacy Policy</p>
+            <NavLink className="signup-from-login" exact to={"/signup"}> Not on Pintrest yet? Sign up </NavLink>
+        </Modal.Footer>
+      </Modal>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
                             </div>
 
                     </nav>
