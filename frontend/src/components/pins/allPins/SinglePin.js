@@ -1,7 +1,7 @@
 import React from 'react'
 // import image1 from '../../assets/gucciDenim.jpeg'
 // import ImageUpl
-import '../../../css/pin-style.css';
+// import '../../../css/pin-style.css';
 
 const Pin = (props) => {
     return(
