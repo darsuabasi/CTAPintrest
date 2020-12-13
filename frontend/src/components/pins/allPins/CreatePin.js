@@ -94,8 +94,8 @@ const CreatePin = () => {
     return (
         <div className="create-pin-div"> 
 
-            <div>
-                <h2 className="welcome-to-create-pin"> Create your pins here</h2>
+            <div className="helloHeader">
+                <h2 className="welcome-to-create-pin"> CREATE YOUR PIN</h2>
             </div>
 
 
@@ -106,14 +106,12 @@ const CreatePin = () => {
                 <div className="uploadImageDiv">
 
                     <div className="image-preview" id="imagePreview"> 
-                      <button className="save-button-style" type="submit"> Save </button>
+                    <button className="save-button-style" type="submit"> Save </button>
                       <input className="input-style-yeah" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} />
                       <img src="" alt="Preview" src={file.preview} className="image-preview__image"/> 
-                        {/* <span className="image-preview__default-text"> Drag and drop or click to upload</span>  */}
                     </div>
                     
                 </div>
-
 
 
                 <div className="main-note-for-pin-div"> 
@@ -123,7 +121,6 @@ const CreatePin = () => {
                     </div>
 
     
-                    <input className="style-hashtag-input" type="text" placeholder="Add hashtags..." {...setTag} />
                 
                     <div className="user-display">
                         {/* {user} */}
@@ -132,6 +129,8 @@ const CreatePin = () => {
                     <div className="about-div"> 
                         <textarea rows="5" cols="30" className="add-note-style" type="textarea" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
                     </div>
+
+                    <input className="style-hashtag-input" type="text" placeholder="Add hashtags..." {...setTag} />
 
                 </div>
 
