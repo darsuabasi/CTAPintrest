@@ -4,18 +4,16 @@
 }
 
 .helloHeader {
-    /* background-color: #666; */
     padding: 16px;
     text-align: center;
     font-size: 35px;
-    color: #666;
+    color: #667;
 }
 
 .uploadImageDiv {
     float: left;
     width: 60%;
     height: 75vh;
-    /* background: #ccc; */
     padding: 20px;
 }
 
@@ -23,7 +21,6 @@
     float: left;
     padding: 20px;
     width: 40%;
-    /* background-color: #f1f1f1; */
     height: 75vh;
 }
 
@@ -35,16 +32,11 @@
     grid-column-end: 3;
 }
 
-.note_for_pin_div {
-    border: none;
-}
-
 .choose-board, .style-hashtag-input, .about-div {
     margin-left: 1rem;
 }
 
 .add-note-style, .style-hashtag-input {
-    border: none;
     width: 80%;
     border: 5px solid #E60023;
     border-radius: 0.5rem;
