@@ -9,9 +9,7 @@
     width: 23.5vw;
 }
 
-
 /* The Modal (background) */
-
 
 .showModal-true {
     opacity: 70;
@@ -49,12 +47,10 @@
     font-weight: 700;
   }
 
-
 .style-board-description {
     height: 2rem;
     margin-top: -0.5rem;
   }
-
 
   .delete-board-btn {
     display: flex;
@@ -62,22 +58,22 @@
     margin-left: -3rem;
     margin-right: 1.5rem;
     box-shadow:inset 0px 1px 0px 0px #f29c93;
-	background-color:#E60023;;
-	border-radius:10px;
-	border:1px solid #d83526;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:3px 14px;
-	text-decoration:none;
+    background-color:#E60023;;
+    border-radius:10px;
+    border:1px solid #d83526;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:3px 14px;
+	  text-decoration:none;
     text-shadow:0px 1px 0px #c73a30;
     margin-top: 0.25rem;
   }
   
-  .delete-board-btn:hover {
+.delete-board-btn:hover {
 	background-color:#ce0100;
 }
 
@@ -86,23 +82,19 @@
 	top:1px;
 }
 
-  /* .boardContent {
-    padding: 2rem;
-    border: 3px solid #E60023;
-    background-color: #ffffff;
-    width: 20rem;
-      
-  } */
-
-  /* .closeButton {
-      padding: 5px;
-      background-color: transparent;
-  } */
-
-
-  /* .styleContent {
-    color: #000000;
-  } */
  
-  
 
+@media (max-width: 991px) {
+  .mainDivModal {
+    text-align: center;
+    align-items: center;
+    width: 99%;
+}
+  .boardImage img {
+    display: flex;
+    object-fit: fill !important;
+    overflow: hidden;
+    border: 3px solid #E60023;
+  }
+    
+}
