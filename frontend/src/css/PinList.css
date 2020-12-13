@@ -13,9 +13,45 @@
 
 .pinCard {
     width: 23%;
-    grid-gap: 3.5rem;
+    grid-gap: 4.5rem;
     display: grid;
     grid-column-gap: 11px;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     margin-bottom: 3.5rem;
+}
+
+
+@media (max-width: 700px) {
+    .pinCard {
+        width: 95%;
+        /* grid-gap: 25rem; */
+        display: grid;
+        /* overflow: hidden !important; */
+        grid-row-gap: 25rem;
+        /* grid-column-gap: 80px; */
+        grid-template-columns: 1fr; 
+        /* margin-bottom: 3.5rem; */
+    }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+    .pinCard {
+        width: 95%;
+        grid-gap: 15rem;
+        display: grid;
+        grid-column-gap: 11px;
+        grid-template-columns: 1fr 1fr; 
+        margin-bottom: 3.5rem;
+    }
+}
+
+@media (min-width: 1001px) and (max-width: 1395px) {
+    .pinCard {
+        width: 98%;
+        grid-gap: 3.5rem;
+        display: grid;
+        grid-column-gap: 11px;
+        grid-template-columns: 1fr 1fr 1fr; 
+        margin-bottom: 3.5rem;
+    }
 }
