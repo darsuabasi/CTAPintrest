@@ -167,16 +167,16 @@ const Navbar = () => {
                                     
                                     <div className="account-dropdown-content">
                                         <label className="drop-labels">ACCOUNTS</label>
-                                            <a href="www.nothing.com"> Add another account </a>
-                                            <a href="www.nothing.com"> Add a free business account </a>
+                                            <a href="#" class="disabled"> Add another account </a>
+                                            <a href="#" class="disabled"> Add a free business account </a>
                                         <label className="drop-labels"> MORE OPTIONS</label>
                                    
                                             <NavLink to={"/settings"}> Settings </NavLink>
-                                            <a href="www.nothing.com"> Tune your home feed </a>
+                                            <a href="#" class="disabled"> Tune your home feed </a>
                                          
-                                            <a href="www.nothing.com"> Install the chrome app </a>
-                                            <a href="www.nothing.com"> Get help </a>
-                                            <a href="www.nothing.com"> See terms and privacy </a>
+                                            <a href="#" class="disabled"> Install the chrome app </a>
+                                            <a href="#" class="disabled"> Get help </a>
+                                            <a href="#" class="disabled"> See terms and privacy </a>
                                             <button className="logout-btn-style" onClick={logout}>Logout</button>
                                     </div>
                                 </div>
