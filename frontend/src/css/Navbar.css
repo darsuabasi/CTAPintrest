@@ -247,8 +247,8 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-top: 1.5rem
-  }
+    margin-top: 2%  
+}
 
 .account-dropdown-content {
     display: none;
