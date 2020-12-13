@@ -88,27 +88,24 @@ const CreateBoard = () => {
     return (
         <div className="create-board-div">
 
-            <div>
-                <h2 className="welcome-to-create-board"> Create your boards here</h2>
+            <div className="helloHeader2">
+                <h2 className="welcome-to-create-board"> CREATE YOUR BOARD</h2>
             </div>
 
 
 
-                <form onSubmit={handleNewBoards} className="create-board-main-div">
-                    <div>
-                        </div>
+            <form onSubmit={handleNewBoards} className="create-board-main-div">
+                <div>
+                </div>
 
-                        <div className="uploadImageDiv"> 
-                            <div className="image-preview2" id="imagePreview">  
-                                <button className="save-button-style" type="submit"> Save </button>
-                                <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
-                                <img src="" alt="Image Preview" className="image-preview__image" src={file.preview}/>
-                                {/* <span className="image-preview__default-text"> Drag and drop or click to upload </span>  */}
-                            </div>
-                        </div>
-
-
-
+                <div className="uploadImageDiv2"> 
+                    <div className="image-preview2" id="imagePreview">  
+                        <button className="save-button-style" type="submit"> Save </button>
+                        <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
+                        <img src="" alt="Image Preview" className="image-preview__image" src={file.preview}/>
+                        {/* <span className="image-preview__default-text"> Drag and drop or click to upload </span>  */}
+                    </div>
+                </div>
 
                 <div className="main-note-for-board-div">
                     <div className="another-div-wow">
@@ -117,27 +114,15 @@ const CreateBoard = () => {
                         </div>
                     
                         <div className="descrip-div">
-                            <textarea className="board-description-place" placeholder="Board description" {...boardDescription}/>
+                            <textarea style={{height:"80px"}} className="board-description-place" placeholder="Board description" {...boardDescription}/>
                         </div>
 
                     </div>
                 </div> 
-                   
-                    
-                </form>
+            </form>
             {/* </div> */}
-
-
-
-             
-
-
-            
-
         </div>
     )
-
-
 }
 
 export default CreateBoard;
