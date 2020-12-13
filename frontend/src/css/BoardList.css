@@ -3,14 +3,11 @@
     margin: 0
 }
 
-
 .pin-list { 
     margin: auto;
     display: grid;
-    color: purple;
-    
+    color: purple; 
 }
-
 
 .boardCard {
     width: 23%;
@@ -20,3 +17,13 @@
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     margin-bottom: 3.5rem;
 }
+
+@media (max-width: 991px) {
+    .boardCard {
+        width: 98% !important;
+        grid-gap: .5rem !important;
+        grid-column-gap: 5px !important;
+        grid-template-columns: 1fr !important;
+        margin-bottom: .5rem !important;
+    }
+  }
