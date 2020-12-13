@@ -3,8 +3,33 @@
     margin: 0;
 }
 
+.homeDiv-sub {
+    /* background-color: #666; */
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+.create-btn {
+    border-radius: 4rem !important; 
+    background-color: lightgrey !important;
+}
+
+.dropdown.two {
+    float: right;
+    /* background-color: red; */
+    margin-top: -2%;
+}
+
 .main4Pins {
+    /* background-color: royalblue; */
     width: 97%;
     height: 100%;
     margin-left: 1rem;
+}
+
+.style-create-board-dropdown, .style-create-pin-dropdown {
+    font-size: 16px !important;
+    text-align: start !important;
 }

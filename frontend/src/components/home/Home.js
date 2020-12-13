@@ -24,7 +24,6 @@ const Home = () => {
         // useEffect(() => {
             const fetchAllPins = async () => {
                 try {
-                    // debugger
                     let res = await axios({
                         method: "get",
                         url: `${API}/api/pins`,
@@ -32,7 +31,6 @@ const Home = () => {
                             AuthToken: token,
                         }
                     })
-                    debugger
                     setPins(res.data.payload)
                     console.log(res.data)
                 } catch(err) {
@@ -76,32 +74,19 @@ const Home = () => {
 
    return(
         <div className="homeDiv">
-
-            <div className='homeDiv'>
-                <nav className="navbar">
-                    
-
-                    <div className="pintrestDiv"> 
-                        {/* <h1>Pintrest</h1> */}
-                    </div>
-
-
-                    <div className="dropdown">
-                        <button class="circular ui icon button" className="create-btn"> D </button>
-                            <div className="add-dropdown-content">
-                                <Link className="style-create-board-dropdown" to={"/create-board"} > Create Board </Link>
-                                <Link className="style-create-pin-dropdown" to={"/create-pin"} > Create Pin </Link>
-                            </div>
-                    </div>
-
-                </nav>
-         
+            <div className='homeDiv-sub'>
+                <div className="dropdown two">
+                    <button class="circular ui icon button" className="create-btn"> D </button>
+                        <div className="add-dropdown-content">
+                            <Link className="style-create-board-dropdown" to={"/create-board"} > Create Board </Link>
+                            <Link className="style-create-pin-dropdown" to={"/create-pin"} > Create Pin </Link>
+                        </div>
+                </div>
             </div>
 
-
-                    <div className="main4Pins">
-                        <AllPinsDisplay/>
-                    </div>
+            <div className="main4Pins">
+                <AllPinsDisplay/>
+            </div>
 
              <div className="container-fluid d-flex justify-content center"> 
                 
