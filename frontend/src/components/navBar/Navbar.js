@@ -135,9 +135,9 @@ const Navbar = () => {
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav">
+                            <ul class="navbar-nav user2">
 
-                                <li class="nav-item active">
+                                <li class="nav-item active two">
                                     <NavLink class="nav-link" className="user-nav-feed" to={"/user-feed"}>Home <span class="sr-only">(current)</span> </NavLink>
                                 </li>
                                         
@@ -226,10 +226,11 @@ const Navbar = () => {
                                 </ul>
 
 
-
+<li class="nav-item"> 
     <button className="publicNavLogin" variant="primary" onClick={handleShow}>
         Login
       </button>
+</li>
       <div className="main-login">
       <Modal className="fullModal" show={show} onHide={handleClose}>
       
@@ -298,9 +299,9 @@ const Navbar = () => {
 
     return (
         <div> 
-            <nav className="navbarUno"> 
+            {/* <nav className="navbarUno">  */}
                 {displayNavForUser()}
-            </nav>
+            {/* </nav> */}
         </div>
     )
 }
