@@ -64,7 +64,7 @@ const PopulateBoards = ({boardId, setBoardId}) => {
 
     return (   
             <div> 
-                <select onChange={handleSelectBoard} value={boardId}>
+                <select style={{border:"5px solid #E60023", borderRadius:"0.5rem", width:"80%", height:"2.5rem"}} onChange={handleSelectBoard} value={boardId}>
                     <option defaultValue> Select a Board </option>
                     {/* <option onClick={handleCreateBoard}> Create a Board </option> */}
                     <option> ------------------------ </option>
