@@ -45,7 +45,7 @@ const deletePinLike = async (req, res, next) =>{
        
         res.status(400).json({
             status: error,
-            message: 'Sorry, like could not be removed.
+            message: 'Sorry, the like could not be removed.',
         })
     }
 }

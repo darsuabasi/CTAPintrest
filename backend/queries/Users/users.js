@@ -133,7 +133,7 @@ const getAllUserPins = async (req, res, next) => {
     try {
         // let { creator_id } = req.params
         let { id } = req.params
-        let pinsByUser = await db.any('SELECT * FROM Pins WHERE creator_id = $1', [id])
+        let pinsByUser = await db.any('SELECT * FROM Pins WHERE creator_id = $1 ORDER BY time_stamp DESC', [id])
         res.status(200).json({
             status: "Succes",
             message: "Yip Yip! You're checking out all pins from " + id,
@@ -235,7 +235,7 @@ const getAllBoardsByUser = async (req, res, next) => {
         let allBoards = await db.any(`SELECT Users.username, Boards.* 
                                     FROM Users 
                                     LEFT JOIN Boards ON Users.id = Boards.creator_id
-                                    WHERE creator_id= $1`, [id])
+                                    WHERE creator_id= $1 ORDER BY created_date DESC`, [id])
         res.status(200).json({
             status: "Success",
             message: "Yip Yip! You're checking out all boards for this specific user",
