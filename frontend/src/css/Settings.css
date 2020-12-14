@@ -4,9 +4,15 @@ body {
 }
 
 .listed-options-display {
-    margin-left: 12rem;
+    float: left;
+    margin-left: 10%;
+    margin-top: 5%;
     width: 25%;
  
+}
+
+.editProfileDiv {
+    width: 96%;
 }
 
 .list-style-display {
@@ -106,4 +112,9 @@ body {
 .app-icon {
     margin-top: 2rem;
     list-style-image: url('https://api.iconify.design/ic:baseline-apps.svg');
+}
+
+li.disabled {
+    pointer-events: none;
+    color: rgb(110, 110, 110);
 }
