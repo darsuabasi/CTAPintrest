@@ -31,7 +31,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import Pins from './components/pins/allPins/Pin'
 
 import Settings from './components/Settings';
-import EditProfile from './components/EditProfile';
+import EditProfile from './components/editProfile/EditProfile';
 import AccountSettings from './components/AccountSettings';
 import SearchResults from './components/searchFeature/SearchResults';
 
