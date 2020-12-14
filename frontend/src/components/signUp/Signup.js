@@ -73,40 +73,8 @@ const Signup = () => {
             {/* <header className="pintrestWelcome"> Welcome to Pintrest </header> */}
             {/* <h3> Find new ideas to try</h3> */}
 
-            <div class="progress-bar"> 
-                <div class="step"> 
-                <p className="cat-greet">Greetings</p>
-                <div class="bullet"> 
-                <span> 1 </span>
-                </div>
-                <div class="check fas fa-check"> </div>
-                </div>
 
-                <div class="step"> 
-                <p className="cat-you">You</p>
-                <div class="bullet2"> 
-                <span> 2 </span>
-                </div>
-                <div class="check fas fa-check"> </div>
-                </div>
-
-                <div class="step"> 
-                <p className="cat-sub">Submit</p>
-                <div class="bullet3"> 
-                <span> 3 </span>
-                </div>
-                <div class="check fas fa-check"> </div>
-                </div>
-            </div>
-
-
-            <div className="form-outer"> 
-
-
-            
-                            
-            {/* {error ? <div> {error} </div> : null} */}
-            <form action="#" onSubmit={handleNewUser}> 
+            <form className="signupForm" action="#" onSubmit={handleNewUser}> 
             
         <div class="page slidepage"> 
             <div class="title"> Basics </div>
@@ -147,7 +115,7 @@ const Signup = () => {
 
                 <div class="field"> 
                     <div class="label"> Your face? </div> 
-                    <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder=" Upload it."/>
+                    <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder="Upload it."/>
                     <img src="" alt="Image Preview" className="profile-pic-preview-signup" src={file.preview}/>
                                 
                 </div>
@@ -236,6 +204,14 @@ const Signup = () => {
                 <h5> OR </h5> */}
             </form>
 
+           
+
+
+            
+                            
+            {/* {error ? <div> {error} </div> : null} */}
+            
+
                 
             {/* <button type="submit"> Continue with Facebook </button>
             <button type="submit"> Continue with Google </button>
@@ -247,7 +223,7 @@ const Signup = () => {
             </div>
             <p> Create a business account</p> */}
 
-            </div>
+           
         </div>
     )
 }

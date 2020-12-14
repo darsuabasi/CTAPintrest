@@ -25,13 +25,21 @@ const Navbar = () => {
     const history = useHistory("");
     const [user, setUser] = useState([]);
     const [profilepicture, setProfilePicture] = useState("");
+
+    // about
+    const [showAbout, setShowAbout] = useState(false);
+    const handleCloseAbout = () => setShowAbout(false);
+    const handleShowAbout = () => setShowAbout(true);
     // login
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showLogin, setShowLogin] = useState(false);
+    const handleCloseLogin = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     // signup
+    const [showSignup, setShowSignup] = useState(false);
+    const handleCloseSignup = () => setShowSignup(false);
+    const handleShowSignup = () => setShowSignup(true);
     const [emailSignup, setEmailSignup] = useState("");
     const [passwordSignup, setPasswordSignup] = useState("");
     const userName = useInput("");
@@ -173,7 +181,6 @@ const Navbar = () => {
                                    
                                             <NavLink to={"/settings"}> Settings </NavLink>
                                             <a href="#" class="disabled"> Tune your home feed </a>
-                                         
                                             <a href="#" class="disabled"> Install the chrome app </a>
                                             <a href="#" class="disabled"> Get help </a>
                                             <a href="#" class="disabled"> See terms and privacy </a>
@@ -202,12 +209,41 @@ const Navbar = () => {
                                 <ul class="navbar-nav mr-auto sendToEnd">
 
                                     <li class="nav-item active">
-                                        <NavLink class="nav-link publicNavLink" className="publicNavLink" to={"/about"}> About </NavLink>
+                                        {/* <NavLink disabled class="nav-link publicNavLink" className="publicNavLink" to={"/about"}> About </NavLink> */}
                                         {/* <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> */}
+                                        <button className="publicNavAbout" variant="primary" onClick={handleShowAbout}>
+                                            About
+                                        </button>
                                     </li>
+
+                                    <div className="about-modal">
+                                        <Modal className="fullAboutModal" show={showAbout} onHide={handleCloseAbout}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title className="modaltitle1">Why?</Modal.Title>
+                                            </Modal.Header>
+
+                                            <Modal.Body className="modalBody-about">
+                                                <div className="aboutDiv">
+                                                    <div className="sub-div">
+                                                        <div className="rightDiv"> 
+                                                            <p className="holaDiv"> Welcome to Lifetrest! </p>
+                                                            <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. </p> 
+                                                            <p className="about-me"> This site is a space curated by a black woman for women of color to enjoy things without having to add who they are at the end of every search to find what they're looking for. I'm a fullstack software developer focusing on UX/UI and backend. I also dabble in photography.</p>
+                                                            <p> Check me out on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a> and if you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>.
+                                                            </p> 
+                                                        </div>
+
+                                                        <div className="leftDiv">
+                                                            <img/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Modal.Body>
+                                        </Modal>
+                                    </div>
                                     
                                     <li class="nav-item">
-                                        <NavLink class="nav-link publicNavLink" className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink>
+                                        {/* <NavLink class="nav-link publicNavLink" className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink> */}
                                         {/* <a class="nav-link" href="#">Link</a> */}
                                     </li>
                                     
@@ -227,15 +263,13 @@ const Navbar = () => {
 
 
 <li class="nav-item"> 
-    <button className="publicNavLogin" variant="primary" onClick={handleShow}>
-        Login
-      </button>
+    <button className="publicNavLogin" variant="primary" onClick={handleShowLogin}> Login </button>
 </li>
       <div className="main-login">
-      <Modal className="fullModal" show={show} onHide={handleClose}>
+      <Modal className="fullModal" show={showLogin} onHide={handleCloseLogin}>
       
         <Modal.Header closeButton>
-          {/* <Modal.Title className="modaltitle1">Welcome to Lifetrest!</Modal.Title> */}
+          {/* <Modal.Title className="loginhello">Login</Modal.Title> */}
         </Modal.Header>
         <Modal.Body className="modalbody1">
         {/* <div className="main-login"> */}
@@ -275,7 +309,7 @@ const Navbar = () => {
         {/* </div> */}
         </Modal.Body>
         <Modal.Footer>
-            <p className="otherExtraShit"> By continuing, you agree to Pinterest's Terms of Service, Privacy Policy</p>
+            <p className="otherExtraShit"> By continuing, you agree to Lifetrest's Terms of Service, Privacy Policy</p>
             <NavLink className="signup-from-login" exact to={"/signup"}> Not on Pintrest yet? Sign up </NavLink>
         </Modal.Footer>
       </Modal>
@@ -283,12 +317,76 @@ const Navbar = () => {
 
 
 
-       <li class="nav-item">
-         <NavLink className="publicNavSignup" id="signup" to={"/signup"}> Sign Up</NavLink>
-            </li> 
+        <li class="nav-item">
+            <button className="publicNavSignup" variant="primary" onClick={handleShowSignup}> Sign Up </button>
+        </li> 
 
+        <div className="main-signup-modal">
+            <Modal className="fullModalSignup" show={showSignup} onHide={handleCloseSignup}>
+                <Modal.Header closeButton>
+                    {/* <Modal.Title className="loginhello">Welcome to Lifetrest!</Modal.Title> */}
+                </Modal.Header>
 
+                <Modal.Body className="modalBodySignup">
+
+                    <div className="main-signup"> 
+                    <h3 className="loginhello"> Welcome to Lifetrest! </h3>
+                        <form className="signupForm" action="#" onSubmit={handleNewUser}> 
+                            <div className="firstDiv"> 
+                                <div className="signup-name">
+                                    <label className="nameLabel"> First Name <input className="signup-input" {...firstName} placeholder="First Name"/> </label> 
+                                    <label className="nameLabel"> Last Name <input className="signup-input" {...lastName} placeholder="Last Name"/> </label> 
+                                </div>
+                                <label> Enter a username <input className="signup-input username" {...userName} placeholder="Username"/> </label>
                             </div>
+
+                            <div class="secondDiv-signup"> 
+                                <div classNmae="suPhoto" style={{alignSelf:"center"}}>
+                                    <img src="" alt="Image Preview" className="profile-pic-preview-signup" src={file.preview}/>           
+                                </div>
+                                <div className="suPhotoTitle"> 
+                                    <label> Upload Your Photo <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder="Your photo"/> </label> 
+                                </div>
+                                <label class="label"> Enter your email <input placeholder="Email" 
+                                    text="email"
+                                    value={emailSignup}
+                                    onChange={(e) => setEmailSignup(e.currentTarget.value)}
+                                    className="signup-input"
+                                    />
+                                    </label> 
+
+                                <label class="label"> Enter a password <input placeholder="Password" 
+                                    text="password"
+                                    value={passwordSignup}
+                                    onChange={(e) => setPasswordSignup(e.currentTarget.value)}
+                                    autoComplete="on"
+                                    type="password"
+                                    className="signup-input"
+                                    /> 
+                                    </label>
+                                <label> Tell us a little bit about yourself <textarea rows="4" cols="50" className="signup-input" {...bio} placeholder="Bio bc who ru?"/> </label>
+                            </div>
+
+                            <div className="thirdDiv"> 
+                                {/* <div className="signup-button">
+                                    <button className="comeSignup" type="submit"> Sign up </button>
+                                </div> */}
+                                <div className="btn-div-signup">
+                                    <button className="signup-page-button1" type="submit"> Sign up </button>
+                                    <div class="sunTwo"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <p className="otherExtraShit"> By continuing, you agree to Lifetrest's Terms of Service, Privacy Policy</p>
+                    <NavLink className="login-from-signup" exact to={"/login"}> Already a member? Log in </NavLink>
+
+                </Modal.Footer>
+            </Modal>
+        </div>
+    </div>
 
                     </nav>
 
