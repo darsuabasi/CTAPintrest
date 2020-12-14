@@ -1,0 +1,142 @@
+* {
+    padding: 0; 
+    margin:0
+}
+
+.logged-in-user {
+    margin-right: 1rem;
+    padding: 3rem;
+    height: 82vh;
+    justify-content: center;
+    text-align: left;
+    background-color: transparent;
+    border: 3px solid #fb2182 ;
+    border-radius: 2rem;
+    box-shadow: #E60023 5px 10px;
+    overflow-y: scroll !important;
+}
+
+.profilePicChangeDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.profilePicDiv {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start !important;
+}
+
+.profile-pic-preview-editP {
+    width: 150px;
+    height: 150px;
+    border-radius: 2rem;
+    margin-left: -7rem;
+    margin-top: 5rem;
+}
+
+.profilePicUpdate-btn:hover {
+    bottom: 176px;
+    transition: all 2s ease-in-out;
+    box-shadow: 0px 0px 10px #ffdc2a;
+}
+
+.profilePicUpdate-btn {
+    align-self: center;
+    border-radius: 10px;
+    width: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    background: #cc1212;
+    font-family: "Sacramento", cursive;
+    box-shadow: 0px 0px 16px #ff8725;
+    font-weight: 600;
+    font-size: 1.3rem;
+    z-index: 3;
+    border: 2px solid;
+    color: white;
+    transition: all 1s ease-in-out;
+    border-image: linear-gradient(#0088a0, #cc1212) 60;
+    span: {
+        text-align: center;
+        font-family: "Sacramento", cursive;
+        left: 56px;
+        font-size: 35px;
+        line-height: 70px;
+        margin: 0 auto;
+        transition: all 0.3s ease-in-out;
+        background: -webkit-linear-gradient(#ffdc2a, #fb2182);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.sun2 {
+    align-self: center;
+    width: 4rem;
+    margin-top: -4rem;
+    height: 2rem;
+    background: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%);
+    box-shadow: 0px 0px 36px #ffdc2a;
+    z-index: 2;
+    border-radius: 65px;
+    transition: all 2s ease-in-out;
+  }
+
+.infoBodyDiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: -5%;
+    /* background-color: crimson; */
+}
+
+.nameDiv01 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+}
+
+.nameLabel, .nameInput {
+    display: block;
+}
+
+.nameLabel {
+    width: 100%;
+    height: 2.5rem;
+    background-color: darkmagenta;
+    
+}
+
+.nameInput {
+    width: 100%;
+   
+}
+
+.editProfileHeader {
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.editProfilePara {
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.profile-pic-preview2 {
+    width: 150px;
+    height: 150px;
+    border-radius: 6rem;
+}
+
+.epLabel{
+    color: red;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.epLabel.one{
+    color: red;
+}
