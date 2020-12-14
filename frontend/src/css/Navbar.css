@@ -51,6 +51,21 @@ body {
     justify-content: space-evenly !important;
 }
 
+.publicNavAbout {
+    color: #000000;
+    background: #efefef;
+    border: none;
+    border-radius: 2.1rem !important;
+    width: 5.6rem;
+    height: 2.9rem; 
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    float: right !important; 
+    margin-top: 0.3rem !important;
+    text-align: center !important;
+}
+
 .publicNavLogin {
     color: #fff;
     background: #e60023;
@@ -63,26 +78,30 @@ body {
     margin-right: 0.5rem !important;
     margin-top: 0.3rem !important;
     text-align: center !important;
-    /* margin-left: -45rem !important; */
+    
+    margin-left: 12% !important;
 }
 
 .publicNavSignup {
     color: #000000;
     background: #efefef;
+    border: none;
     border-radius: 2.1rem !important;
-    border-radius: 2.3em;
-    width: 5rem;
+    width: 5.6rem;
     height: 2.9rem; 
     font-weight: bold;
     font-size: 1.1rem;
     text-decoration: none;
-    padding-top: 0.7rem; 
-    padding-left: 0.5rem !important;
     float: right !important; 
     margin-top: 0.3rem !important;
+    text-align: center !important;
+    margin-right: -20%;
 }
 
-
+.publicNavAbout:hover {
+    text-decoration: none;
+    color: #e60023;
+}
 
 .publicNavLogin:hover {
     color: #000000;
@@ -110,7 +129,7 @@ body {
     width: 16rem;
     height: 3rem; 
     border-radius: 2rem !important;
-    margin-left: -18%;
+    margin-left: -24%;
 }
 
 
