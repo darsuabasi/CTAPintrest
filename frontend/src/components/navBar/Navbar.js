@@ -219,7 +219,7 @@ const Navbar = () => {
                                     <div className="about-modal">
                                         <Modal className="fullAboutModal" show={showAbout} onHide={handleCloseAbout}>
                                             <Modal.Header closeButton>
-                                                <Modal.Title className="modaltitle1">Why?</Modal.Title>
+                                                <Modal.Title className="modaltitle1">Why Clone Pinterest?</Modal.Title>
                                             </Modal.Header>
 
                                             <Modal.Body className="modalBody-about">
@@ -227,14 +227,12 @@ const Navbar = () => {
                                                     <div className="sub-div">
                                                         <div className="rightDiv"> 
                                                             <p className="holaDiv"> Welcome to Lifetrest! </p>
-                                                            <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. </p> 
-                                                            <p className="about-me"> This site is a space curated by a black woman for women of color to enjoy things without having to add who they are at the end of every search to find what they're looking for. I'm a fullstack software developer focusing on UX/UI and backend. I also dabble in photography.</p>
-                                                            <p> Check me out on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a> and if you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>.
+                                                            <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. I'm a fullstack web developer focusing on UX/UI and backend. I also dabble in photography.</p> 
+                                                            <p className="about-me"> Welcome to Lifetrest. For my CTA, I decided to clone Pinterest since it's an app that I frequently use. As a user, you can login through the demo login or create your own account. Once a part of Lifetrest, you're able to upload pins and add them to boards that you have created. In addition, a user is able to delete a board which then deletes all the pins in that specific board. You are able to view all your own pins as well as boards and just like Pinterest, you're able to view ALL pins that live in the Livetrest app via your feed.</p>
+                                                            <p className="about-me"> What's Next? Bit by bit, I am increasing the funtionaily on this app as well as testing my design and animation skills. I want users to be able to edit their profile information as well as being able to pin another user's pins to your own board.</p>
+                                                            <p className="about-me"> Future Implementations: Users should be able to view another user's profile through the username tag on pins. Full responsiveness as well! </p>
+                                                            <p> Check out my <a className="myPortfolio" href="https://uduakabasi.netlify.app/"> portfolio </a> and you  can follow me on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a>. If you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>.
                                                             </p> 
-                                                        </div>
-
-                                                        <div className="leftDiv">
-                                                            <img/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -310,7 +308,7 @@ const Navbar = () => {
         </Modal.Body>
         <Modal.Footer>
             <p className="otherExtraShit"> By continuing, you agree to Lifetrest's Terms of Service, Privacy Policy</p>
-            <NavLink className="signup-from-login" exact to={"/signup"}> Not on Pintrest yet? Sign up </NavLink>
+            <NavLink className="signup-from-login" exact to={"/"}> Not on Pintrest yet? Sign up </NavLink>
         </Modal.Footer>
       </Modal>
       </div>
@@ -381,7 +379,7 @@ const Navbar = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <p className="otherExtraShit"> By continuing, you agree to Lifetrest's Terms of Service, Privacy Policy</p>
-                    <NavLink className="login-from-signup" exact to={"/login"}> Already a member? Log in </NavLink>
+                    {/* <NavLink className="login-from-signup" exact to={"/login"}> Already a member? Log in </NavLink> */}
 
                 </Modal.Footer>
             </Modal>

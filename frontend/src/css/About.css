@@ -4,15 +4,22 @@
     outline: 0;
 }
 
+.fullAboutModal {
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+
 .aboutDiv {
     /* display: flex; */
     justify-content: center;
     text-align: center;
     align-items: center;
     font-weight: 600;
-    width: 94.6% !important;
-    height: 100vh !important;
-    /* background-color: purple; */
+    width: 100% !important;
+    height: 80vh !important;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 .sub-div {
@@ -22,33 +29,17 @@
 }
 
 .rightDiv {
-    float: right;
-    width: 40%
-}
-
-.leftDiv {
-    float: left;
-    width: 40%;
+    width: 100%
 }
 
 .holaDiv {
-   padding-top: 10rem;
+   padding-top: 5%;
 }
 
-/* .my-name-is {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-} */
-
-/* .about-me {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-} */
+.myPortfolio {
+    color: #E60023;
+    font-weight: bold;
+}
 
 .instagram {
     color: #E60023;
