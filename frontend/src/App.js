@@ -33,7 +33,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Settings from './components/Settings';
 import EditProfile from './components/editProfile/EditProfile';
 import AccountSettings from './components/AccountSettings';
-import SearchResults from './components/searchFeature/SearchResults';
+import TagResults from './components/searchFeature/TagResults';
 
 
 
@@ -101,8 +101,8 @@ const App = () => {
               <CreateBoard/>
             </ProtectedRoute>
 
-            <Route exact path="/pins/search-results">
-              <SearchResults/>
+            <Route exact path="/pins/tags/:sessionStorage">
+              <TagResults/>
             </Route>
           </Switch>
         
