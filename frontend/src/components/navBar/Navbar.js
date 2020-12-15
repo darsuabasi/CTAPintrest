@@ -73,7 +73,15 @@ const Navbar = () => {
         }
     };
 
-    
+    const handleDemoLogin = async (e) => {
+        e.preventDefault();
+        try {
+            await login("darsu@gmail.com", "test123");
+            history.push("/user-feed")
+        } catch (err) {
+            alert("Not able to log in. Please try again.", err)
+        }
+    }
 
     const handleNewUser = async (e) => {
         debugger
@@ -292,7 +300,7 @@ const Navbar = () => {
                         <div class="sun"></div>
                         </div>
 
-                        <Button style={{color:"#ffffff", backgroundColor:"#E60023", border:"none", height:"2rem"}} bsstyle="primary" onClick={demoLogin}>
+                        <Button style={{color:"#ffffff", backgroundColor:"#E60023", border:"none", height:"2rem"}} bsstyle="primary" onClick={handleDemoLogin}>
                             Demo Login
                         </Button>
                         {/* <h5> OR </h5> */}
