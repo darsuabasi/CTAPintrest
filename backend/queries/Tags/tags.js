@@ -76,24 +76,31 @@ const getAllPinsByTag = async (req, res, next) => {
     const  { tag_name } = req.params;
     try {
         let pinsByTag = await db.any(`SELECT Tags.*, Pins.*, Users.username FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id LEFT JOIN Tags ON Tags.pin_id = Pins.id WHERE Tags.tag_name = $1 ORDER BY time_stamp DESC `, [tag_name]);
-        res.status(200).json({
-            status: 'Success', 
-            message: 'You are now viewing all pins based on this hashtag.',
-            payload: pinsByTag
+        if(pinsByTag.length) {
+            res.status(200).json({
+                status: 'Success',
+                message: 'You are now viewing all pins based on this hashtag.',
+                payload: pinsByTag
+              });
+            } else {
+              throw { status: 404, error: `Can not view any pins based on ${pinsByTag}`};
+            }
+          } catch (error) {
+            next(error);
+          }
+    //         res.status(200).json({
+    //         status: 'Success', 
+    //         message: 'You are now viewing all pins based on this hashtag.',
+    //         payload: pinsByTag
 
-        })
-    } catch {
-        res.status(400).json({
-            status: 'Error',
-            message: 'Can not view any pins based on this hashtag. Try again laster.'
-        })
-    }
-
+    //     })
+    // } catch {
+    //     res.status(400).json({
+    //         status: 'Error',
+    //         message: 'Can not view any pins based on this hashtag. Try again laster.'
+    //     })
+    // }
 }
-
-
-
-
 
 
 const tagBasedOnBoard = async (req, res, next) => {
