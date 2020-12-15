@@ -38,39 +38,6 @@ const Home = () => {
                     console.log(err.message);
                     }
                 };
-                // fetchPins();
-
-        // }, [])
-
-       
-    
-    const searchResults = () => {
-        if(sessionStorage.searchTerm) {
-            return <button onClick={()=>{sessionStorage.removeItem("searchTerm");window.location.reload()}}> Return to Your Feed </button>
-        } else {
-            return null
-        }
-    }
-
-    useEffect(()=>{
-        if(sessionStorage.searchTerm){
-            fetchAllPins(`${API}/api/pins/tags/${sessionStorage.searchTerm}`)
-            searchResults()
-            
-        } else {
-            fetchAllPins(`${API}/api//pins`)
-        }
-    }, [])
-
-    
-
-    const pinDisplay = pins.map(pin =>{
-        return (
-        <>
-            <Pin key={pin.id} id={pin.id} pinId={pin.id} userName={pin.username} filePath={pin.imageurl} postContent={pin.note}/>
-            <Tags pinId={pin.id} userName={pin.username}/>
-        </>)
-})
 
    return(
         <div className="homeDiv">
