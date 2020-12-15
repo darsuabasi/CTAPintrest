@@ -81,8 +81,17 @@ const CreatePin = () => {
 
     const handleNewTag = async(data) => {
         if(setTag.value){
-            let newTag = await axios.post(`${API}/api/tags/`, {creator_id: data.creator_id, pin_id:data.id, board_id:data.board_id, tag_name:setTag.value});
-            console.log(newTag.data.post)
+            // split setTag.value with comma
+            let tagsArr = setTag.value.split(", ");
+            tagsArr.forEach(async (el)  => {
+                let newTag = await axios.post(`${API}/api/tags/`, {
+                creator_id: data.creator_id, 
+                pin_id:data.id, 
+                board_id:data.board_id, 
+                // grabbing the val of all the tags (looped)
+                tags_name:el});
+                // tag_name:setTag.value}); old way (solo)) 
+            })
         } else {
             console.log("No hashtag was added")
         }

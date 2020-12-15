@@ -142,7 +142,7 @@ const  EditProfile = () => {
             e.preventDefault();
             const formData = new FormData();
             formData.append("myImage", file.raw);
-            formData.append("file", file.preview);
+            // formData.append("file", file.preview);
             formData.append("username", username.value);
             formData.append("first_name", firstName.value);
             formData.append("last_name", lastName.value);
