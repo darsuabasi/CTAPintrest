@@ -31,19 +31,19 @@ const AllPinsDisplay = () => {
             fetchAllPins();
     }, [])
 
-    const displayPin = pins.map(pin => {
+    const displayPin = pins.map((pin, i) => {
         return ( 
-        <>
-        <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} />
-        </> )
-    })
+            <div key={i}>
+                <PostPinModal key={pin.id} pinId={pin.id} userName={pin.username} imageurl={API+pin.imageurl} profilepic={API+pin.profilepic} pinContent={pin.note} />
+            </div> 
+        )
+    });
 
    return (
        <div className="pinCard">
             {displayPin}
        </div>
    )
-
 }
 
 export default AllPinsDisplay;
