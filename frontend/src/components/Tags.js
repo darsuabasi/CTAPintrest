@@ -9,9 +9,9 @@ const Tags = ({ pinId }) => {
   const [tags, setTags] = useState([]);
   const API = apiURL();
 
-  const fetchTags = async (url) => {
+  const fetchTags = async () => {
     try {
-      let res = await axios.get(url);
+      let res = await axios.get(`${API}/api/tags/${sessionStorage.searchTerm}`);
       setTags(res.data.payload);
     } catch (error) {
       setTags([]);
@@ -27,10 +27,10 @@ const Tags = ({ pinId }) => {
   const getAllTags = tags.map(tag => {
     let arrayTag = [];
     arrayTag.push(tag.tag_name);
-
     return <p className="singleTag"> #{arrayTag} </p>;
   });
-  return <div className="allTags">{getAllTags}</div>;
+
+  return <div className="allTags"> <a href="`${getAllTags}`"> {getAllTags} </a> </div>;
 
 };
 export default Tags;

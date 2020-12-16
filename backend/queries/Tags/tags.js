@@ -75,7 +75,7 @@ const getSingleTagForBoard = async (req, res, next) => {
 const getAllPinsByTag = async (req, res, next) => {
     const  { tag_name } = req.params;
     try {
-        let pinsByTag = await db.any(`SELECT Tags.*, Pins.*, Users.username FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id LEFT JOIN Tags ON Tags.pin_id = Pins.id WHERE Tags.tag_name = $1 ORDER BY time_stamp DESC `, [tag_name]);
+        let pinsByTag = await db.any(`SELECT Tags.*, Pins.*, Users.profilePic, Users.username FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id LEFT JOIN Tags ON Tags.pin_id = Pins.id WHERE Tags.tag_name = $1 ORDER BY time_stamp DESC `, [tag_name]);
         if(pinsByTag.length) {
             res.status(200).json({
                 status: 'Success',
