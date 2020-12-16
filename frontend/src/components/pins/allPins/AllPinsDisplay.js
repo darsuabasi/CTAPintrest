@@ -1,18 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import PostPinModal from '../components/pins/allPins/PostPin';
-import '../css/PinList.css'
-
-import { apiURL } from '../util/apiURL';
-import { AuthContext } from '../providers/AuthProvider';
-// import Tags from './Tags';
+import PostPinModal from './PostPin';
+import '../../../css/PinList.css'
+import { apiURL } from '../../../util/apiURL';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 
 const AllPinsDisplay = () => {
     const API = apiURL(); 
     const [pins, setPins] = useState([]);
     const { token } = useContext(AuthContext);
-
 
     useEffect(() => {
         const fetchAllPins = async () => {
@@ -38,7 +35,6 @@ const AllPinsDisplay = () => {
         return ( 
         <>
         <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} />
-        {/* <Tags pinId={pin.id} userName={pin.username} /> */}
         </> )
     })
 

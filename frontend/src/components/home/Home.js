@@ -5,21 +5,15 @@ import { AuthContext } from '../../providers/AuthProvider'
 import SingleHomePin from './SingleHomePin'
 import Tags from '../Tags'
 import { Link } from 'react-router-dom';
-import AllPinsDisplay from '../AllPinsDisplay';
+import AllPinsDisplay from '../pins/allPins/AllPinsDisplay';
 import Pin from '../pins/allPins/Pin';
 import DisplayPins from '../DisplayPins';
 import '../../css/Home.css'
 
-
-
-
 const Home = () => {
-    // const API = apiURL();
-    // useEffect(() => {
         const [pins, setPins] = useState([]);
         const API = apiURL();
         const { token } = useContext(AuthContext);
-        // const { currentUser, token } = useContext(AuthContext);
 
         // useEffect(() => {
             const fetchAllPins = async () => {
