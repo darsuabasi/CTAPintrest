@@ -89,9 +89,16 @@
 .image__description {
     font-size: 1.25em;
     margin-top: 0.25em;
+    padding: 5%;
+    text-align: start;
+}
+
+.backToFeed-btn-div {
+    margin-left: 22%;
+    align-self: center;
 }
 
 .backToFeed-btn {
-    margin-left: 25%;
+    margin-left: 22%;
     align-self: center;
 }
