@@ -39,18 +39,46 @@
     border: 3px solid #E60023;
   }
 
-.style-board-name {
-    margin-top: 2.5rem;
+  .style-board-name-header {
+    display: flex;
+    margin-top: 8%;
+    margin-left: 5%;
     height: 1.5rem;
     text-transform: capitalize;
     text-decoration: solid 3px;
     font-weight: 700;
+    font-variant: small-caps;
+    color: #000000;
   }
 
-.style-board-description {
-    height: 2rem;
-    margin-top: -0.5rem;
+  .style-board-description-header {
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 4%;
+    margin-left: 5%;
+    height: 1.5rem;
+    text-transform: capitalize;
+    text-decoration: solid 3px;
+    font-weight: 700;
+    font-variant: small-caps;
+    color: #000000;
   }
+
+.style-board-name {
+  font-variant: normal !important;
+  font-weight: 300 !important;
+  font-size: 20px !important;
+  margin-top: 3%;
+  color: rgb(87, 87, 87);
+}
+
+.style-board-description {
+  font-variant: normal !important;
+  font-weight: 300 !important;
+  font-size: 20px !important;
+  margin-top: 2%;
+  color: rgb(87, 87, 87);
+}
 
   .delete-board-btn {
     display: flex;
@@ -80,6 +108,10 @@
 .delete-board-btn:active {
 	position:relative;
 	/* top:1px; */
+}
+
+.overflow-two {
+
 }
 
  

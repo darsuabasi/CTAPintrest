@@ -26,9 +26,9 @@ const PostBoardModal = ({ board_name, imageurl, creator_id, board_description, b
         </div>
           <div className="overflow">
             <button className="delete-board-btn" onClick={deleteBoard}> Delete </button>
-            <p className="style-board-name">{board_name} </p>
-            <p className="style-board-description">{board_description}</p>
-            <img className="exitButton card-img-top" alt="imgurl" src={imageurl} />
+            <h3 className="style-board-name-header">Board: <p className="style-board-name">{board_name}</p> </h3>
+            <h3 className="style-board-description-header">Description: <p className="style-board-description"> {board_description}</p></h3>
+            <img className="exitButton card-img-top" style={{transform:"none"}} alt="imgurl" src={imageurl} />
           {/* <h4 className="styleusername">{creator_id}</h4> */}
           </div>
       
