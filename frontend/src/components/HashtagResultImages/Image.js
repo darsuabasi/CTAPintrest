@@ -17,7 +17,7 @@ const PostImage = ({ imageurl, userName, profilepic, pinContent, pinId }) => {
       <div class="image__overlay image__overlay--primary">
         <img className="styleProfilePicOverlay" alt="" src={profilepic} style={handleStyleProfile} />
           <div class="image__title">{userName}</div>
-          <p class="image__description"> Info: {pinContent} </p>
+          <p class="image__description"> INFO: {pinContent} </p>
       </div>
     </div>
   );

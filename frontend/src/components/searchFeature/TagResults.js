@@ -2,16 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios'
 import Tags from '../Tags'
-import PostImage from '../Image'
+import PostImage from '../HashtagResultImages/Image'
 import { apiURL } from "../../util/apiURL";
-import { AuthContext } from '../../providers/AuthProvider'
-
+import { AuthContext } from '../../providers/AuthProvider';
+import Container from 'react-bootstrap/esm/Container';
+import './css/tag-results.css'
 const TagResults = () => {
     const API = apiURL();
     const { loading } = useContext(AuthContext);
     const [hashtagResults, setHashtagResults] = useState([]);
-    // const { token } = useContext(AuthContext);
-    const { value } = useParams();
     const history = useHistory();
 
     
@@ -22,13 +21,11 @@ const TagResults = () => {
                 let res = await axios.get(`${API}/api/tags/${sessionStorage.searchTerm}`);
                 setHashtagResults(res.data.payload)
             } catch(err) {
-                // setHashtagResults([])
                 console.log(err.message);
                 }
             };
             fetchTags();
 
-            // sessionStorage.searchTerm
             if(sessionStorage){
                 fetchTags(`${API}/api/tags/${sessionStorage}`) /*sessionStorage.searchTerm*/
                 searchResult()
@@ -45,50 +42,43 @@ const TagResults = () => {
 
     const searchResult = () => {
         if(sessionStorage.searchTerm){
-        return <button onClick={()=> handleNavigation("searchTerm")}>Return to my feed</button>
+        return (    
+            <div style={{justifyContent:"center"}}>   
+                <h1 className="now-viewing" style={{textAlign:"center"}}>Now viewing content based on #{sessionStorage.searchTerm}</h1>
+                    <div className="backToFeed-btn-div">
+                        <button className="backToFeed-btn" onClick={()=> handleNavigation("searchTerm")}>Return to my feed</button>
+                    </div>
+            </div>
+        ) 
     } else {
-        return null
+        return (
+            <div>
+                <h1>There are no results for #{sessionStorage.searchTerm} hashtag. Try something else.</h1>
+            </div>
+        )
     }
 }
-
-    //     const searchResult = () => {
-    //         if(sessionStorage.searchTerm){
-    //         return <button onClick={()=>{sessionStorage.removeItem("searchTerm");window.location.reload()}}>Return to Homepage</button>
-    //     } else {
-    //         return null
-    //     }
-    // }
-
-
 
 
     const displayPinsFromSearch = hashtagResults.map((pin, i) => {
         return (
             <div key={i} className="userPostsListDiv">
-                <PostImage key={pin.id} pinId={pin.id} userName={pin.username} filePath={pin.imageurl} postContent={pin.note}/>
+                <PostImage key={pin.id} pinId={pin.id} userName={pin.username} imageurl={API+pin.imageurl} profilepic={API+pin.profilepic} pinContent={pin.note}/>
                 <Tags pinId={pin.id} userName={pin.username}/>
           </div>
         );
       });
 
 
-//     const displayPinsFromSearch = hashtagResults.map(pin =>{
-//         return (
-//             <div>
-//                 <PostImage key={pin.id} pinId={pin.id} userName={pin.username} filePath={pin.imageurl} postContent={pin.note}/>
-//                 <Tags pinId={pin.id} userName={pin.username}/>
-//             </div>)
-// })
-
     return (
-            <div>
+            <Container className="tagResultsContainer">
                 {searchResult()}
-                {displayPinsFromSearch}
-            </div>
+                    <div class="card-deck">
+                        {displayPinsFromSearch}
+                    </div>
 
-           
-            
-        )
+            </Container>
+    )
 }
 
 export default TagResults;
