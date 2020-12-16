@@ -86,14 +86,52 @@
       margin-top: 0.5rem;
   }
 
-  .styleContent {
-    color: #000000;
-    margin-top: 8rem;
-  }
-
   .modal-content {
     background-color: #fff;
     background-clip: padding-box;
     border-radius: .3rem;
     outline: 0;
+}
+
+.styleProfilePicOverlay-two {
+  border-radius: 3rem;
+  align-self: center;
+  margin-top: 15%;
+  justify-self: start;
+}
+
+.styleusername {
+  font-size: 22px;
+  font-weight: 200 !important;
+  margin-top: 15%;
+  background-image: linear-gradient(to right, tan , brown);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contentDiv-userFeed {
+  display: inline;
+  padding: 5%;
+  overflow-y: scroll;
+}
+
+.styleContent {
+  color: #000000;
+  margin-top: 4%;
+  font-variant: small-caps;
+  padding: 5%;
+}
+
+.pinContent-fr {
+  background-image: linear-gradient(to right, tan , brown);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  font-variant: normal !important;
+}
+
+.profile-pic-div {
+  background-color: brown;
+  height: 20%;
+  margin-top: 15%;
 }
