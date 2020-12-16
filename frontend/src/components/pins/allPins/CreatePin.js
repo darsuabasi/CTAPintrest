@@ -89,7 +89,7 @@ const CreatePin = () => {
                 pin_id:data.id, 
                 board_id:data.board_id, 
                 // grabbing the val of all the tags (looped)
-                tags_name:el});
+                tag_name:el });
                 // tag_name:setTag.value}); old way (solo)) 
             })
         } else {
