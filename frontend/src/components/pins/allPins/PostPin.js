@@ -3,7 +3,7 @@ import '../../../css/PostPin.css';
 // import Likes from '../Likes';
 
 
-const PostPinModal = ({ imageurl, userName, creator_id, pinContent, pinId }) => {
+const PostPinModal = ({ imageurl, userName, profilepic, creator_id, pinContent, pinId }) => {
 
   const [modal, setModal] = useState(false);
 
@@ -11,7 +11,11 @@ const PostPinModal = ({ imageurl, userName, creator_id, pinContent, pinId }) => 
     setModal(!modal)
   }
 
-  
+  const handleStyleProfile = {
+    height: "100px",
+    width: "100px"
+  };
+
   return (
     <div className="mainDivModal "> 
         <div title ={pinId} className={`mainDivModalBackground showModal-${modal}`}>    
@@ -20,9 +24,19 @@ const PostPinModal = ({ imageurl, userName, creator_id, pinContent, pinId }) => 
                 <img className="styleImage modal-content" alt="Board img" src={imageurl} />
               </div>
               <div className="pinContent">
-                <button className="closeButton card-img-top" onClick={() => toggleModal()}> X </button>
+                <div>
+                  <button className="closeButton card-img-top" onClick={() => toggleModal()}> X </button>
+                </div>
+
+                <div className="profile-pic-div">
+                  <img className="styleProfilePicOverlay-two" alt="" src={profilepic} style={handleStyleProfile} />
+                </div>
+
                 <h3 className="styleusername">{userName}</h3>
-                <p className="styleContent">{pinContent}</p>
+                
+                <div className="contentDiv-userFeed">
+                  <h3 className="styleContent">Content <p className="pinContent-fr">{pinContent}</p> </h3>
+                </div>
               </div>
           </div>
         
