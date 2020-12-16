@@ -51,7 +51,8 @@
       text-align: center;
       /* z-index: 2000; */
       border-radius: 2rem!important;
-      background: #E60023;
+      background: #ffffff;
+      border: none;
 
   }
 
@@ -59,7 +60,8 @@
     width: 30rem;
     height: 35rem;
     object-fit: fill;
-    border-radius: 2rem!important;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
   }
 
   .pinContent {
@@ -67,7 +69,8 @@
     text-align: center;
     background-color: #ffffff;
     width: 100%;
-    border-radius: 2rem!important;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
   }
 
   .closeButton {
