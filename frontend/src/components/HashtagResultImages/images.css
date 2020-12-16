@@ -1,0 +1,97 @@
+:root {
+    --wineBurgandy: rgb(116, 16, 16);
+    --pureBlack: #000000;
+    /* --greyScale: rgba(0, 15, 64, 5); */
+    --greyScale: rgba(153, 147, 147);
+    --whiteScale: rgba(255, 255, 255, 0.76);
+    --pinterestRed: #e60023;
+  }
+
+
+* {
+    padding: 0;
+    margin:0
+}
+
+
+.card-deck {
+    padding: 2%;
+    margin-top: 2% !important;
+    margin-left: -12%;
+    row-gap: 8px !important;
+    column-gap: 15px !important;
+    justify-content: space-evenly !important;
+    height: 70vh !important;
+    width: 96vw;
+    overflow-x: scroll !important;
+    ;
+}
+
+.imageCard {
+    position: relative;
+    width: 420px;
+}
+
+.image__img {
+    display: block;
+    border-radius: 2rem;
+    width: 100%;
+}
+
+.image__overlay {
+    position: absolute;
+    border-radius: 2rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--whiteScale);
+    color: var(--wineBurgandy);
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.image__overlay--blur {
+    backdrop-filter: blur(5px);
+}
+
+/* .image__overlay--primary {
+    background: #009578;
+} */
+
+.styleProfilePicOverlay {
+    border-radius: 3rem;
+}
+
+.image__overlay > * {
+    transform: translateY(20px);
+    transition: transform 0.25s;
+}
+
+.image__overlay:hover {
+    opacity: 1;
+}
+
+.image__overlay:hover > * {
+    transform: translateY(0);
+}
+
+.image__title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.image__description {
+    font-size: 1.25em;
+    margin-top: 0.25em;
+}
+
+.backToFeed-btn {
+    margin-left: 25%;
+    align-self: center;
+}
