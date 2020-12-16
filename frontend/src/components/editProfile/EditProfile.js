@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext} from 'react'
 import axios from "axios";
 import './editProfile.css';
-
 import { AuthContext } from '../../providers/AuthProvider';
 import { apiURL } from '../../util/apiURL';
 import { useInput } from '../../util/useInput';
-
-import wave from '../../assets/wave.svg'
+import wave from '../../assets/wave.svg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const  EditProfile = () => {
     let [user, setUser] = useState([]);
@@ -23,6 +23,8 @@ const  EditProfile = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [bio, setBio] = useState("");
+
+    const underConstruction = () => toast("This part of the app is under construction. Coming soon :)");
 
     // const onUploadImage=async(e)=>{
     //     e.preventDefault();
@@ -223,7 +225,8 @@ const  EditProfile = () => {
                     <input disabled type="text" placeholder="Ex. I dey dey, no wahala"/>
 
                     <br></br>
-                    <button className="profilePicUpdate-btn" type="submit">Update</button>
+                    <button className="profilePicUpdate-btn" onClick={underConstruction}>Update</button>
+                    {/* <button className="profilePicUpdate-btn" type="submit">Update</button> */}
                     <div class="sun2"></div>
                     <br></br>
                 </div>
