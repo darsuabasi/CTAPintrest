@@ -8,7 +8,8 @@ const { checkFirebaseToken } = require('../../middleware/auth');
 const { 
     createPin, 
     deletePin, 
-    leftJoinPinsUsers,
+    getAllPinsByUser,
+    // leftJoinPinsUsers,
     getAllPins, 
     updatePin, 
     getPinsByTag, 
@@ -18,7 +19,8 @@ const {
 
 
 pins.get('/', getAllPins);
-pins.get('/', leftJoinPinsUsers);
+// pins.get('/', leftJoinPinsUsers);
+pins.get('/:id', getAllPinsByUser);
 pins.get('/:id', getSinglePin);
 pins.get('/tag/:id', getPinsByTag);
 pins.post('/', createPin);

@@ -57,7 +57,7 @@ const deletePin = async (req, res, next) => {
 
 const getAllPins = async (req, res, next) => {
     try {
-        const allThePins = await db.any('SELECT * FROM Pins ORDER BY time_stamp DESC');
+        const allThePins = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.note, Users.id, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
         res.status(200).json({
             status: "Success",
             message: "All pins are now showing",
@@ -126,42 +126,40 @@ const getSinglePin = async (req, res, next) => {
 }
 
 
+const getAllPinsByUser = async (req, res, next) => {
+    try{
+        let pin_id = await db.any('SELECT * FROM Pins WHERE creator_id= $1', [req.params.id])
+        res.status(200).json({
+            status: "Succes",
+            message: "Yip Yip! You're checking out all pins from this user",
+            payload: pin_id
+        })
 
-// const getAllPinsByUser = async (req, res, next) => {
-//     try{
-//         let pin_id = await db.any('SELECT * FROM Pins WHERE creator_id= $1', [req.params.id])
+    } catch(err) {
+        res.status(400).json({
+            status: "Error",
+            message: "You can't see this user's pins."
+        })
+        next(err)
+    }
+}
+
+// const leftJoinPinsUsers = async (req, res, next) =>{
+//     try {
+//         let leftJoin = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.note, Users.id, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
 //         res.status(200).json({
-//             status: "Succes",
-//             message: "Yip Yip! You're checking out all pins from this user",
-//             payload: pin_id
+//             status: 'Success',
+//             message: 'Left join was a success, you are now viewing all pins.',
+//             payload: leftJoin
 //         })
-
-//     } catch(err) {
+//     } catch(err){
 //         res.status(400).json({
-//             status: "Error",
-//             message: "Idk but you can't see all their pins"
+//             status: 'Error',
+//             message: 'Merp, viewing all pins was not a success.'
 //         })
 //         next(err)
 //     }
 // }
-
-const leftJoinPinsUsers = async (req, res, next) =>{
-    try {
-        let leftJoin = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.note, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
-        res.status(200).json({
-            status: 'Success',
-            message: 'Left join was a success, you are now viewing all pins by the specifc user',
-            payload: leftJoin
-        })
-    } catch(err){
-        res.status(400).json({
-            status: 'Error',
-            message: 'Merp, viewing pins by this specific user was not a success.'
-        })
-        next(err)
-
-    }
-}
 
 const getAllCommentsForPin = async (req, res, next) => {
     try {
@@ -233,7 +231,7 @@ const deleteCommentByPin = async (req, res, next) => {
 
 
 
-module.exports = { createPin, leftJoinPinsUsers, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllCommentsForPin, createNewComment, deleteCommentByPin}
+module.exports = { createPin, getAllPinsByUser, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllCommentsForPin, createNewComment, deleteCommentByPin}
 
 
 
