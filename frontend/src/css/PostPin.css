@@ -99,6 +99,11 @@
   margin-top: 15%;
   justify-self: start;
   cursor: pointer;
+  box-shadow:rgb(165, 42, 42) 2px 2px 4px 4px;
+}
+
+.styleProfilePicOverlay-two:hover {
+  box-shadow:rgb(255, 255, 255) 2px 2px 4px 4px; 
 }
 
 .styleusername {
@@ -113,6 +118,8 @@
 
 .styleusername:hover {
   cursor: pointer;
+  color: black;
+  text-decoration: line-through !important;
 }
 
 .contentDiv-userFeed {
