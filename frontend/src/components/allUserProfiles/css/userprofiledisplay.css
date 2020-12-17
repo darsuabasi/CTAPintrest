@@ -4,39 +4,43 @@
 }
 
 .userProfile-main-container {
-    background-color: lightseagreen;
-    overflow-x: scroll !important;
-    height: 90vh !important;
-    /* position: static; */
+   overflow: hidden;
+    height: 100vh !important;
+    width: 100vw;
 }
 
 .userProfile-top-div {
-    background-color: lavender;
-    height: 50vh;
-    /* position: sticky !important; */
-    /* margin-top: 1%; */
-    /* overflow-x: scroll; */
-    position: -webkit-sticky; /* Required for Safari */
-    position: sticky;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+    position: -webkit-sticky; /* Required for Safari*/
+    float: left;
+    width: 25%;
+    position: absolute;
+    box-shadow: rgb(0, 0, 0) 5px 10px 5px 5px;
+    border-top-right-radius: 2rem;
+    background-image: linear-gradient(to bottom right, #f8f9fa, rgb(209, 209, 209));
 }
 
 .userProfile-bottom-div {
-    background-color: lightcoral;
-    height: auto;
+    float: right;
+    width: 75%;
+    height: 100vh;
     overflow-x: scroll !important;
+    margin-top: -49%;
+    padding-left: 1.5%; 
+    /* background-color: cadetblue; */
 }
 
 .userprofile-user-fullname-footer-div::before {
     position: sticky;
     position: -webkit-sticky;
     bottom: 0;
-    background-color: maroon;
     display: block;
-    /* z-index: -1; */
 }
 
 .userprofile-user-fullname-footer-div::after {
-    /* z-index: 2; */
+
 }
 
 .userprofile-user-fullname {
