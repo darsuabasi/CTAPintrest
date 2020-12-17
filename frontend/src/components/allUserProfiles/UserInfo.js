@@ -1,14 +1,45 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+import './css/userinfo.css';
+
 
 const UserInfo = ({id, username, first_name, last_name, bio, created_at, profilePic, email}) => {
+    const history = useHistory();
+    const userNameRedirect = (username) => history.push(`/users/${username}/pins`);
+    const userPinsRedirect = (username) => history.push(`/users/${username}/pins`);
+    const userBoardsRedirect = (username) => history.push(`/users/${username}/boards`);
+    
+
+    const displayDate = (e) => {
+        const stringDate = e.toString();
+        let displayDate = new Date(stringDate);
+        return displayDate.toLocaleDateString();
+      };
 
     return (
-        <div title={id}>
-            <img alt="" src={profilePic} />
-            <h1> Name: {first_name} {last_name}</h1>
-            <h1> @{username}</h1>
-            <h1> Member Since:  {created_at} </h1>
-            <h1> Bio: {bio} </h1>
+        <div title={id} className="user-info-full-div">
+            <img className="all-users-profile-picture" alt="" src={profilePic} />
+            <p className="all-users-username" onClick={() => userNameRedirect(username)}>  @{username}</p>
+
+            <div className="flex-full-name-div">
+                <label className="flex-full-name-label"> Name: </label>
+                <p className="flex-full-name-ptag"> {first_name} {last_name}</p>
+            </div>
+
+            <div className="flex-member-since-div">
+                <label className="flex-member-since-label"> Memeber: </label>
+                <p className="flex-member-since-ptag"> {displayDate(created_at)}</p>
+            </div>
+
+            <div className="flex-bio-div">
+                <label className="flex-bio-label"> Bio: </label>
+                <p className="flex-bio-ptag"> {bio}</p>
+            </div>
+
+            <div>
+                <button onClick={() => userPinsRedirect(username)}> Pins </button>
+                <button onClick={() => userBoardsRedirect(username)}> Boards </button>
+            </div>
         </div>
     )
 }
