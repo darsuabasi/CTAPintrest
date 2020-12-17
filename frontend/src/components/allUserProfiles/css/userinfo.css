@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.user-info-full-div {
+    justify-content: center;
+    text-align: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 10%;
+}
+
+.all-users-profile-picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 10rem;
+    margin-bottom: 5%;
+    box-shadow:#020202 2px 2px 4px 4px;
+}
+
+.all-users-username {
+    font-variant: small-caps;
+    font-size: 20px;
+    margin-top: 0.5%;
+    margin-bottom: -0.2%;
+    cursor: pointer;
+}
+
+.all-users-username:hover {
+    color: brown;
+}
+
+.flex-full-name-div, .flex-member-since-div, .flex-bio-div {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
+.flex-full-name-label, .flex-full-name-ptag,  .flex-member-since-label, .flex-member-since-ptag, .flex-bio-label, .flex-bio-ptag{
+    font-size: 22px;
+}
+
+.flex-full-name-label, .flex-member-since-label, .flex-bio-label {
+    font-variant: small-caps;
+    margin-right: 0.5%;
+}
+
+.flex-member-since-div, .flex-bio-div {
+    margin-top: -1.5%;
+}
