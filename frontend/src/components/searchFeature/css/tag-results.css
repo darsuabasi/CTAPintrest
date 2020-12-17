@@ -9,10 +9,11 @@
 }
 
 .now-viewing {
-    background-image: linear-gradient(to right, rgb(218, 8, 8) , rgb(230, 126, 126));
+    background-image: linear-gradient(to right, rgb(2, 2, 2) , rgb(0, 0, 0));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-variant: small-caps;
+    font-weight: 800;
 }
 
 .backToFeed-btn {

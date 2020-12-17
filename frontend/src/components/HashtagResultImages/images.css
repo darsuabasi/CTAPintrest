@@ -66,6 +66,12 @@
 
 .styleProfilePicOverlay {
     border-radius: 3rem;
+    cursor: pointer;
+    box-shadow:rgb(165, 165, 165) 2px 2px 4px 4px; 
+}
+
+.styleProfilePicOverlay:hover {
+    box-shadow:rgb(165, 42, 42) 2px 2px 4px 4px;
 }
 
 .image__overlay > * {
@@ -84,6 +90,7 @@
 .image__title {
     font-size: 2em;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .image__description {
