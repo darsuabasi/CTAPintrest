@@ -36,6 +36,7 @@ import AccountSettings from './components/AccountSettings';
 import TagResults from './components/searchFeature/TagResults';
 
 import UserProfileDisplay from './components/allUserProfiles/UserProfileDisplay';
+import UserProfileDisplayBoards from './components/allUserProfiles/UserProfileDisplayBoards';
 
 
 
@@ -109,6 +110,11 @@ const App = () => {
             <Route exact path="/users/:username/pins">
               <UserProfileDisplay/>
             </Route>
+
+            <Route exact path="/users/:username/boards">
+              <UserProfileDisplayBoards/>
+            </Route>
+
           </Switch>
         
         </div>
