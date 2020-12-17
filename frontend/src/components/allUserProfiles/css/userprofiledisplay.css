@@ -12,7 +12,7 @@
 
 .userProfile-top-div {
     background-color: lavender;
-    height: 54vh;
+    height: 50vh;
     /* position: sticky !important; */
     /* margin-top: 1%; */
     /* overflow-x: scroll; */
@@ -23,7 +23,7 @@
 .userProfile-bottom-div {
     background-color: lightcoral;
     height: auto;
-    /* overflow-x: scroll; */
+    overflow-x: scroll !important;
 }
 
 .userprofile-user-fullname-footer-div::before {
