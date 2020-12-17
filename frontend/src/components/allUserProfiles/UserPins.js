@@ -3,6 +3,7 @@ import PostPinModal from '../pins/allPins/PostPin';
 import axios from "axios";
 import { AuthContext } from "../../providers/AuthProvider";
 import { apiURL } from "../../util/apiURL";
+import './css/userpins.css';
 
 
 const UserPins = ({username}) => {
@@ -46,8 +47,13 @@ const UserPins = ({username}) => {
       return (
         <>
           <div className="user-pin-list-div">
-            <h1 className="user-pins-now-viewing">Pins</h1>
-            <div>{userPinList}</div>
+            <div className="user-pin-div-setup"> 
+              <h1 className="user-pins-now-viewing">My Pins</h1>
+            </div>
+
+            <div className="user-pins-now-displaying-layout">
+              {userPinList}
+            </div>
           </div>
         </>
       );
