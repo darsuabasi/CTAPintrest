@@ -35,6 +35,7 @@ import EditProfile from './components/editProfile/EditProfile';
 import AccountSettings from './components/AccountSettings';
 import TagResults from './components/searchFeature/TagResults';
 
+import UserProfileDisplay from './components/allUserProfiles/UserProfileDisplay';
 
 
 
@@ -103,6 +104,10 @@ const App = () => {
 
             <Route exact path="/pins/tags/:sessionStorage">
               <TagResults/>
+            </Route>
+
+            <Route exact path="/users">
+              <UserProfileDisplay/>
             </Route>
           </Switch>
         
