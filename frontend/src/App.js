@@ -106,7 +106,7 @@ const App = () => {
               <TagResults/>
             </Route>
 
-            <Route exact path="/users/:username">
+            <Route exact path="/users/:username/pins">
               <UserProfileDisplay/>
             </Route>
           </Switch>
