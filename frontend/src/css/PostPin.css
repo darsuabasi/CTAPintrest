@@ -98,6 +98,7 @@
   align-self: center;
   margin-top: 15%;
   justify-self: start;
+  cursor: pointer;
 }
 
 .styleusername {
@@ -107,6 +108,11 @@
   background-image: linear-gradient(to right, tan , brown);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+.styleusername:hover {
+  cursor: pointer;
 }
 
 .contentDiv-userFeed {

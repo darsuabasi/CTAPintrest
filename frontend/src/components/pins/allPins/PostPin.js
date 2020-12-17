@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import '../../../css/PostPin.css';
 // import Likes from '../Likes';
 
 
 const PostPinModal = ({ imageurl, userName, profilepic, creator_id, pinContent, pinId }) => {
-
+  const history = useHistory();
+  const userNameRedirect = (userName) => history.push(`/users/${userName}/pins`);
   const [modal, setModal] = useState(false);
-
   const toggleModal = () => {
     setModal(!modal)
   }
@@ -29,11 +30,11 @@ const PostPinModal = ({ imageurl, userName, profilepic, creator_id, pinContent, 
                 </div>
 
                 <div className="profile-pic-div">
-                  <img className="styleProfilePicOverlay-two" alt="" src={profilepic} style={handleStyleProfile} />
+                  <img onClick={() => userNameRedirect(userName)} className="styleProfilePicOverlay-two" alt="" src={profilepic} style={handleStyleProfile} />
                 </div>
 
-                <h3 className="styleusername">{userName}</h3>
-                
+                <h3 onClick={() => userNameRedirect(userName)} className="styleusername">{userName}</h3>
+
                 <div className="contentDiv-userFeed">
                   <h3 className="styleContent">Content <p className="pinContent-fr">{pinContent}</p> </h3>
                 </div>
