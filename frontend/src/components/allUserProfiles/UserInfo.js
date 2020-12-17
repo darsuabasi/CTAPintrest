@@ -36,9 +36,9 @@ const UserInfo = ({id, username, first_name, last_name, bio, created_at, profile
                 <p className="flex-bio-ptag"> {bio}</p>
             </div>
 
-            <div>
-                <button onClick={() => userPinsRedirect(username)}> Pins </button>
-                <button onClick={() => userBoardsRedirect(username)}> Boards </button>
+            <div className="user-profile-btn-div">
+                <button className="user-profile-pins-btn" onClick={() => userPinsRedirect(username)}> Pins </button>
+                <button className="user-profile-boards-btn" onClick={() => userBoardsRedirect(username)}> Boards </button>
             </div>
         </div>
     )

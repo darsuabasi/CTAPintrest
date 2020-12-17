@@ -50,3 +50,25 @@
 .flex-member-since-div, .flex-bio-div {
     margin-top: -1.5%;
 }
+
+.user-profile-btn-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+
+}
+
+.user-profile-pins-btn, .user-profile-boards-btn {
+    color: #ffffff;
+    background-color: brown;
+    border: none;
+    border-radius: 0.5rem;
+    height: 2rem;
+    width: 5rem;
+    box-shadow: #312e2e 3px 3px 3px 3px;
+}
+
+.user-profile-pins-btn:hover, .user-profile-boards-btn:hover {
+    box-shadow: #312e2e 3px 3px 5px 5px;
+
+}
