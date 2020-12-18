@@ -43,6 +43,11 @@
         overflow-x: scroll;
         padding-top: 1%;
     }
+
+    .user-pins-now-viewing {
+        text-align: center;
+        margin-top: 2%;
+    }
     
 }
 
@@ -56,6 +61,10 @@
         height: 90vh;
         overflow-x: scroll;
         padding-top: 1%;
+    }
+
+    .user-pins-now-viewing {
+        text-align: center;
     }
     
 }
@@ -71,7 +80,10 @@
         overflow-x: scroll;
         padding-top: 1%;
     }
-    
+
+    .user-pins-now-viewing {
+        text-align: center;
+    } 
 }
 
 @media (min-width: 1001px) and (max-width: 1395px) {
