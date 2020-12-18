@@ -1,37 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import { apiURL } from '../../util/apiURL';
-import { AuthContext } from '../../providers/AuthProvider'
+import React from 'react';
 import SingleHomePin from './SingleHomePin'
-import Tags from '../Tags'
 import { Link } from 'react-router-dom';
 import AllPinsDisplay from '../pins/allPins/AllPinsDisplay';
-import Pin from '../pins/allPins/Pin';
-import DisplayPins from '../DisplayPins';
 import '../../css/Home.css'
 
 const Home = () => {
-        const [pins, setPins] = useState([]);
-        const API = apiURL();
-        const { token } = useContext(AuthContext);
-
-        // useEffect(() => {
-            const fetchAllPins = async () => {
-                try {
-                    let res = await axios({
-                        method: "get",
-                        url: `${API}/api/pins`,
-                        headers: {
-                            AuthToken: token,
-                        }
-                    })
-                    setPins(res.data.payload)
-                    console.log(res.data)
-                } catch(err) {
-                    setPins([])
-                    console.log(err.message);
-                    }
-                };
 
    return(
         <div className="homeDiv">
