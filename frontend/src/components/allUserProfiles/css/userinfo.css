@@ -72,3 +72,82 @@
     box-shadow: #312e2e 3px 3px 5px 5px;
 
 }
+
+
+/* --------------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .user-info-full-div {
+        padding-top: 7%;
+    }
+
+    .all-users-profile-picture {
+        height: 100px;
+        width: 100px;
+        border-radius: 10rem;
+        margin-bottom: 1%;
+    }
+
+    .all-users-username {
+        font-size: 24px;
+    }
+
+    .flex-full-name-div, .flex-member-since-div, .flex-bio-div {
+        display: none !important;
+    }
+
+    .user-profile-btn-div {
+        margin-top: -2%;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 800px) {
+    .user-info-full-div {
+        padding-top: 1.5%;
+    }
+
+    .all-users-profile-picture {
+        height: 150px;
+        width: 150px;
+        border-radius: 10rem;
+        margin-bottom: 1%;
+    }
+
+    .all-users-username {
+        font-size: 24px;
+    }
+
+    .flex-full-name-div, .flex-member-since-div, .flex-bio-div {
+        display: none !important;
+    }
+
+    .user-profile-btn-div {
+        margin-top: -1%;
+    }
+       
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+
+    .user-info-full-div {
+        padding-top: 7%;
+    }
+
+    .all-users-profile-picture {
+        height: 200px;
+        width: 200px;
+        border-radius: 10rem;
+        margin-bottom: 1%;
+    }
+
+    .all-users-username {
+        font-size: 24px;
+        margin-bottom: -0.2%;
+    }
+
+    .flex-full-name-div, .flex-member-since-div, .flex-bio-div {
+        display: none !important;
+    }
+    
+}
