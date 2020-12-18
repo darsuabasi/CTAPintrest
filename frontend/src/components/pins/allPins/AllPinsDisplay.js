@@ -31,7 +31,7 @@ const AllPinsDisplay = () => {
             fetchAllPins();
     }, [])
 
-    const displayPin = pins.map((pin, i) => {
+    const displayPins = pins.map((pin, i) => {
         return ( 
             <div key={i}>
                 <PostPinModal key={pin.id} pinId={pin.id} userName={pin.username} imageurl={API+pin.imageurl} profilepic={API+pin.profilepic} pinContent={pin.note} />
@@ -41,7 +41,7 @@ const AllPinsDisplay = () => {
 
    return (
        <div className="pinCard">
-            {displayPin}
+            {displayPins}
        </div>
    )
 }
