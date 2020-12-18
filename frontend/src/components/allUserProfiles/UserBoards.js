@@ -46,12 +46,12 @@ const UserBoards = ({username}) => {
         <>
           <div className="user-pin-list-div">
             <div className="user-pin-div-setup"> 
-              <h1 className="user-pins-now-viewing">My Boards</h1>
+              <h1 className="user-pins-now-viewing">Viewing {username}'s Boards</h1>
 
             </div>
 
             <div className="user-pins-now-displaying-layout">
-              <h3> This part of the app is under construction. Coming soon!</h3>
+              <h3 style={{color:"brown"}}> This part of the app is under construction. Coming soon!</h3>
               {/* {userBoardList} */}
             </div>
           </div>
