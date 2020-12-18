@@ -4,7 +4,7 @@ import axios from 'axios'
 import '../../css/PostBoard.css'
 import { apiURL } from '../../util/apiURL';
 
-const PostBoardModal = ({ board_name, imageurl, creator_id, board_description, boardId }) => {
+const PostBoardModal = ({ board_name, imageurl, creator_id, board_description, boardId, username}) => {
 
   const API = apiURL(); 
 
