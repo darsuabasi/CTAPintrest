@@ -6,52 +6,64 @@
 .pin-list{ 
     margin: auto;
     display: grid;
-    color: purple;
-    
 }
 
 
 .pinCard {
-    width: 23%;
+    /* display: grid;
     grid-gap: 4.5rem;
-    display: grid;
+    width: 23%;
     grid-column-gap: 11px;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
-    margin-bottom: 3.5rem;
+    margin-bottom: 3.5rem; */
+    /* for masonry display */
+    width: 100%;
+    column-count: 4;
+    column-gap: 24px;
 }
 
 
 @media (max-width: 700px) {
     .pinCard {
-        width: 95%;
         /* grid-gap: 25rem; */
-        display: grid;
+        /* display: grid; */
         /* overflow: hidden !important; */
-        grid-row-gap: 25rem;
         /* grid-column-gap: 80px; */
-        grid-template-columns: 1fr; 
+        /* grid-template-columns: 1fr;  */
         /* margin-bottom: 3.5rem; */
+        display: inline-block;
+        width: 98%;
+        column-count: 1;
+        column-gap: 20px;
+        row-gap: 20px !important;
     }
 }
 
-@media (min-width: 701px) and (max-width: 1000px) {
+@media (min-width: 701px) and (max-width: 800px) {
     .pinCard {
-        width: 95%;
+        /* width: 95%;
         grid-gap: 15rem;
         display: grid;
         grid-column-gap: 11px;
         grid-template-columns: 1fr 1fr; 
-        margin-bottom: 3.5rem;
+        margin-bottom: 3.5rem; */
+        width: 100%;
+        column-count: 2;
+        column-gap: 20px;
     }
 }
 
-@media (min-width: 1001px) and (max-width: 1395px) {
+@media (min-width: 801px) and (max-width: 1395px) {
     .pinCard {
-        width: 98%;
+        /* width: 98%;
         grid-gap: 3.5rem;
         display: grid;
         grid-column-gap: 11px;
         grid-template-columns: 1fr 1fr 1fr; 
-        margin-bottom: 3.5rem;
+        margin-bottom: 3.5rem; */
+        width: 100%;
+        column-count: 3;
+        column-gap: 18px;
+        row-gap: 10px !important;
     }
 }
