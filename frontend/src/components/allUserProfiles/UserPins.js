@@ -22,7 +22,6 @@ const UserPins = ({username}) => {
                     //     AuthToken: token,
                     // }
                 })
-                debugger
                 setUserPins(res.data.payload)
                 console.log(res.data)
             } catch(err) {
