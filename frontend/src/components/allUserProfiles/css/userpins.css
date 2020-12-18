@@ -3,29 +3,87 @@
     margin: 0;
 }
 
-.user-pins-now-displaying-layout {
-    width: 100%;
-    grid-gap: 4rem;
-    display: grid;
-    grid-column-gap: 10px;
-    grid-template-columns: 1fr 1fr 1fr; 
+.user-pin-list-div {
+    position: relative;
+    height: 100vh;
 }
 
 .user-pin-div-setup {
-    /* margin-top: 4%; */
-    /* position: -webkit-sticky; */
-    /* position: sticky; */
-    /* top: 0; */
+    height: 10vh;
+    width: 100%;
+    padding-top: 1%;
 }
 
 .user-pins-now-viewing {
     font-variant: small-caps;
     font-size: 50px;
     font-weight: 500;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    /* position: -webkit-sticky; */
-    /* position: sticky; */
-    /* top: 0; */
-    /* background-color: purple; */
+}
+
+.user-pins-now-displaying-layout {
+    width: 100%;
+    grid-gap: 4rem;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr; 
+    height: 90vh;
+    overflow-x: scroll;
+    padding-top: 1%;
+}
+
+
+@media (max-width: 700px) {
+    .user-pins-now-displaying-layout {
+        width: 100%;
+        grid-gap: 4rem;
+        display: grid;
+        grid-column-gap: 10px;
+        grid-template-columns: 1fr; 
+        height: 90vh;
+        overflow-x: scroll;
+        padding-top: 1%;
+    }
+    
+}
+
+@media (min-width: 701px) and (max-width: 800px) {
+    .user-pins-now-displaying-layout {
+        width: 100%;
+        grid-gap: 4rem;
+        display: grid;
+        grid-column-gap: 10px;
+        grid-template-columns: 1fr 1fr; 
+        height: 90vh;
+        overflow-x: scroll;
+        padding-top: 1%;
+    }
+    
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+    .user-pins-now-displaying-layout {
+        width: 100%;
+        grid-gap: 4rem;
+        display: grid;
+        grid-column-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr 1fr; 
+        height: 90vh;
+        overflow-x: scroll;
+        padding-top: 1%;
+    }
+    
+}
+
+@media (min-width: 1001px) and (max-width: 1395px) {
+    .user-pins-now-displaying-layout {
+        width: 100%;
+        grid-gap: 4rem;
+        display: grid;
+        grid-column-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr; 
+        height: 90vh;
+        overflow-x: scroll;
+        padding-top: 1%;
+    }
+    
 }

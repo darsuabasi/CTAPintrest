@@ -47,7 +47,7 @@ const UserPins = ({username}) => {
         <>
           <div className="user-pin-list-div">
             <div className="user-pin-div-setup"> 
-              <h1 className="user-pins-now-viewing">My Pins</h1>
+              <h1 className="user-pins-now-viewing">Viewing {username}'s Pins</h1>
             </div>
 
             <div className="user-pins-now-displaying-layout">
