@@ -2,32 +2,34 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from '../providers/AuthProvider';
 import { apiURL } from "../util/apiURL";
+import { useParams } from "react-router-dom";
 
 
-const Tags = ({ pinId }) => {
+
+const Tags = () => {
   // const { currentUser, token } = useContext(AuthContext);
   const [tags, setTags] = useState([]);
   const API = apiURL();
+  const id = useParams()
 
-  const fetchTags = async () => {
+  const fetchAllTagsByPin = async () => {
     try {
-      let res = await axios.get(`${API}/api/tags/${sessionStorage.searchTerm}`);
+      let res = await axios.get(`${API}/api/pins/${id}/tags`);
       setTags(res.data.payload);
     } catch (error) {
       setTags([]);
     }
   };
 
-
   useEffect(() => {
-    fetchTags(`${API}/api/tags/${pinId}`);
+    fetchAllTagsByPin();
   }, [] );
 
 
   const getAllTags = tags.map(tag => {
-    let arrayTag = [];
-    arrayTag.push(tag.tag_name);
-    return <p className="singleTag"> #{arrayTag} </p>;
+    let hashtagArr = [];
+    hashtagArr.push(tag.tag_name);
+    return <p className="singleTag"> #{hashtagArr} </p>;
   });
 
   return <div className="allTags"> <a href="`${getAllTags}`"> {getAllTags} </a> </div>;
