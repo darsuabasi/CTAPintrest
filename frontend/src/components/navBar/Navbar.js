@@ -1,20 +1,18 @@
 import React, { useContext, useState, useEffect,  } from 'react';
 import axios from 'axios';
 import { NavLink, useHistory } from 'react-router-dom';
-// import Accounts from '../components/Accounts';
 import SearchBar from '../searchFeature/SearchBar';
 import { apiURL } from '../../util/apiURL';
 import { useInput } from '../../util/useInput';
 import { AuthContext } from '../../providers/AuthProvider';
 import '../../css/Navbar.css'
-// import { logout} from '../../util/firebaseFunctions';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import wave from '../../assets/wave.svg'
-
-
+import wave from '../../assets/wave.svg';
 import { login, demoLogin, signUp, logout } from '../../util/firebaseFunctions';
-// import { signUp } from '../../util/firebaseFunctions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const Navbar = () => {
@@ -26,6 +24,10 @@ const Navbar = () => {
     const [user, setUser] = useState([]);
     const [profilepicture, setProfilePicture] = useState("");
 
+    // contact
+    const [showContact, setShowContact] = useState(false);
+    const handleCloseContact = () => setShowContact(false);
+    const handleShowContact = () => setShowContact(true);
     // about
     const [showAbout, setShowAbout] = useState(false);
     const handleCloseAbout = () => setShowAbout(false);
@@ -50,6 +52,9 @@ const Navbar = () => {
     const [file, setFile] = useState({preview: "", raw: ""});
     // const age = useInput("");
     const [userSignup, setUserSignup] = useState([]);
+    // toastify
+    const underConstruction = () => toast("This part of the app is under construction. Coming soon :)");
+
 
 
 
@@ -138,28 +143,44 @@ const Navbar = () => {
         if(currentUser) {
             return (
                 <div className="user-navBar">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-                    {/* <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    {/* <a class="navbar-brand" href="#">Navbar</a> */}
+                    {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button> */}
 
-                        <NavLink className="pintrestLogoLetters" to={"/user-feed"}> P </NavLink>
+                        <NavLink className="pintrestLogoLetters" to={"/user-feed"}> L </NavLink>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
+
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav user2">
 
-                                <li class="nav-item active two">
-                                    <NavLink class="nav-link" className="user-nav-feed" to={"/user-feed"}>Home <span class="sr-only">(current)</span> </NavLink>
+                                <li class="nav-item two">
+                                    <NavLink className="user-nav-feed" to={"/user-feed"}>Home </NavLink>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button className="user-today" onClick={underConstruction}>Today</button>
+                                    <ToastContainer
+                                        position="top-center"
+                                        autoClose={5000}
+                                        hideProgressBar={false}
+                                        newestOnTop={false}
+                                        closeOnClick
+                                        rtl={false}
+                                        pauseOnFocusLoss
+                                        draggable
+                                        pauseOnHover
+                                        />
                                 </li>
                                         
-                                <li class="nav-item">
+                                {/* <li class="nav-item">
                                     <NavLink class="nav-link" className="user-nav-today" to={"/today"}>Today</NavLink>
-                                </li>
+                                </li> */}
 
                                 <SearchBar className="user-nav-search"> </SearchBar>
 
@@ -170,7 +191,8 @@ const Navbar = () => {
 
 
                                 <li class="nav-item">
-                                    <NavLink class="nav-link messages" className="user-nav-message" to={"/messages"}> Messages </NavLink>
+                                    {/* <NavLink class="nav-link messages" className="user-nav-message" to={"/messages"}> Messages </NavLink> */}
+                                    <button className="user-nav-message" onClick={underConstruction}>M</button>
                                 </li>
 
                                 <li class="nav-item">
@@ -206,17 +228,18 @@ const Navbar = () => {
         } else {
             return (
                 <div className="non-user-nav">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        {/* <a class="navbar-brand" href="#">Pinterest</a> */}
-                        <NavLink /*class="navbar-brand"*/ className="pintrestLogoLettersNon" to={"/"}> PINTEREST </NavLink>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                        
+                        <NavLink /*class="navbar-brand"*/ className="pintrestLogoLettersNon" to={"/"}> LIFETREST </NavLink>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto sendToEnd">
+                            <div className="non-user-floatRight" class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="non-user-floatRight" class="navbar-nav mr-auto sendToEnd">
 
-                                    <li class="nav-item active">
+
+                                    <li class="nav-item">
                                         {/* <NavLink disabled class="nav-link publicNavLink" className="publicNavLink" to={"/about"}> About </NavLink> */}
                                         {/* <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> */}
                                         <button className="publicNavAbout" variant="primary" onClick={handleShowAbout}>
@@ -235,10 +258,33 @@ const Navbar = () => {
                                                     <div className="sub-div">
                                                         <div className="rightDiv"> 
                                                             <p className="holaDiv"> Welcome to Lifetrest! </p>
-                                                            <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. I'm a fullstack web developer focusing on UX/UI and backend. I also dabble in photography.</p> 
-                                                            <p className="about-me"> Welcome to Lifetrest. For my CTA, I decided to clone Pinterest since it's an app that I frequently use. As a user, you can login through the demo login or create your own account. Once a part of Lifetrest, you're able to upload pins and add them to boards that you have created. In addition, a user is able to delete a board which then deletes all the pins in that specific board. You are able to view all your own pins as well as boards and just like Pinterest, you're able to view ALL pins that live in the Livetrest app via your feed.</p>
+                                                            <p className="about-me"> For my Comprehensive Technical Assessment through <a className="myPursuit" href="https://www.pursuit.org/fellowship"> PURSUIT</a>, I decided to clone Pinterest since it's an app that I frequently use. As a user, you can login through the demo login or create your own account. Once a part of Lifetrest, you're able to upload pins and add them to boards that you have created. In addition, a user is able to delete a board which then deletes all the pins in that specific board. You are able to view all your own pins as well as boards and just like Pinterest, you're able to view ALL pins that live in the Livetrest app via your feed.</p>
                                                             <p className="about-me"> What's Next? Bit by bit, I am increasing the funtionaily on this app as well as testing my design and animation skills. I want users to be able to edit their profile information as well as being able to pin another user's pins to your own board.</p>
                                                             <p className="about-me"> Future Implementations: Users should be able to view another user's profile through the username tag on pins. Full responsiveness as well! </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Modal.Body>
+                                        </Modal>
+                                    </div>
+
+                                    <li className="nav-item">
+                                        <button className="publicNavContact" onClick={handleShowContact}>
+                                            Contact 
+                                        </button>
+                                    </li>
+                                    <div className="contact-modal">
+                                        <Modal className="fullContactModal" show={showContact} onHide={handleCloseContact}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title className="modaltitle1">Let's Chat</Modal.Title>
+                                            </Modal.Header>
+
+                                            <Modal.Body className="modalBody-about">
+                                                <div className="aboutDiv">
+                                                    <div className="sub-div">
+                                                        <div className="rightDiv"> 
+                                                            <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. I'm a fullstack web developer focusing on UX/UI and backend. I also dabble in photography.</p> 
+                                                            <p className="holaDiv"> Reach me here or check out some of my other work. </p>
                                                             <p> Check out my <a className="myPortfolio" href="https://uduakabasi.netlify.app/"> portfolio </a> and you  can follow me on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a>. If you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>.
                                                             </p> 
                                                         </div>
@@ -300,7 +346,7 @@ const Navbar = () => {
                         <div class="sun"></div>
                         </div>
 
-                        <Button style={{color:"#ffffff", backgroundColor:"#E60023", border:"none", height:"2rem"}} bsstyle="primary" onClick={handleDemoLogin}>
+                        <Button style={{color:"#ffffff", backgroundColor:"brown", border:"none", height:"2rem"}} bsstyle="primary" onClick={handleDemoLogin}>
                             Demo Login
                         </Button>
                         {/* <h5> OR </h5> */}
@@ -402,10 +448,8 @@ const Navbar = () => {
     }
 
     return (
-        <div> 
-            {/* <nav className="navbarUno">  */}
+        <div className="navbarUno"> 
                 {displayNavForUser()}
-            {/* </nav> */}
         </div>
     )
 }
