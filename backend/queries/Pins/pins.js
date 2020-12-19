@@ -57,7 +57,9 @@ const deletePin = async (req, res, next) => {
 
 const getAllPins = async (req, res, next) => {
     try {
-        const allThePins = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.note, Users.id, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
+        // this line does pull all pins with tag name but its duplicating the amount of pins and im not sure why or how
+        // const allThePins = await db.any('SELECT Pins.id, Pins.imageUrl, Pins.creator_id, Pins.board_id, Pins.note, Users.id AS creator_id, Users.username, Users.profilePic, Tags.id AS tag_id, Tags.tag_name FROM Pins JOIN Users ON Pins.creator_id = Users.id JOIN Tags ON Tags.creator_id = Users.id ORDER BY time_stamp DESC');
+        const allThePins = await db.any('SELECT Pins.id AS pin_id, Pins.imageUrl, Pins.creator_id, Pins.board_id, Pins.note, Users.id, Users.username, Users.profilePic FROM Pins LEFT JOIN Users ON Pins.creator_id = Users.id ORDER BY time_stamp DESC');
         res.status(200).json({
             status: "Success",
             message: "All pins are now showing",
@@ -108,8 +110,12 @@ const getPinsByTag = async (req, res, next) => {
 
 
 const getSinglePin = async (req, res, next) => {
+//     SELECT * FROM terms WHERE id IN 
+//    (SELECT term_id FROM terms_relation WHERE taxonomy = "categ")
+    const { id } = req.params
     try {
-        let soloPin = await db.one('SELECT * FROM Pins WHERE id= $1', [req.params.id]);
+        // let soloPin = await db.one('SELECT * FROM Pins WHERE id IN (SELECT id AS tag_id FROM Tags WHERE pin_id =$1)', [id]);
+        let soloPin = await db.one('SELECT * FROM Pins WHERE id= $1', [id]);
         res.status(200).json({
             status: "Success",
             message: "Yo! You can now see this single pin.",
@@ -125,10 +131,11 @@ const getSinglePin = async (req, res, next) => {
     }
 }
 
-
+// fetch pins by id
 const getAllPinsByUser = async (req, res, next) => {
+    const { id } = req.params
     try{
-        let pin_id = await db.any('SELECT * FROM Pins WHERE creator_id= $1', [req.params.id])
+        let pin_id = await db.any('SELECT * FROM Pins WHERE creator_id= $1', [id])
         res.status(200).json({
             status: "Succes",
             message: "Yip Yip! You're checking out all pins from this user",
@@ -223,15 +230,31 @@ const deleteCommentByPin = async (req, res, next) => {
         next(err)
     }
 }
-// cont createNewComment = (req, res, next) => {
-//     try {
 
-//     }
-// }
+const getAllTagsForPin = async (req, res, next) => {
+    const { id } = req.params
+    try{
+        let getAllTags = await db.one('SELECT * FROM Tags WHERE pin_id = $1', [id]);
+        // let getAllTags = await db.one('SELECT * FROM Tags WHERE pin_id = $1', [id]);
+        res.status(200).json({
+            status: 'Succes',
+            message: 'Now viewing all hashtags on this pin.',
+            payload: getAllTags
+        })
+    }catch(error){
+        console.log(error)
+        res.status(400).json({
+            status: 'Error',
+            message: 'No hashtags available for viewing on this pin.'
+        })
+    }
+
+}
 
 
 
-module.exports = { createPin, getAllPinsByUser, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllCommentsForPin, createNewComment, deleteCommentByPin}
+
+module.exports = { createPin, getAllPinsByUser, deletePin, getAllPins, updatePin, getPinsByTag, getSinglePin, getAllCommentsForPin, createNewComment, deleteCommentByPin, getAllTagsForPin}
 
 
 
