@@ -58,7 +58,10 @@ const deleteBoard = async (req, res, next) => {
 
 const getAllBoards =  async (req, res, next) => {
     try {
-        const allTheBoards = await db.any('SELECT * FROM Boards ORDER BY time_stamp DESC');
+        const { id } = req.params
+        // original
+        // const allTheBoards = await db.any('SELECT * FROM Boards ORDER BY time_stamp DESC');
+        const allTheBoards = await db.any(`SELECT Users.username, Boards.* FROM Users LEFT JOIN Boards ON Users.id = Boards.creator_id WHERE creator_id= $1`, [id])
         res.status(200).json({
             status: "Success",
             message: "All boards are now showing",
