@@ -67,6 +67,15 @@ const Navbar = () => {
           }
     }
 
+    const handleLogout = async (e) => {
+        e.preventDefault();
+        try {
+            await logout();
+            history.push("/");
+        } catch (err) {
+            alert("Not able to logout. Please try again.", err); 
+        }
+    }
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
@@ -81,7 +90,7 @@ const Navbar = () => {
     const handleDemoLogin = async (e) => {
         e.preventDefault();
         try {
-            await login("darsu@gmail.com", "test123");
+            await login("heytemi@gmail.com", "test123");
             history.push("/user-feed")
         } catch (err) {
             alert("Not able to log in. Please try again.", err)
@@ -108,7 +117,8 @@ const Navbar = () => {
             try {
                 let res = await signUp(emailSignup, passwordSignup);
                 formData.append("id", res.user.uid);
-            await axios.post(`${API}/api/users`, formData, config)
+            await axios.post(`${API}/api/users`, formData, config);
+            history.push("/user-feed");
             } catch (err) {
                 console.log(err)
             }
@@ -214,7 +224,7 @@ const Navbar = () => {
                                             <a href="#" class="disabled"> Install the chrome app </a>
                                             <a href="#" class="disabled"> Get help </a>
                                             <a href="#" class="disabled"> See terms and privacy </a>
-                                            <button className="logout-btn-style" onClick={logout}>Logout</button>
+                                            <button className="logout-btn-style" onClick={handleLogout}>Logout</button>
                                     </div>
                                 </div>
 
