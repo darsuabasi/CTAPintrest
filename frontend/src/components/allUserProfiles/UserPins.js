@@ -13,7 +13,7 @@ const UserPins = ({username}) => {
   
 
     useEffect(() => {
-        const fetchUserPins = async () => {
+        const fetchPinsByUsername = async () => {
             try {
                 let res = await axios({
                     method: "get",
@@ -29,7 +29,7 @@ const UserPins = ({username}) => {
                 console.log(err.message);
                 }
             };
-            fetchUserPins();
+            fetchPinsByUsername();
     }, [username]);
 
       const userPinList = userPins.map((pin, i) => {
