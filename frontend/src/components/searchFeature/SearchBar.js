@@ -34,7 +34,7 @@ const SearchBar = () => {
             return (
                 <div className="styleSuggestionDiv">
                     <ul className="styleSuggestions">
-                        {suggestion.map((item)=><li className="styleSussestionLi" key={item} onClick={()=> handleSelect(item)}>{item}</li>)}
+                        {suggestion.slice(0,5).map((item)=><li className="styleSussestionLi" key={item} onClick={()=> handleSelect(item)}>{item}</li>)}
                     </ul>
                 </div>
             )
