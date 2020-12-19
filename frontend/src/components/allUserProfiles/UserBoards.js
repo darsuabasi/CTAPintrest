@@ -50,8 +50,8 @@ const UserBoards = ({username}) => {
 
             </div>
 
-            <div className="user-pins-now-displaying-layout">
-              <h3 style={{color:"brown"}}> This part of the app is under construction. Coming soon!</h3>
+            <div style={{ width:'50vw'}} className="user-pins-now-displaying-layout">
+              <h3 style={{color:"brown", width:'40vw'}}> This part of the app is under construction. Coming soon!</h3>
               {/* {userBoardList} */}
             </div>
           </div>
