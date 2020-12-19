@@ -12,6 +12,7 @@ const TagResults = () => {
     const { loading } = useContext(AuthContext);
     const [hashtagResults, setHashtagResults] = useState([]);
     const history = useHistory();
+    // const tag_name = useParams()
 
     
     useEffect(()=>{
@@ -53,7 +54,8 @@ const TagResults = () => {
     } else {
         return (
             <div>
-                <h1>There are no results for #{sessionStorage.searchTerm} hashtag. Try something else.</h1>
+            {/* make this an else if and then make a null */}
+                <h1>There are no results for #{sessionStorage.searchTerm} hashtag. Try searching for something else.</h1>
             </div>
         )
     }
@@ -64,7 +66,7 @@ const TagResults = () => {
         return (
             <div key={i} className="userPostsListDiv">
                 <PostImage key={pin.id} pinId={pin.id} userName={pin.username} imageurl={API+pin.imageurl} profilepic={API+pin.profilepic} pinContent={pin.note}/>
-                <Tags pinId={pin.id} userName={pin.username}/>
+                {/* <Tags/> */}
           </div>
         );
       });
