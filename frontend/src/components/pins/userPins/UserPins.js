@@ -5,6 +5,7 @@ import { apiURL } from '../../../util/apiURL';
 import '../../../css/UserPinProfile.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useInput } from '../../../util/useInput';
+import CurrentUserPinDisplay from './CurrentUserPinDisplay';
 import UsersPinDisplay from './UsersPinDisplay'
 
 const UserPins = () => {
@@ -153,7 +154,7 @@ const UserPins = () => {
                 <div className="sort-and-create">
                     <button className="sort-btn"> S </button>
                     {/* sort icon that triggers a drop down */}
-                    <div className="dropdown">
+                    <div className="dropdown" style={{zIndex:"0"}}>
                         <button class="circular ui icon button" className="create-btn"> D </button>
                             <div className="add-dropdown-content">
                                 <Link className="style-create-board-dropdown" to={"/create-board"} > Create Board </Link>
@@ -178,14 +179,10 @@ const UserPins = () => {
                 
 
                 <div className="board-and-pin-mainCard"> 
-                    <div className="board-card">
-                        {/* BoardDisplay */}
-                    </div>
 
-                    <div className="pin-card">
-                        <UsersPinDisplay/>
+                    <div className="pin-card-two">
+                        <CurrentUserPinDisplay/>
                     </div>
-
                     {/* <Boards/> if setBoards then display boards but if setPins, display Pins<Pins/> */}
                 </div>
         </div>
