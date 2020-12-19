@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { apiURL } from '../../util/apiURL';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import  '../../css/SearchBar.css'
+import  './css/SearchBar.css'
 
 const SearchBar = () => {
     const API = apiURL();
@@ -32,9 +32,11 @@ const SearchBar = () => {
             return null
         } else {
             return (
-                <ul>
-                    {suggestion.map((item)=><li key={item} onClick={()=> handleSelect(item)}>{item}</li>)}
-                </ul>
+                <div className="styleSuggestionDiv">
+                    <ul className="styleSuggestions">
+                        {suggestion.map((item)=><li className="styleSussestionLi" key={item} onClick={()=> handleSelect(item)}>{item}</li>)}
+                    </ul>
+                </div>
             )
         }
     }

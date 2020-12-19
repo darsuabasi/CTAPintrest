@@ -1,0 +1,45 @@
+.user-nav-search {
+    border-radius: 24px;
+    width: 46rem;
+    height: 3.08rem;
+    background-color: #e9e8e8;
+    color: #333;
+    border-style: none;
+    justify-content: center;
+    padding-left: 2rem;
+    font-size: 22px;
+}
+
+.user-nav-search::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgb(143, 143, 143);
+    font: 30px;
+    font-size: large;
+    font-weight: 500;
+    padding-left: 2.3rem;
+    background: url('https://api.iconify.design/entypo-magnifying-glass.svg') no-repeat;
+    background-position: 1.5vw;
+}
+
+.styleSuggestionDiv {
+    display: block;
+    position: absolute;
+    /* border: 2px solid brown; */
+    margin-left: 2%;
+    width: 20rem;
+    z-index: 20;
+    border-radius: 1rem;
+}
+
+.styleSuggestions {
+    background-color: rgb(235, 235, 235);
+    /* border: 2px solid brown; */
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding-left: 2%;
+}
+
+.styleSussestionLi {
+    font-size: 22px;
+    padding-right: 2%;
+    color: brown;
+}
