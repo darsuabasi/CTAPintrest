@@ -64,10 +64,10 @@ const PopulateBoards = ({boardId, setBoardId}) => {
 
     return (   
             <div> 
-                <select style={{border:"5px solid #E60023", borderRadius:"0.5rem", width:"80%", height:"2.5rem"}} onChange={handleSelectBoard} value={boardId}>
+                <select style={{border:"3px solid lightgray", borderRadius:"0.5rem", width:"100%", height:"2.5rem"}} onChange={handleSelectBoard} value={boardId}>
                     <option defaultValue> Select a Board </option>
                     {/* <option onClick={handleCreateBoard}> Create a Board </option> */}
-                    <option> ------------------------ </option>
+                    <option> - - - - - - - - - - - - - - - - - - - - - </option>
                         {selectOptions}
                 </select>
             </div> 
