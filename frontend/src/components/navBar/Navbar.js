@@ -268,9 +268,26 @@ const Navbar = () => {
                                                     <div className="sub-div">
                                                         <div className="rightDiv"> 
                                                             <p className="holaDiv"> Welcome to Lifetrest! </p>
-                                                            <p className="about-me"> For my Comprehensive Technical Assessment through <a className="myPursuit" href="https://www.pursuit.org/fellowship"> PURSUIT</a>, I decided to clone Pinterest since it's an app that I frequently use. As a user, you can login through the demo login or create your own account. Once a part of Lifetrest, you're able to upload pins and add them to boards that you have created. In addition, a user is able to delete a board which then deletes all the pins in that specific board. You are able to view all your own pins as well as boards and just like Pinterest, you're able to view ALL pins that live in the Livetrest app via your feed.</p>
-                                                            <p className="about-me"> What's Next? Bit by bit, I am increasing the funtionaily on this app as well as testing my design and animation skills. I want users to be able to edit their profile information as well as being able to pin another user's pins to your own board.</p>
-                                                            <p className="about-me"> Future Implementations: Users should be able to view another user's profile through the username tag on pins. Full responsiveness as well! </p>
+
+                                                            <p className="about-me"> For my Comprehensive Technical Assessment through <a className="myPursuit" href="https://www.pursuit.org/fellowship"> PURSUIT</a>, 
+                                                                I decided to clone Pinterest since it's an app that I frequently use. As a 
+                                                                visitor, you can login with the demo account or you can create your own account via 
+                                                                the signup modal. Once a part of Lifetrest, you're able to upload photos and post them as pins. 
+                                                                However, you must first create a board. Think of it as your pin's house or album. In addition, 
+                                                                you are able to delete a board which then permanently removes all the pins in that specific board 
+                                                                and from the app. You are able to view all your own pins as well as boards and just like Pinterest, 
+                                                                you're able to view ALL pins that live in the Livetrest app via your feed. You can also utilize the 
+                                                                SEARCH BAR to search for pins based on hashtags! 
+                                                            </p>
+                                                            
+                                                            <p className="about-me"> <h3 style={{color:"brown"}}> What's Next? </h3> Bit by bit, I am increasing the functionality as well as testing 
+                                                                my design and animation skills.
+                                                            </p>
+
+                                                            <p className="about-me"> <h3 style={{color:"brown"}}> Future Implementations </h3> I want users to be able to edit their profile information as well as 
+                                                                being able to pin another user's pins to their own board. Users should be able to view another user's profile 
+                                                                through the username [Partially completed on 12/21/2020] as you can only view their pins but not their boards. 
+                                                                Full responsiveness as well! </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -399,7 +416,7 @@ const Navbar = () => {
                                     <label className="nameLabel"> First Name <input className="signup-input" {...firstName} placeholder="First Name"/> </label> 
                                     <label className="nameLabel"> Last Name <input className="signup-input" {...lastName} placeholder="Last Name"/> </label> 
                                 </div>
-                                <label> Enter a username <input className="signup-input username" {...userName} placeholder="Username"/> </label>
+                                <label style={{marginTop:"30px"}}> Enter a username <input className="signup-input username" style={{width:"30.5vw"}} {...userName} placeholder="Username"/> </label>
                             </div>
 
                             <div class="secondDiv-signup"> 
@@ -407,7 +424,10 @@ const Navbar = () => {
                                     <img src="" alt="Image Preview" className="profile-pic-preview-signup" src={file.preview}/>           
                                 </div>
                                 <div className="suPhotoTitle"> 
-                                    <label> Upload Your Photo <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder="Your photo"/> </label> 
+                                    <label for="file-upload" class="custom-file-upload-signupPic" style={{textAlign:"center", marginBottom:"10%", fontVariant:"small-caps", fontWeight:"800", fontSize:"20px"}}>
+                                        Click to Upload
+                                    </label>
+                                    <input id="file-upload" className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder="Your photo"/>
                                 </div>
                                 <label class="label"> Enter your email <input placeholder="Email" 
                                     text="email"

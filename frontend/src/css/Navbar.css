@@ -282,18 +282,17 @@ $border: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%); */
 }
 
 .login-input1, .login-input2 {
-    border-radius: 10px 2px solid;
-    padding-left: 1.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 70%;
     justify-content: center;
     align-items: center;
     text-align: start;
-    box-shadow: black 2px 2px;
-    border-color: black !important;
     border-radius: 2rem;
     height: 3rem !important;
+    border: none;
+    box-shadow: 2px 2px 5px 3px rgb(221, 221, 221);
+    padding-left: 5%;
+    margin-top: 7%;
+    width: 98%;
+    text-align: start;
 }
 
 .signup-from-login {
@@ -369,3 +368,35 @@ a.disabled {
 }
 
 /* ----------testing ------------ */
+
+.custom-file-upload-signupPic {
+    box-shadow: 3px 1px 5px 3px lightgray;
+    border-radius: 1rem;
+    /* display: inline-block; */
+    padding: 6px 12px;
+    cursor: pointer;
+    height: auto;
+    width: 50%;
+    height: 2.5rem;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    align-self: center;
+    margin-left: 25%;
+    /* background-color: lightgray; */
+}
+
+.custom-file-upload-signupPic:hover {
+    background-image: linear-gradient(to right, rgb(204, 201, 197) , rgb(255, 255, 255));
+}
+
+.signup-input {
+    height: 3rem;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 2px 2px 5px 3px rgb(221, 221, 221);
+    padding-left: 5%;
+    margin-top: 3%;
+    width: 97.5%;
+    text-align: start;
+    margin-left: 1%;
+}
