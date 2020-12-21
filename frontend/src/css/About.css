@@ -37,36 +37,44 @@
 }
 
 .myPortfolio {
-    color: #E60023;
+    /* color: #E60023; */
+    color: brown;
     font-weight: bold;
 }
 
 .instagram {
-    color: #E60023;
+    color: brown;
     font-weight: bold;
 }
 
 .twitter {
-    color: #E60023;
+    color: brown;
     font-weight: bold;
 }
 
 .github {
-    color: #E60023;
+    /* color: #fad0d6; */
+    color: brown;
     font-weight: bold;
 }
 
 .instagram:hover {
-    color: #E60023;
-    text-decoration: none;
+    color: brown;
+    text-decoration: line-through;
 }
 
 .twitter:hover {
-    color: #E60023;
-    text-decoration: none;
+    color: brown;
+    text-decoration: line-through;
 }
 
 .github:hover {
-    color: #E60023;
-    text-decoration: none;
+    color: brown;
+    text-decoration: line-through;
+}
+
+.myPortfolio:hover {
+    /* color: #E60023; */
+    color: brown;
+    text-decoration: line-through;
 }
