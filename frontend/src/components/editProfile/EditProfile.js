@@ -192,14 +192,16 @@ const  EditProfile = () => {
 
             <form onSubmit={updateUserInfo}>
                 <div className="profilePicChangeDiv">
-                    <div className="profilePicDiv">
+                    <div className="profilePicDiv" id="imagePreview">
 
                         {/* <div className="style-profile-pic"> 
                             <img className="profile-pic-preview" src={API+profilepicture} />
                         </div> */}
-
-                        <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" size="20" onChange={onSelectImage} placeholder="Upload it."/>
-                        <img src="" alt="Image Preview" className="profile-pic-preview-editP" src={file.preview}/>
+                        <label for="file-upload" class="custom-file-upload-editP" style={{textAlign:"center", marginBottom:"10%", fontVariant:"small-caps", fontWeight:"800", fontSize:"20px"}}>
+                            Click to Upload
+                        </label>
+                        <input className="image-preview-view" type="file" id="file-upload" name="myImage" accept="image/png/jpeg" size="20" onChange={onSelectImage} placeholder="Upload it."/>
+                        <img alt="Image Preview" className="profile-pic-preview-editP" src={file.preview}/>
                     </div>
                             
                     <br></br>
@@ -211,18 +213,18 @@ const  EditProfile = () => {
                 <div className="infoBodyDiv">
 
                     <div className="nameDiv01">
-                        <label className="nameLabel" class="epLabel one"> First Name <input disabled className="nameInput" type="text" placeholder={user.first_name}/> </label>
-                        <label className="nameLabel" class="epLabel one"> Last Name <input disabled className="nameInput" type="text" placeholder={user.last_name}/> </label>
+                        <label className="nameLabel" class="epLabel one"> First Name <input className="nameInput input-style-editP" type="text" placeholder={user.first_name}/> </label>
+                        <label className="nameLabel" class="epLabel one"> Last Name <input className="nameInput input-style-editP" type="text" placeholder={user.last_name}/> </label>
                     </div>
 
                     <label class="epLabel"> Username</label>
-                    <h5> www.lifetrest.com/<input disabled type="text" placeholder={user.username}/> </h5>
+                    <h5> www.lifetrest.com/<input type="text" className="input-style-editP" placeholder={user.username}/> </h5>
 
                     <label class="epLabel"> Bio</label>
-                    <textarea disabled type="text" placeholder={user.bio}/>
+                    <textarea type="text" className="input-style-editP" style={{height:"250px"}} placeholder={user.bio}/>
 
                     <label class="epLabel"> Location</label>
-                    <input disabled type="text" placeholder="Ex. I dey dey, no wahala"/>
+                    <input className="input-style-editP" type="text" placeholder="Ex. I dey dey, no wahala"/>
 
                     <br></br>
                     <button className="profilePicUpdate-btn" onClick={underConstruction}>Update</button>

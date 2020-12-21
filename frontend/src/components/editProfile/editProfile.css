@@ -10,9 +10,9 @@
     justify-content: center;
     text-align: left;
     background-color: transparent;
-    border: 3px solid #fb2182 ;
+    /* border: 24px solid #dfdfdf ; */
     border-radius: 2rem;
-    box-shadow: #E60023 5px 10px;
+    /* box-shadow: #dbdbdb 3px 3px 5px 10px; */
     overflow-y: scroll !important;
 }
 
@@ -25,13 +25,14 @@
     display: flex;
     flex-direction: row;
     align-self: flex-start !important;
+    width: 30%;
 }
 
 .profile-pic-preview-editP {
     width: 150px;
     height: 150px;
-    border-radius: 2rem;
-    margin-left: -7rem;
+    border-radius: 5rem;
+    margin-left: -11rem;
     margin-top: 5rem;
 }
 
@@ -47,13 +48,13 @@
     width: 4rem;
     margin-top: 3rem;
     margin-bottom: 2rem;
-    background: #cc1212;
+    background: brown;
     font-family: "Sacramento", cursive;
-    box-shadow: 0px 0px 16px #ff8725;
+    box-shadow: 0px 0px 16px #ffffff;
     font-weight: 600;
     font-size: 1.3rem;
     z-index: 3;
-    border: 2px solid;
+    border: none;
     color: white;
     transition: all 1s ease-in-out;
     border-image: linear-gradient(#0088a0, #cc1212) 60;
@@ -76,8 +77,8 @@
     width: 4rem;
     margin-top: -4rem;
     height: 2rem;
-    background: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%);
-    box-shadow: 0px 0px 36px #ffdc2a;
+    background: linear-gradient(180deg, tan 0%, brown 41.54%);
+    box-shadow: 0px 0px 36px brown;
     z-index: 2;
     border-radius: 65px;
     transition: all 2s ease-in-out;
@@ -110,6 +111,7 @@
 
 .nameInput {
     width: 100%;
+    padding-left: 3 !important;
 }
 
 .editProfileHeader {
@@ -130,12 +132,36 @@
 }
 
 .epLabel{
-    color: red;
+    color: brown;
     margin-bottom: 0.5rem;
     margin-top: 1rem;
     font-weight: 600;
 }
 
 .epLabel.one{
-    color: red;
+    color: brown;
+}
+
+.custom-file-upload-editP {
+    box-shadow: 3px 1px 5px 3px lightgray;
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    height: auto;
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 1%;
+}
+
+.custom-file-upload-editP:hover {
+    background-image: linear-gradient(to right, rgb(204, 201, 197) , rgb(255, 255, 255));
+}
+
+.input-style-editP {
+    height: 2rem;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 2px 2px 5px 3px rgb(221, 221, 221);
+    padding-left: 2%;
 }
