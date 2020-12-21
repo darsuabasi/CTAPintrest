@@ -3,7 +3,7 @@ body {
     margin:0;
 }
 
-.fullSettingsDiv{
+.fullSettingsDiv {
     height: 100%;
     width: 100%;
     background-color: lightslategray;
@@ -12,13 +12,15 @@ body {
 .listed-options-display {
     float: left;
     margin-left: 10%;
-    margin-top: 5%;
+    margin-top: 4%;
     width: 20%;
 }
 
 .editProfileDiv {
-    float: right;
-    width: 70%;
+    float: left;
+    width: 50%;
+    margin-top: 1.3%;
+    margin-right: 1.5%;
 }
 
 .list-style-display {
@@ -124,3 +126,12 @@ li.disabled {
     pointer-events: none;
     color: rgb(110, 110, 110);
 }
+
+
+@media (max-width: 650px) {
+    .fullSettingsDiv {
+        display: grid;
+        background-color: #ffffff;
+    }
+   
+  }
