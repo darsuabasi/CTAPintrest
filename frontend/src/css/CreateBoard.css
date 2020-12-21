@@ -15,7 +15,6 @@
     margin-left: 20%;
     margin-right: 20%;
     border-radius: 2rem;
-
 }
 
 .helloHeader2 {
@@ -189,18 +188,6 @@ input[type="file"] {
     box-shadow: none;
 }
 
-
-@media (max-width: 991px) {
-    .uploadImageDiv2, .main-note-for-board-div {
-      width: 100%;
-      height: 50vh;
-    }
-
-    .uploadImageDiv2 {
-        padding-left: 1rem;
-    }
-}
-
 /* ---------- */
 
 .another-div-wow {
@@ -234,4 +221,41 @@ input[type="file"] {
     color: #ffffff;
     background-image: linear-gradient(to right, tan , brown);
     box-shadow: 1px 1px 3px 2px lightgrey;
+}
+
+/* --------------------responsiveness-------------------- */
+@media (max-width: 991px) {
+
+    .create-board-div {
+        overflow: hidden !important;
+    }
+
+    .create-board-main-div {
+        background-color: #ffffff;
+        height: 80vh;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 2rem;
+        overflow-x: scroll !important;
+    }
+
+    .uploadImageDiv2 {
+        height: 70vh;
+        width: 100%;
+        float: left;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .main-note-for-board-div {
+        float: right;
+        padding: 20px;
+        height: 100%;
+        /* margin-right: 6%; */
+        width: 90%;
+        height: 30vh;
+    }
+
 }
