@@ -14,7 +14,7 @@ const CurrentUserPinDisplay = () => {
 
 
     useEffect(() => {
-        const fetchPinsBySingleUser = async () => {
+        const fetchPinsByUserId = async () => {
             try {
                 let res = await axios({
                     method: "get",
@@ -30,7 +30,7 @@ const CurrentUserPinDisplay = () => {
                 console.log(err.message);
                 }
             };
-            fetchPinsBySingleUser();
+            fetchPinsByUserId();
     }, [])
 
     const displayPin = pins.map(pin => {
