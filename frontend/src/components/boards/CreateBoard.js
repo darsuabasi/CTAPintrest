@@ -3,7 +3,7 @@ import axios from 'axios';
 import { apiURL } from "../../util/apiURL";
 import { useInput } from '../../util/useInput';
 import { AuthContext } from '../../providers/AuthProvider';
-import '../../css/CreateBoard.css'
+import '../../css/CreateBoard.css';
 
 
 const CreateBoard = () => {
@@ -93,34 +93,43 @@ const CreateBoard = () => {
             </div>
 
 
+            <div className="create-board-form-div">
+                <form onSubmit={handleNewBoards} className="create-board-main-div">
 
-            <form onSubmit={handleNewBoards} className="create-board-main-div">
-                <div>
-                </div>
-
-                <div className="uploadImageDiv2"> 
-                    <div className="image-preview2" id="imagePreview">  
-                        <button className="save-button-style" type="submit"> Save </button>
-                        <input className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
-                        <img src="" alt="Image Preview" className="image-preview__image" src={file.preview}/>
-                        {/* <span className="image-preview__default-text"> Drag and drop or click to upload </span>  */}
-                    </div>
-                </div>
-
-                <div className="main-note-for-board-div">
-                    <div className="another-div-wow">
-                        <div className="style-for-name-div">
-                            <input className="board-name-place" placeholder="Board name" {...boardName}/>
+                    <div className="uploadImageDiv2"> 
+                        <div className="image-preview2" id="imagePreview">  
+                            <label for="file-upload" class="custom-file-upload" style={{textAlign:"center", marginBottom:"10%", fontVariant:"small-caps", fontWeight:"800", fontSize:"20px"}}>
+                                Click to Upload
+                            </label>
+                            <input className="image-preview-view" id="file-upload" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
+                            <img id="blah" alt=" " className="image-preview__image" src={file.preview}/>
+                            {/* <span className="image-preview__default-text"> Drag and drop or click to upload </span>  */}
                         </div>
-                    
-                        <div className="descrip-div">
-                            <textarea style={{height:"80px"}} className="board-description-place" placeholder="Board description" {...boardDescription}/>
-                        </div>
-
                     </div>
-                </div> 
-            </form>
-            {/* </div> */}
+
+                    <div className="main-note-for-board-div">
+                        <div className="another-div-wow">
+
+                            <div className="create-board-btn-div">
+                                <button className="save-button-style" type="submit"> Save </button>
+                            </div>
+
+                            <div className="style-for-name-div form__group field">
+                                <input id="board-title" className="board-name-place" class="form__field" placeholder="Board Title" {...boardName} required/>
+                                <label for="board-title" class="form__label_BT"> Board Title </label>
+                            </div>
+
+            
+                        
+                            <div className="descrip-div form__group field">
+                                <textarea id="board-title" class="form__field" style={{height:"270px", width:"270px", marginTop:"50px"}} className="board-description-place" placeholder="Tell everyone what your board is about..." {...boardDescription} required/>
+                                <label for="board-title" class="form__label_BT_two"> What's your board about? </label>
+                            </div>
+                        </div>
+                    </div> 
+
+                </form>
+            </div>
         </div>
     )
 }

@@ -3,29 +3,48 @@
     margin: 0;
 }
 
+.create-board-div {
+    background-color: rgb(230, 230, 230);
+    height: 100vh !important;
+    width: 100vw;
+}
+
+.create-board-main-div {
+    background-color: #ffffff;
+    height: 75vh;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 2rem;
+
+}
+
 .helloHeader2 {
     padding: 16px;
     text-align: center;
     font-size: 35px;
-    color: #667;
+    height: 10vh;
+    color: brown;
 }
 
 .uploadImageDiv2 {
     float: left;
-    width: 60%;
+    width: 50%;
     height: 75vh;
     padding: 20px;
+    justify-content: center;
+    margin-left: 6%;
 }
 
 .main-note-for-board-div {
-    float: left;
+    float: right;
     padding: 20px;
-    width: 40%;
-    height: 75vh;
+    width: 35%;
+    height: 100%;
+    margin-right: 6%;
 }
 
 .uploadImageDiv2 {
-    padding-left: 5rem;
+    padding-left: 2rem;
     grid-row-start: 2;
     grid-row-end: span 2;
     grid-column-start: 1;
@@ -34,24 +53,142 @@
 
 .board-name-place, .board-description-place {
     width: 80%;
-    border: 5px solid #E60023;
     border-radius: 0.5rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    transition: 180ms box-shadow ease-in-out;
+    border: 4px solid #cccccc;
 }
 
 .image-preview2 {
-    border-radius: 0.5rem;
-    width: 80%;
+    border-radius: 0.8rem;
+    width: 113%;
     height: 100%;
-    border: 5px solid #E60023;
+    background-color: rgb(230, 230, 230);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 20px;
+    margin-left: -8%;
 }
 
 .image-preview-view {
     height: 2rem;
-    width: 4rem;
     float: left;
     margin: 1.5rem;
 }
+
+.image-preview__image {
+    height: auto;
+    padding: 0;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.board-description-place:focus {
+    border-color: rgb(155, 155, 155);
+    box-shadow: 2px 2px 6px 8px rgb(155, 155, 155);
+    outline: 3px solid transparent;
+}
+
+
+.custom-file-upload {
+    box-shadow: 3px 1px 5px 3px #ffffff;
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    height: auto;
+    width: 100%;
+}
+
+.custom-file-upload:hover {
+    background-image: linear-gradient(to right, rgb(204, 201, 197) , rgb(255, 255, 255));
+}
+
+/* ------------------form input styling --------------- */
+
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+  }
+  
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: gray;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+    font-weight: 900;
+}
+
+.form__field:placeholder-shown + .form__label_BT{
+    cursor: text;
+    top: 20px;
+    color: transparent;
+}
+
+.form__label_BT {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: grey;
+}
+
+.form__label_BT_two {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 22px;
+    color: grey;
+    font-weight: 800;
+    font-variant: small-caps;
+    width: 200%;
+    /* background-color: honeydew; */
+    margin-top: 10%;
+}
+
+.form__field:focus + .form__label_BT {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: brown;
+    font-weight:900; 
+}
+ 
+.form__field:focus {
+    padding-bottom: 6px;  
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, tan, brown);
+    border-image-slice: 1;
+}
+
+.form__field:focus::placeholder{
+    color: transparent; 
+}
+
+.form__field:required, .form__field:invalid {
+    box-shadow: none;
+}
+
 
 @media (max-width: 991px) {
     .uploadImageDiv2, .main-note-for-board-div {
@@ -62,5 +199,39 @@
     .uploadImageDiv2 {
         padding-left: 1rem;
     }
+}
 
-  }
+/* ---------- */
+
+.another-div-wow {
+    height: 97%;
+    width: 100%;
+    display: inline-block;
+}
+
+.create-board-btn-div {
+    height: 15%;
+}
+
+.style-for-name-div {
+    width: 100%;
+}
+
+.save-button-style {
+    width: 2rem;
+    height: 3rem;
+    color: #f8f6f6;
+    background-image: linear-gradient(to right, brown , tan);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: none;
+    font-weight: 900;
+}
+
+.save-button-style:hover {
+    color: #ffffff;
+    background-image: linear-gradient(to right, tan , brown);
+    box-shadow: 1px 1px 3px 2px lightgrey;
+}
