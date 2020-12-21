@@ -140,7 +140,7 @@ const UserPins = () => {
 
             <div className="style-all-user-btns">
                 <div className="edit-and-share-buttons">
-                    <Link className="style-edit-btn" to={"/settings/edit-profile"} > E </Link>
+                    <Link className="style-edit-btn" to={"/settings"} > E </Link>
                     {/* pen icon that links to edit profile */}
                     <button class="circular ui icon button" className="style-share-btn">  S </button>
                     {/* modal that allows you to send profile via whatsapp, fb, twitter, email + copy link button, input field for name or email  */}
