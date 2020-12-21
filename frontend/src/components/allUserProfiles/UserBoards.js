@@ -46,7 +46,7 @@ const UserBoards = ({username}) => {
         <>
           <div className="user-pin-list-div">
             <div className="user-pin-div-setup"> 
-              <h1 className="user-pins-now-viewing">Viewing {username}'s Boards</h1>
+              <h1 className="user-pins-now-viewing">Sorry, you can't view {username}'s Boards</h1>
 
             </div>
 
