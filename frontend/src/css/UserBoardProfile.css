@@ -188,7 +188,7 @@
 }
 .main-style-user {
     padding-top: 5rem;
-    margin-left: -2em;
+    /* margin-left: -2em; */
 }
 
 .dropdown {
@@ -222,17 +222,15 @@
 }
 
 .board-and-pin-mainCard {
-    margin-left: 3.7% !important;
+    /* margin-left: 3.7% !important; */
     margin-top: 1%;
 }
 
 
-style-all-user-btns
-
 @media (max-width: 991px) {
 
     .board-and-pin-mainCard {
-        margin-left: 15rem !important;
+        /* margin-left: 15rem !important; */
     }
     
 }
