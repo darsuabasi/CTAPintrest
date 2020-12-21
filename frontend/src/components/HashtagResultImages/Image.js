@@ -41,7 +41,7 @@ const PostImage = ({ imageurl, userName, profilepic, pinContent, pinId, tag_name
       <div class="image__overlay image__overlay--primary">
         <img onClick={() => userNameRedirect(userName)}  className="styleProfilePicOverlay" alt="" src={profilepic} style={handleStyleProfile} />
           <div onClick={() => userNameRedirect(userName)} class="image__title">{userName}</div>
-          <p class="image__description"> CAPTION <p>{pinContent}</p></p>
+          <p class="image__description"> <p>{pinContent}</p></p>
           {/* <p> {tag_name} </p> */}
       </div>
     </div>
