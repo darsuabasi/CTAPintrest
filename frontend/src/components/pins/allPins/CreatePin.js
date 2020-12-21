@@ -107,43 +107,56 @@ const CreatePin = () => {
                 <h2 className="welcome-to-create-pin"> CREATE YOUR PIN</h2>
             </div>
 
-
-            <form onSubmit={handleNewPins} className="create-pin-main-div"> 
-                <div className="drop-down-div">
-                </div>
-
-                <div className="uploadImageDiv">
-
-                    <div className="image-preview" id="imagePreview"> 
-                    <button className="save-button-style" type="submit"> Save </button>
-                      <input className="input-style-yeah" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} />
-                      <img src="" alt="Preview" src={file.preview} className="image-preview__image"/> 
-                    </div>
-                    
-                </div>
-
-
-                <div className="main-note-for-pin-div"> 
-                    <div className="choose-board"> 
-                        <PopulateBoards boardId={boardId} setBoardId={setBoardId}/>
-                        {/* passing the props child/parent */}
+            <div className="create-pin-form-div">
+                <form onSubmit={handleNewPins} className="create-pin-main-div"> 
+                    <div className="drop-down-div">
                     </div>
 
-    
-                
-                    <div className="user-display">
-                        {/* {user} */}
+                    <div className="uploadImageDiv">
+                        <div className="image-preview" id="imagePreview"> 
+                            {/* <button className="save-button-style" type="submit"> Save </button> */}
+                            <label for="file-upload" class="custom-file-upload-two" style={{textAlign:"center", marginBottom:"10%", fontVariant:"small-caps", fontWeight:"800", fontSize:"20px"}}>
+                                    Click to Upload
+                            </label>
+                            <input className="image-style-yeah-cp" id="file-upload" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} />
+                            <img id="blah" alt=" " src={file.preview} className="image-preview__image"/> 
+                        </div>
                     </div>
 
-                    <div className="about-div"> 
-                        <textarea rows="5" cols="30" className="add-note-style" type="textarea" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
+
+                    <div className="main-note-for-pin-div"> 
+                        <div className="another-div-wow-two">
+
+                            <div className="create-pin-btn-div">
+                                <button className="save-button-style" type="submit"> Save </button>
+                            </div>
+
+                            <div className="choose-board"> 
+                                <PopulateBoards boardId={boardId} setBoardId={setBoardId}/>
+                                {/* passing the props child/parent */}
+                            </div>
+
+            
+                        
+                            <div className="user-display">
+                                {/* {user} */}
+                            </div>
+
+                            <div className="about-div form__group field"> 
+                                <textarea id="pin-about" class="form__field" style={{height:"200px", width:"270px", marginTop:"50px", paddingTop:"5px", paddingRight:"5px", paddingLeft:"5px"}} className="add-note-style" type="textarea" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
+                                <label for="pin-about" class="form__label_BT_two"> Talk us more </label>
+                            </div>
+
+
+                            <div className="style-for-tagname-div form__group field">
+                                    <input id="hashtag-title" className="style-hashtag-input" class="form__field" type="text" placeholder="Add some hashtags..." {...setTag} />
+                                    <label for="hashtag-title" class="form__label_BT"> Add Hashtags </label>
+                            </div>
+
+                        </div>
                     </div>
-
-                    <input className="style-hashtag-input" type="text" placeholder="Add hashtags..." {...setTag} />
-
-                </div>
-
-            </form>
+                </form>
+            </div>
 
         </div>
     )

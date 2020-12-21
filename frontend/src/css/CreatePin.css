@@ -3,44 +3,64 @@
     margin: 0;
 }
 
+.create-pin-div {
+    background-color: rgb(230, 230, 230);
+    height: 100vh !important;
+    width: 100vw;
+}
+
+
 .helloHeader {
     padding: 16px;
     text-align: center;
     font-size: 35px;
-    color: #667;
+    height: 10vh;
+    color: brown;
+}
+
+.create-pin-main-div {
+    background-color: #ffffff;
+    height: 75vh;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 2rem;
 }
 
 .uploadImageDiv {
     float: left;
-    width: 60%;
+    width: 50%;
     height: 75vh;
     padding: 20px;
+    justify-content: center;
+    margin-left: 6%;
 }
 
 .main-note-for-pin-div {
-    float: left;
+    float: right;
     padding: 20px;
-    width: 40%;
-    height: 75vh;
+    width: 35%;
+    height: 100%;
+    margin-right: 6%;
 }
 
 .uploadImageDiv {
-    padding-left: 5rem;
+    padding-left: 2rem;
     grid-row-start: 2;
     grid-row-end: span 2;
     grid-column-start: 1;
-    grid-column-end: 3;
+    /* grid-column-end: 3; */
 }
 
 .choose-board, .style-hashtag-input, .about-div {
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
 }
 
 .add-note-style, .style-hashtag-input {
     width: 80%;
-    border: 5px solid #E60023;
     border-radius: 0.5rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    transition: 180ms box-shadow ease-in-out;
+    border: 4px solid #cccccc;
 }
 
 .style-hashtag-input {
@@ -48,24 +68,50 @@
 }
 
 .image-preview {
-    border-radius: 0.5rem;
-    width: 80%;
+    border-radius: 0.8rem;
+    width: 113%;
     height: 100%;
-    border: 5px solid #E60023;
+    background-color: rgb(230, 230, 230);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 20px;
+    margin-left: -8%;
 }
 
 .image-preview__image {
+    height: auto;
+    padding: 0;
     width: 97%;
     height: 80%;
     margin: 0.5rem;
     border-radius: 0.5rem;
 }
 
-.input-style-yeah {
+.image-style-yeah-cp {
     height: 2rem;
-    width: 4rem;
     float: left;
     margin: 1.5rem;
+}
+
+.add-note-style:focus {
+    border-color: rgb(155, 155, 155);
+    box-shadow: 2px 2px 6px 8px rgb(155, 155, 155);
+    outline: 3px solid transparent;
+} 
+
+.custom-file-upload-two {
+    box-shadow: 3px 1px 5px 3px #ffffff;
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    height: auto;
+    width: 100%;
+}
+
+.custom-file-upload-two:hover {
+    background-image: linear-gradient(to right, rgb(204, 201, 197) , rgb(255, 255, 255));
 }
 
 .save-button-style {
@@ -73,6 +119,21 @@
     width: 4rem;
     float: right;
     margin: 1.5rem;
+}
+
+.style-for-tagname-div {
+    width: 100%;
+}
+
+.another-div-wow-two {
+    height: 97%;
+    width: 100%;
+    display: inline-block;
+
+}
+
+.create-pin-btn-div {
+    height: 15%;
 }
 
 @media (max-width: 991px) {
