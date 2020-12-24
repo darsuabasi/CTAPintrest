@@ -40,7 +40,7 @@ const UserBoards = ({username}) => {
           );
       });
 
-      if (loading) return <div>Loading...</div>;
+      if (loading) return <div class="lds-hourglass"></div>;
     
       return (
         <>

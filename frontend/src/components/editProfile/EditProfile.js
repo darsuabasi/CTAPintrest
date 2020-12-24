@@ -78,7 +78,6 @@ const  EditProfile = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-            debugger
             try {
             let res = await axios({
                 method: "get",
@@ -87,7 +86,6 @@ const  EditProfile = () => {
                     AuthToken: token,
                 },
             });
-            // debugger
             setUserId(res.data.getUser.id);
             setUser(res.data.getUser);
             setUsername(res.data.getUser.username);
