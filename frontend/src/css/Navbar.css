@@ -60,11 +60,13 @@
     background-image: url('../assets/Lifetrest.png');
     background-repeat: no-repeat !important;
     color: transparent;
-    background-size: 300px 350px; 
+    background-size: 260px 250px; 
     background-position: center;
     width: 16rem;
     height: 3rem; 
     border-radius: 2rem !important;
+    /* float: left; */
+    /* padding-top: 20px; */
 }
 
 .pintrestLogoLettersNon:hover {
@@ -77,7 +79,6 @@
 .user-nav-feed, .user-today {
     color: black;
     border-radius: 5rem;
-    width: 3rem; 
     font-weight: bold !important;
     margin-right: 0.5rem;
     font-size: 30px !important;
@@ -204,10 +205,10 @@
     background-image: url('../assets/letterLogo.png');
     background-repeat: no-repeat;
     color: transparent;
-    background-size: 5rem; 
+    background-size: 4rem; 
     border-radius: 5em;
-    width: 80px;
-    height: 80px; 
+    width: 60px;
+    height: 60px; 
     background-color: brown;
     box-shadow: brown 1px 1px 2px 2px;
 }

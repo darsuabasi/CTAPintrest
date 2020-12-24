@@ -23,6 +23,11 @@ const Navbar = () => {
     const history = useHistory("");
     const [user, setUser] = useState([]);
     const [profilepicture, setProfilePicture] = useState("");
+    // const [user, setUser] = useState([]);
+    const [username, setUsername] = useState("")
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [biography, setBiography] = useState("");
 
     // contact
     const [showContact, setShowContact] = useState(false);
@@ -54,8 +59,7 @@ const Navbar = () => {
     const [userSignup, setUserSignup] = useState([]);
     // toastify
     const underConstruction = () => toast("This part of the app is under construction. Coming soon :)");
-
-
+    // navbar after login
 
 
     const onSelectImage = (e) => {
@@ -129,7 +133,6 @@ const Navbar = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-            // debugger
             try {
             let res = await axios({
                 method: "get",
@@ -138,10 +141,14 @@ const Navbar = () => {
                     AuthToken: token,
                 },
             });
-            // debugger
+            debugger
             setUserId(res.data.getUser.id);
             setUser(res.data.getUser);
+            setUsername(res.data.getUser.username);
             setProfilePicture(res.data.getUser.profilepic);
+            setFirstname(res.data.getUser.first_name);
+            setLastname(res.data.getUser.last_name);
+            setBiography(res.data.getUser.bio);
             } catch (err) {
                 console.log(err.message)
             }
@@ -169,11 +176,11 @@ const Navbar = () => {
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav user2">
 
-                                <li class="nav-item two">
+                                <li style={{marginLeft:"3rem", marginTop:"0.5rem"}} class="nav-item two">
                                     <NavLink className="user-nav-feed" to={"/user-feed"}>Home </NavLink>
                                 </li>
 
-                                <li class="nav-item">
+                                <li style={{marginLeft:"1rem", marginTop:"0.5rem"}} class="nav-item">
                                     <button className="user-today" onClick={underConstruction}>Today</button>
                                     <ToastContainer
                                         position="top-center"
@@ -192,7 +199,7 @@ const Navbar = () => {
                                     <NavLink class="nav-link" className="user-nav-today" to={"/today"}>Today</NavLink>
                                 </li> */}
 
-                                <SearchBar className="user-nav-search"> </SearchBar>
+                                <SearchBar style={{marginRight:"3rem"}} className="user-nav-search"> </SearchBar>
 
                                 {/* <form class="form-inline my-2 my-lg-0">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -200,12 +207,12 @@ const Navbar = () => {
                                 </form> */}
 
 
-                                <li class="nav-item">
+                                <li style={{marginRight:"2rem", marginLeft:"2rem", marginTop:"0.5rem"}} class="nav-item">
                                     {/* <NavLink class="nav-link messages" className="user-nav-message" to={"/messages"}> Messages </NavLink> */}
                                     <button className="user-nav-message" onClick={underConstruction}>M</button>
                                 </li>
 
-                                <li class="nav-item">
+                                <li style={{marginRight:"2rem", marginLeft:"2rem"}} class="nav-item">
                                     <NavLink className="user-nav-image" to={"/user-profile/boards"}> <img className="user-nav-image-2" src={API+profilepicture}/> </NavLink> 
                                 </li>
 
@@ -241,15 +248,15 @@ const Navbar = () => {
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         
                         <NavLink /*class="navbar-brand"*/ className="pintrestLogoLettersNon" to={"/"}> LIFETREST </NavLink>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
-                        </button>
+                        </button> */}
 
-                            <div className="non-user-floatRight" class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul className="non-user-floatRight" class="navbar-nav mr-auto sendToEnd">
+                            <div className="non-user-floatRight" style={{justifyContent:"flex-end"}} class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="non-user-floatRight" class="navbar-nav">
 
 
-                                    <li class="nav-item">
+                                    <li style={{marginLeft:"7px"}} class="nav-item">
                                         {/* <NavLink disabled class="nav-link publicNavLink" className="publicNavLink" to={"/about"}> About </NavLink> */}
                                         {/* <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> */}
                                         <button className="publicNavAbout" variant="primary" onClick={handleShowAbout}>
@@ -257,74 +264,18 @@ const Navbar = () => {
                                         </button>
                                     </li>
 
-                                    <div className="about-modal">
-                                        <Modal className="fullAboutModal" show={showAbout} onHide={handleCloseAbout}>
-                                            <Modal.Header closeButton>
-                                                <Modal.Title className="modaltitle1">Why Clone Pinterest?</Modal.Title>
-                                            </Modal.Header>
 
-                                            <Modal.Body className="modalBody-about">
-                                                <div className="aboutDiv">
-                                                    <div className="sub-div">
-                                                        <div className="rightDiv"> 
-                                                            <p className="holaDiv"> Welcome to Lifetrest! </p>
-
-                                                            <p className="about-me"> For my Comprehensive Technical Assessment through <a className="myPursuit" href="https://www.pursuit.org/fellowship"> PURSUIT</a>, 
-                                                                I decided to clone Pinterest since it's an app that I frequently use. As a 
-                                                                visitor, you can login with the demo account or you can create your own account via 
-                                                                the signup modal. Once a part of Lifetrest, you're able to upload photos and post them as pins. 
-                                                                However, you must first create a board. Think of it as your pin's house or album. In addition, 
-                                                                you are able to delete a board which then permanently removes all the pins in that specific board 
-                                                                and from the app. You are able to view all your own pins as well as boards and just like Pinterest, 
-                                                                you're able to view ALL pins that live in the Livetrest app via your feed. You can also utilize the 
-                                                                SEARCH BAR to search for pins based on hashtags! 
-                                                            </p>
-                                                            
-                                                            <p className="about-me"> <h3 style={{color:"brown"}}> What's Next? </h3> Bit by bit, I am increasing the functionality as well as testing 
-                                                                my design and animation skills.
-                                                            </p>
-
-                                                            <p className="about-me"> <h3 style={{color:"brown"}}> Future Implementations </h3> I want users to be able to edit their profile information as well as 
-                                                                being able to pin another user's pins to their own board. Users should be able to view another user's profile 
-                                                                through the username [Partially completed on 12/21/2020] as you can only view their pins but not their boards. 
-                                                                Full responsiveness as well! </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Modal.Body>
-                                        </Modal>
-                                    </div>
-
-                                    <li className="nav-item">
+                                    <li style={{marginLeft:"7px"}} className="nav-item">
                                         <button className="publicNavContact" onClick={handleShowContact}>
                                             Contact 
                                         </button>
                                     </li>
-                                    <div className="contact-modal">
-                                        <Modal className="fullContactModal" show={showContact} onHide={handleCloseContact}>
-                                            <Modal.Header closeButton>
-                                                <Modal.Title className="modaltitle1">Let's Chat</Modal.Title>
-                                            </Modal.Header>
-
-                                            <Modal.Body className="modalBody-about">
-                                                <div className="aboutDiv">
-                                                    <div className="sub-div">
-                                                        <div className="rightDiv"> 
-                                                            <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. I'm a fullstack web developer focusing on UX/UI and backend. I also dabble in photography.</p> 
-                                                            <p className="holaDiv"> Reach me here or check out some of my other work. </p>
-                                                            <p> Check out my <a className="myPortfolio" href="https://uduakabasi.netlify.app/"> portfolio </a> and you  can follow me on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a>. If you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>.
-                                                            </p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Modal.Body>
-                                        </Modal>
-                                    </div>
                                     
-                                    <li class="nav-item">
+                                    
+                                    {/* <li class="nav-item"> */}
                                         {/* <NavLink class="nav-link publicNavLink" className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink> */}
                                         {/* <a class="nav-link" href="#">Link</a> */}
-                                    </li>
+                                    {/* </li> */}
                                     
 
                                         {/* <li class="nav-item dropdown">
@@ -338,13 +289,25 @@ const Navbar = () => {
                                                             <a class="dropdown-item" href="#">Something else here</a>
                                                     </div>
                                         </li> */}
-                                </ul>
+                               
 
 
-<li class="nav-item"> 
-    <button className="publicNavLogin" variant="primary" onClick={handleShowLogin}> Login </button>
-</li>
-      <div className="main-login">
+                                <li style={{marginLeft:"7px"}} class="nav-item"> 
+                                    <button className="publicNavLogin" variant="primary" onClick={handleShowLogin}> Login </button>
+                                </li>
+      
+
+
+
+        <li style={{marginLeft:"7px"}} class="nav-item">
+            <button className="publicNavSignup" variant="primary" onClick={handleShowSignup}> Sign Up </button>
+        </li> 
+{/* <ul> */}
+
+</ul>
+
+
+<div className="main-login">
       <Modal className="fullModal" show={showLogin} onHide={handleCloseLogin}>
       
         <Modal.Header closeButton>
@@ -394,11 +357,67 @@ const Navbar = () => {
       </Modal>
       </div>
 
+<div className="about-modal">
+                                        <Modal className="fullAboutModal" show={showAbout} onHide={handleCloseAbout}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title className="modaltitle1">Why Clone Pinterest?</Modal.Title>
+                                            </Modal.Header>
+
+                                            <Modal.Body className="modalBody-about">
+                                                <div className="aboutDiv">
+                                                    <div className="sub-div">
+                                                        <div className="rightDiv"> 
+                                                            <p className="holaDiv"> Welcome to Lifetrest! </p>
+
+                                                            <p className="about-me"> For my Comprehensive Technical Assessment through <a className="myPursuit" href="https://www.pursuit.org/fellowship"> PURSUIT</a>, 
+                                                                I decided to clone Pinterest since it's an app that I frequently use. As a 
+                                                                visitor, you can login with the demo account or you can create your own account via 
+                                                                the signup modal. Once a part of Lifetrest, you're able to upload photos and post them as pins. 
+                                                                However, you must first create a board. Think of it as your pin's house or album. In addition, 
+                                                                you are able to delete a board which then permanently removes all the pins in that specific board 
+                                                                and from the app. You are able to view all your own pins as well as boards and just like Pinterest, 
+                                                                you're able to view ALL pins that live in the Livetrest app via your feed. You can also utilize the 
+                                                                SEARCH BAR to search for pins based on hashtags! 
+                                                            </p>
+                                                            
+                                                            <p className="about-me"> <h3 style={{color:"brown"}}> What's Next? </h3> Bit by bit, I am increasing the functionality as well as testing 
+                                                                my design and animation skills.
+                                                            </p>
+
+                                                            <p className="about-me"> <h3 style={{color:"brown"}}> Future Implementations </h3> I want users to be able to edit their profile information as well as 
+                                                                being able to pin another user's pins to their own board. Users should be able to view another user's profile 
+                                                                through the username [Partially completed on 12/21/2020] as you can only view their pins but not their boards. 
+                                                                Full responsiveness as well! </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Modal.Body>
+                                        </Modal>
+                                    </div>
 
 
-        <li class="nav-item">
-            <button className="publicNavSignup" variant="primary" onClick={handleShowSignup}> Sign Up </button>
-        </li> 
+
+
+        <div className="contact-modal">
+            <Modal className="fullContactModal" show={showContact} onHide={handleCloseContact}>
+                <Modal.Header closeButton>
+                    <Modal.Title className="modaltitle1">Let's Chat</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body className="modalBody-about">
+                    <div className="aboutDiv">
+                        <div className="sub-div">
+                            <div className="rightDiv"> 
+                                <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. I'm a fullstack web developer focusing on UX/UI and backend. I also dabble in photography.</p> 
+                                <p className="holaDiv"> Reach me here or check out some of my other work. </p>
+                                <p> Check out my <a className="myPortfolio" href="https://uduakabasi.netlify.app/"> portfolio </a> and you  can follow me on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a>. If you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>.
+                                </p> 
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
+        </div>
 
         <div className="main-signup-modal">
             <Modal className="fullModalSignup" show={showSignup} onHide={handleCloseSignup}>
