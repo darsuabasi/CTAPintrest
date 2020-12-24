@@ -5,10 +5,10 @@
 /.pnp
 .pnp.js
 .env
-# public/uploads
-# src/assets
-# landingPageAssets
-# styles
+public/uploads
+src/assets
+landingPageAssets
+styles
 
 # testing
 /coverage
