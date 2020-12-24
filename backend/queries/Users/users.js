@@ -90,6 +90,26 @@ const getSingleUser = async (req, res, next) => {
     // console.log(error.code)
 }
 
+const getUserByUsername = async (req, res, next) => {
+    const { username } = req.params
+    try {
+        // console.log(req.params)
+        const getUser = await db.one('SELECT * FROM Users WHERE Users.username = $1', username);
+        res.status(200).json({
+            status: "Nice",
+            getUser,
+            message: "Checking out a single user by username.",
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: "Error",
+            message: "User could not be found by username."
+        });
+        next(err)
+    }
+    // console.log(error.code)
+}
+
 const updateUser = async (req, res, next) => {
     try {
         const updateUser = await db.one(`UPDATE Users SET username = $/username/, first_name = $/first_name/, last_name = $/last_name/, bio = $/bio/, profilePic = $/profilePic/ WHERE id = ${req.params.id} RETURNING *`, [req.body])
@@ -255,6 +275,37 @@ const getAllBoardsByUser = async (req, res, next) => {
 
 }
 
+
+const getAllBoardsByUserName = async (req, res, next) => {
+    try {
+        const { username } = req.params
+        let allBoards = await db.any(`SELECT Users.username, Boards.* 
+                                    FROM Users 
+                                    LEFT JOIN Boards ON Users.id = Boards.creator_id
+                                    WHERE username= $1 ORDER BY created_date DESC`, [username])
+                                    console.log("this is all boards !!", allBoards )
+        res.status(200).json({
+            status: "Success",
+            message: "Yip Yip! You're checking out all boards for this specific user",
+            payload: {
+                owner: username,
+                allBoards
+            }
+        })
+
+    } catch(err) {
+        res.status(400).json({
+            status: "Error",
+            message: "Can not display all boards by user."
+        })
+        next(err)
+    }
+
+}
+
+
+
+
 const createNewBoardForUser = async (req, res, next) => {
     try {
         let {creator_id} = req.params;
@@ -341,4 +392,8 @@ const editBoardByUser = async (req, res, next) => {
 
 
 
-module.exports = { createUser, getAllUsers, getSingleUser, updateUser, deleteUser, getAllUserPins, createUserPin, getSinglePinByUser, deleteUserPin, editUserPin, getAllBoardsByUser, createNewBoardForUser, deleteBoardByUser, editBoardByUser, getSingleBoardByUser};
+module.exports = { createUser, getAllUsers, getSingleUser, getUserByUsername, 
+    updateUser, deleteUser, getAllUserPins, createUserPin, getSinglePinByUser, 
+    deleteUserPin, editUserPin, getAllBoardsByUser, getAllBoardsByUserName, createNewBoardForUser, 
+    deleteBoardByUser, editBoardByUser, getSingleBoardByUser
+};

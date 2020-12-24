@@ -9,6 +9,7 @@ const {
     createUser, 
     getAllUsers, 
     getSingleUser, 
+    getUserByUsername, 
     deleteUser, 
     updateUser,
 } = require("../../queries/Users/users");
@@ -18,7 +19,8 @@ users.get("/", getAllUsers);
 users.post("/", createUser);
 
 users.get('/:id', getSingleUser);
-users.delete('/:id', checkFirebaseToken, deleteUser);
+users.get('/:username', getUserByUsername)
+users.delete('/:id', deleteUser);
 users.patch('/:id', checkFirebaseToken,  updateUser);
 users.use("/:id/boards/", userBoardsRouter);
 users.use("/:id/pins/", userPinsRouter)
