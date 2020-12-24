@@ -32,8 +32,7 @@ Technologies Used
 - PostgreSQL [database]
 
 
-Frontend Deployment: Netlify 
-Backend Deployment: Heroku
+Frontend Deployment: Netlify + Backend Deployment: Heroku
 
 
 
