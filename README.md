@@ -2,13 +2,13 @@
 
 Live Site: https://lifetrest.netlify.app/
 
-![Livetrest landing page](readmeImages/landingPageOne.png)
-
-Lifetrest is a Full-Stack Web Applicatioon where users can to document their life and interests through photos, just like Pinterest. 
+Lifetrest is a Full-Stack Web Applicatioon where users can to document their life and interests through photos, just like Pinterest.
+![Livetrest landing page](readmeImages/landingPageOne.png) 
 
 Built with React.js, Node.js with Express, and PostgreSQL.
 
 Features
+
 Users are able to:
 
 - Signup for an account or utilize the demo login
