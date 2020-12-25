@@ -1,13 +1,23 @@
-# [CTA] Pinterest Clone- Lifetrest
-## Live Site: https://lifetrest.netlify.app/
-## Lifetrest is a Full-Stack Web Applicatioon where users can to document their life and interests through photos, just like Pinterest.
-Built with React.js, Node.js with Express, and PostgreSQL.
+# Lifetrest - [Comprehensive Technical Assessment: Pinterest Clone] 
+## Live Site: https://lifetrest.netlify.app/ 
+### Lifetrest is a Full-Stack Web Applicatioon where users can to document their life and interests through photos, just like Pinterest.
+#### Best viewed on Web, not completely responsive.
+##### Built with React.js, Node.js with Express, and PostgreSQL.
 
+### Lifetrest: User Signup
 <img src="readmeImages/signupThree.png" width="900px">
+
+### Lifetrest: User feed
 <img src="readmeImages/userfeedFour.png" width="900px">
+
+### Lifetrest: Create Board 
 <img src="readmeImages/createboardFive.png" width="900px">
-<img src="readmeImages/viewpinSeven.png" width="900px">
+
+### Lifetrest: Search Results 
 <img src="readmeImages/searchFeatureNine.png" width="900px">
+
+### Lifetrest: View a Pin
+<img src="readmeImages/viewpinSeven.png" width="900px">
 
 ## Features
 - Create an account or utilize the demo login
