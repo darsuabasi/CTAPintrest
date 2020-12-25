@@ -17,7 +17,7 @@ const serviceAccount = {
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://cta-mockpintrest.firebaseio.com"
+    databaseURL: "https://lifetrest.herokuapp.com"
 });
 
 module.exports = admin;
