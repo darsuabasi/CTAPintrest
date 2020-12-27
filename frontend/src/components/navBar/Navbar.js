@@ -96,7 +96,7 @@ const Navbar = () => {
         try {
             // for deployed site ---> heytemi01@gmail.com
             // for local site --> heytemi@gmail.com
-            await login("heytemi@gmail.com", "test123");
+            await login("heytemi01@gmail.com", "test123");
             history.push("/user-feed")
         } catch (err) {
             alert("Not able to log in. Please try again.", err)
