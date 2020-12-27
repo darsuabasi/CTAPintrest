@@ -94,7 +94,9 @@ const Navbar = () => {
     const handleDemoLogin = async (e) => {
         e.preventDefault();
         try {
-            await login("heytemi@gmail.com", "test123");
+            // for deployed site ---> heytemi01@gmail.com
+            // for local site --> heytemi@gmail.com
+            await login("heytemi01@gmail.com", "test123");
             history.push("/user-feed")
         } catch (err) {
             alert("Not able to log in. Please try again.", err)

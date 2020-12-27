@@ -6,8 +6,6 @@
 .card {
     width: 18rem;
     border-radius: 2rem!important;
-    /* color: transparent!important; */
-
 }
 
 .card:hover {
@@ -26,13 +24,9 @@
 }
 
 .card-img-top {
-    /* transform:scale(1); */
-    /* border-radius: 2rem; */
     transition:transform 0.5s ease;
-    width: 2rem;
     color: rgb(3, 3, 3);
     flex-grow: 1;
-    /* object-fit: cover; */
 }
 
 .card-img-top:hover {
@@ -48,7 +42,6 @@
 .overflow {
     overflow: hidden;
     border-radius: 2rem;
-    /* display: flex; */
 }
 
 .card-title {
