@@ -71,5 +71,12 @@
 .style-create-board-dropdown:hover {
     background-color: brown !important;
     color: rgb(255, 254, 254) !important;
+    text-decoration: line-through rgb(255, 254, 254) !important;
+}
+
+.style-create-pin-dropdown:hover {
+    background-color: rgb(255, 254, 254) !important;
+    color: brown !important;
+    text-decoration: line-through brown !important;
 }
 
