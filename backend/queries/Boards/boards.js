@@ -1,36 +1,53 @@
 const db = require('../../db/index');
-const upload = require("./imageUploader")
+// const upload = require("./imageUploader")
+
+// const createBoard = async (req, res, next) => {
+//    try {
+//     console.log("Uhm create ya board");
+//     upload(req, res, err => {
+//         try {
+//         console.log("Yurrr upload that");
+//         const { board_name, board_description, creator_id, created_date } = req.body;
+//         let board_image = "/uploads/" + req.file.filename;
+//         db.one(
+//             `INSERT INTO Boards(board_name, board_description, creator_id, created_date, board_image) VALUES( $1, $2, $3, $4, $5) RETURNING *`,
+//             [board_name, board_description, creator_id, created_date, board_image])
+//             .then(done => {
+//                 console.log("then");
+//                 res.status(200).json({
+//                   status: "ok",
+//                   post: done,
+//                   message: "Yessir, your new board was created"
+//         })
+//                 });
+//           } catch (err) {
+//             console.log(err)
+//             next(err)
+//             }
+//       });
+      
+//       } catch (error) {
+//         console.log(error);
+//         next(error);
+//         }   
+//     };
 
 const createBoard = async (req, res, next) => {
-   try {
-    console.log("Uhm create ya board");
-    upload(req, res, err => {
-        try {
-        console.log("Yurrr upload that");
-        const { board_name, board_description, creator_id, created_date } = req.body;
-        let board_image = "/uploads/" + req.file.filename;
-        db.one(
-            `INSERT INTO Boards(board_name, board_description, creator_id, created_date, board_image) VALUES( $1, $2, $3, $4, $5) RETURNING *`,
-            [board_name, board_description, creator_id, created_date, board_image])
-            .then(done => {
-                console.log("then");
-                res.status(200).json({
-                  status: "ok",
-                  post: done,
-                  message: "Yessir, your new board was created"
-        })
-                });
-          } catch (err) {
-            console.log(err)
-            next(err)
-            }
-      });
-      
-      } catch (error) {
-        console.log(error);
-        next(error);
-        }   
-    };
+    const { board_name, board_description, creator_id, created_date, board_image } = req.body;  
+    try {
+        let newBoard = await db.one(`INSERT INTO Boards (board_name, board_description, creator_id, created_date, board_image) VALUES( $1, $2, $3, $4, $5) RETURNING *`, [board_name, board_description, creator_id, created_date, board_image]);
+        res.status(200).json({
+            status: 'success',
+            message: 'Yessir, your new board was created.',
+            payload: newBoard
+        });
+    } catch(error) {
+        res.status(400).json({
+            status: 'error',
+            message: 'Could not create new board.'
+        });
+    }
+}
 
 
  

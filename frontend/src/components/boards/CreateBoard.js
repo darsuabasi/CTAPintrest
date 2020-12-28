@@ -4,19 +4,24 @@ import { apiURL } from "../../util/apiURL";
 import { useInput } from '../../util/useInput';
 import { AuthContext } from '../../providers/AuthProvider';
 import '../../css/CreateBoard.css';
+import { storage } from "../../firebase";
 
 
 const CreateBoard = () => {
-    const { currentUser, token } = useContext(AuthContext);
-    const API = apiURL();
-    const [userId, setUserId] = useState("");
     const boardName = useInput("");
     const boardDescription = useInput("");
-    let hashtagObj=useInput("")
-
-
-    // uploading image
+    let hashtagObj = useInput("");
+    
+    const API = apiURL();
+    const [userId, setUserId] = useState("");
+    const [url, setUrl] = useState("");
+    const [progress, setProgress] = useState(0);
+    const { currentUser, token } = useContext(AuthContext);
     const [file, setFile] = useState({preview: "", raw: ""});
+    const [imageAsFile, setImageAsFile] = useState("");
+    const [imageAsUrl, setImageAsUrl] = useState("");
+
+
 
     useEffect(() => {
         const getUser = async () => {
@@ -36,52 +41,132 @@ const CreateBoard = () => {
         getUser(); 
     }, [])
 
-     
-
-
-    const onSelectImage = (e) => {
+    const handleImageAsFile = (e) => {
+        const image = e.target.files[0];
+        const types = ["image/png", "image/jpeg", "image/jpg", "image/gif"];
+        if (types.every((type) => image.type !== type)) {
+          alert(`${image.type} is not a supported format`);
+        } else {
+          setImageAsFile((imageFile) => image);
+        }
         if (e.target.files.length) {
             setFile({
-              preview: URL.createObjectURL(e.target.files[0]),
-              raw: e.target.files[0]
+                preview: URL.createObjectURL(e.target.files[0]),
+                raw: e.target.files[0]
             });
-          }
+        }
+      };
+
+    
+    // const handleImagePreview = async (e) => {
+    //     if (e.target.files.length) {
+    //         setFile({
+    //             preview: URL.createObjectURL(e.target.files[0]),
+    //             raw: e.target.files[0]
+    //         });
+    //     }
+    // }
+
+
+    const handleUpload = (e) => {
+        e.preventDefault();
+        const uploadTask = storage.ref(`boards/${imageAsFile.name}`).put(imageAsFile);
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const progress = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                console.log("Upload is " + progress + "% done");
+                console.log(snapshot);
+                setProgress(progress);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {        
+                storage
+                .ref("boards")
+                .child(imageAsFile.name)
+                .getDownloadURL()
+                .then((fireBaseUrl) => {
+                    setImageAsUrl(fireBaseUrl);
+                });
+        })
     }
 
-                const handleNewBoards = async (e) => {
-                    try {
-                        e.preventDefault();
-                        const formData = new FormData();
-                        formData.append("myImage", file.raw);
-                        formData.append("file", file.preview);
-                        formData.append("board_name", boardName.value);
-                        formData.append("board_description", boardDescription.value);
-                        formData.append("creator_id", userId);
-                        debugger
-            const config = {
-                headers: {
-                    "content-type": "multipart/form-data",
+
+    const createBoard = async (e) => {
+        e.preventDefault();
+        try {
+            debugger
+            let res = await axios({
+                method: "post",
+                url: `${API}/api/boards/`,
+                data: {
+                    'creator_id': userId, 
+                    'board_name': boardName.value,
+                    'board_description': boardDescription.value,
+                    'board_image': imageAsUrl,
                 },
-            }
-            let newBoard = await axios.post(`${API}/api/boards/`, formData, config)
-            console.log(newBoard.data)
-            console.log("New board was created")
+                headers: {
+                    'AuthToken': token,
+                    'Content-Type': 'application/json'
+                },
+            });
+            debugger
+            handleUpload(e)
+            console.log(res.data.payload);
             setTimeout(function() {
-            window.location = "/user-profile/boards";
-            },1000) 
-        } catch (err) {
-            console.log(err)
+                window.location = "/user-profile/boards";
+                },1000) 
+        } catch(error) {
+            // setFile([]);
         }
     }
 
 
+    // const onSelectImage = (e) => {
+    //     if (e.target.files.length) {
+    //         setFile({
+    //           preview: URL.createObjectURL(e.target.files[0]),
+    //           raw: e.target.files[0]
+    //         });
+    //       }
+    // }
+
+    //             const handleNewBoards = async (e) => {
+    //                 try {
+    //                     e.preventDefault();
+    //                     const formData = new FormData();
+    //                     formData.append("myImage", file.raw);
+    //                     formData.append("file", file.preview);
+    //                     formData.append("board_name", boardName.value);
+    //                     formData.append("board_description", boardDescription.value);
+    //                     formData.append("creator_id", userId);
+    //                     debugger
+    //         const config = {
+    //             headers: {
+    //                 "content-type": "multipart/form-data",
+    //             },
+    //         }
+    //         let newBoard = await axios.post(`${API}/api/boards/`, formData, config)
+    //         console.log(newBoard.data)
+    //         console.log("New board was created")
+    //         setTimeout(function() {
+    //         window.location = "/user-profile/boards";
+    //         },1000) 
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
     const handleNewHashTag = async(data)=>{
         if(hashtagObj.value){
             let newHashTag = await axios.post(`http://localhost:3005/api/tags/`,{creator_id:data.creator_id, pin_id:data.id,tag_name:hashtagObj.value})
             console.log(newHashTag.data)
         }else{
-            console.log("No Tag was added")
+            console.log("No hashtag was added")
         }
     }
 
@@ -94,16 +179,15 @@ const CreateBoard = () => {
 
 
             <div className="create-board-form-div">
-                <form onSubmit={handleNewBoards} className="create-board-main-div">
+                <form className="create-board-main-div" onSubmit={createBoard}>
 
                     <div className="uploadImageDiv2"> 
                         <div className="image-preview2" id="imagePreview">  
                             <label for="file-upload" class="custom-file-upload" style={{textAlign:"center", marginBottom:"10%", fontVariant:"small-caps", fontWeight:"800", fontSize:"20px"}}>
                                 Click to Upload
                             </label>
-                            <input className="image-preview-view" id="file-upload" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage}/>
+                            <input className="image-preview-view" id="file-upload" type="file" name="myImage" accept="image/png/jpeg" onChange={handleImageAsFile}/>
                             <img id="blah" alt=" " className="image-preview__image" src={file.preview}/>
-                            {/* <span className="image-preview__default-text"> Drag and drop or click to upload </span>  */}
                         </div>
                     </div>
 

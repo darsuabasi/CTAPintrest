@@ -1,5 +1,7 @@
-import app from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/storage";
+import "firebase/firestore";
 
 const {
     REACT_APP_APIKEY,
@@ -23,7 +25,7 @@ const config = {
 };
 
 
-
-app.initializeApp(config);
-
-export default app;
+firebase.initializeApp(config);
+export const storage = firebase.storage();
+export default firebase;
+// export { storage, app as default };
