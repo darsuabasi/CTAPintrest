@@ -1,5 +1,9 @@
-import app from "firebase/app";	
-import "firebase/auth";	import "firebase/auth";
+// setup for when using firestorage
+// ----------------------------------------------------------------------------
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/storage";
+import "firebase/firestore";
 
 const {
     REACT_APP_APIKEY,
@@ -23,16 +27,13 @@ const config = {
 };
 
 
+firebase.initializeApp(config);
+export const storage = firebase.storage();
+export default firebase;
 
-app.initializeApp(config);
-export default app; 
-
-// setup for when using firestorage
-// ----------------------------------------------------------------------------
-// import firebase from "firebase/app";
-// import "firebase/auth";
-// import "firebase/storage";
-// import "firebase/firestore";
+// using multer
+// import app from "firebase/app";	
+// import "firebase/auth";	import "firebase/auth";
 
 // const {
 //     REACT_APP_APIKEY,
@@ -55,7 +56,5 @@ export default app;
 //     appId: REACT_APP_APPID,
 // };
 
-
-// firebase.initializeApp(config);
-// export const storage = firebase.storage();
-// export default firebase;
+// app.initializeApp(config);
+// export default app; 

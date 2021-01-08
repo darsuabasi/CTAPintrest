@@ -34,7 +34,7 @@ const BoardDisplay = () => {
     }, [])
 
     const displayBoard = boards.map(board => {
-        return ( <PostBoardModal key={board.id} boardId={board.id} creator_id={board.creator_id} board_name={board.board_name} imageurl={API+board.board_image} board_description={board.board_description}/> )
+        return ( <PostBoardModal key={board.id} boardId={board.id} creator_id={board.creator_id} board_name={board.board_name} imageurl={board.board_image} board_description={board.board_description}/> )
     })
 
    return (
