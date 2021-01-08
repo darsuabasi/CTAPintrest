@@ -1,36 +1,54 @@
 const db = require('../../db/index');
-const upload = require("./imageUploader")
+// const upload = require("./imageUploader")
+
+// const createPin = async (req, res, next) => {
+//     try {
+//         console.log("Create your pin");
+//         upload(req, res, err => {
+//             try {
+//             console.log("Upload your photo");
+//             const { creator_id, board_id, note } = req.body;
+//             let imageUrl = "/uploads/" + req.file.filename;
+//             db.one(
+//                 `INSERT INTO Pins(imageUrl, creator_id, board_id, note) VALUES( $1, $2, $3, $4) RETURNING *`,
+//                 [imageUrl, creator_id, board_id, note])
+//                 .then(done => {
+//                     console.log("then");
+//                     res.status(200).json({
+//                       status: "ok",
+//                       post: done,
+//                       message: `Yessir, the pin was created and is now added to board ${board_id} `
+//             })
+//                     });
+//               } catch (err) {
+//                 console.log(err)
+//                 next(err)
+//                 }
+//           });
+        
+//           } catch (error) {
+//             console.log(error);
+//             next(error);
+//             }
+//         };
+
 
 const createPin = async (req, res, next) => {
+    const { imageUrl, creator_id, board_id, note } = req.body; 
     try {
-        console.log("Create your pin");
-        upload(req, res, err => {
-            try {
-            console.log("Upload your photo");
-            const { creator_id, board_id, note } = req.body;
-            let imageUrl = "/uploads/" + req.file.filename;
-            db.one(
-                `INSERT INTO Pins(imageUrl, creator_id, board_id, note) VALUES( $1, $2, $3, $4) RETURNING *`,
-                [imageUrl, creator_id, board_id, note])
-                .then(done => {
-                    console.log("then");
-                    res.status(200).json({
-                      status: "ok",
-                      post: done,
-                      message: `Yessir, the pin was created and is now added to board ${board_id} `
-            })
-                    });
-              } catch (err) {
-                console.log(err)
-                next(err)
-                }
-          });
-        
-          } catch (error) {
-            console.log(error);
-            next(error);
-            }
-        };
+        let newPin = await db.one(`INSERT INTO Pins (imageUrl, creator_id, board_id, note) VALUES( $1, $2, $3, $4) RETURNING *`, [imageUrl, creator_id, board_id, note]);
+        res.status(200).json({
+            status: 'success',
+            message: 'Yessir, your new pin was created.',
+            payload: newPin
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'error',
+            message: 'Could not create a new pin.'
+        });
+    }
+}
 
 
 

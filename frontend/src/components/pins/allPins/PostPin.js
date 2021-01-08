@@ -22,7 +22,7 @@ const PostPinModal = ({ imageurl, userName, profilepic, creator_id, pinContent, 
         <div title ={pinId} className={`mainDivModalBackground showModal-${modal}`}>    
           <div className="innerModal">
               <div className="pinImage">
-                <img className="styleImage modal-content" alt="Board img" src={imageurl} />
+                <img className="styleImage modal-content" alt="Pin img" src={imageurl} />
               </div>
               <div className="pinContent">
                 <div>
@@ -30,7 +30,7 @@ const PostPinModal = ({ imageurl, userName, profilepic, creator_id, pinContent, 
                 </div>
 
                 <div className="profile-pic-div">
-                  <img onClick={() => userNameRedirect(userName)} className="styleProfilePicOverlay-two" alt="" src={profilepic} style={handleStyleProfile} />
+                  <img onClick={() => userNameRedirect(userName)} className="styleProfilePicOverlay-two" alt="User's profile picture" src={profilepic} style={handleStyleProfile} />
                 </div>
 
                 <h3 onClick={() => userNameRedirect(userName)} className="styleusername">{userName}</h3>
@@ -43,7 +43,7 @@ const PostPinModal = ({ imageurl, userName, profilepic, creator_id, pinContent, 
         
         </div>
       <div className="overflow">
-        <img className="exitButton card-img-top" alt="Board img" onClick={() => toggleModal()} src={imageurl} />
+        <img className="exitButton card-img-top" alt="Pin img" onClick={() => toggleModal()} src={imageurl} />
       </div>
       
     </div>
