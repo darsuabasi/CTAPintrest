@@ -52,8 +52,11 @@
 }
 
 .flex-bio-div {
-    height: 8rem;
+    height: 10rem;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.2rem;
     overflow-y: scroll !important;
+   
 }
 
 .user-profile-btn-div {
