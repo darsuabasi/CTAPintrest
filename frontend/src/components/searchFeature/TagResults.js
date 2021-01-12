@@ -65,7 +65,7 @@ const TagResults = () => {
     const displayPinsFromSearch = hashtagResults.map((pin, i) => {
         return (
             <div key={i} className="userPostsListDiv">
-                <PostImage key={pin.id} pinId={pin.id} userName={pin.username} imageurl={API+pin.imageurl} profilepic={API+pin.profilepic} pinContent={pin.note}/>
+                <PostImage key={pin.id} pinId={pin.id} userName={pin.username} imageurl={pin.imageurl} profilepic={pin.profilepic} pinContent={pin.note}/>
                 {/* <Tags/> */}
           </div>
         );

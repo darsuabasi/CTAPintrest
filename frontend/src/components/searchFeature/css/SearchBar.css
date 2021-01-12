@@ -25,7 +25,7 @@
     position: absolute;
     /* border: 2px solid brown; */
     margin-left: 2%;
-    width: 20rem;
+    width: 100% !important;
     z-index: 20;
     border-radius: 1rem;
 }
@@ -35,6 +35,7 @@
     /* border: 2px solid brown; */
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    width: 100%;
     padding-left: 2%;
     height: auto;
     overflow-x: scroll !important;
@@ -55,7 +56,18 @@
 }
 
 .styleSussestionLi {
-    font-size: 22px;
+    font-size: 32px;
     padding-right: 2%;
     color: brown;
+}
+
+.input[list] {
+  margin-left:auto;
+    margin-right:auto;
+
+    max-width: 500px;
+    background: #D2E9FF;
+    padding: 20px 20px 20px 20px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #656;
 }

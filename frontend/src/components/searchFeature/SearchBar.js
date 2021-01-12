@@ -33,9 +33,9 @@ const SearchBar = () => {
         } else {
             return (
                 <div className="styleSuggestionDiv">
-                    <ul className="styleSuggestions">
-                        {suggestion.slice(0,5).map((item)=><li className="styleSussestionLi" key={item} onClick={()=> handleSelect(item)}>{item}</li>)}
-                    </ul>
+                    <datalist id="hashtagit" className="styleSuggestions" style={{width:"50rem"}}>
+                        {suggestion.slice(0,5).map((item)=><option className="styleSussestionLi" key={item} value={item} onClick={()=> handleSelect(item)}>{item}</option>)}
+                    </datalist>
                 </div>
             )
         }
@@ -64,7 +64,7 @@ const SearchBar = () => {
 
         return (
             <form onSubmit={handleSearch}>
-                <input className="user-nav-search" placeholder="Search for whatever" value={search} type="text" onChange={handleChange}/>
+                <input list="hashtagit" className="user-nav-search" placeholder="Search for whatever" value={search} type="text" onChange={handleChange}/>
                 {displaySuggestion()}
                 {/* <button className="user-nav-search-btn" type="submit"> Search Tags </button> */}
                 </form>
