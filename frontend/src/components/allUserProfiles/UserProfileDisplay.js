@@ -35,7 +35,7 @@ const UserProfile = () => {
         return (
             <div className="userProfile-main-container">
                 <div className="userProfile-top-div" title={i}>
-                    <UserInfo key={i} id={user.id} username={user.username} first_name={user.first_name} last_name={user.last_name} bio={user.bio} created_at={user.created_at} profilePic={API+user.profilepic} email={user.email}/>
+                    <UserInfo key={i} id={user.id} username={user.username} first_name={user.first_name} last_name={user.last_name} bio={user.bio} created_at={user.created_at} profilePic={user.profilepic} email={user.email}/>
                 </div>
 
                 {/* <div className="userprofile-user-fullname-footer-div">
