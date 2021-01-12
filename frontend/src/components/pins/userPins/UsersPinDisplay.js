@@ -34,7 +34,7 @@ const UsersPinDisplay = () => {
     }, [])
 
     const displayPin = pins.map(pin => {
-        return ( <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={API+pin.imageurl} pinContent={pin.note} /> )
+        return ( <PostPinModal key={pin.id} pinId={pin.id} userName={pin.usernmae} imageurl={pin.imageurl} pinContent={pin.note} /> )
     })
 
    return (

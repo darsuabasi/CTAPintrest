@@ -109,7 +109,7 @@ const UserPins = () => {
 
 
                 <div className="style-profile-pic"> 
-                    <img className="profile-pic-preview" src={API+profilepicture} />
+                    <img className="profile-pic-preview" src={profilepicture} />
                 </div>
 
 
