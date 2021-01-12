@@ -32,8 +32,8 @@ const UserInfo = ({id, username, first_name, last_name, bio, created_at, profile
             </div>
 
             <div className="flex-bio-div">
-                
-                <p className="flex-bio-ptag"> <label className="flex-bio-label"> Bio: </label> {bio}</p>
+                <label className="flex-bio-label"> Bio: </label>
+                <p className="flex-bio-ptag"> {bio}</p>
             </div>
 
             <div className="user-profile-btn-div">
