@@ -100,9 +100,6 @@ const handleImageAsFile = (e) => {
             );
     })
 }
-
-
-
     // const handleNewPins = async (e) => {
     //     e.preventDefault();
     //     try {
@@ -119,7 +116,6 @@ const handleImageAsFile = (e) => {
     //           },
     //         }
     //         let newPin = await axios.post(`${API}/api/pins/`, formData, config);
-    //         debugger
     //         console.log(newPin.data)
     //         handleNewTag(newPin.data.post)
     //         history.push("/user-feed");
@@ -131,7 +127,6 @@ const handleImageAsFile = (e) => {
     const createPin = async (e) => {
         e.preventDefault();
         try {
-            debugger
             let fireBaseUrl = await handleUpload(e);
             let res = await axios({
                 method: "post",
