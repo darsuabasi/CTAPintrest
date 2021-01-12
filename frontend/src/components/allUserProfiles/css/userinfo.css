@@ -38,8 +38,12 @@
     justify-content: center;
 }
 
-.flex-full-name-label, .flex-full-name-ptag,  .flex-member-since-label, .flex-member-since-ptag, .flex-bio-label, .flex-bio-ptag{
+.flex-full-name-label, .flex-full-name-ptag,  .flex-member-since-label, .flex-member-since-ptag, .flex-bio-label {
     font-size: 22px;
+}
+
+.flex-bio-ptag {
+    font-size: 18px
 }
 
 .flex-full-name-label, .flex-member-since-label, .flex-bio-label {
