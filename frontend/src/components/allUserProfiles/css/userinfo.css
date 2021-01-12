@@ -6,8 +6,8 @@
 .user-info-full-div {
     justify-content: center;
     text-align: center;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
     padding-top: 10%;
 }
 
@@ -38,12 +38,8 @@
     justify-content: center;
 }
 
-.flex-full-name-label, .flex-full-name-ptag,  .flex-member-since-label, .flex-member-since-ptag, .flex-bio-label {
+.flex-full-name-label, .flex-full-name-ptag,  .flex-member-since-label, .flex-member-since-ptag, .flex-bio-label, .flex-bio-ptag {
     font-size: 22px;
-}
-
-.flex-bio-ptag {
-    font-size: 18px
 }
 
 .flex-full-name-label, .flex-member-since-label, .flex-bio-label {
@@ -53,6 +49,11 @@
 
 .flex-member-since-div, .flex-bio-div {
     margin-top: -1.5%;
+}
+
+.flex-bio-div {
+    height: 8rem;
+    overflow-y: scroll !important;
 }
 
 .user-profile-btn-div {
