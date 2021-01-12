@@ -1,57 +1,54 @@
 const db = require("../../db/index");
-const upload = require('./imageUploader')
+// const upload = require('./imageUploader')
+
+// const createUser = async (req, res, next) => {
+//     try {
+//         console.log("Create your user w/ picture upload");
+//         upload(req, res, err => {
+//             try { 
+//             console.log("Upload your photo");
+//             const { id, username, first_name, last_name, bio, email} = req.body;
+//             let profilePic = "/uploads/" + req.file.filename;
+//             let newUser = db.one(
+//                 "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES( $1, $2, $3, $4, $5, $6, $7) RETURNING *",
+//                 [id, username, first_name, last_name, bio, profilePic, email])
+//                 .then(done => {
+//                     console.log("then");
+//                     res.status(200).json({
+//                         status: "ok",
+//                         post: done,
+//                         message: 'A new user has been created.',
+//                         payload: newUser
+//                     })
+//                 });
+//             } catch (err) {
+//                 console.log(err)
+//                 next(err)
+//             }
+//         });
+//     } catch (error) {
+//         console.log(error);
+//         next(error);
+//     }
+// };
 
 const createUser = async (req, res, next) => {
+    const { id, username, first_name, last_name, bio, profilePic, email } = req.body;
     try {
-        console.log("Create your user w/ picture upload");
-        upload(req, res, err => {
-            try { 
-            console.log("Upload your photo");
-            const { id, username, first_name, last_name, bio, email} = req.body;
-            let profilePic = "/uploads/" + req.file.filename;
-            let newUser = db.one(
-                "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES( $1, $2, $3, $4, $5, $6, $7) RETURNING *",
-                [id, username, first_name, last_name, bio, profilePic, email])
-                .then(done => {
-                    console.log("then");
-                    res.status(200).json({
-                        status: "ok",
-                        post: done,
-                        message: 'A new user has been created.',
-                        payload: newUser
-                    })
-                });
-            } catch (err) {
-                console.log(err)
-                next(err)
-            }
+        let newUser = await db.one(`INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, 
+        [id, username, first_name, last_name, bio, profilePic, email]);
+        res.status(200).json({
+            status: 'success',
+            message: 'Congratulations, your account was created.',
+            payload: newUser
         });
     } catch (error) {
-        console.log(error);
-        next(error);
+        res.status(400).json({
+            status: 'error',
+            message: 'Yikes, your account was not created. Please try again.'
+        });
     }
-};
-
-
-    // const createUser = async (req, res, next) => {
-    //     try {
-    //         let newUser = await db.one(
-    //             "INSERT INTO Users (id, username, first_name, last_name, bio, profilePic, email) VALUES(${id}, ${username}, ${first_name}, ${last_name}, ${bio}, ${profilePic}, ${email}) RETURNING *",
-    //             req.body
-    //         );
-    //         res.status(200).json({
-    //             message: "Ayeee new user created",
-    //             payload: newUser
-    //         });
-    //     } catch(err) {
-    //         res.status(400).json({
-    //             status: "Error",
-    //             message: "Yikes, account could not be created at this time."
-    //         })
-    //         next(err);
-    //     }
-    // };
-
+}
 
 const getAllUsers = async (req, res, next) => {
     try {

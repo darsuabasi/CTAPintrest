@@ -12,6 +12,8 @@ import wave from '../../assets/wave.svg';
 import { login, demoLogin, signUp, logout } from '../../util/firebaseFunctions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { storage } from "../../firebase";
+import itsme from '../../assets/itsme.jpeg'
 
 
 
@@ -53,8 +55,12 @@ const Navbar = () => {
     const firstName = useInput("");
     const lastName = useInput("");
     const bio = useInput("");
-    // const profilePic = useInput("");
+    // uploading image
     const [file, setFile] = useState({preview: "", raw: ""});
+    const [fileName, setFileName] = useState("");
+    const [imageAsUrl, setImageAsUrl] = useState("");
+    const [imageAsFile, setImageAsFile] = useState("");
+    const [signupImage, setSignupImage] = useState("")
     // const age = useInput("");
     const [userSignup, setUserSignup] = useState([]);
     // toastify
@@ -62,14 +68,21 @@ const Navbar = () => {
     // navbar after login
 
 
-    const onSelectImage = (e) => {
+    const handleImageAsFile = (e) => {
+        const image = e.target.files[0];
+        const types = ["image/png", "image/jpeg", "image/jpg", "image/gif"];
+        if (types.every((type) => image.type !== type)) {
+          alert(`${image.type} is not a supported format`);
+        } else {
+          setImageAsFile((imageFile) => image);
+        }
         if (e.target.files.length) {
             setFile({
-              preview: URL.createObjectURL(e.target.files[0]),
-              raw: e.target.files[0]
+                preview: URL.createObjectURL(e.target.files[0]),
+                raw: e.target.files[0]
             });
-          }
-    }
+        }
+      };
 
     const handleLogout = async (e) => {
         e.preventDefault();
@@ -96,42 +109,95 @@ const Navbar = () => {
         try {
             // for deployed site ---> heytems01@gmail.com
             // for local site --> heytemi@gmail.com
-            await login("heytems01@gmail.com", "test123");
+            await login("heytemi@gmail.com", "test123");
             history.push("/user-feed")
         } catch (err) {
             alert("Not able to log in. Please try again.", err)
         }
     }
 
+
+    const handleUploadProfilepic = () => {
+        debugger
+        return new Promise((resolve, reject) => {
+            const uploadTask = storage.ref(`/profilePicture/${file.raw.name}`).put(file.raw);
+            uploadTask.on(
+                "state_changed",
+                (snapShot) => {
+                    console.log(snapShot);
+                },
+                (err) => {
+                    console.log(err);
+                    reject(err)
+                },
+                () => {
+                        storage
+                        .ref("profilePicture")
+                        .child(file.raw.name)
+                        .getDownloadURL()
+                        .then((fireBaseUrl) => {
+                            resolve(fireBaseUrl);
+                        }) 
+                        .catch((err)=> {
+                            reject(err)
+                        });
+                }
+            );
+        })
+    }
+
     const handleNewUser = async (e) => {
         debugger
         try {
             e.preventDefault();
-            const formData = new FormData();
-            formData.append("myImage", file.raw);
-            formData.append("file", file.preview);
-            formData.append("email", emailSignup);
-            formData.append("username", userName.value);
-            formData.append("first_name", firstName.value);
-            formData.append("last_name", lastName.value);
-            formData.append("bio", bio.value);
-            const config = {
-                headers: {
-                    "content-type": "multipart/form-data",
-                },
-            }
-            try {
-                let res = await signUp(emailSignup, passwordSignup);
-                formData.append("id", res.user.uid);
-            await axios.post(`${API}/api/users`, formData, config);
+            let fireBaseUrl = await handleUploadProfilepic(e);
+            let res = await signUp(emailSignup, passwordSignup);
+            let data = {
+                "id": res.user.uid,
+                "email": emailSignup,
+                "username": userName.value,
+                "first_name": firstName.value,
+                "last_name": lastName.value,
+                "bio": bio.value,
+                "profilePic": fireBaseUrl
+            };
+            await axios.post(`${API}/api/users`, data);
             history.push("/user-feed");
-            } catch (err) {
-                console.log(err)
-            }
         } catch (err) {
             console.log(err)
         }
-};
+    };
+
+// multer
+//     const handleNewUser = async (e) => {
+//         debugger
+//         try {
+//             e.preventDefault();
+//             const formData = new FormData();
+//             formData.append("myImage", file.raw);
+//             formData.append("file", file.preview);
+//             formData.append("email", emailSignup);
+//             formData.append("username", userName.value);
+//             formData.append("first_name", firstName.value);
+//             formData.append("last_name", lastName.value);
+//             formData.append("bio", bio.value);
+//             const config = {
+//                 headers: {
+//                     "content-type": "multipart/form-data", <----important for multer
+//                 },
+//             }
+//             try {
+//                 let res = await signUp(emailSignup, passwordSignup);
+//                 formData.append("id", res.user.uid);
+//             await axios.post(`${API}/api/users`, formData, config);
+//             history.push("/user-feed");
+//             } catch (err) {
+//                 console.log(err)
+//             }
+//         } catch (err) {
+//             console.log(err)
+//         }
+// };
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -215,7 +281,7 @@ const Navbar = () => {
                                 </li>
 
                                 <li style={{marginRight:"2rem", marginLeft:"2rem"}} class="nav-item">
-                                    <NavLink className="user-nav-image" to={"/user-profile/boards"}> <img className="user-nav-image-2" src={API+profilepicture}/> </NavLink> 
+                                    <NavLink className="user-nav-image" to={"/user-profile/boards"}> <img className="user-nav-image-2" src={profilepicture}/> </NavLink> 
                                 </li>
 
 
@@ -272,27 +338,6 @@ const Navbar = () => {
                                             Contact 
                                         </button>
                                     </li>
-                                    
-                                    
-                                    {/* <li class="nav-item"> */}
-                                        {/* <NavLink class="nav-link publicNavLink" className="publicNavLink" to={"/photos-by-uduakabasi"}> Photography </NavLink> */}
-                                        {/* <a class="nav-link" href="#">Link</a> */}
-                                    {/* </li> */}
-                                    
-
-                                        {/* <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 Dropdown
-                                             </a>
-                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                   <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                        <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                    </div>
-                                        </li> */}
-                               
-
 
                                 <li style={{marginLeft:"7px"}} class="nav-item"> 
                                     <button className="publicNavLogin" variant="primary" onClick={handleShowLogin}> Login </button>
@@ -309,96 +354,97 @@ const Navbar = () => {
 </ul>
 
 
-<div className="main-login">
-      <Modal className="fullModal" show={showLogin} onHide={handleCloseLogin}>
+    <div className="main-login">
+        <Modal className="fullModal" show={showLogin} onHide={handleCloseLogin}>
       
-        <Modal.Header closeButton>
-          {/* <Modal.Title className="loginhello">Login</Modal.Title> */}
-        </Modal.Header>
-        <Modal.Body className="modalbody1">
-        {/* <div className="main-login"> */}
-        <div className="login-form"> 
-                <div className="stylingLoginModaldiv">
-                    <h3 className="loginhello"> Welcome to Lifetrest! </h3>
-                        <form className="user-form-fill" onSubmit={handleLoginSubmit}> 
-                        <input className="login-input1" placeholder="Email" 
-                            value={email}
-                            onChange={(e) => setEmail(e.currentTarget.value)}
-                            />
-                        <br/>
-                        <input className="login-input2" placeholder="Password" 
-                            value={password}
-                            autoComplete="on"
-                            type="password"
-                            onChange={(e) => setPassword(e.currentTarget.value)}
-                            /> 
-                        {/* <p> Forgot your password? </p> */}
-                        <div>
-                        <button className="login-page-button1" type="submit"> Log in </button>
-                        <div class="sun"></div>
-                        </div>
+            <Modal.Header closeButton>
+            {/* <Modal.Title className="loginhello">Login</Modal.Title> */}
+            </Modal.Header>
+            <Modal.Body className="modalbody1">
+            {/* <div className="main-login"> */}
+            <div className="login-form"> 
+                    <div className="stylingLoginModaldiv">
+                        <h3 className="loginhello"> Welcome to Lifetrest! </h3>
+                            <form className="user-form-fill" onSubmit={handleLoginSubmit}> 
+                            <input className="login-input1" placeholder="Email" 
+                                value={email}
+                                onChange={(e) => setEmail(e.currentTarget.value)}
+                                />
+                            <br/>
+                            <input className="login-input2" placeholder="Password" 
+                                value={password}
+                                autoComplete="on"
+                                type="password"
+                                onChange={(e) => setPassword(e.currentTarget.value)}
+                                /> 
+                            {/* <p> Forgot your password? </p> */}
+                            <div>
+                            <button className="login-page-button1" type="submit"> Log in </button>
+                            <div class="sun"></div>
+                            </div>
 
-                        <Button style={{color:"#ffffff", backgroundColor:"brown", border:"none", height:"2rem"}} bsstyle="primary" onClick={handleDemoLogin}>
-                            Demo Login
-                        </Button>
-                        {/* <h5> OR </h5> */}
+                            <Button style={{color:"#ffffff", backgroundColor:"brown", border:"none", height:"2rem"}} bsstyle="primary" onClick={handleDemoLogin}>
+                                Demo Login
+                            </Button>
+                            {/* <h5> OR </h5> */}
 
-                        {/* <button className="login-page-button2" type="submit"> Continue with Facebook </button>
-                        <br/>
-                        <button className="login-page-button3" type="submit"> Continue with Google </button> */}
-                    </form> 
+                            {/* <button className="login-page-button2" type="submit"> Continue with Facebook </button>
+                            <br/>
+                            <button className="login-page-button3" type="submit"> Continue with Google </button> */}
+                        </form> 
+                    </div>
                 </div>
-            </div>
-            <img src={wave}/>
-        {/* </div> */}
-        </Modal.Body>
-        <Modal.Footer>
-            <p className="otherExtraShit"> By continuing, you agree to Lifetrest's Terms of Service, Privacy Policy</p>
-            <NavLink className="signup-from-login" exact to={"/"}> Not on Pintrest yet? Sign up </NavLink>
-        </Modal.Footer>
-      </Modal>
-      </div>
+                <img src={wave}/>
+            {/* </div> */}
+            </Modal.Body>
+            <Modal.Footer>
+                <p className="otherExtraShit"> By continuing, you agree to Lifetrest's Terms of Service, Privacy Policy</p>
+                <NavLink className="signup-from-login" exact to={"/"}> Not on Pintrest yet? Sign up </NavLink>
+            </Modal.Footer>
+        </Modal>
+    </div>
 
-<div className="about-modal">
-                                        <Modal className="fullAboutModal" show={showAbout} onHide={handleCloseAbout}>
-                                            <Modal.Header closeButton>
-                                                <Modal.Title className="modaltitle1">Why Clone Pinterest?</Modal.Title>
-                                            </Modal.Header>
+    <div className="about-modal">
+        <Modal className="fullAboutModal" show={showAbout} onHide={handleCloseAbout}>
+            <Modal.Header closeButton>
+                <Modal.Title className="modaltitle1">Why Clone Pinterest?</Modal.Title>
+            </Modal.Header>
 
-                                            <Modal.Body className="modalBody-about">
-                                                <div className="aboutDiv">
-                                                    <div className="sub-div">
-                                                        <div className="rightDiv"> 
-                                                            <p className="holaDiv"> Welcome to Lifetrest! </p>
+            <Modal.Body className="modalBody-about">
+                <div className="aboutDiv">
+                    <div className="sub-div">
+                        <div className="rightDiv"> 
+                            <p className="holaDiv"> Welcome to Lifetrest! </p>
 
-                                                            <p className="about-me"> For my Comprehensive Technical Assessment through <a className="myPursuit" href="https://www.pursuit.org/fellowship"> PURSUIT</a>, 
-                                                                I decided to clone Pinterest since it's an app that I frequently use. As a 
-                                                                visitor, you can login with the demo account or you can create your own account via 
-                                                                the signup modal. Once a part of Lifetrest, you're able to upload photos and post them as pins. 
-                                                                However, you must first create a board. Think of it as your pin's house or album. In addition, 
-                                                                you are able to delete a board which then permanently removes all the pins in that specific board 
-                                                                and from the app. You are able to view all your own pins as well as boards and just like Pinterest, 
-                                                                you're able to view ALL pins that live in the Livetrest app via your feed. You can also utilize the 
-                                                                SEARCH BAR to search for pins based on hashtags! 
-                                                            </p>
-                                                            
-                                                            <p className="about-me"> <h3 style={{color:"brown"}}> What's Next? </h3> Bit by bit, I am increasing the functionality as well as testing 
-                                                                my design and animation skills.
-                                                            </p>
+                            <p className="about-me"> For my Comprehensive Technical Assessment through <a className="myPursuit" href="https://www.pursuit.org/fellowship"> PURSUIT</a>, 
+                                I decided to clone Pinterest since it's an app that I frequently use. As a 
+                                visitor, you can login with the demo account or you can create your own account via 
+                                the signup modal. Once a part of Lifetrest, you're able to create boards and pins. 
+                                In addition, you are able to delete a board which then deletes all pins in that particular board 
+                                and from the app. You're able to view all your own pins as well as boards and just like Pinterest, 
+                                you're able to view ALL pins that live in the Livetrest app via your feed. You can also utilize the 
+                                SEARCH BAR to search for pins based on hashtags! 
+                            </p>
+                            
+                            <p className="about-me"> <h3 style={{color:"brown"}}> What's Next? </h3> Bit by bit, I am increasing the functionality as well as testing 
+                                my design and animation skills.
+                            </p>
 
-                                                            <p className="about-me"> <h3 style={{color:"brown"}}> Future Implementations </h3> I want users to be able to edit their profile information as well as 
-                                                                being able to pin another user's pins to their own board. Users should be able to view another user's profile 
-                                                                through the username [Partially completed on 12/21/2020] as you can only view their pins but not their boards. 
-                                                                Full responsiveness as well! </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Modal.Body>
-                                        </Modal>
-                                    </div>
+                            <p className="about-me"> <h3 style={{color:"brown"}}> Future Implementations </h3> I want users to be able to edit their profile information as well as 
+                                being able to pin another user's pins to their own board. Full responsiveness as well! </p>
 
-
-
+                            <p className="about-me"> <h4 style={{color:"brown"}}> Since December 2020 Re-Deployment </h4> December 21st, 2020: Users able to view other user's profiles via username [pins only]
+                                </p>
+                            <p className="about-me"> January 11th, 2021: All images are now uploaded using firebase storage [previously multer]
+                                </p>
+                            <p className="about-me"> January 11th, 2021: Search component now using htlm datalist tag in order to select options. Will create custom datalist tag for styling purposes
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </Modal.Body>
+        </Modal>
+    </div>
 
         <div className="contact-modal">
             <Modal className="fullContactModal" show={showContact} onHide={handleCloseContact}>
@@ -411,9 +457,9 @@ const Navbar = () => {
                         <div className="sub-div">
                             <div className="rightDiv"> 
                                 <p className="my-name-is"> Hi, my name is Uduakabasi but you can also call me Darsu. It's a play on my middle and last name. I'm a fullstack web developer focusing on UX/UI and backend. I also dabble in photography.</p> 
-                                <p className="holaDiv"> Reach me here or check out some of my other work. </p>
-                                <p> Check out my <a className="myPortfolio" href="https://uduakabasi.netlify.app/"> portfolio </a> and you  can follow me on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a>. If you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>.
+                                <p> You can check out my <a className="myPortfolio" href="https://uduakabasi.netlify.app/"> portfolio </a> and you'd like, you can follow me on <a className="instagram" href="https://www.instagram.com/darsu.chats/">Instagram</a> or <a className="twitter" href="https://twitter.com/darsuCodes">Twitter</a>. If you want to check out what I've been up to in regards to coding... here's my <a className="github" href="https://github.com/darsuabasi">Github</a>. Happy pinning :)
                                 </p> 
+                                <img src={itsme} style={{width:"400px", height:"450px"}}/>
                             </div>
                         </div>
                     </div>
@@ -448,7 +494,7 @@ const Navbar = () => {
                                     <label for="file-upload" class="custom-file-upload-signupPic" style={{textAlign:"center", marginBottom:"10%", fontVariant:"small-caps", fontWeight:"800", fontSize:"20px"}}>
                                         Click to Upload
                                     </label>
-                                    <input id="file-upload" className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={onSelectImage} placeholder="Your photo"/>
+                                    <input id="file-upload" className="image-preview-view" type="file" name="myImage" accept="image/png/jpeg" onChange={handleImageAsFile} placeholder="Your photo"/>
                                 </div>
                                 <label class="label"> Enter your email <input placeholder="Email" 
                                     text="email"
