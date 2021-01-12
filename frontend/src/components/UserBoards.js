@@ -75,10 +75,6 @@ const UserBoards = () => {
 // displaying all the boards function
 
 
-
-
-
-
     return(
         <div className="main-style-user"> 
             <div className="user-info-display-card">

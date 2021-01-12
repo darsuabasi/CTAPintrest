@@ -107,8 +107,8 @@ const Navbar = () => {
     const handleDemoLogin = async (e) => {
         e.preventDefault();
         try {
-            // for deployed site ---> heytems01@gmail.com
-            // for local site --> heytemi@gmail.com
+            // for local site ---> heytems01@gmail.com
+            // for deployed site --> heytemi@gmail.com
             await login("heytemi@gmail.com", "test123");
             history.push("/user-feed")
         } catch (err) {
