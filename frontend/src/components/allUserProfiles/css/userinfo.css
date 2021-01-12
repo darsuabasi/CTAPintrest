@@ -52,9 +52,9 @@
 }
 
 .flex-bio-div {
-    height: 10rem;
-    margin-bottom: 0.2rem;
-    padding-bottom: 0.2rem;
+    height: 6rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
     overflow-y: scroll !important;
    
 }
