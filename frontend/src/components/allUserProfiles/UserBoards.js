@@ -35,7 +35,7 @@ const UserBoards = ({username}) => {
         if (username === board.username)
           return (
             <div key={i}>
-                <PostBoardModal key={board.boardId} boardId={board.boardId} board_name={board.board_name} imageurl={API+board.imageurl} creator_id={board.creator_id} board_description={board.board_description} username={board.username} />
+                <PostBoardModal key={board.boardId} boardId={board.boardId} board_name={board.board_name} imageurl={board.imageurl} creator_id={board.creator_id} board_description={board.board_description} username={board.username} />
             </div> 
           );
       });
