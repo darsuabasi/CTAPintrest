@@ -42,8 +42,16 @@
     font-size: 22px;
 }
 
-.flex-bio-label, .flex-bio-ptag {
+.flex-bio-label {
     font-size: 20px;
+}
+
+.flex-bio-ptag {
+    font-size: 18px;
+}
+
+.flex-bio-label {
+    text-decoration: underline !important;
 }
 
 .flex-bio-ptag {
