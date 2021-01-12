@@ -31,7 +31,7 @@
     color: brown;
 }
 
-.flex-full-name-div, .flex-member-since-div, .flex-bio-div {
+.flex-full-name-div, .flex-member-since-div {
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -62,14 +62,15 @@
     margin-bottom: 0.5rem;
     padding-bottom: 0.3rem;
     overflow-y: scroll !important;
-   
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .user-profile-btn-div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
-
 }
 
 .user-profile-pins-btn, .user-profile-boards-btn {
