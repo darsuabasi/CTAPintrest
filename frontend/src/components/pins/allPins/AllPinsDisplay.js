@@ -34,7 +34,7 @@ const AllPinsDisplay = () => {
     const displayPins = pins.map((pin, i) => {
         return ( 
             <div key={i}>
-                <PostPinModal key={pin.id} pinId={pin.id} userName={pin.username} imageurl={pin.imageurl} profilepic={API+pin.profilepic} pinContent={pin.note} />
+                <PostPinModal key={pin.id} pinId={pin.id} userName={pin.username} imageurl={pin.imageurl} profilepic={pin.profilepic} pinContent={pin.note} />
             </div> 
         )
     });
