@@ -217,7 +217,7 @@ const handleImageAsFile = (e) => {
 
                             <div className="about-div form__group field"> 
                                 <textarea id="pin-about" class="form__field" style={{height:"200px", width:"270px", marginTop:"50px", paddingTop:"5px", paddingRight:"5px", paddingLeft:"5px"}} className="add-note-style" type="textarea" placeholder="Tell everyone what your Pin is about" {...setNote}/> 
-                                <label for="pin-about" class="form__label_BT_two"> Talk us more </label>
+                                <label for="pin-about" class="form__label_BT_two"> Tell us more </label>
                             </div>
 
 
