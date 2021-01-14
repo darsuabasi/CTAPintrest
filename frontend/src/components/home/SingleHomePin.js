@@ -1,6 +1,4 @@
 import React from 'react'
-// import image1 from '../../assets/gucciDenim.jpeg'
-// import ImageUpl
 import '../../css/pin-style.css';
 
 const SingleHomePin = (props) => {
@@ -12,9 +10,7 @@ const SingleHomePin = (props) => {
             <div className="card-body text-dark">
                 <h4 className="card-title"> {props.title} </h4> 
                 <p className="card-text text-secondary"> {props.username} </p>
-                {/* <a href="#" className="btn btn-outline-success"> {props.link} </a> */}
             </div>
-
         </div>
     );
 }
