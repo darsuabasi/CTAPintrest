@@ -74,16 +74,6 @@
 //             <Pin imgsrc={goldDress} title="Travel" />
 //         </div>
 // </div>
-
-
-
-
-
-
-
-
-
-
         // )
     
 // }
