@@ -1,6 +1,6 @@
-# Lifetrest - [Comprehensive Technical Assessment: Pinterest Clone] 
-## Demo: https://youtu.be/Wc_gc45NdRg
-## Live Site: https://lifetrest.netlify.app/ 
+# Lifetrest - [Comprehensive Technical Assessment] 
+## [Lifetrest: Demo](https://youtu.be/Wc_gc45NdRg 'Lifetrest Demo')
+## [Lifetrest: Live Site](https://lifetrest.netlify.app/ 'Lifetrest Live')
 ### Lifetrest is a Full-Stack Web Application where users can document their life and interests through photos, just like Pinterest.
 Best viewed on Web, not completely responsive.
 
